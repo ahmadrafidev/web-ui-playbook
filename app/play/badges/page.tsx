@@ -119,7 +119,7 @@ export default function BadgesPage() {
                   <ul className="text-sm text-blue-700 space-y-1">
                     <li>• Use consistent colors for similar states across your app</li>
                     <li>• Keep badge text short and descriptive</li>
-                    <li>• Don't overuse badges - they lose impact</li>
+                    <li>• Don&apos;t overuse badges - they lose impact</li>
                     <li>• Consider cultural color associations (red = danger, green = success)</li>
                   </ul>
                 </div>
@@ -210,7 +210,7 @@ export default function BadgesPage() {
                   <h4 className="font-semibold mb-2 text-green-800">Accessibility</h4>
                   <ul className="text-sm text-green-700 space-y-1">
                     <li>• Ensure sufficient color contrast for text readability</li>
-                    <li>• Don't rely solely on color to convey meaning</li>
+                    <li>• Don&apos;t rely solely on color to convey meaning</li>
                     <li>• Provide proper ARIA labels for screen readers</li>
                     <li>• Make interactive badges keyboard accessible</li>
                   </ul>

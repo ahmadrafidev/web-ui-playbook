@@ -137,7 +137,7 @@ export default function AlertsPage() {
                   <ul className="text-sm text-green-700 space-y-1">
                     <li>• Use appropriate ARIA roles and labels</li>
                     <li>• Ensure sufficient color contrast for all text</li>
-                    <li>• Don't rely solely on color to convey meaning</li>
+                    <li>• Don&apos;t rely solely on color to convey meaning</li>
                     <li>• Provide dismissible alerts when appropriate</li>
                   </ul>
                 </div>

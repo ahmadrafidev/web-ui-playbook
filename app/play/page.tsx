@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Header } from "@/components/header"
-import { ExternalLink, Code2, Eye } from "lucide-react"
+import { Code2, Eye } from "lucide-react"
 
 export default function PlayPage() {
   const componentSections = [

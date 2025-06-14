@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { ChevronRight, Home, Settings, User, Search, Menu, X } from "lucide-react"
+import { ChevronRight, Home, Settings, User, Search, Menu } from "lucide-react"
 import Link from "next/link"
 import { Header } from "@/components/header"
 
@@ -50,7 +50,7 @@ export default function NavigationPage() {
               <CardHeader>
                 <CardTitle>Primary Navigation</CardTitle>
                 <CardDescription>
-                  Main navigation systems for your application's core sections.
+                  Main navigation systems for your application&apos;s core sections.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">

@@ -68,7 +68,7 @@ export default function FormsPage() {
                     <Label htmlFor="email">Email Address</Label>
                     <Input id="email" type="email" placeholder="Enter your email" aria-describedby="email-help" />
                     <p id="email-help" className="text-sm text-gray-500">
-                      We'll never share your email with anyone else.
+                      We&apos;ll never share your email with anyone else.
                     </p>
                   </div>
 

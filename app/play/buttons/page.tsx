@@ -173,7 +173,7 @@ export default function ButtonsPage() {
                     <li>• Use aria-disabled instead of disabled for better screen reader support</li>
                     <li>• Announce loading states with aria-live regions</li>
                     <li>• Ensure focus indicators are visible in all states</li>
-                    <li>• Use role="button" for non-button elements made interactive</li>
+                    <li>• Use role=&quot;button&quot; for non-button elements made interactive</li>
                   </ul>
                 </div>
               </CardContent>
@@ -190,34 +190,34 @@ export default function ButtonsPage() {
               <CardContent>
                 <div className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
                   <pre className="text-sm">
-                    {`import { ButtonHTMLAttributes, forwardRef } from 'react'
-import { cn } from '@/lib/utils'
+                    {`import { ButtonHTMLAttributes, forwardRef } from &apos;react&apos;
+import { cn } from &apos;@/lib/utils&apos;
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'destructive'
-  size?: 'sm' | 'md' | 'lg'
+  variant?: &apos;primary&apos; | &apos;secondary&apos; | &apos;outline&apos; | &apos;ghost&apos; | &apos;destructive&apos;
+  size?: &apos;sm&apos; | &apos;md&apos; | &apos;lg&apos;
   loading?: boolean
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = 'primary', size = 'md', loading, children, ...props }, ref) => {
+  ({ className, variant = &apos;primary&apos;, size = &apos;md&apos;, loading, children, ...props }, ref) => {
     return (
       <button
         className={cn(
-          'inline-flex items-center justify-center rounded-md font-medium transition-colors',
-          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
-          'disabled:pointer-events-none disabled:opacity-50',
+          &apos;inline-flex items-center justify-center rounded-md font-medium transition-colors&apos;,
+          &apos;focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2&apos;,
+          &apos;disabled:pointer-events-none disabled:opacity-50&apos;,
           {
-            'bg-blue-600 text-white hover:bg-blue-700': variant === 'primary',
-            'bg-gray-200 text-gray-900 hover:bg-gray-300': variant === 'secondary',
-            'border border-gray-300 bg-white hover:bg-gray-50': variant === 'outline',
-            'hover:bg-gray-100': variant === 'ghost',
-            'bg-red-600 text-white hover:bg-red-700': variant === 'destructive',
+            &apos;bg-blue-600 text-white hover:bg-blue-700&apos;: variant === &apos;primary&apos;,
+            &apos;bg-gray-200 text-gray-900 hover:bg-gray-300&apos;: variant === &apos;secondary&apos;,
+            &apos;border border-gray-300 bg-white hover:bg-gray-50&apos;: variant === &apos;outline&apos;,
+            &apos;hover:bg-gray-100&apos;: variant === &apos;ghost&apos;,
+            &apos;bg-red-600 text-white hover:bg-red-700&apos;: variant === &apos;destructive&apos;,
           },
           {
-            'h-8 px-3 text-sm': size === 'sm',
-            'h-10 px-4': size === 'md',
-            'h-12 px-6 text-lg': size === 'lg',
+            &apos;h-8 px-3 text-sm&apos;: size === &apos;sm&apos;,
+            &apos;h-10 px-4&apos;: size === &apos;md&apos;,
+            &apos;h-12 px-6 text-lg&apos;: size === &apos;lg&apos;,
           },
           className
         )}
@@ -225,14 +225,14 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         disabled={loading}
         {...props}
       >
-        {loading && <Loader className="mr-2 h-4 w-4 animate-spin" />}
+        {loading && <Loader className=&quot;mr-2 h-4 w-4 animate-spin&quot; />}
         {children}
       </button>
     )
   }
 )
 
-Button.displayName = 'Button'
+Button.displayName = &apos;Button&apos;
 export { Button }`}
                   </pre>
                 </div>
@@ -290,11 +290,11 @@ export { Button }`}
 }
 
 /* HTML */
-<button class="btn btn-primary" type="button">
+<button class=&quot;btn btn-primary&quot; type=&quot;button&quot;>
   Primary Button
 </button>
 
-<button class="btn btn-secondary" type="button">
+<button class=&quot;btn btn-secondary&quot; type=&quot;button&quot;>
   Secondary Button
 </button>`}
                   </pre>
