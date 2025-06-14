@@ -1,36 +1,117 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎨 Web UI Playbook
 
-## Getting Started
+<div align="center">
 
-First, run the development server:
+*A comprehensive guide for creating consistent, accessible, and user-friendly UI components.*
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**🚧 Work in Progress 🚧**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[🎮 Live Playground](https://web-ui-playbook.vercel.app/) | [📚 Browse Components](https://web-ui-playbook.vercel.app/play/buttons) | [🚀 Get Started](#getting-started)
+
+</div>
+
+---
+
+## 🌟 Motivation
+
+In the ever-evolving landscape of web development, creating consistent, accessible, and beautiful user interfaces remains a challenge. **Web UI Playbook** was born from the need to:
+
+- **🎯 Standardize UI Patterns**: Provide a comprehensive library of battle-tested components that follow modern design principles
+- **♿ Prioritize Accessibility**: Ensure every component is built with accessibility-first approach using Radix UI primitives
+- **⚡ Boost Productivity**: Accelerate development with ready-to-use, customizable components
+- **🎨 Maintain Design Consistency**: Create a unified design language across projects
+- **📚 Educate & Inspire**: Serve as a learning resource for developers to understand best practices in UI component design
+- **🔧 Modern Stack**: Leverage the power of Next.js 15, TypeScript, Tailwind CSS 4, and Radix UI for optimal performance and developer experience
+
+Whether you're a seasoned developer or just starting your journey, this playbook aims to be your companion in building superior web interfaces.
+
+---
+
+## 🎮 Interactive Playground
+
+Explore our components in action! Visit our [**Live Playground**](https://web-ui-playbook.vercel.app/) to see, interact with, and understand each component.
+
+### 🧩 Component Library
+
+| Component | Description | Status | Playground Link |
+|-----------|-------------|--------|-----------------|
+| 🔘 **Buttons** | Primary, secondary, and action buttons | ✅ Complete | [Play with Buttons](https://web-ui-playbook.vercel.app/play/buttons) |
+| 🚨 **Alerts** | Success, warning, error, and info alerts | ✅ Complete | [Play with Alerts](https://web-ui-playbook.vercel.app/play/alerts) |
+| 🃏 **Cards** | Content containers and layout cards | ✅ Complete | [Play with Cards](https://web-ui-playbook.vercel.app/play/cards) |
+| 📝 **Forms** | Input fields and form components | ✅ Complete | [Play with Forms](https://web-ui-playbook.vercel.app/play/forms) |
+| 🧭 **Navigation** | Menus, tabs, and navigation elements | ✅ Complete | [Play with Navigation](https://web-ui-playbook.vercel.app/play/navigation) |
+| 🪟 **Modals** | Dialogs, popups, and overlays | ✅ Complete | [Play with Modals](https://web-ui-playbook.vercel.app/play/modals) |
+| 📊 **Tables** | Data tables and lists | ✅ Complete | [Play with Tables](https://web-ui-playbook.vercel.app/play/tables) |
+| 🏷️ **Badges** | Status indicators and labels | ✅ Complete | [Play with Badges](https://web-ui-playbook.vercel.app/play/badges) |
+| 💭 **Tooltips** | Hover information and help text | ✅ Complete | [Play with Tooltips](https://web-ui-playbook.vercel.app/play/tooltips) |
+
+> **💡 Pro Tip**: Visit the main playground at [web-ui-playbook.vercel.app](https://web-ui-playbook.vercel.app/) to search and browse all components in one place!
+
+---
+
+## 🚀 Getting Started
+
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app) and enhanced with modern UI libraries.
+
+### 📋 Prerequisites
+
+- Node.js 18+ 
+- pnpm (recommended) or npm/yarn
+
+### ⚡ Quick Start
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/ahmadrafidev/web-ui-playbook
+   cd web-ui-playbook
+   ```
+
+2. **Install dependencies**
+   ```bash
+   pnpm install
+   # or
+   npm install
+   # or
+   yarn install
+   ```
+
+3. **Run the development server**
+   ```bash
+   pnpm dev
+   # or
+   npm run dev
+   # or
+   yarn dev
+   # or
+   bun dev
+   ```
+
+4. **Open your browser**
+   
+   Navigate to [http://localhost:3000](http://localhost:3000) to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🤝 Contributing
 
-To learn more about Next.js, take a look at the following resources:
+We welcome contributions! Here's how you can help:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **🐛 Report Bugs**: Found a bug? Open an issue with details
+2. **💡 Suggest Features**: Have ideas? We'd love to hear them
+3. **🔧 Submit PRs**: Fix bugs or add features via pull requests
+4. **📚 Improve Docs**: Help make our documentation better
+5. **🧪 Add Tests**: Help us improve code quality
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+<div align="center">
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Built with ❤️ by [Rafi](https://www.rafiwirana.co/)**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+⭐ **Star this repo if you find it helpful!** ⭐
+
+[🎮 Live Demo](https://web-ui-playbook.vercel.app/) • [🐛 Report Bug](https://github.com/your-username/web-ui-playbook/issues) • [💡 Request Feature](https://github.com/your-username/web-ui-playbook/issues)
+
+</div>
