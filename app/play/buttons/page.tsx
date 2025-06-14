@@ -4,24 +4,17 @@ import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Plus, ArrowRight, Loader2, CheckCircle } from "lucide-react"
 import Link from "next/link"
+import { Header } from "@/components/header"
 
 export default function ButtonsPage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white border-b sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="text-blue-600 hover:text-blue-700 transition-colors">
-              ← Back to Playbook
-            </Link>
-            <h1 className="text-2xl font-bold">Button Components</h1>
-            <div className="w-20" /> {/* Spacer */}
-          </div>
-        </div>
-      </header>
-
+      <Header />
+      
       <div className="container mx-auto px-4 py-8">
+        <Link href="/play" className="text-blue-600 hover:text-blue-700 transition-colors">
+          ← Back to Playground
+        </Link>
         {/* Introduction */}
         <div className="mb-12">
           <h2 className="text-4xl font-bold mb-4">Buttons</h2>

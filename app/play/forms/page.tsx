@@ -14,28 +14,25 @@ import { Alert, AlertDescription } from "@/components/ui/alert"
 import { ArrowRight, AlertCircle, CheckCircle, Eye, EyeOff } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
+import { Header } from "@/components/header"
 
 export default function FormsPage() {
   const [showPassword, setShowPassword] = useState(false)
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white border-b sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/buttons" className="text-blue-600 hover:text-blue-700 transition-colors">
-              ← Previous: Buttons
-            </Link>
-            <h1 className="text-2xl font-bold">Form Components</h1>
-            <Link href="/navigation" className="text-blue-600 hover:text-blue-700 transition-colors">
-              Next: Navigation →
-            </Link>
+      <Header />
+      
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex items-center justify-between mb-8">
+          <Link href="/play" className="text-blue-600 hover:text-blue-700 transition-colors">
+            ← Back to Playground
+          </Link>
+          <div className="flex gap-4 text-sm">
+            <Link href="/play/cards" className="text-gray-500 hover:text-gray-700">Previous: Cards</Link>
+            <Link href="/play/navigation" className="text-gray-500 hover:text-gray-700">Next: Navigation</Link>
           </div>
         </div>
-      </header>
-
-      <div className="container mx-auto px-4 py-8">
         {/* Introduction */}
         <div className="mb-12">
           <h2 className="text-4xl font-bold mb-4">Forms</h2>
