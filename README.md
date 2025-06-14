@@ -1,6 +1,6 @@
-# 🎨 Web UI Playbook
-
 <div align="center">
+
+# 🎨 Web UI Playbook
 
 *A comprehensive guide for creating consistent, accessible, and user-friendly UI components.*
 
