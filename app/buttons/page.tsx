@@ -1,0 +1,341 @@
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Plus, ArrowRight, Loader2, CheckCircle } from "lucide-react"
+import Link from "next/link"
+
+export default function ButtonsPage() {
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <header className="bg-white border-b sticky top-0 z-50">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <Link href="/" className="text-blue-600 hover:text-blue-700 transition-colors">
+              ← Back to Playbook
+            </Link>
+            <h1 className="text-2xl font-bold">Button Components</h1>
+            <div className="w-20" /> {/* Spacer */}
+          </div>
+        </div>
+      </header>
+
+      <div className="container mx-auto px-4 py-8">
+        {/* Introduction */}
+        <div className="mb-12">
+          <h2 className="text-4xl font-bold mb-4">Buttons</h2>
+          <p className="text-xl text-gray-600 mb-6">
+            Buttons are fundamental interactive elements that trigger actions. They should be clear, accessible, and
+            provide appropriate feedback to users.
+          </p>
+          <div className="flex flex-wrap gap-2">
+            <Badge>Interactive</Badge>
+            <Badge>Accessible</Badge>
+            <Badge>Responsive</Badge>
+            <Badge>Customizable</Badge>
+          </div>
+        </div>
+
+        <Tabs defaultValue="variants" className="space-y-8">
+          <TabsList className="grid w-full grid-cols-3">
+            <TabsTrigger value="variants">Variants & Usage</TabsTrigger>
+            <TabsTrigger value="implementation">Implementation</TabsTrigger>
+            <TabsTrigger value="examples">Examples</TabsTrigger>
+          </TabsList>
+
+          {/* Button Variants with integrated best practices */}
+          <TabsContent value="variants" className="space-y-8">
+            <Card>
+              <CardHeader>
+                <CardTitle>Primary Buttons</CardTitle>
+                <CardDescription>
+                  Use for the main action on a page. Should be used sparingly - typically one per section.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="flex flex-wrap gap-4">
+                  <Button>Default Primary</Button>
+                  <Button size="sm">Small Primary</Button>
+                  <Button size="lg">Large Primary</Button>
+                  <Button>
+                    <Plus className="mr-2 h-4 w-4" />
+                    With Icon
+                  </Button>
+                </div>
+
+                {/* Best Practices */}
+                <div className="bg-blue-50 p-4 rounded-lg">
+                  <h4 className="font-semibold mb-2 text-blue-800">Best Practices</h4>
+                  <ul className="text-sm text-blue-700 space-y-1">
+                    <li>• Use high contrast colors and ensure the button stands out</li>
+                    <li>• Limit to one primary button per section</li>
+                    <li>• Use descriptive labels that clearly indicate the action</li>
+                    <li>• Ensure minimum 44px touch target for mobile</li>
+                  </ul>
+                </div>
+
+                {/* Accessibility */}
+                <div className="bg-green-50 p-4 rounded-lg">
+                  <h4 className="font-semibold mb-2 text-green-800">Accessibility</h4>
+                  <ul className="text-sm text-green-700 space-y-1">
+                    <li>
+                      • Use semantic <code>&lt;button&gt;</code> elements
+                    </li>
+                    <li>• Provide aria-label for icon-only buttons</li>
+                    <li>• Ensure 3:1 contrast ratio minimum</li>
+                    <li>• Include visible focus indicators</li>
+                  </ul>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Secondary Buttons</CardTitle>
+                <CardDescription>
+                  Use for secondary actions or when you need multiple buttons in the same area.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="flex flex-wrap gap-4">
+                  <Button variant="secondary">Secondary</Button>
+                  <Button variant="outline">Outline</Button>
+                  <Button variant="ghost">Ghost</Button>
+                  <Button variant="link">Link Style</Button>
+                </div>
+
+                {/* Best Practices */}
+                <div className="bg-blue-50 p-4 rounded-lg">
+                  <h4 className="font-semibold mb-2 text-blue-800">Best Practices</h4>
+                  <ul className="text-sm text-blue-700 space-y-1">
+                    <li>• Maintain visual hierarchy - less prominent than primary buttons</li>
+                    <li>• Use consistent styling across similar actions</li>
+                    <li>• Group related secondary actions together</li>
+                    <li>• Consider using outline style for secondary actions</li>
+                  </ul>
+                </div>
+
+                {/* Accessibility */}
+                <div className="bg-green-50 p-4 rounded-lg">
+                  <h4 className="font-semibold mb-2 text-green-800">Accessibility</h4>
+                  <ul className="text-sm text-green-700 space-y-1">
+                    <li>• Ensure sufficient contrast even with lighter colors</li>
+                    <li>• Maintain consistent focus indicators</li>
+                    <li>• Use proper button semantics, not styled divs</li>
+                  </ul>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Button States & Feedback</CardTitle>
+                <CardDescription>
+                  Buttons should provide clear feedback for different interaction states.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 className="font-semibold mb-3">Interactive States</h4>
+                    <div className="space-y-3">
+                      <Button>Normal State</Button>
+                      <Button className="hover:bg-blue-700">Hover State</Button>
+                      <Button disabled>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Loading...
+                      </Button>
+                      <Button disabled>Disabled State</Button>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="font-semibold mb-3">Specialized Buttons</h4>
+                    <div className="space-y-3">
+                      <Button variant="destructive">Delete Item</Button>
+                      <Button variant="outline" className="border-green-500 text-green-600 hover:bg-green-50">
+                        <CheckCircle className="mr-2 h-4 w-4" />
+                        Success Action
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Best Practices */}
+                <div className="bg-blue-50 p-4 rounded-lg">
+                  <h4 className="font-semibold mb-2 text-blue-800">Best Practices</h4>
+                  <ul className="text-sm text-blue-700 space-y-1">
+                    <li>• Always provide loading states for async actions</li>
+                    <li>• Use destructive styling sparingly and provide confirmation</li>
+                    <li>• Disable buttons during processing to prevent double-clicks</li>
+                    <li>• Provide clear visual feedback for all states</li>
+                  </ul>
+                </div>
+
+                {/* Accessibility */}
+                <div className="bg-green-50 p-4 rounded-lg">
+                  <h4 className="font-semibold mb-2 text-green-800">Accessibility</h4>
+                  <ul className="text-sm text-green-700 space-y-1">
+                    <li>• Use aria-disabled instead of disabled for better screen reader support</li>
+                    <li>• Announce loading states with aria-live regions</li>
+                    <li>• Ensure focus indicators are visible in all states</li>
+                    <li>• Use role="button" for non-button elements made interactive</li>
+                  </ul>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          {/* Implementation */}
+          <TabsContent value="implementation" className="space-y-8">
+            <Card>
+              <CardHeader>
+                <CardTitle>React Implementation</CardTitle>
+                <CardDescription>Modern React button component with TypeScript support.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
+                  <pre className="text-sm">
+                    {`import { ButtonHTMLAttributes, forwardRef } from 'react'
+import { cn } from '@/lib/utils'
+
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'destructive'
+  size?: 'sm' | 'md' | 'lg'
+  loading?: boolean
+}
+
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant = 'primary', size = 'md', loading, children, ...props }, ref) => {
+    return (
+      <button
+        className={cn(
+          'inline-flex items-center justify-center rounded-md font-medium transition-colors',
+          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
+          'disabled:pointer-events-none disabled:opacity-50',
+          {
+            'bg-blue-600 text-white hover:bg-blue-700': variant === 'primary',
+            'bg-gray-200 text-gray-900 hover:bg-gray-300': variant === 'secondary',
+            'border border-gray-300 bg-white hover:bg-gray-50': variant === 'outline',
+            'hover:bg-gray-100': variant === 'ghost',
+            'bg-red-600 text-white hover:bg-red-700': variant === 'destructive',
+          },
+          {
+            'h-8 px-3 text-sm': size === 'sm',
+            'h-10 px-4': size === 'md',
+            'h-12 px-6 text-lg': size === 'lg',
+          },
+          className
+        )}
+        ref={ref}
+        disabled={loading}
+        {...props}
+      >
+        {loading && <Loader className="mr-2 h-4 w-4 animate-spin" />}
+        {children}
+      </button>
+    )
+  }
+)
+
+Button.displayName = 'Button'
+export { Button }`}
+                  </pre>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>HTML/CSS Implementation</CardTitle>
+                <CardDescription>Vanilla HTML and CSS for framework-agnostic usage.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
+                  <pre className="text-sm">
+                    {`/* CSS */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.btn-primary {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #2563eb;
+}
+
+.btn-secondary {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+.btn-secondary:hover {
+  background-color: #d1d5db;
+}
+
+/* HTML */
+<button class="btn btn-primary" type="button">
+  Primary Button
+</button>
+
+<button class="btn btn-secondary" type="button">
+  Secondary Button
+</button>`}
+                  </pre>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          {/* Implementation */}
+          <TabsContent value="examples" className="space-y-8">
+            <Card>
+              <CardHeader>
+                <CardTitle>Examples</CardTitle>
+                <CardDescription>Examples of button usage.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div>
+                  <Button>Example</Button>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+        </Tabs>
+
+        {/* Navigation */}
+        <div className="mt-12 flex justify-between">
+          <Link href="/" className="text-blue-600 hover:text-blue-700 transition-colors">
+            ← Back to Home
+          </Link>
+          <Link href="/forms" className="text-blue-600 hover:text-blue-700 transition-colors flex items-center">
+            Next: Forms <ArrowRight className="ml-1 h-4 w-4" />
+          </Link>
+        </div>
+      </div>
+    </div>
+  )
+}
