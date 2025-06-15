@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { BookOpen, Github } from "lucide-react"
+import { Github } from "lucide-react"
 
 export function Header() {
   return (
