@@ -1,12 +1,14 @@
 <div align="center">
 
-# 🎨 Web UI Playbook
+<img src="/public/images/logo.png" width="72" height="72" alt="Web UI Playbook Logo">
+
+# Web UI Playbook
 
 *A comprehensive guide for creating consistent, accessible, and user-friendly UI components.*
 
 **🚧 Work in Progress 🚧**
 
-[🎮 Live Playground](https://web-ui-playbook.vercel.app/) | [📚 Browse Components](https://web-ui-playbook.vercel.app/play/buttons) | [🚀 Get Started](#getting-started)
+[🎮 Live Playground](https://web-ui-playbook.vercel.app/) | [🚀 Get Started](#getting-started)
 
 </div>
 
@@ -14,16 +16,13 @@
 
 ## 🌟 Motivation
 
-In the ever-evolving landscape of web development, creating consistent, accessible, and beautiful user interfaces remains a challenge. **Web UI Playbook** was born from the need to:
+When I started coding UI components, I quickly realized I had no idea how to build them properly. Questions about scalability, best practices, and accessibility constantly plagued my development process. I knew my components worked functionally, but I had little confidence they were built well or would stand the test of time and real-world usage.
 
-- **🎯 Standardize UI Patterns**: Provide a comprehensive library of battle-tested components that follow modern design principles
-- **♿ Prioritize Accessibility**: Ensure every component is built with accessibility-first approach using Radix UI primitives
-- **⚡ Boost Productivity**: Accelerate development with ready-to-use, customizable components
-- **🎨 Maintain Design Consistency**: Create a unified design language across projects
-- **📚 Educate & Inspire**: Serve as a learning resource for developers to understand best practices in UI component design
-- **🔧 Modern Stack**: Leverage the power of Next.js 15, TypeScript, Tailwind CSS 4, and Radix UI for optimal performance and developer experience
+This uncertainty led me to explore how the industry's most established companies approach component design. I dove deep into the design systems of Google, Apple, Microsoft, Atlassian, and Shopify, hoping to understand not just what they built, but how and why they built it that way. Each system offered valuable insights, yet I found myself jumping between different documentation sites, trying to piece together a complete picture of component best practices.
 
-Whether you're a seasoned developer or just starting your journey, this playbook aims to be your companion in building superior web interfaces.
+The Web UI Playbook emerged from this research as my attempt to synthesize these learnings into a single, comprehensive resource. Instead of developers having to hunt across multiple design systems to understand how to build robust, accessible components, I wanted to create a centralized collection that distills the collective wisdom of these industry leaders. The goal is to document not just the what, but the how and why behind effective component design.
+
+This is very much a learning exercise for me, and I'm certain there are gaps and oversights that more experienced practitioners would spot immediately. I'm hoping others will contribute their expertise to make this resource more complete and useful for anyone facing the same challenges I encountered when trying to build better UI components.
 
 ---
 
@@ -35,15 +34,14 @@ Explore our components in action! Visit our [**Live Playground**](https://web-ui
 
 | Component | Description | Status | Playground Link |
 |-----------|-------------|--------|-----------------|
-| 🔘 **Buttons** | Primary, secondary, and action buttons | ✅ Complete | [Play with Buttons](https://web-ui-playbook.vercel.app/play/buttons) |
-| 🚨 **Alerts** | Success, warning, error, and info alerts | ✅ Complete | [Play with Alerts](https://web-ui-playbook.vercel.app/play/alerts) |
-| 🃏 **Cards** | Content containers and layout cards | ✅ Complete | [Play with Cards](https://web-ui-playbook.vercel.app/play/cards) |
-| 📝 **Forms** | Input fields and form components | ✅ Complete | [Play with Forms](https://web-ui-playbook.vercel.app/play/forms) |
-| 🧭 **Navigation** | Menus, tabs, and navigation elements | ✅ Complete | [Play with Navigation](https://web-ui-playbook.vercel.app/play/navigation) |
-| 🪟 **Modals** | Dialogs, popups, and overlays | ✅ Complete | [Play with Modals](https://web-ui-playbook.vercel.app/play/modals) |
-| 📊 **Tables** | Data tables and lists | ✅ Complete | [Play with Tables](https://web-ui-playbook.vercel.app/play/tables) |
-| 🏷️ **Badges** | Status indicators and labels | ✅ Complete | [Play with Badges](https://web-ui-playbook.vercel.app/play/badges) |
-| 💭 **Tooltips** | Hover information and help text | ✅ Complete | [Play with Tooltips](https://web-ui-playbook.vercel.app/play/tooltips) |
+| 🔘 **Buttons** | Primary, secondary, and action buttons | ✅ Complete | [Play with Buttons](https://web-ui-playbook.vercel.app/playground/buttons) |
+| 🚨 **Alerts** | Success, warning, error, and info alerts | ✅ Complete | [Play with Alerts](https://web-ui-playbook.vercel.app/playground/alerts) |
+| 🃏 **Cards** | Content containers and layout cards | ✅ Complete | [Play with Cards](https://web-ui-playbook.vercel.app/playground/cards) |
+| 📝 **Forms** | Input fields and form components | ✅ Complete | [Play with Forms](https://web-ui-playbook.vercel.app/playground/forms) |
+| 🧭 **Navigation** | Menus, tabs, and navigation elements | ✅ Complete | [Play with Navigation](https://web-ui-playbook.vercel.app/playground/navigation) |
+| 🪟 **Modals** | Dialogs, popups, and overlays | ✅ Complete | [Play with Modals](https://web-ui-playbook.vercel.app/playground/modals) |
+| 🏷️ **Badges** | Status indicators and labels | ✅ Complete | [Play with Badges](https://web-ui-playbook.vercel.app/playground/badges) |
+| 💭 **Tooltips** | Hover information and help text | ✅ Complete | [Play with Tooltips](https://web-ui-playbook.vercel.app/playground/tooltips) |
 
 > **💡 Pro Tip**: Visit the main playground at [web-ui-playbook.vercel.app](https://web-ui-playbook.vercel.app/) to search and browse all components in one place!
 
