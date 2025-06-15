@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { BookOpen, Github } from "lucide-react"
 
 export function Header() {
@@ -7,7 +8,7 @@ export function Header() {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-            <BookOpen className="h-8 w-8 text-blue-600" />
+            <Image src="/images/logo.png" alt="Web UI Playbook" width={32} height={32} />
             <h1 className="text-2xl font-bold text-gray-900">Web UI Playbook</h1>
           </Link>
           <nav className="flex items-center">

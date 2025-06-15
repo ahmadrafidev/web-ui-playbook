@@ -4,8 +4,8 @@ import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Heart, MessageCircle, Share, MoreHorizontal } from "lucide-react"
-import Link from "next/link"
 import { Header } from "@/components/header"
+import { Footer } from "@/components/footer"
 
 export default function CardsPage() {
   return (
@@ -304,12 +304,7 @@ function ProductCard({ product }) {
         </Tabs>
       </div>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8 px-4 mt-20">
-        <div className="container mx-auto text-center">
-          <p className="text-gray-400">Built by Rafi</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 } 
