@@ -12,16 +12,6 @@ export default function NavigationPage() {
       <Header />
 
       <div className="container mx-auto px-4 py-8">
-        {/* Navigation */}
-        <div className="flex items-center justify-between mb-8">
-          <Link href="/play" className="text-blue-600 hover:text-blue-700 transition-colors">
-            ← Back to Playground
-          </Link>
-          <div className="flex gap-4 text-sm">
-            <Link href="/play/forms" className="text-gray-500 hover:text-gray-700">Previous: Forms</Link>
-            <Link href="/play/modals" className="text-gray-500 hover:text-gray-700">Next: Modals</Link>
-          </div>
-        </div>
 
         {/* Introduction */}
         <div className="mb-12">

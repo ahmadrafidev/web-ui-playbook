@@ -24,15 +24,7 @@ export default function FormsPage() {
       <Header />
       
       <div className="container mx-auto px-4 py-8">
-        <div className="flex items-center justify-between mb-8">
-          <Link href="/play" className="text-blue-600 hover:text-blue-700 transition-colors">
-            ← Back to Playground
-          </Link>
-          <div className="flex gap-4 text-sm">
-            <Link href="/play/cards" className="text-gray-500 hover:text-gray-700">Previous: Cards</Link>
-            <Link href="/play/navigation" className="text-gray-500 hover:text-gray-700">Next: Navigation</Link>
-          </div>
-        </div>
+
         {/* Introduction */}
         <div className="mb-12">
           <h2 className="text-4xl font-bold mb-4">Forms</h2>

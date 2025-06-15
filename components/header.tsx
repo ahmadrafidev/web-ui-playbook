@@ -18,7 +18,6 @@ export function Header() {
               className="text-gray-600 hover:text-gray-900 transition-colors flex items-center space-x-1"
             >
               <Github className="h-5 w-5" />
-              <span className="hidden sm:inline">GitHub</span>
             </Link>
           </nav>
         </div>

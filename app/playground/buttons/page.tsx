@@ -12,9 +12,7 @@ export default function ButtonsPage() {
       <Header />
       
       <div className="container mx-auto px-4 py-8">
-        <Link href="/play" className="text-blue-600 hover:text-blue-700 transition-colors">
-          ← Back to Playground
-        </Link>
+
         {/* Introduction */}
         <div className="mb-12">
           <h2 className="text-4xl font-bold mb-4">Buttons</h2>

@@ -8,9 +8,6 @@ export default function TooltipsPage() {
     <div className="min-h-screen bg-gray-50">
       <Header />
       <div className="container mx-auto px-4 py-8">
-        <Link href="/play" className="text-blue-600 hover:text-blue-700 transition-colors">
-          ← Back to Playground
-        </Link>
         
         <div className="mb-12 mt-8">
           <h1 className="text-4xl font-bold mb-4">Tooltip Components</h1>
