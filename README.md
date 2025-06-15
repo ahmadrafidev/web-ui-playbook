@@ -6,7 +6,7 @@
 
 *A comprehensive guide for creating consistent, accessible, and user-friendly UI components.*
 
-**🚧 Work in Progress 🚧**
+** 🚧 Work in Progress 🚧 **
 
 [🎮 Live Playground](https://web-ui-playbook.vercel.app/) | [🚀 Get Started](#getting-started)
 
@@ -32,16 +32,22 @@ Explore our components in action! Visit our [**Live Playground**](https://web-ui
 
 ### 🧩 Component Library
 
+#### 📊 Component Status Legend
+
+- 🔜 **Soon** - Component is coming soon
+- 🚧 **In Progress** - Component is actively being developed  
+- ✅ **Complete** - Component development is finished
+
 | Component | Description | Status | Playground Link |
 |-----------|-------------|--------|-----------------|
-| 🔘 **Buttons** | Primary, secondary, and action buttons | ✅ Complete | [Play with Buttons](https://web-ui-playbook.vercel.app/playground/buttons) |
-| 🚨 **Alerts** | Success, warning, error, and info alerts | ✅ Complete | [Play with Alerts](https://web-ui-playbook.vercel.app/playground/alerts) |
-| 🃏 **Cards** | Content containers and layout cards | ✅ Complete | [Play with Cards](https://web-ui-playbook.vercel.app/playground/cards) |
-| 📝 **Forms** | Input fields and form components | ✅ Complete | [Play with Forms](https://web-ui-playbook.vercel.app/playground/forms) |
-| 🧭 **Navigation** | Menus, tabs, and navigation elements | ✅ Complete | [Play with Navigation](https://web-ui-playbook.vercel.app/playground/navigation) |
-| 🪟 **Modals** | Dialogs, popups, and overlays | ✅ Complete | [Play with Modals](https://web-ui-playbook.vercel.app/playground/modals) |
-| 🏷️ **Badges** | Status indicators and labels | ✅ Complete | [Play with Badges](https://web-ui-playbook.vercel.app/playground/badges) |
-| 💭 **Tooltips** | Hover information and help text | ✅ Complete | [Play with Tooltips](https://web-ui-playbook.vercel.app/playground/tooltips) |
+| 🔘 **Buttons** | Primary, secondary, and action buttons | 🚧 In Progress | [Play with Buttons](https://web-ui-playbook.vercel.app/playground/buttons) |
+| 🚨 **Alerts** | Success, warning, error, and info alerts | 🚧 In Progress | [Play with Alerts](https://web-ui-playbook.vercel.app/playground/alerts) |
+| 🃏 **Cards** | Content containers and layout cards | 🚧 In Progress | [Play with Cards](https://web-ui-playbook.vercel.app/playground/cards) |
+| 📝 **Forms** | Input fields and form components | 🚧 In Progress | [Play with Forms](https://web-ui-playbook.vercel.app/playground/forms) |
+| 🧭 **Navigation** | Menus, tabs, and navigation elements | 🚧 In Progress | [Play with Navigation](https://web-ui-playbook.vercel.app/playground/navigation) |
+| 🪟 **Modals** | Dialogs, popups, and overlays | 🚧 In Progress | [Play with Modals](https://web-ui-playbook.vercel.app/playground/modals) |
+| 🏷️ **Badges** | Status indicators and labels | 🚧 In Progress | [Play with Badges](https://web-ui-playbook.vercel.app/playground/badges) |
+| 💭 **Tooltips** | Hover information and help text | 🚧 In Progress | [Play with Tooltips](https://web-ui-playbook.vercel.app/playground/tooltips) |
 
 > **💡 Pro Tip**: Visit the main playground at [web-ui-playbook.vercel.app](https://web-ui-playbook.vercel.app/) to search and browse all components in one place!
 

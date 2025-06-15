@@ -9,16 +9,17 @@ import { Search, Code2, Eye, X } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { ComponentSection, getStatusConfig } from "@/types/component"
 
 export default function HomePage() {
   const [searchQuery, setSearchQuery] = useState("")
   
-  const componentSections = [
+  const componentSections: ComponentSection[] = [
     {
       name: "Buttons",
       href: "/playground/buttons",
       description: "Primary, secondary, and action buttons",
-      status: "Complete",
+      status: "In Progress",
       preview: (
         <div className="flex gap-2 flex-wrap">
           <Button size="sm">Primary</Button>
@@ -31,7 +32,7 @@ export default function HomePage() {
       name: "Alerts",
       href: "/playground/alerts",
       description: "Success, warning, error, and info alerts",
-      status: "Complete",
+      status: "In Progress",
       preview: (
         <div className="space-y-1">
           <div className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Success</div>
@@ -44,7 +45,7 @@ export default function HomePage() {
       name: "Cards",
       href: "/playground/cards",
       description: "Content containers and layout cards",
-      status: "Complete",
+      status: "In Progress",
       preview: (
         <div className="bg-white p-2 rounded border shadow-sm">
           <div className="text-xs font-medium mb-1">Card Title</div>
@@ -56,7 +57,7 @@ export default function HomePage() {
       name: "Forms",
       href: "/playground/forms",
       description: "Input fields and form components",
-      status: "Complete",
+      status: "In Progress",
       preview: (
         <div className="space-y-1">
           <input className="w-full text-xs px-2 py-1 border rounded" placeholder="Input field" />
@@ -70,7 +71,7 @@ export default function HomePage() {
       name: "Navigation",
       href: "/playground/navigation",
       description: "Menus, tabs, and navigation elements",
-      status: "Complete",
+      status: "In Progress",
       preview: (
         <div className="flex text-xs gap-2">
           <div className="text-blue-600 border-b border-blue-600 pb-1">Active</div>
@@ -83,7 +84,7 @@ export default function HomePage() {
       name: "Modals",
       href: "/playground/modals",
       description: "Dialogs, popups, and overlays",
-      status: "Complete",
+      status: "In Progress",
       preview: (
         <div className="bg-white border rounded p-2 shadow-lg text-xs">
           <div className="font-medium mb-1">Modal</div>
@@ -95,7 +96,7 @@ export default function HomePage() {
       name: "Badges",
       href: "/playground/badges",
       description: "Status indicators and labels",
-      status: "Complete",
+      status: "In Progress",
       preview: (
         <div className="flex gap-1 flex-wrap">
           <Badge variant="default" className="text-xs">Default</Badge>
@@ -108,7 +109,7 @@ export default function HomePage() {
       name: "Tooltips",
       href: "/playground/tooltips",
       description: "Hover information and help text",
-      status: "Complete",
+      status: "In Progress",
       preview: (
         <div className="relative">
           <div className="text-xs bg-gray-900 text-white px-2 py-1 rounded">Tooltip</div>
@@ -208,7 +209,12 @@ export default function HomePage() {
                       <CardTitle className="text-xl">
                         {section.name}
                       </CardTitle>
-                      <Badge variant="secondary" className="text-xs">{section.status}</Badge>
+                      <Badge 
+                        variant={getStatusConfig(section.status).variant} 
+                        className={`text-xs ${getStatusConfig(section.status).className}`}
+                      >
+                        {section.status}
+                      </Badge>
                     </div>
                     <CardDescription className="text-sm">{section.description}</CardDescription>
                   </CardHeader>
