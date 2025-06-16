@@ -9,15 +9,15 @@ import { Footer } from "@/components/footer"
 
 export default function CardsPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       <Header />
 
       <div className="container mx-auto px-4 py-8">
 
         {/* Introduction */}
         <div className="mb-12">
-          <h1 className="text-4xl font-bold mb-4">Card Components</h1>
-          <p className="text-xl text-gray-600 mb-6">
+          <h1 className="text-4xl font-bold mb-4 text-foreground">Card Components</h1>
+          <p className="text-xl text-muted-foreground mb-6">
             Cards are flexible containers that group related content and actions together in a structured way.
           </p>
           <div className="flex flex-wrap gap-2">

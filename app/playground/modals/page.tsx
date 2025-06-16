@@ -8,15 +8,15 @@ import { Footer } from "@/components/footer"
 
 export default function ModalsPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       <Header />
 
       <div className="container mx-auto px-4 py-8">
 
         {/* Introduction */}
         <div className="mb-12">
-          <h1 className="text-4xl font-bold mb-4">Modal & Dialog Components</h1>
-          <p className="text-xl text-gray-600 mb-6">
+          <h1 className="text-4xl font-bold mb-4 text-foreground">Modal & Dialog Components</h1>
+          <p className="text-xl text-muted-foreground mb-6">
             Modals and dialogs interrupt user flow to capture attention and require user interaction.
           </p>
           <div className="flex flex-wrap gap-2">
@@ -48,11 +48,11 @@ export default function ModalsPage() {
                   {/* Standard Modal Preview */}
                   <div className="space-y-4">
                     <h4 className="font-semibold">Standard Modal</h4>
-                    <div className="bg-gray-900/50 p-4 rounded-lg">
-                      <div className="bg-white rounded-lg shadow-lg max-w-md mx-auto">
+                    <div className="bg-black/50 p-4 rounded-lg">
+                      <div className="bg-popover rounded-lg shadow-lg max-w-md mx-auto">
                         <div className="p-6">
-                          <h3 className="text-lg font-semibold mb-2">Modal Title</h3>
-                          <p className="text-gray-600 mb-4">
+                          <h3 className="text-lg font-semibold mb-2 text-popover-foreground">Modal Title</h3>
+                          <p className="text-muted-foreground mb-4">
                             This is a standard modal dialog. It can contain any content you need to display.
                           </p>
                           <div className="flex justify-end gap-2">
@@ -67,14 +67,14 @@ export default function ModalsPage() {
                   {/* Alert Dialog Preview */}
                   <div className="space-y-4">
                     <h4 className="font-semibold">Alert Dialog</h4>
-                    <div className="bg-gray-900/50 p-4 rounded-lg">
-                      <div className="bg-white rounded-lg shadow-lg max-w-md mx-auto">
+                    <div className="bg-black/50 p-4 rounded-lg">
+                      <div className="bg-popover rounded-lg shadow-lg max-w-md mx-auto">
                         <div className="p-6">
                           <div className="flex items-center gap-3 mb-4">
-                            <AlertTriangle className="h-6 w-6 text-red-600" />
-                            <h3 className="text-lg font-semibold">Delete Item</h3>
+                            <AlertTriangle className="h-6 w-6 text-red-600 dark:text-red-400" />
+                            <h3 className="text-lg font-semibold text-popover-foreground">Delete Item</h3>
                           </div>
-                          <p className="text-gray-600 mb-4">
+                          <p className="text-muted-foreground mb-4">
                             This action cannot be undone. Are you sure you want to delete this item?
                           </p>
                           <div className="flex justify-end gap-2">
@@ -130,9 +130,9 @@ export default function ModalsPage() {
                 </div>
 
                 {/* Best Practices */}
-                <div className="bg-blue-50 p-4 rounded-lg">
-                  <h4 className="font-semibold mb-2 text-blue-800">Best Practices</h4>
-                  <ul className="text-sm text-blue-700 space-y-1">
+                <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/20">
+                  <h4 className="font-semibold mb-2 text-blue-800 dark:text-blue-200">Best Practices</h4>
+                  <ul className="text-sm text-blue-700 dark:text-blue-300 space-y-1">
                     <li>• Use modals sparingly to avoid interrupting user flow</li>
                     <li>• Provide clear actions and cancel options</li>
                     <li>• Keep modal content focused and concise</li>

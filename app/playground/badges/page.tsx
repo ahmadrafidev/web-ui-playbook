@@ -8,15 +8,15 @@ import { Footer } from "@/components/footer"
 
 export default function BadgesPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       <Header />
 
       <div className="container mx-auto px-4 py-8">
 
         {/* Introduction */}
         <div className="mb-12">
-          <h1 className="text-4xl font-bold mb-4">Badge Components</h1>
-          <p className="text-xl text-gray-600 mb-6">
+          <h1 className="text-4xl font-bold mb-4 text-foreground">Badge Components</h1>
+          <p className="text-xl text-muted-foreground mb-6">
             Badges are small status indicators used to label, categorize, or provide additional context to content.
           </p>
           <div className="flex flex-wrap gap-2">
@@ -104,9 +104,9 @@ export default function BadgesPage() {
                 </div>
 
                 {/* Best Practices */}
-                <div className="bg-blue-50 p-4 rounded-lg">
-                  <h4 className="font-semibold mb-2 text-blue-800">Best Practices</h4>
-                  <ul className="text-sm text-blue-700 space-y-1">
+                <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/20">
+                  <h4 className="font-semibold mb-2 text-blue-800 dark:text-blue-200">Best Practices</h4>
+                  <ul className="text-sm text-blue-700 dark:text-blue-300 space-y-1">
                     <li>• Use consistent colors for similar states across your app</li>
                     <li>• Keep badge text short and descriptive</li>
                     <li>• Don&apos;t overuse badges - they lose impact</li>
@@ -181,13 +181,13 @@ export default function BadgesPage() {
                     <div className="flex flex-wrap gap-3">
                       <Badge 
                         variant="outline" 
-                        className="cursor-pointer hover:bg-gray-100 transition-colors"
+                        className="cursor-pointer hover:bg-accent transition-colors"
                       >
                         Clickable Tag ×
                       </Badge>
                       <Badge 
                         variant="secondary" 
-                        className="cursor-pointer hover:bg-gray-300 transition-colors"
+                        className="cursor-pointer hover:bg-secondary/80 transition-colors"
                       >
                         Filter Option ×
                       </Badge>
@@ -196,9 +196,9 @@ export default function BadgesPage() {
                 </div>
 
                 {/* Accessibility */}
-                <div className="bg-green-50 p-4 rounded-lg">
-                  <h4 className="font-semibold mb-2 text-green-800">Accessibility</h4>
-                  <ul className="text-sm text-green-700 space-y-1">
+                <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/20">
+                  <h4 className="font-semibold mb-2 text-green-800 dark:text-green-200">Accessibility</h4>
+                  <ul className="text-sm text-green-700 dark:text-green-300 space-y-1">
                     <li>• Ensure sufficient color contrast for text readability</li>
                     <li>• Don&apos;t rely solely on color to convey meaning</li>
                     <li>• Provide proper ARIA labels for screen readers</li>

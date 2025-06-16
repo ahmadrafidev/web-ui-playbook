@@ -9,15 +9,15 @@ import { Footer } from "@/components/footer"
 
 export default function AlertsPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       <Header />
 
       <div className="container mx-auto px-4 py-8">
 
         {/* Introduction */}
         <div className="mb-12">
-          <h1 className="text-4xl font-bold mb-4">Alert Components</h1>
-          <p className="text-xl text-gray-600 mb-6">
+          <h1 className="text-4xl font-bold mb-4 text-foreground">Alert Components</h1>
+          <p className="text-xl text-muted-foreground mb-6">
             Alerts provide important messages to users about system status, user actions, or other contextual information.
           </p>
           <div className="flex flex-wrap gap-2">
@@ -54,35 +54,35 @@ export default function AlertsPage() {
                     </AlertDescription>
                   </Alert>
 
-                  <Alert className="border-green-200 bg-green-50">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
-                    <AlertTitle className="text-green-800">Success</AlertTitle>
-                    <AlertDescription className="text-green-700">
+                  <Alert className="border-green-500/20 bg-green-500/10">
+                    <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-400" />
+                    <AlertTitle className="text-green-800 dark:text-green-200">Success</AlertTitle>
+                    <AlertDescription className="text-green-700 dark:text-green-300">
                       Your changes have been saved successfully. The system has been updated.
                     </AlertDescription>
                   </Alert>
 
-                  <Alert className="border-yellow-200 bg-yellow-50">
-                    <AlertCircle className="h-4 w-4 text-yellow-600" />
-                    <AlertTitle className="text-yellow-800">Warning</AlertTitle>
-                    <AlertDescription className="text-yellow-700">
+                  <Alert className="border-yellow-500/20 bg-yellow-500/10">
+                    <AlertCircle className="h-4 w-4 text-yellow-600 dark:text-yellow-400" />
+                    <AlertTitle className="text-yellow-800 dark:text-yellow-200">Warning</AlertTitle>
+                    <AlertDescription className="text-yellow-700 dark:text-yellow-300">
                       This action cannot be undone. Please make sure you want to proceed.
                     </AlertDescription>
                   </Alert>
 
-                  <Alert className="border-red-200 bg-red-50">
-                    <XCircle className="h-4 w-4 text-red-600" />
-                    <AlertTitle className="text-red-800">Error</AlertTitle>
-                    <AlertDescription className="text-red-700">
+                  <Alert className="border-red-500/20 bg-red-500/10">
+                    <XCircle className="h-4 w-4 text-red-600 dark:text-red-400" />
+                    <AlertTitle className="text-red-800 dark:text-red-200">Error</AlertTitle>
+                    <AlertDescription className="text-red-700 dark:text-red-300">
                       Something went wrong. Please try again or contact support if the problem persists.
                     </AlertDescription>
                   </Alert>
                 </div>
 
                 {/* Best Practices */}
-                <div className="bg-blue-50 p-4 rounded-lg">
-                  <h4 className="font-semibold mb-2 text-blue-800">Best Practices</h4>
-                  <ul className="text-sm text-blue-700 space-y-1">
+                <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/20">
+                  <h4 className="font-semibold mb-2 text-blue-800 dark:text-blue-200">Best Practices</h4>
+                  <ul className="text-sm text-blue-700 dark:text-blue-300 space-y-1">
                     <li>• Use clear, concise language that users can understand</li>
                     <li>• Include actionable next steps when appropriate</li>
                     <li>• Use consistent colors and icons for each alert type</li>
@@ -101,30 +101,30 @@ export default function AlertsPage() {
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="space-y-4">
-                  <Alert className="border-blue-200 bg-blue-50">
-                    <Terminal className="h-4 w-4 text-blue-600" />
-                    <AlertTitle className="text-blue-800">System Update</AlertTitle>
-                    <AlertDescription className="text-blue-700">
+                  <Alert className="border-blue-500/20 bg-blue-500/10">
+                    <Terminal className="h-4 w-4 text-blue-600 dark:text-blue-400" />
+                    <AlertTitle className="text-blue-800 dark:text-blue-200">System Update</AlertTitle>
+                    <AlertDescription className="text-blue-700 dark:text-blue-300">
                       A new version is available. 
-                      <Button variant="link" className="p-0 h-auto text-blue-600 underline ml-1">
+                      <Button variant="link" className="p-0 h-auto text-blue-600 dark:text-blue-400 underline ml-1">
                         Update now
                       </Button>
                     </AlertDescription>
                   </Alert>
 
-                  <Alert className="border-purple-200 bg-purple-50">
-                    <Info className="h-4 w-4 text-purple-600" />
-                    <AlertTitle className="text-purple-800">Pro Tip</AlertTitle>
-                    <AlertDescription className="text-purple-700">
+                  <Alert className="border-purple-500/20 bg-purple-500/10">
+                    <Info className="h-4 w-4 text-purple-600 dark:text-purple-400" />
+                    <AlertTitle className="text-purple-800 dark:text-purple-200">Pro Tip</AlertTitle>
+                    <AlertDescription className="text-purple-700 dark:text-purple-300">
                       You can use keyboard shortcuts to navigate faster. Press Ctrl+K to open the command palette.
                     </AlertDescription>
                   </Alert>
                 </div>
 
                 {/* Accessibility */}
-                <div className="bg-green-50 p-4 rounded-lg">
-                  <h4 className="font-semibold mb-2 text-green-800">Accessibility</h4>
-                  <ul className="text-sm text-green-700 space-y-1">
+                <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/20">
+                  <h4 className="font-semibold mb-2 text-green-800 dark:text-green-200">Accessibility</h4>
+                  <ul className="text-sm text-green-700 dark:text-green-300 space-y-1">
                     <li>• Use appropriate ARIA roles and labels</li>
                     <li>• Ensure sufficient color contrast for all text</li>
                     <li>• Don&apos;t rely solely on color to convey meaning</li>
@@ -147,8 +147,8 @@ export default function AlertsPage() {
               <CardContent className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-4">
-                    <h4 className="font-semibold text-green-600">✓ Use alerts for:</h4>
-                    <ul className="text-sm space-y-2">
+                    <h4 className="font-semibold text-green-600 dark:text-green-400">✓ Use alerts for:</h4>
+                    <ul className="text-sm text-muted-foreground space-y-2">
                       <li>• Confirming successful actions</li>
                       <li>• Warning about potential data loss</li>
                       <li>• Displaying system errors or failures</li>
@@ -158,8 +158,8 @@ export default function AlertsPage() {
                   </div>
                   
                   <div className="space-y-4">
-                    <h4 className="font-semibold text-red-600">✗ Avoid alerts for:</h4>
-                    <ul className="text-sm space-y-2">
+                    <h4 className="font-semibold text-red-600 dark:text-red-400">✗ Avoid alerts for:</h4>
+                    <ul className="text-sm text-muted-foreground space-y-2">
                       <li>• Marketing messages or promotions</li>
                       <li>• Non-essential feature announcements</li>
                       <li>• Repeatedly showing the same message</li>
@@ -181,23 +181,23 @@ export default function AlertsPage() {
               <CardContent>
                 <div className="space-y-4">
                   <div className="border-l-4 border-red-500 pl-4">
-                    <h4 className="font-semibold text-red-600">Error (Highest Priority)</h4>
-                    <p className="text-sm text-gray-600">Critical failures that prevent task completion</p>
+                    <h4 className="font-semibold text-red-600 dark:text-red-400">Error (Highest Priority)</h4>
+                    <p className="text-sm text-muted-foreground">Critical failures that prevent task completion</p>
                   </div>
                   
                   <div className="border-l-4 border-yellow-500 pl-4">
-                    <h4 className="font-semibold text-yellow-600">Warning (High Priority)</h4>
-                    <p className="text-sm text-gray-600">Potential issues that could cause problems</p>
+                    <h4 className="font-semibold text-yellow-600 dark:text-yellow-400">Warning (High Priority)</h4>
+                    <p className="text-sm text-muted-foreground">Potential issues that could cause problems</p>
                   </div>
                   
                   <div className="border-l-4 border-green-500 pl-4">
-                    <h4 className="font-semibold text-green-600">Success (Medium Priority)</h4>
-                    <p className="text-sm text-gray-600">Confirmation of completed actions</p>
+                    <h4 className="font-semibold text-green-600 dark:text-green-400">Success (Medium Priority)</h4>
+                    <p className="text-sm text-muted-foreground">Confirmation of completed actions</p>
                   </div>
                   
                   <div className="border-l-4 border-blue-500 pl-4">
-                    <h4 className="font-semibold text-blue-600">Info (Low Priority)</h4>
-                    <p className="text-sm text-gray-600">Helpful context or additional information</p>
+                    <h4 className="font-semibold text-blue-600 dark:text-blue-400">Info (Low Priority)</h4>
+                    <p className="text-sm text-muted-foreground">Helpful context or additional information</p>
                   </div>
                 </div>
               </CardContent>
@@ -212,17 +212,17 @@ export default function AlertsPage() {
                 <CardDescription>Code examples for implementing alerts in your React application.</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
-                  <pre className="text-sm">
+                <div className="bg-muted p-4 rounded-lg overflow-x-auto">
+                  <pre className="text-sm text-muted-foreground">
 {`import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { CheckCircle } from "lucide-react"
 
 function SuccessAlert() {
   return (
-    <Alert className="border-green-200 bg-green-50">
-      <CheckCircle className="h-4 w-4 text-green-600" />
-      <AlertTitle className="text-green-800">Success</AlertTitle>
-      <AlertDescription className="text-green-700">
+    <Alert className="border-green-500/20 bg-green-500/10">
+      <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-400" />
+      <AlertTitle className="text-green-800 dark:text-green-200">Success</AlertTitle>
+      <AlertDescription className="text-green-700 dark:text-green-300">
         Your changes have been saved successfully.
       </AlertDescription>
     </Alert>

@@ -5,18 +5,19 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Plus, ArrowRight, Loader2, CheckCircle } from "lucide-react"
 import Link from "next/link"
 import { Header } from "@/components/header"
+import { Footer } from "@/components/footer"
 
 export default function ButtonsPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       <Header />
       
       <div className="container mx-auto px-4 py-8">
 
         {/* Introduction */}
         <div className="mb-12">
-          <h2 className="text-4xl font-bold mb-4">Buttons</h2>
-          <p className="text-xl text-gray-600 mb-6">
+          <h2 className="text-4xl font-bold mb-4 text-foreground">Buttons</h2>
+          <p className="text-xl text-muted-foreground mb-6">
             Buttons are fundamental interactive elements that trigger actions. They should be clear, accessible, and
             provide appropriate feedback to users.
           </p>
@@ -56,9 +57,9 @@ export default function ButtonsPage() {
                 </div>
 
                 {/* Best Practices */}
-                <div className="bg-blue-50 p-4 rounded-lg">
-                  <h4 className="font-semibold mb-2 text-blue-800">Best Practices</h4>
-                  <ul className="text-sm text-blue-700 space-y-1">
+                <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/20">
+                  <h4 className="font-semibold mb-2 text-blue-800 dark:text-blue-200">Best Practices</h4>
+                  <ul className="text-sm text-blue-700 dark:text-blue-300 space-y-1">
                     <li>• Use high contrast colors and ensure the button stands out</li>
                     <li>• Limit to one primary button per section</li>
                     <li>• Use descriptive labels that clearly indicate the action</li>
@@ -67,9 +68,9 @@ export default function ButtonsPage() {
                 </div>
 
                 {/* Accessibility */}
-                <div className="bg-green-50 p-4 rounded-lg">
-                  <h4 className="font-semibold mb-2 text-green-800">Accessibility</h4>
-                  <ul className="text-sm text-green-700 space-y-1">
+                <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/20">
+                  <h4 className="font-semibold mb-2 text-green-800 dark:text-green-200">Accessibility</h4>
+                  <ul className="text-sm text-green-700 dark:text-green-300 space-y-1">
                     <li>
                       • Use semantic <code>&lt;button&gt;</code> elements
                     </li>
@@ -316,17 +317,9 @@ export { Button }`}
             </Card>
           </TabsContent>
         </Tabs>
-
-        {/* Navigation */}
-        <div className="mt-12 flex justify-between">
-          <Link href="/" className="text-blue-600 hover:text-blue-700 transition-colors">
-            ← Back to Home
-          </Link>
-          <Link href="/forms" className="text-blue-600 hover:text-blue-700 transition-colors flex items-center">
-            Next: Forms <ArrowRight className="ml-1 h-4 w-4" />
-          </Link>
-        </div>
       </div>
+
+      <Footer />
     </div>
   )
 }

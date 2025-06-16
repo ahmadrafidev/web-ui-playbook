@@ -15,20 +15,21 @@ import { ArrowRight, AlertCircle, CheckCircle, Eye, EyeOff } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
 import { Header } from "@/components/header"
+import { Footer } from "@/components/footer"
 
 export default function FormsPage() {
   const [showPassword, setShowPassword] = useState(false)
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       <Header />
       
       <div className="container mx-auto px-4 py-8">
 
         {/* Introduction */}
         <div className="mb-12">
-          <h2 className="text-4xl font-bold mb-4">Forms</h2>
-          <p className="text-xl text-gray-600 mb-6">
+          <h2 className="text-4xl font-bold mb-4 text-foreground">Forms</h2>
+          <p className="text-xl text-muted-foreground mb-6">
             Forms are critical for user interaction and data collection. They should be intuitive, accessible, and
             provide clear feedback to users throughout the input process.
           </p>
@@ -452,16 +453,7 @@ export default function FormsPage() {
             </Card>
           </TabsContent>
         </Tabs>
-
-        {/* Navigation */}
-        <div className="mt-12 flex justify-between">
-          <Link href="/buttons" className="text-blue-600 hover:text-blue-700 transition-colors">
-            ← Previous: Buttons
-          </Link>
-          <Link href="/navigation" className="text-blue-600 hover:text-blue-700 transition-colors flex items-center">
-            Next: Navigation <ArrowRight className="ml-1 h-4 w-4" />
-          </Link>
-        </div>
+        <Footer />
       </div>
     </div>
   )
