@@ -6,13 +6,23 @@ export function Footer() {
       <p className="text-muted-foreground text-sm md:text-base font-normal">
         Built by{" "}
         <Link 
-          href="https://github.com/ahmadrafidev" 
+          href="https://x.com/rafiwiranaa" 
           target="_blank"
           rel="noopener noreferrer"
           className="text-primary hover:text-primary/80 transition-colors hover:underline font-medium"
         >
           Rafi
         </Link>
+        . The source code is available on{" "}
+        <Link 
+          href="https://github.com/ahmadrafidev/web-ui-playbook" 
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-primary hover:text-primary/80 transition-colors hover:underline font-medium"
+        >
+          GitHub
+        </Link>
+        .
       </p>
     </footer>
   )
