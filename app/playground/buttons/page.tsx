@@ -1,9 +1,10 @@
+import Link from "next/link"
+import { Plus, Loader2, CheckCircle, ExternalLink } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Plus, Loader2, CheckCircle } from "lucide-react"
-import { Header } from "@/components/header"
+import { Header } from "@/components/header"  
 import { Footer } from "@/components/footer"
 
 const buttonComponentsUrlReference = [
@@ -20,7 +21,7 @@ export default function ButtonsPage() {
       <div className="container mx-auto px-4 py-8">
 
         {/* Introduction */}
-        <div className="mb-12">
+        <div className="mb-10">
           <h2 className="text-4xl font-bold mb-4 text-foreground">Buttons</h2>
           <p className="text-xl text-muted-foreground mb-6">
             Buttons are interactive elements that enable users to trigger actions or events, such as submitting forms, 
@@ -35,7 +36,7 @@ export default function ButtonsPage() {
           </div>
         </div>
 
-        <Tabs defaultValue="purpose" className="space-y-8">
+        <Tabs defaultValue="purpose" className="space-y-6">
           <TabsList className="grid w-full grid-cols-5">
             <TabsTrigger value="purpose">Purpose</TabsTrigger>
             <TabsTrigger value="states">States</TabsTrigger>
@@ -191,7 +192,7 @@ export default function ButtonsPage() {
                         </Button>
                       </div>
                       <p className="text-sm text-muted-foreground">
-                        <strong>aria-pressed="true"</strong> for pressed state, <strong>"false"</strong> for unpressed
+                        <strong>aria-pressed=&quot;true&quot;</strong> for pressed state, <strong>&quot;false&quot;</strong> for unpressed
                       </p>
                     </div>
                   </div>
@@ -202,7 +203,7 @@ export default function ButtonsPage() {
                   <h4 className="font-semibold mb-2 text-blue-800 dark:text-blue-200">Implementation Guidelines</h4>
                   <ul className="text-sm text-blue-700 dark:text-blue-300 space-y-1">
                     <li>• Always provide visual feedback for all interactive states</li>
-                    <li>• Use <code>aria-disabled="true"</code> instead of <code>disabled</code> when context is needed</li>
+                    <li>• Use <code>aria-disabled=&quot;true&quot;</code> instead of <code>disabled</code> when context is needed</li>
                     <li>• Announce state changes to screen readers using aria-live regions</li>
                     <li>• Maintain sufficient color contrast (4.5:1) in all states</li>
                     <li>• Ensure focus indicators are visible and have 3:1 contrast ratio</li>
@@ -346,7 +347,7 @@ export default function ButtonsPage() {
               <CardContent className="space-y-6">
                 <div className="space-y-6">
                   <div>
-                    <h4 className="font-semibold mb-3 text-lg">Button Placement Do's and Don'ts</h4>
+                    <h4 className="font-semibold mb-3 text-lg">Button Placement Do&apos;s and Don&apos;ts</h4>
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="space-y-4">
                         <div className="p-4 border-2 border-green-500 rounded-lg bg-green-50 dark:bg-green-900/20">
@@ -371,7 +372,7 @@ export default function ButtonsPage() {
 
                       <div className="space-y-4">
                         <div className="p-4 border-2 border-red-500 rounded-lg bg-red-50 dark:bg-red-900/20">
-                          <h5 className="font-medium text-red-800 dark:text-red-200 mb-2">❌ Don't</h5>
+                          <h5 className="font-medium text-red-800 dark:text-red-200 mb-2">❌ Don&apos;t</h5>
                           <ul className="text-sm text-red-700 dark:text-red-300 space-y-1">
                             <li>• Place multiple primary buttons in same area</li>
                             <li>• Use inconsistent spacing between buttons</li>
@@ -511,7 +512,7 @@ export default function ButtonsPage() {
                       <div>
                         <h5 className="font-medium mb-3">Screen Reader Support</h5>
                         <ul className="text-sm space-y-1">
-                          <li>• <strong>Role:</strong> Announced as "button"</li>
+                          <li>• <strong>Role:</strong> Announced as &quot;button&quot;</li>
                           <li>• <strong>Name:</strong> Clear, descriptive label</li>
                           <li>• <strong>State:</strong> Pressed, disabled, etc.</li>
                           <li>• <strong>Context:</strong> Purpose and outcome</li>
@@ -564,7 +565,7 @@ export default function ButtonsPage() {
                         <ul className="text-sm space-y-1">
                           <li>• Minimum 4.5:1 contrast ratio for text</li>
                           <li>• 3:1 contrast for focus indicators</li>
-                          <li>• Don't rely solely on color for meaning</li>
+                          <li>• Don&apos;t rely solely on color for meaning</li>
                           <li>• Provide visual state indicators</li>
                         </ul>
                         <div className="mt-2 flex gap-2">
@@ -600,7 +601,7 @@ export default function ButtonsPage() {
                           <li>• Using <code>disabled</code> without explaining why</li>
                           <li>• Poor color contrast or missing focus indicators</li>
                           <li>• Buttons that are too small for touch interfaces</li>
-                          <li>• Generic text like "Click here" or "Read more"</li>
+                          <li>• Generic text like &quot;Click here&quot; or &quot;Read more&quot;</li>
                         </ul>
                       </div>
 
@@ -635,7 +636,7 @@ export default function ButtonsPage() {
                         <div>
                           <strong>Screen Reader Testing:</strong>
                           <ul className="mt-1 space-y-1">
-                            <li>□ Role announced as "button"</li>
+                            <li>□ Role announced as &quot;button&quot;</li>
                             <li>□ Labels are descriptive</li>
                             <li>□ States are announced</li>
                             <li>□ Context is provided</li>
@@ -689,6 +690,47 @@ export default function ButtonsPage() {
             </Card>
           </TabsContent>
         </Tabs>
+
+        {/* References Section */}
+        <div className="mt-8">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <ExternalLink className="h-5 w-5" />
+                References & Further Reading
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-3">
+                {buttonComponentsUrlReference.map((url, index) => {
+                  const getTitle = (url: string) => {
+                    if (url.includes('apple.com')) return 'Apple Human Interface Guidelines - Buttons'
+                    if (url.includes('mozilla.org')) return 'MDN Web Docs - HTML Button Element'
+                    if (url.includes('w3.org')) return 'WAI-ARIA Authoring Practices - Button Pattern'
+                    return url
+                  }
+
+                  return (
+                    <div key={index} className="flex items-center gap-3 p-3 border rounded-lg hover:bg-muted/50 transition-colors">
+                      <ExternalLink className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+                      <div className="flex-1">
+                        <Link 
+                          href={url} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="font-medium text-foreground hover:text-primary transition-colors"
+                        >
+                          {getTitle(url)}
+                        </Link>
+                        <p className="text-sm text-muted-foreground mt-1">{url}</p>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            </CardContent>
+          </Card>
+        </div>
       </div>
       <Footer />
     </div>

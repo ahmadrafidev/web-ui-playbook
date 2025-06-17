@@ -68,19 +68,6 @@ export default function HomePage() {
       ),
     },
     {
-      name: "Navigation",
-      href: "/playground/navigation",
-      description: "Menus, tabs, and navigation elements",
-      status: "In Progress",
-      preview: (
-        <div className="flex text-xs gap-2">
-          <div className="text-primary border-b border-primary pb-1">Active</div>
-          <div className="text-muted-foreground">Tab</div>
-          <div className="text-muted-foreground">Tab</div>
-        </div>
-      ),
-    },
-    {
       name: "Modals",
       href: "/playground/modals",
       description: "Dialogs, popups, and overlays",
@@ -89,19 +76,6 @@ export default function HomePage() {
         <div className="bg-popover border rounded p-2 shadow-lg text-xs">
           <div className="font-medium mb-1 text-popover-foreground">Modal</div>
           <div className="text-muted-foreground text-xs">Dialog content</div>
-        </div>
-      ),
-    },
-    {
-      name: "Badges",
-      href: "/playground/badges",
-      description: "Status indicators and labels",
-      status: "In Progress",
-      preview: (
-        <div className="flex gap-1 flex-wrap">
-          <Badge variant="default" className="text-xs">Default</Badge>
-          <Badge variant="secondary" className="text-xs">Secondary</Badge>
-          <Badge variant="outline" className="text-xs">Outline</Badge>
         </div>
       ),
     },
