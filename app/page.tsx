@@ -5,7 +5,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Search, Code2, Eye, X } from "lucide-react"
+import { Search, X } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -118,7 +118,6 @@ export default function HomePage() {
     },
   ]
 
-  // Filter components based on search query
   const filteredComponents = componentSections.filter((section) =>
     section.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     section.description.toLowerCase().includes(searchQuery.toLowerCase())
@@ -140,10 +139,10 @@ export default function HomePage() {
             A manual guide for creating consistent, accessible, and user-friendly UI components.
           </p>
 
-          {/* Enhanced Search */}
+          {/* Search bar */}
           <div className="max-w-xl mx-auto mb-12">
             <div className="relative group">
-              {/* Glassmorphism container */}
+
               <div className="absolute inset-0 bg-background/80 backdrop-blur-md rounded-2xl shadow-lg border border-border/20 transition-all duration-300 group-focus-within:shadow-xl group-focus-within:bg-background/90 group-focus-within:border-primary/50 group-focus-within:shadow-primary/10 dark:bg-card/50 dark:border-border/30 dark:group-focus-within:bg-card/70 dark:group-focus-within:border-primary/60 dark:group-focus-within:shadow-primary/20">
               </div>
               
@@ -199,55 +198,39 @@ export default function HomePage() {
           ) : (
             <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-7xl mx-auto">
               {filteredComponents.map((section, index) => (
-                <Card 
-                  key={index} 
-                  className="hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer group animate-in fade-in slide-in-from-bottom-4 rounded-lg"
-                  style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'both' }}
-                >
-                  <CardHeader className="pb-4">
-                    <div className="flex items-center justify-between mb-3">
-                      <CardTitle className="text-xl">
-                        {section.name}
-                      </CardTitle>
-                      <Badge 
-                        variant={getStatusConfig(section.status).variant} 
-                        className={`text-xs ${getStatusConfig(section.status).className}`}
-                      >
-                        {section.status}
-                      </Badge>
-                    </div>
-                    <CardDescription className="text-sm">{section.description}</CardDescription>
-                  </CardHeader>
-                  
-                  <CardContent className="space-y-4">
-                    {/* Component Preview */}
-                    <div className="bg-muted rounded-lg p-4 min-h-[80px] flex items-center justify-center">
-                      {section.preview}
-                    </div>
+                <Link key={index} href={section.href}>
+                  <Card 
+                    className="hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer group animate-in fade-in slide-in-from-bottom-4 rounded-lg h-full"
+                    style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'both' }}
+                  >
+                    <CardHeader className="pb-4">
+                      <div className="flex items-center justify-between mb-3">
+                        <CardTitle className="text-xl">
+                          {section.name}
+                        </CardTitle>
+                        <Badge 
+                          variant={getStatusConfig(section.status).variant} 
+                          className={`text-xs ${getStatusConfig(section.status).className}`}
+                        >
+                          {section.status}
+                        </Badge>
+                      </div>
+                      <CardDescription className="text-sm">{section.description}</CardDescription>
+                    </CardHeader>
                     
-                    {/* Action Buttons */}
-                    <div className="flex gap-2">
-                      <Button asChild size="sm" className="flex-1">
-                        <Link href={section.href} className="flex items-center justify-center gap-2">
-                          <Eye className="h-4 w-4" />
-                          View Details
-                        </Link>
-                      </Button>
-                      <Button variant="outline" size="sm" asChild>
-                        <Link href={section.href} className="flex items-center gap-1">
-                          <Code2 className="h-4 w-4" />
-                          Code
-                        </Link>
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
+                    <CardContent>
+                      {/* Component Preview */}
+                      <div className="bg-muted rounded-lg p-4 min-h-[80px] flex items-center justify-center">
+                        {section.preview}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
               ))}
             </div>
           )}
         </div>
       </section>
-
       <Footer />
     </div>
   )

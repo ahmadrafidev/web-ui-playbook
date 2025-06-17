@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Web UI Playbook",
-  description: "Web UI Playbook",
+  description: "The missing manual for web UI components.",
 };
 
 export default function RootLayout({
