@@ -5,7 +5,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Header } from "@/components/header"  
-import { Footer } from "@/components/footer"
 
 const buttonComponentsUrlReference = [
   "https://developer.apple.com/design/human-interface-guidelines/buttons",
@@ -732,7 +731,6 @@ export default function ButtonsPage() {
           </Card>
         </div>
       </div>
-      <Footer />
     </div>
   )
 }

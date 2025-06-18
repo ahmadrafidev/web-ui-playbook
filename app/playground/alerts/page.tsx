@@ -6,7 +6,6 @@ import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { AlertCircle, CheckCircle, Info, XCircle, Terminal, ExternalLink, X, Shield, Lightbulb } from "lucide-react"
 import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
 
 const alertComponentsUrlReference = [
   "https://wise.design/components/alert",
@@ -769,7 +768,6 @@ export default function AlertsPage() {
           </Card>
         </div>
       </div>
-      <Footer />
     </div>
   )
 } 

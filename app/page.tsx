@@ -8,7 +8,6 @@ import { Badge } from "@/components/ui/badge"
 import { Search, X } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
 import { ComponentSection, getStatusConfig } from "@/types/component"
 
 export default function HomePage() {
@@ -62,44 +61,6 @@ export default function HomePage() {
             Get help and support
             <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-b-gray-900"></div>
           </div>
-        </div>
-      ),
-    },
-    {
-      name: "Cards",
-      href: "/playground/cards",
-      description: "Content containers and layout cards",
-      status: "In Progress",
-      preview: (
-        <div className="bg-card p-2 rounded border shadow-sm">
-          <div className="text-xs font-medium mb-1 text-card-foreground">Card Title</div>
-          <div className="text-xs text-muted-foreground">Card content preview</div>
-        </div>
-      ),
-    },
-    {
-      name: "Forms",
-      href: "/playground/forms",
-      description: "Input fields and form components",
-      status: "In Progress",
-      preview: (
-        <div className="space-y-1">
-          <input className="w-full text-xs px-2 py-1 border rounded" placeholder="Input field" />
-          <select className="w-full text-xs px-2 py-1 border rounded">
-            <option>Select option</option>
-          </select>
-        </div>
-      ),
-    },
-    {
-      name: "Modals",
-      href: "/playground/modals",
-      description: "Dialogs, popups, and overlays",
-      status: "In Progress",
-      preview: (
-        <div className="bg-popover border rounded p-2 shadow-lg text-xs">
-          <div className="font-medium mb-1 text-popover-foreground">Modal</div>
-          <div className="text-muted-foreground text-xs">Dialog content</div>
         </div>
       ),
     },
@@ -218,7 +179,6 @@ export default function HomePage() {
           )}
         </div>
       </section>
-      <Footer />
     </div>
   )
 }

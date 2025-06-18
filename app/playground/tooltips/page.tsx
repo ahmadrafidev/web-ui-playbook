@@ -4,8 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
+import { Header } from "@/components/header"  
 
 const tooltipComponentsUrlReference = [
   "https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/",
@@ -965,7 +964,6 @@ export default function TooltipsPage() {
           </Card>
         </div>
       </div>
-      <Footer />
     </div>
   )
 } 
