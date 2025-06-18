@@ -90,6 +90,40 @@ export default function HomePage() {
         </div>
       ),
     },
+    {
+      name: "Switch",
+      href: "/playground/switch",
+      description: "Binary toggle controls for instant state changes and settings",
+      status: "In Progress",
+      preview: (
+        <div className="space-y-3">
+          <div className="flex items-center justify-between gap-4">
+            <span className="text-xs">Notifications</span>
+            <div className="relative">
+              <div className="w-8 h-[18px] bg-primary rounded-full flex items-center">
+                <div className="w-4 h-4 bg-white rounded-full shadow-sm translate-x-[18px] transition-transform"></div>
+              </div>
+            </div>
+          </div>
+          <div className="flex items-center justify-between gap-4">
+            <span className="text-xs text-muted-foreground">Dark Mode</span>
+            <div className="relative">
+              <div className="w-8 h-[18px] bg-gray-300 dark:bg-gray-600 rounded-full flex items-center">
+                <div className="w-4 h-4 bg-white rounded-full shadow-sm translate-x-0 transition-transform"></div>
+              </div>
+            </div>
+          </div>
+          <div className="flex items-center justify-between gap-4">
+            <span className="text-xs">Auto-sync</span>
+            <div className="relative">
+              <div className="w-8 h-[18px] bg-primary rounded-full flex items-center">
+                <div className="w-4 h-4 bg-white rounded-full shadow-sm translate-x-[18px] transition-transform"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
   ]
 
   const filteredComponents = componentSections.filter((section) =>
