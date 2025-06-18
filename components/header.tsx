@@ -10,7 +10,7 @@ export function Header() {
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
             <Image src="/images/logo.png" alt="Web UI Playbook" width={32} height={32} className="dark:invert" />
-            <h1 className="text-2xl font-bold text-foreground">Web UI Playbook</h1>
+            <h1 className="text-xl md:text-2xl font-sans font-semibold text-foreground tracking-tight">Web UI Playbook</h1>
           </Link>
           <nav className="flex items-center space-x-2">
             <ThemeToggle />

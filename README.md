@@ -8,8 +8,6 @@
 
 ** 🚧 Work in Progress 🚧 **
 
-[🎮 Live Playground](https://web-ui-playbook.vercel.app/) | [🚀 Get Started](#getting-started)
-
 </div>
 
 ---
@@ -42,9 +40,6 @@ Explore our components in action! Visit our [**Live Playground**](https://web-ui
 |-----------|-------------|--------|-----------------|
 | 🔘 **Buttons** | Primary, secondary, and action buttons | 🚧 In Progress | [Play with Buttons](https://web-ui-playbook.vercel.app/playground/buttons) |
 | 🚨 **Alerts** | Success, warning, error, and info alerts | 🚧 In Progress | [Play with Alerts](https://web-ui-playbook.vercel.app/playground/alerts) |
-| 🃏 **Cards** | Content containers and layout cards | 🚧 In Progress | [Play with Cards](https://web-ui-playbook.vercel.app/playground/cards) |
-| 📝 **Forms** | Input fields and form components | 🚧 In Progress | [Play with Forms](https://web-ui-playbook.vercel.app/playground/forms) | 
-| 🪟 **Modals** | Dialogs, popups, and overlays | 🚧 In Progress | [Play with Modals](https://web-ui-playbook.vercel.app/playground/modals) |
 | 💭 **Tooltips** | Hover information and help text | 🚧 In Progress | [Play with Tooltips](https://web-ui-playbook.vercel.app/playground/tooltips) |
 
 > **💡 Pro Tip**: Visit the main playground at [web-ui-playbook.vercel.app](https://web-ui-playbook.vercel.app/) to search and browse all components in one place!
