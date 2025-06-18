@@ -2,8 +2,8 @@ import Link from "next/link"
 
 export function Footer() {
   return (
-    <footer className="bg-transparent py-8 text-center mt-16">
-      <p className="text-muted-foreground text-sm md:text-base font-normal">
+    <footer className="bg-transparent pb-4 text-center mt-12">
+      <p className="text-muted-foreground text-xs md:text-sm font-normal">
         Built by{" "}
         <Link 
           href="https://x.com/rafiwiranaa" 
