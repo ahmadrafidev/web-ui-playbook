@@ -2,14 +2,13 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { CheckIcon, MinusIcon, ExternalLink } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
 import { Header } from "@/components/header"
+import { ComponentReferences } from "@/components/component-references"
 
 const checkboxComponentsUrlReference = [
   "https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/",
@@ -22,7 +21,7 @@ const checkboxComponentsUrlReference = [
   "https://spectrum.adobe.com/page/checkbox/"
 ]
 
-export default function CheckboxesPage() {
+export default function CheckboxPage() {
   const [singleCheck, setSingleCheck] = useState(false)
   const [multipleChecks, setMultipleChecks] = useState({
     option1: false,
@@ -36,17 +35,19 @@ export default function CheckboxesPage() {
     item3: false
   })
 
-  const handleSelectAll = (checked: boolean) => {
+  const handleSelectAll = (checked: boolean | "indeterminate") => {
+    const isChecked = checked === true
     setGroupState({
-      selectAll: checked,
-      item1: checked,
-      item2: checked,
-      item3: checked
+      selectAll: isChecked,
+      item1: isChecked,
+      item2: isChecked,
+      item3: isChecked
     })
   }
 
-  const handleIndividualCheck = (item: string, checked: boolean) => {
-    const newState = { ...groupState, [item]: checked }
+  const handleIndividualCheck = (item: string, checked: boolean | "indeterminate") => {
+    const isChecked = checked === true
+    const newState = { ...groupState, [item]: isChecked }
     const checkedItems = Object.entries(newState).filter(([key, value]) => key !== 'selectAll' && value).length
     const totalItems = 3
     
@@ -152,7 +153,7 @@ export default function CheckboxesPage() {
                         <Checkbox 
                           id="single-option" 
                           checked={singleCheck}
-                          onCheckedChange={setSingleCheck}
+                          onCheckedChange={(checked) => setSingleCheck(checked === true)}
                         />
                         <Label htmlFor="single-option">Single Option</Label>
                       </div>
@@ -166,7 +167,7 @@ export default function CheckboxesPage() {
                           <Checkbox 
                             id="option1" 
                             checked={multipleChecks.option1}
-                            onCheckedChange={(checked) => setMultipleChecks(prev => ({ ...prev, option1: checked }))}
+                            onCheckedChange={(checked) => setMultipleChecks(prev => ({ ...prev, option1: checked === true }))}
                           />
                           <Label htmlFor="option1">Option 1</Label>
                         </div>
@@ -174,7 +175,7 @@ export default function CheckboxesPage() {
                           <Checkbox 
                             id="option2" 
                             checked={multipleChecks.option2}
-                            onCheckedChange={(checked) => setMultipleChecks(prev => ({ ...prev, option2: checked }))}
+                            onCheckedChange={(checked) => setMultipleChecks(prev => ({ ...prev, option2: checked === true }))}
                           />
                           <Label htmlFor="option2">Option 2</Label>
                         </div>
@@ -182,7 +183,7 @@ export default function CheckboxesPage() {
                           <Checkbox 
                             id="option3" 
                             checked={multipleChecks.option3}
-                            onCheckedChange={(checked) => setMultipleChecks(prev => ({ ...prev, option3: checked }))}
+                            onCheckedChange={(checked) => setMultipleChecks(prev => ({ ...prev, option3: checked === true }))}
                           />
                           <Label htmlFor="option3">Option 3</Label>
                         </div>
@@ -639,44 +640,23 @@ export default function CheckboxesPage() {
         </Tabs>
 
         {/* References */}
-        <Card className="mt-8">
-          <CardHeader>
-            <CardTitle>References & Resources</CardTitle>
-            <CardDescription>
-              External resources and design system references for checkbox components.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="grid gap-3">
-              {checkboxComponentsUrlReference.map((url, index) => {
-                const getTitle = (url: string) => {
-                  if (url.includes('w3.org')) return 'W3C ARIA Checkbox Pattern'
-                  if (url.includes('gestalt.pinterest')) return 'Pinterest Gestalt Design System'
-                  if (url.includes('base.uber')) return 'Uber Base Design System'
-                  if (url.includes('wise.design')) return 'Wise Design System'
-                  if (url.includes('polaris.shopify')) return 'Shopify Polaris Design System'
-                  if (url.includes('material.io')) return 'Material Design 3 Guidelines'
-                  if (url.includes('atlassian.design')) return 'Atlassian Design System'
-                  if (url.includes('spectrum.adobe')) return 'Adobe Spectrum Design System'
-                  return url
-                }
-
-                return (
-                  <Link
-                    key={index}
-                    href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3 border rounded-lg hover:bg-muted/50 transition-colors"
-                  >
-                    <span className="font-medium">{getTitle(url)}</span>
-                    <ExternalLink className="h-4 w-4 text-muted-foreground" />
-                  </Link>
-                )
-              })}
-            </div>
-          </CardContent>
-        </Card>
+        <div className="mt-8">
+          <ComponentReferences
+            description="External resources and design system references for checkbox components."
+            urls={checkboxComponentsUrlReference}
+            getTitleFunction={(url: string) => {
+              if (url.includes('w3.org')) return 'W3C ARIA Checkbox Pattern'
+              if (url.includes('gestalt.pinterest')) return 'Pinterest Gestalt Design System'
+              if (url.includes('base.uber')) return 'Uber Base Design System'
+              if (url.includes('wise.design')) return 'Wise Design System'
+              if (url.includes('polaris.shopify')) return 'Shopify Polaris Design System'
+              if (url.includes('material.io')) return 'Material Design 3 Guidelines'
+              if (url.includes('atlassian.design')) return 'Atlassian Design System'
+              if (url.includes('spectrum.adobe')) return 'Adobe Spectrum Design System'
+              return url
+            }}
+          />
+        </div>
 
       </div>
     </div>

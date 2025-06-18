@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Home, ArrowLeft } from "lucide-react"
+import { Home } from "lucide-react"
 import { Header } from "@/components/header"
 
 export default function NotFound() {
@@ -26,22 +26,9 @@ export default function NotFound() {
                 <span>Back to Home</span>
               </Link>
             </Button>
-            <Button variant="outline" asChild>
-              <Link href="/play" className="flex items-center space-x-2">
-                <ArrowLeft className="h-4 w-4" />
-                <span>View Components</span>
-              </Link>
-            </Button>
           </div>
         </div>
       </div>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8 px-4">
-        <div className="container mx-auto text-center">
-          <p className="text-gray-400">Built by Rafi</p>
-        </div>
-      </footer>
     </div>
   )
 }

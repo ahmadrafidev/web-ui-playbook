@@ -1,10 +1,10 @@
-import Link from "next/link"
-import { HelpCircle, Info, ExternalLink, MousePointer, Keyboard, Eye, Settings, Heart, Star } from "lucide-react"
+import { HelpCircle, Info, MousePointer, Keyboard, Eye, Settings, Heart, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Header } from "@/components/header"  
+import { Header } from "@/components/header"
+import { ComponentReferences } from "@/components/component-references"  
 
 const tooltipComponentsUrlReference = [
   "https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/",
@@ -921,47 +921,21 @@ export default function TooltipsPage() {
 
         {/* References Section */}
         <div className="mt-8">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <ExternalLink className="h-5 w-5" />
-                References & Further Reading
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-3">
-                {tooltipComponentsUrlReference.map((url, index) => {
-                  const getTitle = (url: string) => {
-                    if (url.includes('w3.org')) return 'WAI-ARIA Authoring Practices - Tooltip Pattern'
-                    if (url.includes('spectrum.adobe.com')) return 'Adobe Spectrum - Tooltip Component'
-                    if (url.includes('atlassian.design')) return 'Atlassian Design System - Tooltip Examples'
-                    if (url.includes('blueprintjs.com')) return 'Blueprint.js - Tooltip Component'
-                    if (url.includes('base.uber.com')) return 'Uber Base Design - Tooltip Component'
-                    if (url.includes('vercel.com')) return 'Vercel Geist Design System - Tooltip'
-                    if (url.includes('radix-ui.com')) return 'Radix UI - Tooltip Primitive'
-                    return url
-                  }
-
-                  return (
-                    <div key={index} className="flex items-center gap-3 p-3 border rounded-lg hover:bg-muted/50 transition-colors">
-                      <ExternalLink className="h-4 w-4 text-muted-foreground flex-shrink-0" />
-                      <div className="flex-1">
-                        <Link 
-                          href={url} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="font-medium text-foreground hover:text-primary transition-colors"
-                        >
-                          {getTitle(url)}
-                        </Link>
-                        <p className="text-sm text-muted-foreground mt-1">{url}</p>
-                      </div>
-                    </div>
-                  )
-                })}
-              </div>
-            </CardContent>
-          </Card>
+          <ComponentReferences
+            title="References & Further Reading"
+            description="Comprehensive resources for tooltip component implementation and accessibility."
+            urls={tooltipComponentsUrlReference}
+            getTitleFunction={(url: string) => {
+              if (url.includes('w3.org')) return 'WAI-ARIA Authoring Practices - Tooltip Pattern'
+              if (url.includes('spectrum.adobe.com')) return 'Adobe Spectrum - Tooltip Component'
+              if (url.includes('atlassian.design')) return 'Atlassian Design System - Tooltip Examples'
+              if (url.includes('blueprintjs.com')) return 'Blueprint.js - Tooltip Component'
+              if (url.includes('base.uber.com')) return 'Uber Base Design - Tooltip Component'
+              if (url.includes('vercel.com')) return 'Vercel Geist Design System - Tooltip'
+              if (url.includes('radix-ui.com')) return 'Radix UI - Tooltip Primitive'
+              return url
+            }}
+          />
         </div>
       </div>
     </div>

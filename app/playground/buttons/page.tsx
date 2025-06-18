@@ -1,10 +1,10 @@
-import Link from "next/link"
-import { Plus, Loader2, CheckCircle, ExternalLink } from "lucide-react"
+import { Plus, Loader2, CheckCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Header } from "@/components/header"  
+import { Header } from "@/components/header"
+import { ComponentReferences } from "@/components/component-references"  
 
 const buttonComponentsUrlReference = [
   "https://developer.apple.com/design/human-interface-guidelines/buttons",
@@ -692,43 +692,17 @@ export default function ButtonsPage() {
 
         {/* References Section */}
         <div className="mt-8">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <ExternalLink className="h-5 w-5" />
-                References & Further Reading
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-3">
-                {buttonComponentsUrlReference.map((url, index) => {
-                  const getTitle = (url: string) => {
-                    if (url.includes('apple.com')) return 'Apple Human Interface Guidelines - Buttons'
-                    if (url.includes('mozilla.org')) return 'MDN Web Docs - HTML Button Element'
-                    if (url.includes('w3.org')) return 'WAI-ARIA Authoring Practices - Button Pattern'
-                    return url
-                  }
-
-                  return (
-                    <div key={index} className="flex items-center gap-3 p-3 border rounded-lg hover:bg-muted/50 transition-colors">
-                      <ExternalLink className="h-4 w-4 text-muted-foreground flex-shrink-0" />
-                      <div className="flex-1">
-                        <Link 
-                          href={url} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="font-medium text-foreground hover:text-primary transition-colors"
-                        >
-                          {getTitle(url)}
-                        </Link>
-                        <p className="text-sm text-muted-foreground mt-1">{url}</p>
-                      </div>
-                    </div>
-                  )
-                })}
-              </div>
-            </CardContent>
-          </Card>
+          <ComponentReferences
+            title="References & Further Reading"
+            description="Essential references for button component implementation and best practices."
+            urls={buttonComponentsUrlReference}
+            getTitleFunction={(url: string) => {
+              if (url.includes('apple.com')) return 'Apple Human Interface Guidelines - Buttons'
+              if (url.includes('mozilla.org')) return 'MDN Web Docs - HTML Button Element'
+              if (url.includes('w3.org')) return 'WAI-ARIA Authoring Practices - Button Pattern'
+              return url
+            }}
+          />
         </div>
       </div>
     </div>

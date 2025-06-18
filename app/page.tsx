@@ -65,8 +65,8 @@ export default function HomePage() {
       ),
     },
     {
-      name: "Checkboxes",
-      href: "/playground/checkboxes",
+      name: "Checkbox",
+      href: "/playground/checkbox",
       description: "Multi-selection controls for forms and interactive lists",
       status: "In Progress",
       preview: (
