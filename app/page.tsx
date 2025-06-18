@@ -51,7 +51,7 @@ export default function HomePage() {
       name: "Tooltips",
       href: "/playground/tooltips",
       description: "Contextual information that appears on hover or focus",
-      status: "In Progress",
+      status: "In Progress",  
       preview: (
         <div className="relative flex flex-col items-center justify-center h-16 gap-2">
           <Button size="sm" variant="outline" className="relative">
@@ -60,6 +60,32 @@ export default function HomePage() {
           <div className="px-3 py-1.5 bg-gray-900 text-white text-xs rounded shadow-lg whitespace-nowrap relative">
             Get help and support
             <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-b-gray-900"></div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      name: "Checkboxes",
+      href: "/playground/checkboxes",
+      description: "Multi-selection controls for forms and interactive lists",
+      status: "In Progress",
+      preview: (
+        <div className="space-y-3">
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-4 border-2 border-primary bg-primary rounded-sm flex items-center justify-center">
+              <div className="w-2 h-2 bg-white rounded-[1px]"></div>
+            </div>
+            <span className="text-xs">Selected option</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-4 border-2 border-gray-300 dark:border-gray-600 rounded-sm"></div>
+            <span className="text-xs text-muted-foreground">Unselected option</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-4 border-2 border-primary bg-primary rounded-sm flex items-center justify-center">
+              <div className="w-2 h-1 bg-white rounded-[1px]"></div>
+            </div>
+            <span className="text-xs">Indeterminate</span>
           </div>
         </div>
       ),
