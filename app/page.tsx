@@ -124,6 +124,30 @@ export default function HomePage() {
         </div>
       ),
     },
+    {
+      name: "Tabs",
+      href: "/playground/tabs",
+      description: "Organize related content into sections with easy navigation",
+      status: "In Progress",
+      preview: (
+        <div className="space-y-2 w-full">
+          <div className="flex border-b border-gray-300 dark:border-gray-600">
+            <div className="px-3 py-1.5 border-b-2 border-primary bg-background text-primary text-xs font-medium">
+              Active
+            </div>
+            <div className="px-3 py-1.5 text-xs text-muted-foreground">
+              Inactive
+            </div>
+            <div className="px-3 py-1.5 text-xs text-muted-foreground">
+              Another
+            </div>
+          </div>
+          <div className="p-3 bg-background rounded text-xs text-muted-foreground">
+            Tab content area with organized information
+          </div>
+        </div>
+      ),
+    },
   ]
 
   const filteredComponents = componentSections.filter((section) =>
@@ -242,3 +266,5 @@ export default function HomePage() {
     </div>
   )
 }
+
+HomePage.displayName = "HomePage"
