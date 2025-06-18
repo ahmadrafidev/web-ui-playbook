@@ -51,11 +51,17 @@ export default function HomePage() {
     {
       name: "Tooltips",
       href: "/playground/tooltips",
-      description: "Hover information and help text",
+      description: "Contextual information that appears on hover or focus",
       status: "In Progress",
       preview: (
-        <div className="relative">
-          <div className="text-xs bg-primary text-primary-foreground px-2 py-1 rounded">Tooltip</div>
+        <div className="relative flex flex-col items-center justify-center h-16 gap-2">
+          <Button size="sm" variant="outline" className="relative">
+            Help
+          </Button>
+          <div className="px-3 py-1.5 bg-gray-900 text-white text-xs rounded shadow-lg whitespace-nowrap relative">
+            Get help and support
+            <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-b-gray-900"></div>
+          </div>
         </div>
       ),
     },

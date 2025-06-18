@@ -108,7 +108,7 @@ export default function TooltipsPage() {
                         </div>
                       </div>
                       <div>
-                        <strong>Icon Clarification:</strong> Explaining what an icon does when its meaning isn't immediately clear
+                        <strong>Icon Clarification:</strong> Explaining what an icon does when its meaning isn&apos;t immediately clear
                       </div>
                     </div>
                     
@@ -161,8 +161,8 @@ export default function TooltipsPage() {
                     <li>• Essential information that users need to complete tasks</li>
                     <li>• Error messages or critical feedback</li>
                     <li>• Complex content that requires interaction or formatting</li>
-                    <li>• Touch-only interfaces where hover doesn't exist</li>
-                    <li>• Repetitive information that's already visible on screen</li>
+                    <li>• Touch-only interfaces where hover doesn&apos;t exist</li>
+                    <li>• Repetitive information that&apos;s already visible on screen</li>
                     <li>• Navigation or primary actions (use clear labels instead)</li>
                   </ul>
                 </div>
@@ -172,7 +172,7 @@ export default function TooltipsPage() {
                   <ul className="text-sm text-green-700 dark:text-green-300 space-y-1">
                     <li>• Keep content concise and scannable</li>
                     <li>• Use for progressive disclosure of secondary information</li>
-                    <li>• Provide value beyond what's already visible</li>
+                    <li>• Provide value beyond what&apos;s already visible</li>
                     <li>• Make the interface work without tooltips</li>
                     <li>• Ensure content is accessible via keyboard</li>
                     <li>• Use consistent timing and positioning</li>
@@ -338,7 +338,7 @@ export default function TooltipsPage() {
                     <li>• Use sentence case, not title case</li>
                     <li>• Avoid redundant information already visible on screen</li>
                     <li>• Write in active voice and be specific</li>
-                    <li>• Don't end with periods unless multiple sentences</li>
+                    <li>• Don&apos;t end with periods unless multiple sentences</li>
                     <li>• Use consistent terminology across your application</li>
                   </ul>
                 </div>
@@ -498,7 +498,7 @@ export default function TooltipsPage() {
                   <h4 className="font-semibold mb-2 text-amber-800 dark:text-amber-200">Interaction Best Practices</h4>
                   <ul className="text-sm text-amber-700 dark:text-amber-300 space-y-1">
                     <li>• Never prevent users from completing tasks without tooltips</li>
-                    <li>• Ensure tooltips don't interfere with clicking or selection</li>
+                    <li>• Ensure tooltips don&apos;t interfere with clicking or selection</li>
                     <li>• Use consistent timing patterns across your application</li>
                     <li>• Test on both desktop and mobile devices</li>
                     <li>• Provide keyboard alternatives for all tooltip triggers</li>
@@ -581,7 +581,7 @@ export default function TooltipsPage() {
                       <div className="p-3 border rounded-lg">
                         <strong className="block mb-2">Priority Order</strong>
                         <ol className="text-sm space-y-1">
-                          <li>1. <strong>Top:</strong> Most common, doesn't block content</li>
+                          <li>1. <strong>Top:</strong> Most common, doesn&apos;t block content</li>
                           <li>2. <strong>Bottom:</strong> Good alternative to top</li>
                           <li>3. <strong>Right:</strong> For left-aligned content</li>
                           <li>4. <strong>Left:</strong> For right-aligned content</li>
@@ -700,7 +700,7 @@ export default function TooltipsPage() {
                       <div className="p-3 border rounded-lg">
                         <div className="flex items-center gap-2 mb-2">
                           <Eye className="h-4 w-4" />
-                          <strong>role="tooltip"</strong>
+                          <strong>role=&quot;tooltip&quot;</strong>
                         </div>
                         <p className="text-sm mb-2">Identifies element as tooltip</p>
                         <div className="relative group">
@@ -766,7 +766,7 @@ export default function TooltipsPage() {
                             Save Document
                           </Button>
                           <div className="text-sm">
-                            <strong>Announced as:</strong> "Save Document, button, Save your current work to prevent data loss"
+                            <strong>Announced as:</strong> &quot;Save Document, button, Save your current work to prevent data loss&quot;
                           </div>
                           <div id="sr-tooltip-1" className="sr-only">
                             Save your current work to prevent data loss
@@ -795,7 +795,7 @@ export default function TooltipsPage() {
                       <h5 className="font-medium mb-3">Color & Contrast</h5>
                       <ul className="text-sm space-y-1">
                         <li>• Minimum 4.5:1 contrast ratio for text</li>
-                        <li>• Don't rely solely on color for meaning</li>
+                        <li>• Don&apos;t rely solely on color for meaning</li>
                         <li>• Support high contrast mode</li>
                         <li>• Test with color blindness simulators</li>
                       </ul>
@@ -881,36 +881,36 @@ export default function TooltipsPage() {
                 <div className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
                   <pre className="text-sm">
                     {`<!-- Basic accessible tooltip -->
-<button aria-describedby="tooltip-1">
-  <svg aria-hidden="true">...</svg>
+<button aria-describedby=&quot;tooltip-1&quot;>
+  <svg aria-hidden=&quot;true&quot;>...</svg>
   Help
 </button>
-<div role="tooltip" id="tooltip-1">
+<div role=&quot;tooltip&quot; id=&quot;tooltip-1&quot;>
   Get help with this feature
 </div>
 
 <!-- Icon-only button with tooltip -->
-<button aria-label="Add to favorites" aria-describedby="tooltip-2">
-  <svg aria-hidden="true">...</svg>
+<button aria-label=&quot;Add to favorites&quot; aria-describedby=&quot;tooltip-2&quot;>
+  <svg aria-hidden=&quot;true&quot;>...</svg>
 </button>
-<div role="tooltip" id="tooltip-2">
+<div role=&quot;tooltip&quot; id=&quot;tooltip-2&quot;>
   Click to add this item to your favorites list
 </div>
 
 <!-- Complex trigger with status -->
-<div aria-describedby="tooltip-3">
+<div aria-describedby=&quot;tooltip-3&quot;>
   <span>Connection Status</span>
-  <div aria-hidden="true">🟢</div>
+  <div aria-hidden=&quot;true&quot;>🟢</div>
 </div>
-<div role="tooltip" id="tooltip-3">
+<div role=&quot;tooltip&quot; id=&quot;tooltip-3&quot;>
   Connected to server. Last sync: 2 minutes ago
 </div>
 
 <!-- Disabled element with explanation -->
-<button disabled aria-describedby="tooltip-4">
+<button disabled aria-describedby=&quot;tooltip-4&quot;>
   Upload File
 </button>
-<div role="tooltip" id="tooltip-4">
+<div role=&quot;tooltip&quot; id=&quot;tooltip-4&quot;>
   File upload is disabled. Upgrade your plan to enable this feature.
 </div>`}
                   </pre>

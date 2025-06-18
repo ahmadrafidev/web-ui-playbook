@@ -18,12 +18,12 @@ export default function ButtonsPage() {
     <div className="min-h-screen bg-background">
       <Header />
       
-      <div className="container mx-auto px-4 py-8">
+      <div className="container max-w-5xl mx-auto px-4 py-8">
 
         {/* Introduction */}
         <div className="mb-10">
           <h2 className="text-4xl font-bold mb-4 text-foreground">Buttons</h2>
-          <p className="text-xl text-muted-foreground mb-6">
+          <p className="text-base md:text-lg text-muted-foreground mb-6">
             Buttons are interactive elements that enable users to trigger actions or events, such as submitting forms, 
             opening dialogs, canceling actions, or performing operations. They are the primary way users interact with interfaces.
           </p>
