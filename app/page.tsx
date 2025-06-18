@@ -18,26 +18,44 @@ export default function HomePage() {
     {
       name: "Buttons",
       href: "/playground/buttons",
-      description: "Primary, secondary, and action buttons",
+      description: "Interactive elements that enable users to trigger actions and navigate interfaces",
       status: "In Progress",
       preview: (
-        <div className="flex gap-2 flex-wrap">
-          <Button size="sm">Primary</Button>
-          <Button variant="secondary" size="sm">Secondary</Button>
-          <Button variant="outline" size="sm">Outline</Button>
+        <div className="space-y-2">
+          <div className="flex gap-1 flex-wrap">
+            <Button size="sm">Primary</Button>
+            <Button variant="secondary" size="sm">Secondary</Button>
+            <Button variant="outline" size="sm">Outline</Button>
+          </div>
         </div>
       ),
     },
     {
       name: "Alerts",
       href: "/playground/alerts",
-      description: "Success, warning, error, and info alerts",
+      description: "Contextual feedback messages with proper semantics",
       status: "In Progress",
       preview: (
-        <div className="space-y-1">
-          <div className="text-xs bg-green-500/10 text-green-600 dark:text-green-400 px-2 py-1 rounded">Success</div>
-          <div className="text-xs bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 px-2 py-1 rounded">Warning</div>
-          <div className="text-xs bg-red-500/10 text-red-600 dark:text-red-400 px-2 py-1 rounded">Error</div>
+        <div className="space-y-2">
+          <div className="flex items-center gap-2 text-xs bg-green-500/10 text-green-600 dark:text-green-400 px-2 py-1.5 rounded border border-green-500/20">
+            <div className="w-2 h-2 rounded-full bg-green-500"></div>
+            <span>Success Alert</span>
+          </div>
+          <div className="flex items-center gap-2 text-xs bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 px-2 py-1.5 rounded border border-yellow-500/20">
+            <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
+            <span>Warning Alert</span>
+          </div>
+        </div>
+      ),
+    },
+    {
+      name: "Tooltips",
+      href: "/playground/tooltips",
+      description: "Hover information and help text",
+      status: "In Progress",
+      preview: (
+        <div className="relative">
+          <div className="text-xs bg-primary text-primary-foreground px-2 py-1 rounded">Tooltip</div>
         </div>
       ),
     },
@@ -76,17 +94,6 @@ export default function HomePage() {
         <div className="bg-popover border rounded p-2 shadow-lg text-xs">
           <div className="font-medium mb-1 text-popover-foreground">Modal</div>
           <div className="text-muted-foreground text-xs">Dialog content</div>
-        </div>
-      ),
-    },
-    {
-      name: "Tooltips",
-      href: "/playground/tooltips",
-      description: "Hover information and help text",
-      status: "In Progress",
-      preview: (
-        <div className="relative">
-          <div className="text-xs bg-primary text-primary-foreground px-2 py-1 rounded">Tooltip</div>
         </div>
       ),
     },

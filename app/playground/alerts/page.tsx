@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { AlertCircle, CheckCircle, Info, XCircle, Terminal, ExternalLink, X, Bell, Shield, Lightbulb } from "lucide-react"
+import { AlertCircle, CheckCircle, Info, XCircle, Terminal, ExternalLink, X, Shield, Lightbulb } from "lucide-react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 
