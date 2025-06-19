@@ -150,8 +150,7 @@ export default function HomePage() {
   ]
 
   const filteredComponents = componentSections.filter((section) =>
-    section.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    section.description.toLowerCase().includes(searchQuery.toLowerCase())
+    section.name.toLowerCase().includes(searchQuery.toLowerCase()) 
   )
 
   const handleClearSearch = () => {
@@ -164,16 +163,18 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="my-16 px-4">
         <div className="container mx-auto text-center">
-          <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-2">The Complete UI Component Guide You Need</h2>
+          <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-2">
+            The documented web interfaces patterns
+          </h2>
           <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto text-wrap">
-            A manual guide for creating consistent, accessible, and user-friendly UI components.
+            Essential patterns for building scalable and accessible web interfaces.
           </p>
 
           {/* Search bar */}
           <div className="max-w-xl mx-auto mb-12">
             <div className="relative group">
 
-              <div className="absolute inset-0 bg-background/80 backdrop-blur-md rounded-2xl shadow-lg border border-border/20 transition-all duration-300 group-focus-within:shadow-xl group-focus-within:bg-background/90 group-focus-within:border-primary/50 group-focus-within:shadow-primary/10 dark:bg-card/50 dark:border-border/30 dark:group-focus-within:bg-card/70 dark:group-focus-within:border-primary/60 dark:group-focus-within:shadow-primary/20">
+              <div className="absolute inset-0 bg-background/80 backdrop-blur-md rounded-xl shadow-lg border border-border/80 transition-all duration-200 group-focus-within:shadow-2xl group-focus-within:bg-background/90 group-focus-within:border-primary/50 group-focus-within:shadow-primary/20 dark:bg-card/50 dark:border-border/30 dark:group-focus-within:bg-card/70 dark:group-focus-within:border-primary/60 dark:group-focus-within:shadow-primary/30">
               </div>
               
               {/* Search input */}
