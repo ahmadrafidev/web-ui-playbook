@@ -66,7 +66,7 @@ export default function CheckboxPage() {
       <div className="container max-w-5xl mx-auto px-4 py-8">
         {/* Introduction */}
         <div className="mb-10">
-          <h2 className="text-4xl font-bold mb-4 text-foreground">Checkboxes</h2>
+          <h2 className="text-4xl font-bold mb-4 text-foreground">Checkbox</h2>
           <p className="text-base md:text-lg text-muted-foreground mb-6">
             Checkboxes allow users to select one or more options from a set. Unlike radio buttons, checkboxes are independent 
             and allow multiple selections. They&apos;re essential for forms, settings, and multi-selection interfaces.
