@@ -6,7 +6,6 @@ import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
-import { Header } from "@/components/header"
 import { ComponentReferences } from "@/components/component-references"
 
 const switchComponentsUrlReference = [
@@ -54,8 +53,6 @@ export default function SwitchPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
-      
       <div className="container max-w-5xl mx-auto px-4 py-8">
 
         {/* Introduction */}

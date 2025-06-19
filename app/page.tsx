@@ -7,7 +7,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Search, X } from "lucide-react"
 import { Input } from "@/components/ui/input"
-import { Header } from "@/components/header"
 import { ComponentSection, getStatusConfig } from "@/types/component"
 
 export default function HomePage() {
@@ -160,8 +159,7 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-secondary/10">
-      <Header />
+    <div className="min-h-screen max-w-5xl mx-auto bg-gradient-to-br from-background to-secondary/10">
 
       {/* Hero Section */}
       <section className="my-16 px-4">
@@ -182,7 +180,7 @@ export default function HomePage() {
               <div className="relative">
                 <Search className="absolute left-6 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5 transition-colors group-focus-within:text-primary" />
                 <Input
-                  placeholder="Find components..."
+                  placeholder="Find a component..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="relative bg-transparent border-none shadow-none pl-16 pr-16 py-6 text-xl placeholder:text-muted-foreground/70 focus-visible:ring-0 focus-visible:ring-offset-0 rounded-2xl min-h-[55px] text-foreground"
@@ -228,7 +226,7 @@ export default function HomePage() {
               </Button>
             </div>
           ) : (
-            <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-7xl mx-auto">
+            <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
               {filteredComponents.map((section, index) => (
                 <Link key={index} href={section.href}>
                   <Card 

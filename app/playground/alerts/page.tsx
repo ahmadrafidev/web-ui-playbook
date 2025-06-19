@@ -4,7 +4,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { AlertCircle, CheckCircle, Info, XCircle, Terminal, X, Shield, Lightbulb } from "lucide-react"
-import { Header } from "@/components/header"
 import { ComponentReferences } from "@/components/component-references"
 
 const alertComponentsUrlReference = [
@@ -17,9 +16,9 @@ const alertComponentsUrlReference = [
 export default function AlertsPage() {
   return (
     <div className="min-h-screen bg-background">
-      <Header />
       
       <div className="container max-w-5xl mx-auto px-4 py-8">
+        <Header />  
 
         {/* Introduction */}
         <div className="mb-10">

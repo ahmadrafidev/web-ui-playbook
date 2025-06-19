@@ -7,7 +7,6 @@ import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
-import { Header } from "@/components/header"
 import { ComponentReferences } from "@/components/component-references"
 
 const checkboxComponentsUrlReference = [
@@ -64,10 +63,7 @@ export default function CheckboxPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
-      
       <div className="container max-w-5xl mx-auto px-4 py-8">
-
         {/* Introduction */}
         <div className="mb-10">
           <h2 className="text-4xl font-bold mb-4 text-foreground">Checkboxes</h2>

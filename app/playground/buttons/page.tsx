@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Header } from "@/components/header"
 import { ComponentReferences } from "@/components/component-references"  
 
 const buttonComponentsUrlReference = [
@@ -15,8 +14,6 @@ const buttonComponentsUrlReference = [
 export default function ButtonsPage() {
   return (
     <div className="min-h-screen bg-background">
-      <Header />
-      
       <div className="container max-w-5xl mx-auto px-4 py-8">
 
         {/* Introduction */}
