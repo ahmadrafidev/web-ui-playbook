@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Button } from "@/components/ui/button"
 import { ComponentReferences } from "@/components/component-references"
+import { EditButton } from "@/components/edit-button"
 import { Home, Settings, User, Bell, FileText, X, Plus } from "lucide-react"
 
 const tabsComponentsUrlReference = [
@@ -48,7 +49,10 @@ export default function TabsPage() {
 
         {/* Introduction */}
         <div className="mb-10">
-          <h2 className="text-4xl font-bold mb-4 text-foreground">Tabs</h2>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
+            <h2 className="text-4xl font-bold text-foreground">Tabs</h2>
+            <EditButton filePath="app/playground/tabs/page.tsx" />
+          </div>
           <p className="text-base md:text-lg text-muted-foreground mb-6">
             Tabs are used to organize related content into sections that can be navigated without leaving the current page. 
             They allow users to switch between different views of related information efficiently, with only one panel visible at a time.

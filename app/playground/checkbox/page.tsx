@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
 import { ComponentReferences } from "@/components/component-references"
+import { EditButton } from "@/components/edit-button"
 
 const checkboxComponentsUrlReference = [
   "https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/",
@@ -66,7 +67,10 @@ export default function CheckboxPage() {
       <div className="container max-w-5xl mx-auto px-4 py-8">
         {/* Introduction */}
         <div className="mb-10">
-          <h2 className="text-4xl font-bold mb-4 text-foreground">Checkbox</h2>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
+            <h2 className="text-4xl font-bold text-foreground">Checkbox</h2>
+            <EditButton filePath="app/playground/checkbox/page.tsx" />
+          </div>
           <p className="text-base md:text-lg text-muted-foreground mb-6">
             Checkboxes allow users to select one or more options from a set. Unlike radio buttons, checkboxes are independent 
             and allow multiple selections. They&apos;re essential for forms, settings, and multi-selection interfaces.

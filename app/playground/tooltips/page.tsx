@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { ComponentReferences } from "@/components/component-references"  
+import { ComponentReferences } from "@/components/component-references"
+import { EditButton } from "@/components/edit-button"  
 
 const tooltipComponentsUrlReference = [
   "https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/",
@@ -22,7 +23,10 @@ export default function TooltipsPage() {
 
         {/* Introduction */}
         <div className="mb-10">
-          <h2 className="text-4xl font-bold mb-4 text-foreground">Tooltips</h2>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
+            <h2 className="text-4xl font-bold text-foreground">Tooltips</h2>
+            <EditButton filePath="app/playground/tooltips/page.tsx" />
+          </div>
           <p className="text-base md:text-lg text-muted-foreground mb-6">
             Tooltips are small pop-up elements that provide contextual information about interface elements when users 
             hover over or focus on them. They enhance usability without cluttering the interface, offering just-in-time 

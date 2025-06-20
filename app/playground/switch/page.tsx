@@ -7,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
 import { ComponentReferences } from "@/components/component-references"
+import { EditButton } from "@/components/edit-button"
 
 const switchComponentsUrlReference = [
   "https://developer.apple.com/design/human-interface-guidelines/toggles",
@@ -57,7 +58,10 @@ export default function SwitchPage() {
 
         {/* Introduction */}
         <div className="mb-10">
-          <h2 className="text-4xl font-bold mb-4 text-foreground">Switch</h2>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
+            <h2 className="text-4xl font-bold text-foreground">Switch</h2>
+            <EditButton filePath="app/playground/switch/page.tsx" />
+          </div>
           <p className="text-base md:text-lg text-muted-foreground mb-6">
             Switches are used to quickly toggle between two possible states. They provide immediate feedback and are 
             ideal for settings that take effect instantly. Unlike checkboxes, switches clearly indicate an &quot;on&quot; or &quot;off&quot; 

@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { ComponentReferences } from "@/components/component-references"  
+import { ComponentReferences } from "@/components/component-references"
+import { EditButton } from "@/components/edit-button"  
 
 const buttonComponentsUrlReference = [
   "https://developer.apple.com/design/human-interface-guidelines/buttons",
@@ -18,7 +19,10 @@ export default function ButtonsPage() {
 
         {/* Introduction */}
         <div className="mb-10">
-          <h2 className="text-4xl font-bold mb-4 text-foreground">Buttons</h2>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
+            <h2 className="text-4xl font-bold text-foreground">Buttons</h2>
+            <EditButton filePath="app/playground/buttons/page.tsx" />
+          </div>
           <p className="text-base md:text-lg text-muted-foreground mb-6">
             Buttons are interactive elements that enable users to trigger actions or events, such as submitting forms, 
             opening dialogs, canceling actions, or performing operations. They are the primary way users interact with interfaces.

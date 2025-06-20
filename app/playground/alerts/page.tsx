@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { AlertCircle, CheckCircle, Info, XCircle, Terminal, X, Shield, Lightbulb } from "lucide-react"
 import { ComponentReferences } from "@/components/component-references"
+import { EditButton } from "@/components/edit-button"
 
 const alertComponentsUrlReference = [
   "https://wise.design/components/alert",
@@ -20,7 +21,10 @@ export default function AlertsPage() {
 
         {/* Introduction */}
         <div className="mb-10">
-          <h2 className="text-4xl font-bold mb-4 text-foreground">Alerts</h2>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
+            <h2 className="text-4xl font-bold text-foreground">Alerts</h2>
+            <EditButton filePath="app/playground/alerts/page.tsx" />
+          </div>
           <p className="text-base md:text-lg text-muted-foreground mb-6">
             Alerts provide important messages to users about system status, user actions, or contextual information. 
             They are designed to be non-intrusive while ensuring critical information is communicated effectively.

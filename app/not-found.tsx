@@ -1,13 +1,10 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Home } from "lucide-react"
-import { Header } from "@/components/header"
 
 export default function NotFound() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex flex-col">
-      <Header />
-
       {/* 404 Content */}
       <div className="flex-1 flex items-center justify-center px-4">
         <div className="text-center max-w-md">
