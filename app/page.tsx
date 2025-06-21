@@ -2,11 +2,13 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import { Search, X } from "lucide-react"
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Search, X } from "lucide-react"
 import { Input } from "@/components/ui/input"
+
 import { ComponentSection, getStatusConfig } from "@/types/component"
 
 export default function HomePage() {
@@ -347,6 +349,3 @@ export default function HomePage() {
 }
 
 HomePage.displayName = "HomePage"
-
-HomePage.displayName = "HomePage"
-
