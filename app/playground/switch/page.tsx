@@ -8,6 +8,7 @@ import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
 import { ComponentReferences } from "@/components/component-references"
 import { EditButton } from "@/components/edit-button"
+import { useMobileWarning } from "@/hooks/use-mobile-warning"
 
 const switchComponentsUrlReference = [
   "https://developer.apple.com/design/human-interface-guidelines/toggles",
@@ -20,6 +21,7 @@ const switchComponentsUrlReference = [
 ]
 
 export default function SwitchPage() {
+  const { MobileWarning } = useMobileWarning()
   const [singleSwitch, setSingleSwitch] = useState(false)
   const [notificationSettings, setNotificationSettings] = useState({
     email: true,
@@ -54,6 +56,8 @@ export default function SwitchPage() {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Mobile Warning */}
+      {MobileWarning}
       <div className="container max-w-5xl mx-auto px-4 py-8">
 
         {/* Introduction */}

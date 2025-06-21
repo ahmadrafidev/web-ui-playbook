@@ -9,6 +9,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
 import { ComponentReferences } from "@/components/component-references"
 import { EditButton } from "@/components/edit-button"
+import { useMobileWarning } from "@/hooks/use-mobile-warning"
 
 const checkboxComponentsUrlReference = [
   "https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/",
@@ -22,6 +23,7 @@ const checkboxComponentsUrlReference = [
 ]
 
 export default function CheckboxPage() {
+  const { MobileWarning } = useMobileWarning()
   const [singleCheck, setSingleCheck] = useState(false)
   const [multipleChecks, setMultipleChecks] = useState({
     option1: false,
@@ -64,6 +66,8 @@ export default function CheckboxPage() {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Mobile Warning */}
+      {MobileWarning}
       <div className="container max-w-5xl mx-auto px-4 py-8">
         {/* Introduction */}
         <div className="mb-10">

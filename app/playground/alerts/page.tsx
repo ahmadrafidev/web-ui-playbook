@@ -1,3 +1,5 @@
+"use client"
+
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -6,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { AlertCircle, CheckCircle, Info, XCircle, Terminal, X, Shield, Lightbulb } from "lucide-react"
 import { ComponentReferences } from "@/components/component-references"
 import { EditButton } from "@/components/edit-button"
+import { useMobileWarning } from "@/hooks/use-mobile-warning"
 
 const alertComponentsUrlReference = [
   "https://wise.design/components/alert",
@@ -15,8 +18,12 @@ const alertComponentsUrlReference = [
 ]
 
 export default function AlertsPage() {
+  const { MobileWarning } = useMobileWarning()
+
   return (
     <div className="min-h-screen bg-background">
+      {/* Mobile Warning */}
+      {MobileWarning}
       <div className="container max-w-5xl mx-auto px-4 py-8">
 
         {/* Introduction */}

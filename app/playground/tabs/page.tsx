@@ -7,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Button } from "@/components/ui/button"
 import { ComponentReferences } from "@/components/component-references"
 import { EditButton } from "@/components/edit-button"
+import { useMobileWarning } from "@/hooks/use-mobile-warning"
 import { Home, Settings, User, Bell, FileText, X, Plus } from "lucide-react"
 
 const tabsComponentsUrlReference = [
@@ -19,6 +20,7 @@ const tabsComponentsUrlReference = [
 ]
 
 export default function TabsPage() {
+  const { MobileWarning } = useMobileWarning()
   const [activeTab, setActiveTab] = useState("purpose")
   const [verticalTab, setVerticalTab] = useState("profile")
   const [dynamicTabs, setDynamicTabs] = useState([
@@ -44,6 +46,8 @@ export default function TabsPage() {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Mobile Warning */}
+      {MobileWarning}
 
       <div className="container max-w-5xl mx-auto px-4 py-8">
 

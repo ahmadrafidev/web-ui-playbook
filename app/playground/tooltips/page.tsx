@@ -1,10 +1,13 @@
+"use client"
+
 import { HelpCircle, Info, MousePointer, Keyboard, Eye, Settings, Heart, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ComponentReferences } from "@/components/component-references"
-import { EditButton } from "@/components/edit-button"  
+import { EditButton } from "@/components/edit-button"
+import { useMobileWarning } from "@/hooks/use-mobile-warning"  
 
 const tooltipComponentsUrlReference = [
   "https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/",
@@ -17,8 +20,12 @@ const tooltipComponentsUrlReference = [
 ]
 
 export default function TooltipsPage() {
+  const { MobileWarning } = useMobileWarning()
+
   return (
     <div className="min-h-screen bg-background">
+      {/* Mobile Warning */}
+      {MobileWarning}
       <div className="container max-w-5xl mx-auto px-4 py-8">
 
         {/* Introduction */}
