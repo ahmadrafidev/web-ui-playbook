@@ -134,22 +134,22 @@ export default function HomePage() {
       preview: (
         <div className="space-y-2 w-full">
           <div className="flex items-center gap-3 p-2 rounded-md hover:bg-accent/50 transition-colors cursor-pointer">
-            <div className="relative w-4 h-4 border-2 border-primary bg-primary rounded-sm flex items-center justify-center shadow-sm">
+            <div className="relative w-4 h-4 border-2 border-primary bg-primary rounded-sm flex items-center justify-center shadow-sm dark:border-blue-500 dark:bg-blue-500">
               <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
               </svg>
             </div>
-            <span className="text-xs font-medium">Enable notifications</span>
+            <span className="text-xs font-medium text-foreground">Enable notifications</span>
           </div>
           <div className="flex items-center gap-3 p-2 rounded-md hover:bg-accent/50 transition-colors cursor-pointer">
-            <div className="w-4 h-4 border-2 border-muted-foreground/30 rounded-sm shadow-sm hover:border-muted-foreground/50 transition-colors"></div>
+            <div className="w-4 h-4 border-2 border-border dark:border-gray-500 bg-background dark:bg-gray-800 rounded-sm shadow-sm hover:border-border/80 dark:hover:border-gray-400 transition-colors"></div>
             <span className="text-xs text-muted-foreground">Marketing emails</span>
           </div>
           <div className="flex items-center gap-3 p-2 rounded-md hover:bg-accent/50 transition-colors cursor-pointer">
-            <div className="relative w-4 h-4 border-2 border-primary bg-primary rounded-sm flex items-center justify-center shadow-sm">
+            <div className="relative w-4 h-4 border-2 border-orange-500 bg-orange-500 rounded-sm flex items-center justify-center shadow-sm dark:border-orange-400 dark:bg-orange-400">
               <div className="w-2 h-0.5 bg-white rounded-full"></div>
             </div>
-            <span className="text-xs font-medium">Select all items</span>
+            <span className="text-xs font-medium text-foreground">Select all items</span>
           </div>
         </div>
       ),
@@ -163,33 +163,33 @@ export default function HomePage() {
         <div className="space-y-2 w-full">
           <div className="flex items-center justify-between gap-4 p-2 rounded-md hover:bg-accent/50 transition-colors cursor-pointer">
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-green-500"></div>
-              <span className="text-xs font-medium">Push notifications</span>
+              <div className="w-2 h-2 rounded-full bg-green-500 dark:bg-green-400"></div>
+              <span className="text-xs font-medium text-foreground">Push notifications</span>
             </div>
             <div className="relative">
-              <div className="w-9 h-5 bg-primary rounded-full flex items-center shadow-inner">
+              <div className="w-9 h-5 bg-green-500 dark:bg-green-400 rounded-full flex items-center shadow-inner">
                 <div className="w-4 h-4 bg-white rounded-full shadow-md translate-x-[18px] transition-all duration-200 ease-in-out"></div>
               </div>
             </div>
           </div>
           <div className="flex items-center justify-between gap-4 p-2 rounded-md hover:bg-accent/50 transition-colors cursor-pointer">
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-muted-foreground/40"></div>
+              <div className="w-2 h-2 rounded-full bg-gray-400 dark:bg-gray-500"></div>
               <span className="text-xs text-muted-foreground">Email alerts</span>
             </div>
             <div className="relative">
-              <div className="w-9 h-5 bg-muted-foreground/20 rounded-full flex items-center shadow-inner">
-                <div className="w-4 h-4 bg-white rounded-full shadow-md translate-x-0.5 transition-all duration-200 ease-in-out"></div>
+              <div className="w-9 h-5 bg-gray-300 dark:bg-gray-600 rounded-full flex items-center shadow-inner">
+                <div className="w-4 h-4 bg-white dark:bg-gray-100 rounded-full shadow-md translate-x-0.5 transition-all duration-200 ease-in-out"></div>
               </div>
             </div>
           </div>
           <div className="flex items-center justify-between gap-4 p-2 rounded-md hover:bg-accent/50 transition-colors cursor-pointer">
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-blue-500"></div>
-              <span className="text-xs font-medium">Auto-sync data</span>
+              <div className="w-2 h-2 rounded-full bg-blue-500 dark:bg-blue-400"></div>
+              <span className="text-xs font-medium text-foreground">Auto-sync data</span>
             </div>
             <div className="relative">
-              <div className="w-9 h-5 bg-primary rounded-full flex items-center shadow-inner">
+              <div className="w-9 h-5 bg-blue-500 dark:bg-blue-400 rounded-full flex items-center shadow-inner">
                 <div className="w-4 h-4 bg-white rounded-full shadow-md translate-x-[18px] transition-all duration-200 ease-in-out"></div>
               </div>
             </div>
