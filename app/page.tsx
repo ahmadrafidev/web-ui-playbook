@@ -19,11 +19,34 @@ export default function HomePage() {
       description: "Interactive elements that enable users to trigger actions and navigate interfaces",
       status: "In Progress",
       preview: (
-        <div className="space-y-2">
-          <div className="flex gap-1 flex-wrap">
-            <Button size="sm">Primary</Button>
-            <Button variant="secondary" size="sm">Secondary</Button>
-            <Button variant="outline" size="sm">Outline</Button>
+        <div className="space-y-2 w-full">
+          <div className="flex items-center justify-between p-2 rounded-md hover:bg-accent/50 transition-colors">
+            <span className="text-xs font-medium">Primary Actions</span>
+            <div className="flex gap-2">
+              <Button size="sm" className="shadow-sm hover:shadow-md transition-all duration-200 text-xs px-3 py-1">
+                Save
+              </Button>
+              <Button variant="outline" size="sm" className="hover:bg-accent/50 transition-all duration-200 text-xs px-3 py-1">
+                Cancel
+              </Button>
+            </div>
+          </div>
+          <div className="flex items-center justify-between p-2 rounded-md hover:bg-accent/50 transition-colors">
+            <span className="text-xs font-medium">Secondary Actions</span>
+            <div className="flex gap-2">
+              <Button size="sm" variant="secondary" className="text-xs px-3 py-1 shadow-sm">
+                Edit
+              </Button>
+              <Button variant="ghost" size="sm" className="hover:bg-accent/80 transition-all duration-200 text-xs px-3 py-1">
+                View
+              </Button>
+            </div>
+          </div>
+          <div className="flex items-center justify-between p-2 rounded-md hover:bg-accent/50 transition-colors">
+            <span className="text-xs font-medium">Destructive Action</span>
+            <Button size="sm" variant="destructive" className="text-xs px-3 py-1 shadow-sm">
+              Delete Item
+            </Button>
           </div>
         </div>
       ),
@@ -34,14 +57,33 @@ export default function HomePage() {
       description: "Contextual feedback messages with proper semantics",
       status: "In Progress",
       preview: (
-        <div className="space-y-2">
-          <div className="flex items-center gap-2 text-xs bg-green-500/10 text-green-600 dark:text-green-400 px-2 py-1.5 rounded border border-green-500/20">
-            <div className="w-2 h-2 rounded-full bg-green-500"></div>
-            <span>Success Alert</span>
+        <div className="space-y-2 w-full">
+          <div className="flex items-start gap-3 text-xs bg-green-500/10 text-green-700 dark:text-green-400 px-3 py-2.5 rounded-md border border-green-500/20 shadow-sm">
+            <svg className="w-4 h-4 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+            </svg>
+            <div className="flex-1">
+              <div className="font-medium">Successfully saved!</div>
+              <div className="text-green-600/80 dark:text-green-400/80 mt-0.5">Your changes have been saved.</div>
+            </div>
           </div>
-          <div className="flex items-center gap-2 text-xs bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 px-2 py-1.5 rounded border border-yellow-500/20">
-            <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
-            <span>Warning Alert</span>
+          <div className="flex items-start gap-3 text-xs bg-amber-500/10 text-amber-700 dark:text-amber-400 px-3 py-2.5 rounded-md border border-amber-500/20 shadow-sm">
+            <svg className="w-4 h-4 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+            </svg>
+            <div className="flex-1">
+              <div className="font-medium">Action required</div>
+              <div className="text-amber-600/80 dark:text-amber-400/80 mt-0.5">Please review your settings.</div>
+            </div>
+          </div>
+          <div className="flex items-start gap-3 text-xs bg-red-500/10 text-red-700 dark:text-red-400 px-3 py-2.5 rounded-md border border-red-500/20 shadow-sm">
+            <svg className="w-4 h-4 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+            </svg>
+            <div className="flex-1">
+              <div className="font-medium">Error occurred</div>
+              <div className="text-red-600/80 dark:text-red-400/80 mt-0.5">Failed to process request.</div>
+            </div>
           </div>
         </div>
       ),
@@ -52,13 +94,34 @@ export default function HomePage() {
       description: "Contextual information that appears on hover or focus",
       status: "In Progress",  
       preview: (
-        <div className="relative flex flex-col items-center justify-center h-16 gap-2">
-          <Button size="sm" variant="outline" className="relative">
-            Help
-          </Button>
-          <div className="px-3 py-1.5 bg-gray-900 text-white text-xs rounded shadow-lg whitespace-nowrap relative">
-            Get help and support
-            <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-b-gray-900"></div>
+        <div className="relative flex justify-center items-center w-full min-h-[120px] gap-4">
+          <div className="relative group">
+            <Button size="sm" variant="outline" className="relative transition-all duration-200 hover:bg-accent/50">
+              <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Help
+            </Button>
+            <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-100 transition-all duration-200">
+              <div className="px-3 py-2 bg-gray-900 dark:bg-gray-700 text-white text-xs rounded-md shadow-lg whitespace-nowrap">
+                Get help and support
+                <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-gray-900 dark:border-t-gray-700"></div>
+              </div>
+            </div>
+          </div>
+          <div className="relative group">
+            <Button size="sm" variant="ghost" className="relative transition-all duration-200">
+              <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Info
+            </Button>
+            <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 opacity-100 transition-all duration-200">
+              <div className="px-3 py-2 bg-primary text-primary-foreground text-xs rounded-md shadow-lg whitespace-nowrap">
+                Additional information
+                <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-b-primary"></div>
+              </div>
+            </div>
           </div>
         </div>
       ),
@@ -69,22 +132,24 @@ export default function HomePage() {
       description: "Multi-selection controls for forms and interactive lists",
       status: "In Progress",
       preview: (
-        <div className="space-y-3">
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 border-2 border-primary bg-primary rounded-sm flex items-center justify-center">
-              <div className="w-2 h-2 bg-white rounded-[1px]"></div>
+        <div className="space-y-2 w-full">
+          <div className="flex items-center gap-3 p-2 rounded-md hover:bg-accent/50 transition-colors cursor-pointer">
+            <div className="relative w-4 h-4 border-2 border-primary bg-primary rounded-sm flex items-center justify-center shadow-sm">
+              <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
             </div>
-            <span className="text-xs">Selected option</span>
+            <span className="text-xs font-medium">Enable notifications</span>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 border-2 border-gray-300 dark:border-gray-600 rounded-sm"></div>
-            <span className="text-xs text-muted-foreground">Unselected option</span>
+          <div className="flex items-center gap-3 p-2 rounded-md hover:bg-accent/50 transition-colors cursor-pointer">
+            <div className="w-4 h-4 border-2 border-muted-foreground/30 rounded-sm shadow-sm hover:border-muted-foreground/50 transition-colors"></div>
+            <span className="text-xs text-muted-foreground">Marketing emails</span>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 border-2 border-primary bg-primary rounded-sm flex items-center justify-center">
-              <div className="w-2 h-1 bg-white rounded-[1px]"></div>
+          <div className="flex items-center gap-3 p-2 rounded-md hover:bg-accent/50 transition-colors cursor-pointer">
+            <div className="relative w-4 h-4 border-2 border-primary bg-primary rounded-sm flex items-center justify-center shadow-sm">
+              <div className="w-2 h-0.5 bg-white rounded-full"></div>
             </div>
-            <span className="text-xs">Indeterminate</span>
+            <span className="text-xs font-medium">Select all items</span>
           </div>
         </div>
       ),
@@ -95,28 +160,37 @@ export default function HomePage() {
       description: "Binary toggle controls for instant state changes and settings",
       status: "In Progress",
       preview: (
-        <div className="space-y-3">
-          <div className="flex items-center justify-between gap-4">
-            <span className="text-xs">Notifications</span>
+        <div className="space-y-2 w-full">
+          <div className="flex items-center justify-between gap-4 p-2 rounded-md hover:bg-accent/50 transition-colors cursor-pointer">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-green-500"></div>
+              <span className="text-xs font-medium">Push notifications</span>
+            </div>
             <div className="relative">
-              <div className="w-8 h-[18px] bg-primary rounded-full flex items-center">
-                <div className="w-4 h-4 bg-white rounded-full shadow-sm translate-x-[18px] transition-transform"></div>
+              <div className="w-9 h-5 bg-primary rounded-full flex items-center shadow-inner">
+                <div className="w-4 h-4 bg-white rounded-full shadow-md translate-x-[18px] transition-all duration-200 ease-in-out"></div>
               </div>
             </div>
           </div>
-          <div className="flex items-center justify-between gap-4">
-            <span className="text-xs text-muted-foreground">Dark Mode</span>
+          <div className="flex items-center justify-between gap-4 p-2 rounded-md hover:bg-accent/50 transition-colors cursor-pointer">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-muted-foreground/40"></div>
+              <span className="text-xs text-muted-foreground">Email alerts</span>
+            </div>
             <div className="relative">
-              <div className="w-8 h-[18px] bg-gray-300 dark:bg-gray-600 rounded-full flex items-center">
-                <div className="w-4 h-4 bg-white rounded-full shadow-sm translate-x-0 transition-transform"></div>
+              <div className="w-9 h-5 bg-muted-foreground/20 rounded-full flex items-center shadow-inner">
+                <div className="w-4 h-4 bg-white rounded-full shadow-md translate-x-0.5 transition-all duration-200 ease-in-out"></div>
               </div>
             </div>
           </div>
-          <div className="flex items-center justify-between gap-4">
-            <span className="text-xs">Auto-sync</span>
+          <div className="flex items-center justify-between gap-4 p-2 rounded-md hover:bg-accent/50 transition-colors cursor-pointer">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+              <span className="text-xs font-medium">Auto-sync data</span>
+            </div>
             <div className="relative">
-              <div className="w-8 h-[18px] bg-primary rounded-full flex items-center">
-                <div className="w-4 h-4 bg-white rounded-full shadow-sm translate-x-[18px] transition-transform"></div>
+              <div className="w-9 h-5 bg-primary rounded-full flex items-center shadow-inner">
+                <div className="w-4 h-4 bg-white rounded-full shadow-md translate-x-[18px] transition-all duration-200 ease-in-out"></div>
               </div>
             </div>
           </div>
@@ -129,20 +203,27 @@ export default function HomePage() {
       description: "Organize related content into sections with easy navigation",
       status: "In Progress",
       preview: (
-        <div className="space-y-2 w-full">
-          <div className="flex border-b border-gray-300 dark:border-gray-600">
-            <div className="px-3 py-1.5 border-b-2 border-primary bg-background text-primary text-xs font-medium">
-              Active
+        <div className="space-y-3 w-full">
+          <div className="flex border-b border-border/50">
+            <div className="relative px-4 py-2 border-b-2 border-primary bg-background text-primary text-xs font-semibold transition-all duration-200">
+              Overview
+              <div className="absolute inset-0 bg-primary/5"></div>
             </div>
-            <div className="px-3 py-1.5 text-xs text-muted-foreground">
-              Inactive
+            <div className="px-4 py-2 text-xs text-muted-foreground hover:text-foreground hover:bg-accent/30 rounded-t-md transition-all duration-200 cursor-pointer">
+              Analytics
             </div>
-            <div className="px-3 py-1.5 text-xs text-muted-foreground">
-              Another
+            <div className="px-4 py-2 text-xs text-muted-foreground hover:text-foreground hover:bg-accent/30 rounded-t-md transition-all duration-200 cursor-pointer">
+              Settings
             </div>
           </div>
-          <div className="p-3 bg-background rounded text-xs text-muted-foreground">
-            Tab content area with organized information
+          <div className="p-4 bg-accent/20 rounded-md border border-border/30">
+            <div className="flex items-center gap-2 mb-2">
+              <div className="w-2 h-2 rounded-full bg-primary"></div>
+              <span className="text-xs font-medium">Dashboard Overview</span>
+            </div>
+            <div className="text-xs text-muted-foreground leading-relaxed">
+              Key metrics and insights for your project
+            </div>
           </div>
         </div>
       ),
@@ -235,8 +316,8 @@ export default function HomePage() {
                     style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'both' }}
                   >
                     <CardHeader className="pb-4">
-                      <div className="flex items-center justify-between mb-3">
-                        <CardTitle className="text-xl">
+                      <div className="flex items-center justify-between mb-2">
+                        <CardTitle className="text-lg md:text-xl font-semibold">
                           {section.name}
                         </CardTitle>
                         <Badge 
@@ -246,12 +327,12 @@ export default function HomePage() {
                           {section.status}
                         </Badge>
                       </div>
-                      <CardDescription className="text-sm">{section.description}</CardDescription>
+                      <CardDescription className="text-xs md:text-sm text-gray-500 dark:text-gray-400">{section.description}</CardDescription>
                     </CardHeader>
                     
                     <CardContent>
                       {/* Component Preview */}
-                      <div className="bg-muted rounded-lg p-4 min-h-[80px] flex items-center justify-center">
+                      <div className="rounded-lg p-4 min-h-[80px] flex items-center justify-center bg-foreground/5 dark:bg-foreground/5">
                         {section.preview}
                       </div>
                     </CardContent>
@@ -267,3 +348,6 @@ export default function HomePage() {
 }
 
 HomePage.displayName = "HomePage"
+
+HomePage.displayName = "HomePage"
+
