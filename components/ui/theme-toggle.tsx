@@ -1,78 +1,123 @@
 "use client"
 
-import * as React from "react"
-import { Moon, Sun } from "lucide-react"
-import { useTheme } from "next-themes"
+import { memo, useEffect, useState, useRef } from 'react';
+import { Moon, Sun, Monitor } from 'lucide-react';
+import { useTheme } from 'next-themes';
 
-import { Button } from "@/components/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+export const ThemeToggle = memo(function ThemeToggle() {
+  const [mounted, setMounted] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const { theme, setTheme, resolvedTheme } = useTheme();
+  const containerRef = useRef<HTMLDivElement>(null);
 
-/**
- * Theme toggle component with dropdown menu
- * Allows switching between light, dark, and system themes
- */
-export function ThemeToggle() {
-  const { setTheme } = useTheme()
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon" className="relative">
-          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          <span className="sr-only">Toggle theme</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
-          Light
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
-          Dark
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
-          System
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  )
-}
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+        setIsExpanded(false);
+      }
+    };
 
-/**
- * Simple theme toggle button that switches between light and dark
- * Does not include system option
- */
-export function SimpleThemeToggle() {
-  const { theme, setTheme } = useTheme()
-  const [mounted, setMounted] = React.useState(false)
+    if (isExpanded) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
 
-  // Avoid hydration mismatch
-  React.useEffect(() => {
-    setMounted(true)
-  }, [])
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isExpanded]);
 
   if (!mounted) {
     return (
-      <Button variant="outline" size="icon" disabled>
-        <span className="sr-only">Loading theme toggle</span>
-      </Button>
-    )
+      <div className="flex items-center bg-white dark:bg-gray-800 rounded-lg p-1 border border-gray-300 dark:border-gray-600 shadow-sm">
+        <div className="flex items-center justify-center p-2 rounded-md w-8 h-8">
+          <Monitor size={16} className="text-gray-400" />
+        </div>
+      </div>
+    );
   }
 
-  const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark")
-  }
+  const themes = [
+    { value: 'light' as const, label: 'Light', icon: Sun },
+    { value: 'dark' as const, label: 'Dark', icon: Moon },
+    { value: 'system' as const, label: 'System', icon: Monitor },
+  ];
+
+  const currentTheme = themes.find(t => t.value === theme) || themes[2];
+  const CurrentIcon = currentTheme.icon;
+
+  const handleThemeSelect = (value: string) => {
+    setTheme(value);
+    setIsExpanded(false);
+  };
+
+  const handleToggle = () => {
+    setIsExpanded(!isExpanded);
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === 'Escape') {
+      setIsExpanded(false);
+    }
+  };
 
   return (
-    <Button variant="outline" size="icon" onClick={toggleTheme}>
-      <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-      <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-      <span className="sr-only">Toggle theme</span>
-    </Button>
-  )
-} 
+    <div 
+      ref={containerRef}
+      className={`flex items-center bg-white dark:bg-gray-800 rounded-lg p-1 border border-gray-300 dark:border-gray-600 shadow-sm transition-all duration-200 ${
+        isExpanded ? 'w-auto' : 'w-auto'
+      }`}
+    >
+      {isExpanded ? (
+        themes.map(({ value, label, icon: Icon }) => (
+          <button
+            key={value}
+            onClick={() => handleThemeSelect(value)}
+            onKeyDown={handleKeyDown}
+            className={`
+              flex items-center justify-center p-2 rounded-md w-8 h-8 transition-colors duration-200
+              focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1
+              ${theme === value 
+                ? 'bg-blue-500 text-white shadow-sm' 
+                : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+              }
+            `}
+            aria-label={`Switch to ${label.toLowerCase()} theme`}
+            aria-pressed={theme === value}
+            title={`${label} theme`}
+            type="button"
+          >
+            <Icon 
+              size={16} 
+              className="transition-colors"
+              aria-hidden="true"
+            />
+          </button>
+        ))
+      ) : (
+        <button
+          onClick={handleToggle}
+          onKeyDown={handleKeyDown}
+          className="flex items-center justify-center p-2 rounded-md w-8 h-8 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1"
+          aria-label={`Current theme: ${currentTheme.label}. Click to change theme`}
+          aria-expanded={isExpanded}
+          type="button"
+        >
+          <CurrentIcon 
+            size={16} 
+            className="transition-colors"
+            aria-hidden="true"
+          />
+        </button>
+      )}
+      
+      <div className="sr-only" aria-live="polite" aria-atomic="true">
+        Current theme: {theme}
+        {theme === 'system' && `, resolved to ${resolvedTheme}`}
+      </div>
+    </div>
+  );
+}); 
