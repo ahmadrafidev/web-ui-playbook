@@ -387,7 +387,7 @@ export default function HomePage() {
     <div className="min-h-screen max-w-5xl mx-auto bg-gradient-to-br from-background to-secondary/10">
 
       {/* Hero Section */}
-      <section className="my-6 px-4">
+      <section className="mt-2 md:mt-4 mb-8 md:mb-10 px-4">
         <div className="container mx-auto text-center">
           <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-foreground mb-2">
             The documented web interfaces patterns
@@ -397,9 +397,8 @@ export default function HomePage() {
           </p>
 
           {/* Search bar */}
-          <div className="max-w-sm sm:max-w-md md:max-w-xl mx-auto mb-8 sm:mb-10 md:mb-12 px-4 sm:px-0">
+          <div className="max-w-sm sm:max-w-md md:max-w-xl mx-auto mb-8 sm:mb-10 md:mb-12 px-4 sm:px-0 relative">
             <div className="relative group">
-
               <div className="absolute inset-0 bg-background/80 backdrop-blur-md rounded-lg sm:rounded-xl shadow-lg border border-border/80 transition-all duration-200 group-focus-within:shadow-2xl group-focus-within:bg-background/90 group-focus-within:border-primary/50 group-focus-within:shadow-primary/20 dark:bg-card/50 dark:border-border/30 dark:group-focus-within:bg-card/70 dark:group-focus-within:border-primary/60 dark:group-focus-within:shadow-primary/30">
               </div>
               
@@ -415,28 +414,28 @@ export default function HomePage() {
                 {searchQuery && (
                   <button
                     onClick={handleClearSearch}
-                    className="absolute right-3 sm:right-4 md:right-6 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground transition-all duration-200 p-1.5 sm:p-2 rounded-full hover:bg-accent hover:scale-110"
+                    className="absolute right-3 md:right-4 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground transition-all duration-200 p-1.5 sm:p-2 rounded-full hover:bg-accent hover:scale-105"
                   >
                     <X className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" />
                   </button>
                 )}
               </div>
-              
-              {/* Search results indicator */}
-              {searchQuery && (
-                <div className="absolute -bottom-10 sm:-bottom-12 left-1/2 transform -translate-x-1/2">
-                  <div className="bg-primary/10 text-primary px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-sm sm:text-base font-medium animate-in fade-in slide-in-from-top-2 duration-300 shadow-lg border border-primary/20 dark:bg-primary/20 dark:border-primary/30 whitespace-nowrap">
-                    {filteredComponents.length} result{filteredComponents.length !== 1 ? 's' : ''} found
-                  </div>
-                </div>
-              )}
             </div>
+            
+            {/* Search results indicator */}
+            {searchQuery && (
+              <div className="flex justify-center mt-4 sm:mt-6">
+                <div className="bg-primary/10 text-primary px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-sm sm:text-base font-medium animate-in fade-in slide-in-from-top-2 duration-300 shadow-lg border border-primary/20 dark:bg-primary/20 dark:border-primary/30 whitespace-nowrap">
+                  {filteredComponents.length} result{filteredComponents.length !== 1 ? 's' : ''} found
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>
 
       {/* Component Grid */}
-      <section className="px-4">
+      <section className="px-4 pb-8">
         <div className="container mx-auto">
           {filteredComponents.length === 0 && searchQuery ? (
             // No results state
