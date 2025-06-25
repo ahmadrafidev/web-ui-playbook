@@ -8,7 +8,8 @@ import {
   TextInputPreview,
   TabsPreview,
   ModalPreview,
-  SliderPreview
+  SliderPreview,
+  MenuPreview
 } from "@/components/previews"
 
 export const componentSections: ComponentSection[] = [
@@ -74,5 +75,12 @@ export const componentSections: ComponentSection[] = [
     description: "Interactive range controls for selecting values within defined boundaries",
     status: "In Progress",
     preview: <SliderPreview />,
+  },
+  {
+    name: "Menu",
+    href: "/playground/menu",
+    description: "Organized collections of commands, options, and navigation links accessed on demand",
+    status: "In Progress",
+    preview: <MenuPreview />,
   },
 ] 
