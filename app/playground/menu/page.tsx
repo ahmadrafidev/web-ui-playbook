@@ -14,7 +14,6 @@ import {
   Copy,
   Scissors,
   ClipboardPaste,
-  ChevronRight,
   File,
   Flag,
   Folder,
@@ -128,7 +127,7 @@ export default function MenuPage() {
               <CardHeader>
                 <CardTitle>Action Menus (Dropdown)</CardTitle>
                 <CardDescription>
-                  Context-sensitive menus following GitHub Primer's ActionMenu pattern. Provide quick access to actions without overwhelming the primary interface.
+                  Context-sensitive menus following GitHub Primer&apos;s ActionMenu pattern. Provide quick access to actions without overwhelming the primary interface.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
@@ -509,7 +508,7 @@ export default function MenuPage() {
                     <div className="p-4 border rounded-lg">
                       <h5 className="font-medium mb-2">Overflow Menu (Carbon Pattern)</h5>
                       <p className="text-sm text-muted-foreground mb-3">
-                        IBM Carbon's three-dot overflow pattern for constrained spaces.
+                        IBM Carbon&apos;s three-dot overflow pattern for constrained spaces.
                       </p>
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
@@ -811,7 +810,7 @@ export default function MenuPage() {
                             <Globe className="mr-2 h-4 w-4" />
                             Disabled Action
                           </DropdownMenuItem>
-                          <DropdownMenuItem inactiveText="Service temporarily unavailable">
+                          <DropdownMenuItem disabled>
                             <Shield className="mr-2 h-4 w-4" />
                             Inactive due to outage
                           </DropdownMenuItem>
@@ -857,7 +856,7 @@ export default function MenuPage() {
                     <div className="p-4 border rounded-lg bg-destructive/5">
                       <h5 className="font-medium mb-2 text-destructive">Critical Actions</h5>
                       <p className="text-sm text-muted-foreground mb-3">
-                        Following Carbon's overflow menu pattern for destructive actions with clear visual separation.
+                        Following Carbon&apos;s overflow menu pattern for destructive actions with clear visual separation.
                       </p>
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
@@ -935,11 +934,11 @@ export default function MenuPage() {
                     <h4 className="font-semibold mb-3 text-lg">ARIA Labels & Roles</h4>
                     <div className="space-y-3">
                       <div className="p-3 border rounded-lg">
-                        <strong className="text-sm">role="menu":</strong>
+                        <strong className="text-sm">role=&quot;menu&quot;:</strong>
                         <p className="text-sm text-muted-foreground">Identifies menu container</p>
                       </div>
                       <div className="p-3 border rounded-lg">
-                        <strong className="text-sm">role="menuitem":</strong>
+                        <strong className="text-sm">role=&quot;menuitem&quot;:</strong>
                         <p className="text-sm text-muted-foreground">Individual menu items</p>
                       </div>
                       <div className="p-3 border rounded-lg">
@@ -976,11 +975,11 @@ export default function MenuPage() {
                     <div className="grid gap-3">
                       <div>
                         <strong className="text-sm">Role Definitions (W3C Standard):</strong>
-                        <p className="text-sm text-muted-foreground">role="menu", role="menubar", role="menuitem" for application menus vs. nav elements for navigation</p>
+                        <p className="text-sm text-muted-foreground">role=&quot;menu&quot;, role=&quot;menubar&quot;, role=&quot;menuitem&quot; for application menus vs. nav elements for navigation</p>
                       </div>
                       <div>
                         <strong className="text-sm">State Management:</strong>
-                        <p className="text-sm text-muted-foreground">aria-expanded, aria-haspopup="menu", aria-current for navigation menus</p>
+                        <p className="text-sm text-muted-foreground">aria-expanded, aria-haspopup=&quot;menu&quot;, aria-current for navigation menus</p>
                       </div>
                       <div>
                         <strong className="text-sm">Focus Management Pattern:</strong>
