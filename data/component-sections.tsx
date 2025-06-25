@@ -1,0 +1,78 @@
+import { ComponentSection } from "@/types/component"
+import { 
+  ButtonPreview,
+  AlertsPreview,
+  TooltipsPreview,
+  CheckboxPreview,
+  SwitchPreview,
+  TextInputPreview,
+  TabsPreview,
+  ModalPreview,
+  SliderPreview
+} from "@/components/previews"
+
+export const componentSections: ComponentSection[] = [
+  {
+    name: "Buttons",
+    href: "/playground/buttons",
+    description: "Interactive elements that enable users to trigger actions and navigate interfaces",
+    status: "In Progress",
+    preview: <ButtonPreview />,
+  },
+  {
+    name: "Alerts",
+    href: "/playground/alerts",
+    description: "Contextual feedback messages with proper semantics",
+    status: "In Progress",
+    preview: <AlertsPreview />,
+  },
+  {
+    name: "Tooltips",
+    href: "/playground/tooltips",
+    description: "Contextual information that appears on hover or focus",
+    status: "In Progress",
+    preview: <TooltipsPreview />,
+  },
+  {
+    name: "Checkbox",
+    href: "/playground/checkbox",
+    description: "Multi-selection controls for forms and interactive lists",
+    status: "In Progress",
+    preview: <CheckboxPreview />,
+  },
+  {
+    name: "Switch",
+    href: "/playground/switch",
+    description: "Binary toggle controls for instant state changes and settings",
+    status: "In Progress",
+    preview: <SwitchPreview />,
+  },
+  {
+    name: "Text Input",
+    href: "/playground/text-input",
+    description: "Single-line text entry fields with validation, icons, and accessibility features",
+    status: "In Progress",
+    preview: <TextInputPreview />,
+  },
+  {
+    name: "Tabs",
+    href: "/playground/tabs",
+    description: "Organize related content into sections with easy navigation",
+    status: "In Progress",
+    preview: <TabsPreview />,
+  },
+  {
+    name: "Modal",
+    href: "/playground/modal",
+    description: "Focused overlays for critical actions, forms, and confirmations",
+    status: "In Progress",
+    preview: <ModalPreview />,
+  },
+  {
+    name: "Slider",
+    href: "/playground/slider",
+    description: "Interactive range controls for selecting values within defined boundaries",
+    status: "In Progress",
+    preview: <SliderPreview />,
+  },
+] 
