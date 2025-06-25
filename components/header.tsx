@@ -1,7 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Github } from "lucide-react"
-import { ThemeToggle } from "@/components/ui/theme-toggle"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 export function Header() {
   return (
