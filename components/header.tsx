@@ -1,6 +1,5 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Github } from "lucide-react"
 import { ThemeToggle } from "@/components/theme-toggle"
 
 export function Header() {
@@ -26,15 +25,7 @@ export function Header() {
             </div>
           </Link>
           <nav className="flex items-center space-x-1 md:space-x-2">
-            <ThemeToggle />
-            <Link 
-              href="https://github.com/ahmadrafidev/web-ui-playbook" 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors flex items-center space-x-1 p-1.5 sm:p-2 rounded-md hover:bg-muted"
-            >
-              <Github className="h-4 w-4 sm:h-5 sm:w-5" />
-            </Link>       
+            <ThemeToggle />      
           </nav>
         </div>
       </div>
