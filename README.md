@@ -42,7 +42,7 @@ Explore our components in action! Visit our [**Live Playground**](https://web-ui
 | 🚨 **Alerts** | Success, warning, error, and info alerts | 🚧 In Progress | [Play with Alerts](https://web-ui-playbook.vercel.app/playground/alerts) |
 | 💭 **Tooltips** | Hover information and help text | 🚧 In Progress | [Play with Tooltips](https://web-ui-playbook.vercel.app/playground/tooltips) |
 
-> **💡 Pro Tip**: Visit the main playground at [web-ui-playbook.vercel.app](https://web-ui-playbook.vercel.app/) to search and browse all components in one place!
+> **💡 Pro Tip**: Visit the main playground at [Web UI Playbook Website](https://www.webuiplaybook.com/) to search and browse all components in one place!
 
 ---
 
@@ -109,6 +109,6 @@ We welcome contributions! Here's how you can help:
 
 ⭐ **Star this repo if you find it helpful!** ⭐
 
-[🎮 Live Demo](https://web-ui-playbook.vercel.app/) • [🐛 Report Bug](https://github.com/your-username/web-ui-playbook/issues) • [💡 Request Feature](https://github.com/your-username/web-ui-playbook/issues)
+[🎮 Live Demo](https://www.webuiplaybook.com/) • [🐛 Report Bug](https://github.com/ahmadrafidev/web-ui-playbook/issues) • [💡 Request Feature](https://github.com/ahmadrafidev/web-ui-playbook/pulls)
 
 </div>
