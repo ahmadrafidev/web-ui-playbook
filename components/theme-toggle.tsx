@@ -60,9 +60,9 @@ export const ThemeToggle = memo(function ThemeToggle() {
 
   if (!isMounted) {
     return (
-      <div className="flex items-center bg-background/80 backdrop-blur-sm rounded-xl p-1.5 border border-border/60 shadow-lg shadow-black/5">
-        <div className="flex items-center justify-center p-2.5 rounded-lg w-9 h-9">
-          <Monitor size={18} className="text-muted-foreground/60" />
+      <div className="flex items-center bg-muted/50 rounded-lg p-1 border border-border">
+        <div className="flex items-center justify-center p-2 rounded-md w-8 h-8">
+          <Monitor size={16} className="text-muted-foreground" />
         </div>
       </div>
     );
@@ -74,8 +74,7 @@ export const ThemeToggle = memo(function ThemeToggle() {
     <div 
       ref={containerRef}
       className={`
-        relative flex items-center bg-background/80 backdrop-blur-sm rounded-xl p-1.5 
-        border border-border/60 shadow-lg shadow-black/5 
+        relative flex items-center bg-muted/50 rounded-lg p-1 border border-border
         transition-all duration-300 ease-out
         ${isExpanded ? 'gap-1' : ''}
       `}
@@ -92,12 +91,12 @@ export const ThemeToggle = memo(function ThemeToggle() {
                 onClick={() => handleThemeSelect(value)}
                 onKeyDown={handleKeyDown}
                 className={`
-                  group relative flex items-center justify-center p-2.5 rounded-lg w-9 h-9 
+                  group relative flex items-center justify-center p-2 rounded-md w-8 h-8 
                   transition-all duration-200 ease-out
-                  focus:outline-none focus:ring-2 focus:ring-ring/60 focus:ring-offset-2 focus:ring-offset-background
+                  focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1
                   ${isActive 
-                    ? 'bg-primary text-primary-foreground shadow-md shadow-primary/25 scale-105' 
-                    : 'text-muted-foreground hover:text-foreground hover:bg-muted/80 hover:scale-105 active:scale-95'
+                    ? 'bg-primary text-primary-foreground' 
+                    : 'text-muted-foreground hover:text-foreground hover:scale-105 active:scale-95'
                   }
                 `}
                 aria-label={`Switch to ${label.toLowerCase()} theme`}
@@ -106,14 +105,11 @@ export const ThemeToggle = memo(function ThemeToggle() {
                 type="button"
               >
                 <Icon 
-                  size={18} 
+                  size={16} 
                   className="transition-all duration-200 group-hover:scale-110"
                   strokeWidth={isActive ? 2.5 : 2}
                   aria-hidden="true"
                 />
-                {isActive && (
-                  <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-primary-foreground rounded-full animate-in fade-in-0 scale-in-0 duration-200" />
-                )}
               </button>
             );
           })}
@@ -123,10 +119,10 @@ export const ThemeToggle = memo(function ThemeToggle() {
           onClick={handleToggle}
           onKeyDown={handleKeyDown}
           className={`
-            group flex items-center justify-center p-2.5 rounded-lg w-9 h-9 
-            text-muted-foreground hover:text-foreground hover:bg-muted/80 hover:scale-105 
+            group flex items-center justify-center p-2 rounded-md w-8 h-8 
+            text-muted-foreground hover:text-foreground hover:scale-105 
             active:scale-95 transition-all duration-200 ease-out
-            focus:outline-none focus:ring-2 focus:ring-ring/60 focus:ring-offset-2 focus:ring-offset-background
+            focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1
           `}
           aria-label={`Current theme: ${currentTheme.label}. Click to change theme`}
           aria-expanded={isExpanded}
@@ -134,7 +130,7 @@ export const ThemeToggle = memo(function ThemeToggle() {
           type="button"
         >
           <CurrentIcon 
-            size={18} 
+            size={16} 
             className="transition-all duration-200 group-hover:scale-110"
             strokeWidth={2}
             aria-hidden="true"
