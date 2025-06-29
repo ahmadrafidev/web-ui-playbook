@@ -38,9 +38,16 @@ Explore our components in action! Visit our [**Live Playground**](https://web-ui
 
 | Component | Description | Status | Playground Link |
 |-----------|-------------|--------|-----------------|
-| 🔘 **Buttons** | Primary, secondary, and action buttons | 🚧 In Progress | [Play with Buttons](https://web-ui-playbook.vercel.app/playground/buttons) |
-| 🚨 **Alerts** | Success, warning, error, and info alerts | 🚧 In Progress | [Play with Alerts](https://web-ui-playbook.vercel.app/playground/alerts) |
-| 💭 **Tooltips** | Hover information and help text | 🚧 In Progress | [Play with Tooltips](https://web-ui-playbook.vercel.app/playground/tooltips) |
+| 🚨 **Alerts** | Success, warning, error, and info alerts | ✅ Complete | [Play with Alerts](https://web-ui-playbook.vercel.app/playground/alerts) |
+| 🔘 **Buttons** | Primary, secondary, and action buttons | ✅ Complete | [Play with Buttons](https://web-ui-playbook.vercel.app/playground/buttons) |
+| ☑️ **Checkbox** | Selection controls and checkboxes | ✅ Complete | [Play with Checkbox](https://web-ui-playbook.vercel.app/playground/checkbox) |
+| 🍔 **Menu** | Navigation menus and dropdowns | ✅ Complete | [Play with Menu](https://web-ui-playbook.vercel.app/playground/menu) |
+| 🪟 **Modal** | Dialog boxes and overlay windows | ✅ Complete | [Play with Modal](https://web-ui-playbook.vercel.app/playground/modal) |
+| 🎚️ **Slider** | Range inputs and value sliders | ✅ Complete | [Play with Slider](https://web-ui-playbook.vercel.app/playground/slider) |
+| 🔄 **Switch** | Toggle controls and switches | ✅ Complete | [Play with Switch](https://web-ui-playbook.vercel.app/playground/switch) |
+| 📑 **Tabs** | Tab navigation and content panels | ✅ Complete | [Play with Tabs](https://web-ui-playbook.vercel.app/playground/tabs) |
+| 📝 **Text Input** | Form inputs and text fields | ✅ Complete | [Play with Text Input](https://web-ui-playbook.vercel.app/playground/text-input) |
+| 💭 **Tooltips** | Hover information and help text | ✅ Complete | [Play with Tooltips](https://web-ui-playbook.vercel.app/playground/tooltips) |
 
 > **💡 Pro Tip**: Visit the main playground at [Web UI Playbook Website](https://www.webuiplaybook.com/) to search and browse all components in one place!
 
