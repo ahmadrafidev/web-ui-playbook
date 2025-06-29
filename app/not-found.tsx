@@ -17,7 +17,7 @@ export default function NotFound() {
         </div>
 
         <p className="text-sm md:text-base text-gray-500 dark:text-gray-400 leading-relaxed">
-          The page you're looking for doesn't exist or has been moved.
+          The page you are looking for does not exist or has been moved.
         </p>
 
         <Button 
