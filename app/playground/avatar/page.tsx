@@ -115,7 +115,16 @@ function Avatar({
       return <div className="flex items-center justify-center w-full h-full">{icon}</div>
     }
 
-    if (src && !imageError) {
+    const isValidUrl = (url: string) => {
+      try {
+        new URL(url)
+        return true
+      } catch {
+        return false
+      }
+    }
+
+    if (src && !imageError && isValidUrl(src)) {
       return (
         <Image
           src={src}
