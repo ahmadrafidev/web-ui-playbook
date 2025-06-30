@@ -4,6 +4,7 @@ import {
   AlertsPreview,
   TooltipsPreview,
   CheckboxPreview,
+  ComboboxPreview,
   SwitchPreview,
   TextInputPreview,
   TabsPreview,
@@ -42,6 +43,13 @@ export const componentSections: ComponentSection[] = [
     description: "Multi-selection controls for forms and interactive lists",
     status: "In Progress",
     preview: <CheckboxPreview />,
+  },
+  {
+    name: "Combobox",
+    href: "/playground/combobox",
+    description: "Searchable dropdown inputs that combine text fields with option lists for efficient data entry",
+    status: "In Progress",
+    preview: <ComboboxPreview />,
   },
   {
     name: "Switch",
