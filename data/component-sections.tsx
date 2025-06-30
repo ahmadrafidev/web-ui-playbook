@@ -9,7 +9,8 @@ import {
   TabsPreview,
   ModalPreview,
   SliderPreview,
-  MenuPreview
+  MenuPreview,
+  AvatarPreview
 } from "@/components/previews"
 
 export const componentSections: ComponentSection[] = [
@@ -82,5 +83,12 @@ export const componentSections: ComponentSection[] = [
     description: "Organized collections of commands, options, and navigation links accessed on demand",
     status: "In Progress",
     preview: <MenuPreview />,
+  },
+  {
+    name: "Avatar",
+    href: "/playground/avatar",
+    description: "Visual representations of users, entities, or objects with status indicators and grouping",
+    status: "In Progress",
+    preview: <AvatarPreview />,
   },
 ] 
