@@ -6,7 +6,7 @@ import { Loader2, Upload } from "lucide-react"
 
 export function ProgressIndicatorsPreview() {
   const [uploadProgress, setUploadProgress] = useState(0)
-  const [circularProgress, setCircularProgress] = useState(65)
+  const circularProgress = 65
 
   useEffect(() => {
     const interval = setInterval(() => {

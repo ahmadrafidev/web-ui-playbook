@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useRef, useEffect, useCallback, useMemo } from "react"
-import { ChevronDown, ChevronUp, Search, X, Check, AlertCircle, CheckCircle2, User, Mail, Globe, Tag, Loader2 } from "lucide-react"
+import { ChevronDown, ChevronUp, Search, X, Check, AlertCircle, CheckCircle2, Loader2 } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -63,7 +63,6 @@ interface ComboboxProps {
   success?: string
   description?: string
   allowMultiple?: boolean
-  allowCustom?: boolean
   isLoading?: boolean
   emptyMessage?: string
   maxHeight?: string
@@ -83,7 +82,7 @@ function Combobox({
   success,
   description,
   allowMultiple = false,
-  allowCustom = false,
+
   isLoading = false,
   emptyMessage = "No options found",
   maxHeight = "200px",
@@ -262,6 +261,7 @@ function Combobox({
           role="combobox"
           aria-expanded={isOpen}
           aria-haspopup="listbox"
+          aria-controls={`${id}-listbox`}
           aria-activedescendant={
             focusedIndex >= 0 ? `${id}-option-${focusedIndex}` : undefined
           }
@@ -305,6 +305,7 @@ function Combobox({
         <div className="absolute top-full left-0 right-0 z-50 mt-1 bg-background border rounded-md shadow-lg">
           <ul
             ref={listRef}
+            id={`${id}-listbox`}
             role="listbox"
             aria-multiselectable={allowMultiple}
             className="py-1"
@@ -375,7 +376,6 @@ function Combobox({
 export default function ComboboxPage() {
   const { MobileWarning } = useMobileWarning()
   const [singleValue, setSingleValue] = useState("")
-  const [multiValue, setMultiValue] = useState<string[]>([])
   const [countryValue, setCountryValue] = useState("")
   const [tagValues, setTagValues] = useState<string[]>([])
   const [loadingValue, setLoadingValue] = useState("")
@@ -426,7 +426,7 @@ export default function ComboboxPage() {
                   <div>
                     <h4 className="font-semibold mb-3 text-lg">Primary Use Cases</h4>
                     <ul className="space-y-2 text-sm">
-                      <li>• <strong>Large Option Sets:</strong> When you have many options (>10) that benefit from search</li>
+                      <li>• <strong>Large Option Sets:</strong> When you have many options ({">"}10) that benefit from search</li>
                       <li>• <strong>Predictive Search:</strong> Auto-complete functionality for known values</li>
                       <li>• <strong>Tagging Systems:</strong> Adding multiple tags or categories</li>
                       <li>• <strong>Data Entry:</strong> Forms with searchable reference data</li>
@@ -440,14 +440,14 @@ export default function ComboboxPage() {
                         <strong className="text-green-800 dark:text-green-200">Use Combobox When:</strong>
                         <ul className="text-sm mt-1 text-green-700 dark:text-green-300">
                           <li>• Many options need filtering</li>
-                          <li>• Users know what they're looking for</li>
+                          <li>• Users know what they&apos;re looking for</li>
                           <li>• Custom input is allowed</li>
                         </ul>
                       </div>
                       <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded">
                         <strong className="text-blue-800 dark:text-blue-200">Use Select When:</strong>
                         <ul className="text-sm mt-1 text-blue-700 dark:text-blue-300">
-                          <li>• Few options (&lt;10)</li>
+                          <li>• Few options ({"<"}10)</li>
                           <li>• Users need to see all options</li>
                           <li>• No custom input needed</li>
                         </ul>
@@ -613,7 +613,7 @@ export default function ComboboxPage() {
                       <li>• <strong>Keyboard Navigation:</strong> Arrow key highlighting</li>
                       <li>• <strong>Selection Indication:</strong> Checkmarks or highlighting</li>
                       <li>• <strong>Multi-select Tags:</strong> Visual chips for selected items</li>
-                      <li>• <strong>Empty State:</strong> "No results found" message</li>
+                      <li>• <strong>Empty State:</strong> &ldquo;No results found&rdquo; message</li>
                       <li>• <strong>Loading Spinner:</strong> Activity indicator</li>
                     </ul>
                   </div>
@@ -709,7 +709,7 @@ export default function ComboboxPage() {
                     </div>
 
                     <div className="p-4 border-2 border-red-500 rounded-lg bg-red-50 dark:bg-red-900/20">
-                      <h5 className="font-medium text-red-800 dark:text-red-200 mb-2">❌ Don't</h5>
+                      <h5 className="font-medium text-red-800 dark:text-red-200 mb-2">❌ Don&apos;t</h5>
                       <ul className="text-sm text-red-700 dark:text-red-300 space-y-1">
                         <li>• Use for simple selections with few options</li>
                         <li>• Forget to handle empty search results</li>
@@ -739,7 +739,7 @@ export default function ComboboxPage() {
                     <h4 className="font-semibold mb-3 text-lg">ARIA Attributes</h4>
                     <div className="space-y-3 text-sm">
                       <div className="p-3 border rounded">
-                        <strong>role="combobox":</strong>
+                        <strong>role=&ldquo;combobox&rdquo;:</strong>
                         <p className="text-muted-foreground">Identifies the input as a combobox</p>
                       </div>
                       <div className="p-3 border rounded">
@@ -747,7 +747,7 @@ export default function ComboboxPage() {
                         <p className="text-muted-foreground">Indicates if dropdown is open</p>
                       </div>
                       <div className="p-3 border rounded">
-                        <strong>aria-haspopup="listbox":</strong>
+                        <strong>aria-haspopup=&ldquo;listbox&rdquo;:</strong>
                         <p className="text-muted-foreground">Indicates popup type</p>
                       </div>
                       <div className="p-3 border rounded">
@@ -833,14 +833,14 @@ export default function ComboboxPage() {
     id="combobox-input"
     type="text"
     role="combobox"
-    aria-expanded="false"
-    aria-haspopup="listbox"
-    aria-describedby="combobox-help"
-    placeholder="Search countries..."
+    aria-expanded=&ldquo;false&rdquo;
+    aria-haspopup=&ldquo;listbox&rdquo;
+    aria-describedby=&ldquo;combobox-help&rdquo;
+    placeholder=&ldquo;Search countries...&rdquo;
   />
   <ul role="listbox" hidden>
-    <li role="option" aria-selected="false">United States</li>
-    <li role="option" aria-selected="false">Canada</li>
+    <li role=&ldquo;option&rdquo; aria-selected=&ldquo;false&rdquo;>United States</li>
+    <li role=&ldquo;option&rdquo; aria-selected=&ldquo;false&rdquo;>Canada</li>
   </ul>
   <div id="combobox-help">
     Type to search or use arrow keys to navigate

@@ -143,11 +143,10 @@ export default function ProgressIndicatorsPage() {
   
   // State for various progress examples
   const [uploadProgress, setUploadProgress] = useState(0)
-  const [downloadProgress, setDownloadProgress] = useState(45)
+  const downloadProgress = 45
   const [circularProgress, setCircularProgress] = useState(75)
   const [stepProgress, setStepProgress] = useState(2)
   const [isLoading, setIsLoading] = useState(false)
-  const [indeterminateDemo, setIndeterminateDemo] = useState(false)
 
   // Simulate upload progress
   const simulateUpload = () => {
@@ -555,7 +554,6 @@ export default function ProgressIndicatorsPage() {
                       const stepNum = index + 1
                       const isCompleted = stepNum < stepProgress
                       const isCurrent = stepNum === stepProgress
-                      const isUpcoming = stepNum > stepProgress
                       
                       return (
                         <div key={stepNum} className="flex items-start gap-4">
@@ -841,7 +839,7 @@ export default function ProgressIndicatorsPage() {
                   </div>
 
                   <div className="space-y-4">
-                    <h4 className="font-semibold text-lg text-red-600">❌ Don't</h4>
+                    <h4 className="font-semibold text-lg text-red-600">❌ Don&apos;t</h4>
                     <ul className="space-y-2 text-sm">
                       <li>• Show progress bars for very quick operations (&lt; 1s)</li>
                       <li>• Use determinate progress without accurate data</li>
@@ -870,7 +868,7 @@ export default function ProgressIndicatorsPage() {
                   <div>
                     <h4 className="font-semibold mb-3 text-lg">ARIA Support</h4>
                     <ul className="space-y-2 text-sm">
-                      <li>• <strong>role="progressbar":</strong> Identifies the element as a progress indicator</li>
+                      <li>• <strong>role=&quot;progressbar&quot;:</strong> Identifies the element as a progress indicator</li>
                       <li>• <strong>aria-valuenow:</strong> Current progress value</li>
                       <li>• <strong>aria-valuemin:</strong> Minimum value (usually 0)</li>
                       <li>• <strong>aria-valuemax:</strong> Maximum value (usually 100)</li>
@@ -899,8 +897,8 @@ export default function ProgressIndicatorsPage() {
                         Live Regions for Dynamic Updates
                       </h5>
                       <div className="space-y-2 text-sm text-blue-700 dark:text-blue-300">
-                        <p>• Use <code>aria-live="polite"</code> for non-urgent progress updates</p>
-                        <p>• Use <code>aria-live="assertive"</code> for critical progress states</p>
+                        <p>• Use <code>aria-live=&quot;polite&quot;</code> for non-urgent progress updates</p>
+                        <p>• Use <code>aria-live=&quot;assertive&quot;</code> for critical progress states</p>
                         <p>• Announce completion and error states clearly</p>
                       </div>
                     </div>
