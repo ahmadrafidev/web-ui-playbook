@@ -1,6 +1,6 @@
 export function HeroSection() {
   return (
-    <section className="mt-2 md:mt-4 mb-8 md:mb-10 px-4">
+    <section className="mt-4 md:mt-8 mb-8 md:mb-10 px-4">
       <div className="container mx-auto text-center">
         <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-foreground mb-2 animate-in fade-in slide-in-from-top-8 duration-700 delay-150">
           The documented web interfaces patterns
