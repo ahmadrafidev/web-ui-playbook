@@ -10,7 +10,8 @@ import {
   ModalPreview,
   SliderPreview,
   MenuPreview,
-  AvatarPreview
+  AvatarPreview,
+  ProgressIndicatorsPreview
 } from "@/components/previews"
 
 export const componentSections: ComponentSection[] = [
@@ -90,5 +91,12 @@ export const componentSections: ComponentSection[] = [
     description: "Visual representations of users, entities, or objects with status indicators and grouping",
     status: "In Progress",
     preview: <AvatarPreview />,
+  },
+  {
+    name: "Progress Indicators",
+    href: "/playground/progress-indicators",
+    description: "Visual feedback components that communicate the progress of system processes and user flows",
+    status: "In Progress",
+    preview: <ProgressIndicatorsPreview />,
   },
 ] 
