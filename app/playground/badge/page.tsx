@@ -788,9 +788,9 @@ export default function BadgePage() {
             getTitleFunction={(url: string) => {
               if (url.includes('visa.com')) return 'Visa Design System - Badge Accessibility'
               if (url.includes('shopify.com')) return 'Shopify Polaris - Badge Component'
-              if (url.includes('pinterest.com')) return 'Pinterest Gestalt - Badge'
+              if (url.includes('gestalt.pinterest.systems')) return 'Pinterest Gestalt - Badge'
               if (url.includes('ebay.com')) return 'eBay Design System - Badge'
-              if (url.includes('atlassian.com')) return 'Atlassian Design System - Badge'
+              if (url.includes('atlassian.design')) return 'Atlassian Design System - Badge'
               if (url.includes('adobe.com')) return 'Adobe Spectrum - Badge'
               return url
             }}
