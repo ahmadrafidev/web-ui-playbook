@@ -13,7 +13,8 @@ import {
   SliderPreview,
   MenuPreview,
   AvatarPreview,
-  ProgressIndicatorsPreview
+  ProgressIndicatorsPreview,
+  BadgePreview
 } from "@/components/previews"
 
 export const componentSections: ComponentSection[] = [
@@ -30,6 +31,13 @@ export const componentSections: ComponentSection[] = [
     description: "Contextual feedback messages with proper semantics",
     status: "In Progress",
     preview: <AlertsPreview />,
+  },
+  {
+    name: "Badge",
+    href: "/playground/badge",
+    description: "Visual indicators that communicate status, category, or attributes of objects and elements",
+    status: "In Progress",
+    preview: <BadgePreview />,
   },
   {
     name: "Tooltips",
