@@ -4,6 +4,7 @@ import {
   AlertsPreview,
   TooltipsPreview,
   CheckboxPreview,
+  RadioButtonPreview,
   ComboboxPreview,
   SwitchPreview,
   TextInputPreview,
@@ -43,6 +44,13 @@ export const componentSections: ComponentSection[] = [
     description: "Multi-selection controls for forms and interactive lists",
     status: "In Progress",
     preview: <CheckboxPreview />,
+  },
+  {
+    name: "Radio Button",
+    href: "/playground/radio-button",
+    description: "Single-selection controls for mutually exclusive choices in forms and settings",
+    status: "In Progress",
+    preview: <RadioButtonPreview />,
   },
   {
     name: "Combobox",
