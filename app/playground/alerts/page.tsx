@@ -504,13 +504,17 @@ export default function AlertsPage() {
                         <h5 className="font-medium mb-2">Single Action</h5>
                         <Alert className="border-yellow-500/20 bg-yellow-500/10">
                           <AlertCircle className="h-4 w-4 text-yellow-600 dark:text-yellow-400" />
-                          <AlertTitle className="text-yellow-800 dark:text-yellow-200">Verification Required</AlertTitle>
-                          <AlertDescription className="text-yellow-700 dark:text-yellow-300 mb-3">
-                            Please verify your email address to complete your account setup.
-                          </AlertDescription>
-                          <Button size="sm" className="bg-yellow-600 hover:bg-yellow-700">
-                            Resend Verification Email
-                          </Button>
+                          <div className="flex-1">
+                            <AlertTitle className="text-yellow-800 dark:text-yellow-200">Verification Required</AlertTitle>
+                            <AlertDescription className="text-yellow-700 dark:text-yellow-300">
+                              Please verify your email address to complete your account setup.
+                            </AlertDescription>
+                            <div className="mt-3">
+                              <Button size="sm" className="bg-yellow-600 hover:bg-yellow-700">
+                                Resend Verification Email
+                              </Button>
+                            </div>
+                          </div>
                         </Alert>
                       </div>
 
