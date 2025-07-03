@@ -6,7 +6,7 @@
 
 *A comprehensive guide for creating consistent, accessible, and user-friendly UI components.*
 
-** 🚧 Work in Progress 🚧 **
+ 🚧 **Work in Progress** 🚧 
 
 </div>
 
