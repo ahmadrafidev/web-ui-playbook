@@ -53,6 +53,26 @@ Explore our components in action! Visit our [**Live Playground**](https://web-ui
 
 ---
 
+## 🧪 Experiment with Components
+
+Want to experiment with these components before implementing them? Check out **[Boop](https://booopy.vercel.app/)** - our interactive component playground!
+
+### 🎪 What is Boop?
+
+Boop is an experimental sandbox where you can:
+
+- **🎨 Prototype Components** - Drag, drop, and configure components visually
+- **⚡ Live Property Editing** - Tweak component props and see changes instantly  
+- **🧪 Test Variations** - Experiment with different styles, sizes, and states
+- **📝 Generate Code** - Export clean JSX code for your experiments
+- **📱 Responsive Testing** - See how components behave across screen sizes
+
+Perfect for designers and developers who want to prototype ideas before diving into code!
+
+**[🎮 Try Boop →](https://booopy.vercel.app/)**
+
+---
+
 ## 🚀 Getting Started
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app) and enhanced with modern UI libraries.
