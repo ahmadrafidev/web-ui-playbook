@@ -62,7 +62,7 @@ export const ThemeToggle = memo(function ThemeToggle() {
     return (
       <div className="flex items-center bg-muted/50 rounded-lg p-1 border border-border">
         <div className="flex items-center justify-center p-2 rounded-md w-8 h-8">
-          <Monitor size={16} className="text-muted-foreground" />
+          <Monitor size={16} className="text-muted-foreground animate-in fade-in-0 duration-300" />
         </div>
       </div>
     );
@@ -75,15 +75,21 @@ export const ThemeToggle = memo(function ThemeToggle() {
       ref={containerRef}
       className={`
         relative flex items-center bg-muted/50 rounded-lg p-1 border border-border
-        transition-all duration-300 ease-out
-        ${isExpanded ? 'gap-1' : ''}
+        motion-safe:transform-gpu motion-safe:transition-all motion-safe:duration-500 
+        motion-safe:ease-[cubic-bezier(0.34,1.56,0.64,1)]
+        hover:bg-muted/70 hover:border-border/80
+        ${isExpanded ? 'gap-1 shadow-lg shadow-primary/5' : ''}
       `}
       role="group"
       aria-label="Theme selection"
     >
       {isExpanded ? (
-        <div className="flex items-center gap-1 animate-in fade-in-0 slide-in-from-right-2 duration-200">
-          {THEME_OPTIONS.map(({ value, label, icon: Icon }) => {
+        <div 
+          className="flex items-center gap-1 motion-safe:animate-in motion-safe:fade-in-0 
+            motion-safe:slide-in-from-left-2 motion-safe:duration-500 
+            motion-safe:ease-[cubic-bezier(0.34,1.56,0.64,1)]"
+        >
+          {THEME_OPTIONS.map(({ value, label, icon: Icon }, index) => {
             const isActive = theme === value;
             return (
               <button
@@ -92,13 +98,18 @@ export const ThemeToggle = memo(function ThemeToggle() {
                 onKeyDown={handleKeyDown}
                 className={`
                   group relative flex items-center justify-center p-2 rounded-md w-8 h-8 
-                  transition-all duration-200 ease-out
-                  focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1
+                  motion-safe:transform-gpu motion-safe:transition-all motion-safe:duration-500
+                  motion-safe:ease-[cubic-bezier(0.34,1.56,0.64,1)]
+                  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1
                   ${isActive 
-                    ? 'bg-primary text-primary-foreground' 
-                    : 'text-muted-foreground hover:text-foreground hover:scale-105 active:scale-95'
+                    ? 'bg-primary text-primary-foreground scale-105 shadow-sm' 
+                    : 'text-muted-foreground hover:text-foreground hover:scale-110 hover:rotate-3 active:scale-95 active:rotate-0'
                   }
                 `}
+                style={{
+                  animationDelay: `${index * 50}ms`,
+                  animationFillMode: 'backwards'
+                }}
                 aria-label={`Switch to ${label.toLowerCase()} theme`}
                 aria-pressed={isActive}
                 title={`${label} theme${isActive ? ' (current)' : ''}`}
@@ -106,7 +117,12 @@ export const ThemeToggle = memo(function ThemeToggle() {
               >
                 <Icon 
                   size={16} 
-                  className="transition-all duration-200 group-hover:scale-110"
+                  className={`
+                    motion-safe:transition-all motion-safe:duration-500
+                    motion-safe:ease-[cubic-bezier(0.34,1.56,0.64,1)]
+                    group-hover:scale-110 group-active:scale-90
+                    ${isActive ? 'motion-safe:animate-spin-slow' : ''}
+                  `}
                   strokeWidth={isActive ? 2.5 : 2}
                   aria-hidden="true"
                 />
@@ -120,9 +136,11 @@ export const ThemeToggle = memo(function ThemeToggle() {
           onKeyDown={handleKeyDown}
           className={`
             group flex items-center justify-center p-2 rounded-md w-8 h-8 
-            text-muted-foreground hover:text-foreground hover:scale-105 
-            active:scale-95 transition-all duration-200 ease-out
-            focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1
+            motion-safe:transform-gpu motion-safe:transition-all motion-safe:duration-500
+            motion-safe:ease-[cubic-bezier(0.34,1.56,0.64,1)]
+            text-muted-foreground hover:text-foreground
+            hover:scale-110 hover:rotate-12 active:scale-95 active:rotate-0
+            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1
           `}
           aria-label={`Current theme: ${currentTheme.label}. Click to change theme`}
           aria-expanded={isExpanded}
@@ -131,7 +149,12 @@ export const ThemeToggle = memo(function ThemeToggle() {
         >
           <CurrentIcon 
             size={16} 
-            className="transition-all duration-200 group-hover:scale-110"
+            className={`
+              motion-safe:transition-all motion-safe:duration-500 
+              motion-safe:ease-[cubic-bezier(0.34,1.56,0.64,1)]
+              group-hover:scale-110 group-active:scale-90
+              motion-safe:animate-in motion-safe:fade-in-0 motion-safe:spin-in-90
+            `}
             strokeWidth={2}
             aria-hidden="true"
           />
