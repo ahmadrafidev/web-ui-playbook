@@ -14,7 +14,11 @@ const alertComponentsUrlReference = [
   "https://wise.design/components/alert",
   "https://developer.apple.com/design/human-interface-guidelines/alerts",
   "https://spectrum.adobe.com/page/alert-banner/",
-  "https://www.w3.org/WAI/ARIA/apg/patterns/alert/"
+  "https://www.w3.org/WAI/ARIA/apg/patterns/alert/",
+  "https://polaris-react.shopify.com/components/feedback-indicators/banner",
+  "https://base.uber.com/6d2425e9f/p/199f68-banner",
+  "https://design.visa.com/components/banner/accessibility/",
+  "https://system.design.orange.com/0c1af118d/p/104317-alerts"
 ]
 
 export default function AlertsPage() {
@@ -46,9 +50,10 @@ export default function AlertsPage() {
         </div>
 
         <Tabs defaultValue="purpose" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-5">
+          <TabsList className="grid w-full grid-cols-6">
             <TabsTrigger value="purpose">Purpose</TabsTrigger>
             <TabsTrigger value="types">Alert Types</TabsTrigger>
+            <TabsTrigger value="banners">Banners</TabsTrigger>
             <TabsTrigger value="interaction">Interaction</TabsTrigger>
             <TabsTrigger value="placement">Placement & UX</TabsTrigger>
             <TabsTrigger value="accessibility">Accessibility</TabsTrigger>
@@ -235,6 +240,20 @@ export default function AlertsPage() {
                           </AlertDescription>
                         </Alert>
                       </div>
+
+                      <div className="space-y-2">
+                        <h5 className="font-medium">Critical Banners (Global)</h5>
+                        <Alert className="border-red-600/30 bg-red-600/15">
+                          <AlertCircle className="h-4 w-4 text-red-600 dark:text-red-400" />
+                          <AlertTitle className="text-red-800 dark:text-red-200">Service Disruption</AlertTitle>
+                          <AlertDescription className="text-red-700 dark:text-red-300">
+                            Payment processing is temporarily unavailable. We&apos;re working to restore service.
+                          </AlertDescription>
+                        </Alert>
+                        <p className="text-sm text-muted-foreground">
+                          For site-wide issues affecting all users, typically placed above the main navigation.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -243,12 +262,187 @@ export default function AlertsPage() {
                 <div className="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg">
                   <h4 className="font-semibold mb-2 text-amber-800 dark:text-amber-200">Alert Hierarchy Guidelines</h4>
                   <ul className="text-sm text-amber-700 dark:text-amber-300 space-y-1">
-                    <li>• <strong>Error:</strong> Highest priority - blocks user progress</li>
+                    <li>• <strong>Critical/Error:</strong> Highest priority - blocks user progress</li>
                     <li>• <strong>Warning:</strong> High priority - requires attention soon</li>
                     <li>• <strong>Success:</strong> Medium priority - positive confirmation</li>
                     <li>• <strong>Info:</strong> Low priority - helpful but not critical</li>
                     <li>• Only show one alert per section to maintain hierarchy</li>
+                    <li>• Critical banners should appear above global navigation</li>
+                    <li>• Page-level alerts should be dismissible unless critical</li>
                   </ul>
+                </div>
+
+                {/* Design System Insights */}
+                <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+                  <h4 className="font-semibold mb-2 text-blue-800 dark:text-blue-200">Design System Insights</h4>
+                  <div className="grid md:grid-cols-2 gap-4 text-sm text-blue-700 dark:text-blue-300">
+                    <div>
+                      <strong>Shopify Polaris:</strong>
+                      <ul className="mt-1 space-y-1">
+                        <li>• Focus on merchant workflows and actions</li>
+                        <li>• Use banners for persistent conditions</li>
+                        <li>• Place banners below page headers</li>
+                        <li>• Include clear calls to action</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <strong>Orange & Visa Systems:</strong>
+                      <ul className="mt-1 space-y-1">
+                        <li>• Emphasize accessibility and screen readers</li>
+                        <li>• Support multiple languages and regions</li>
+                        <li>• Consistent keyboard navigation patterns</li>
+                        <li>• Clear focus management requirements</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          {/* Banner Components */}
+          <TabsContent value="banners" className="space-y-8">
+            <Card>
+              <CardHeader>
+                <CardTitle>Banner vs Alert Components</CardTitle>
+                <CardDescription>
+                  Understanding the distinction between alerts and banners, and when to use each pattern.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="space-y-6">
+                  <div>
+                    <h4 className="font-semibold mb-3 text-lg">Key Differences</h4>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div className="p-4 border rounded-lg">
+                        <h5 className="font-medium mb-3 text-blue-800 dark:text-blue-200">Alerts</h5>
+                        <ul className="text-sm space-y-1">
+                          <li>• Contextual to specific actions or content</li>
+                          <li>• Often temporary and auto-dismissible</li>
+                          <li>• Inline with content flow</li>
+                          <li>• Used for feedback and validation</li>
+                          <li>• Lower visual prominence</li>
+                        </ul>
+                        <Alert className="mt-3">
+                          <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-400" />
+                          <AlertDescription>
+                            Your settings have been saved successfully.
+                          </AlertDescription>
+                        </Alert>
+                      </div>
+
+                      <div className="p-4 border rounded-lg">
+                        <h5 className="font-medium mb-3 text-purple-800 dark:text-purple-200">Banners</h5>
+                        <ul className="text-sm space-y-1">
+                          <li>• Global or section-wide information</li>
+                          <li>• Persistent until manually dismissed</li>
+                          <li>• Prominent placement at top of page/section</li>
+                          <li>• Used for announcements and status</li>
+                          <li>• Higher visual prominence</li>
+                        </ul>
+                        <div className="mt-3 p-4 bg-purple-500/10 border border-purple-500/20 rounded-lg">
+                          <div className="flex items-start gap-3">
+                            <Info className="h-4 w-4 text-purple-600 dark:text-purple-400 mt-0.5" />
+                            <div className="text-sm">
+                              <strong className="text-purple-800 dark:text-purple-200">New features available!</strong>
+                              <p className="text-purple-700 dark:text-purple-300 mt-1">
+                                Check out our latest dashboard updates and improved analytics.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="font-semibold mb-3 text-lg">Banner Types & Placement</h4>
+                    <div className="space-y-4">
+                      <div className="space-y-2">
+                        <h5 className="font-medium">Site-wide Banners</h5>
+                        <div className="p-4 bg-yellow-500/15 border border-yellow-500/30 rounded-lg">
+                          <div className="flex items-start gap-3">
+                            <AlertCircle className="h-5 w-5 text-yellow-600 dark:text-yellow-400 mt-0.5" />
+                            <div className="flex-1">
+                              <strong className="text-yellow-800 dark:text-yellow-200 text-sm">Service Maintenance Notice</strong>
+                              <p className="text-yellow-700 dark:text-yellow-300 text-sm mt-1">
+                                Scheduled maintenance this Sunday from 2-4 AM EST. Some services may be temporarily unavailable.
+                              </p>
+                              <Button size="sm" variant="outline" className="mt-2 border-yellow-500 text-yellow-700 hover:bg-yellow-50">
+                                Learn More
+                              </Button>
+                            </div>
+                            <Button size="sm" variant="ghost" className="text-yellow-700 hover:bg-yellow-100">
+                              <X className="h-4 w-4" />
+                            </Button>
+                          </div>
+                        </div>
+                        <p className="text-sm text-muted-foreground">
+                          Placed above global navigation, affects entire site
+                        </p>
+                      </div>
+
+                      <div className="space-y-2">
+                        <h5 className="font-medium">Page-level Banners</h5>
+                        <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-lg">
+                          <div className="flex items-start gap-3">
+                            <Info className="h-4 w-4 text-blue-600 dark:text-blue-400 mt-0.5" />
+                            <div className="flex-1 text-sm">
+                              <p className="text-blue-700 dark:text-blue-300">
+                                You&apos;re viewing the beta version of this page. 
+                                <Button variant="link" className="p-0 h-auto text-blue-600 dark:text-blue-400 underline ml-1">
+                                  Switch to classic view
+                                </Button>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <p className="text-sm text-muted-foreground">
+                          Placed below page header, specific to current page context
+                        </p>
+                      </div>
+
+                      <div className="space-y-2">
+                        <h5 className="font-medium">Section Banners</h5>
+                        <div className="p-3 bg-green-500/10 border border-green-500/20 rounded-lg">
+                          <div className="flex items-center gap-2 text-sm">
+                            <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-400" />
+                            <span className="text-green-700 dark:text-green-300">
+                              Your integration is working correctly. Last sync: 2 minutes ago.
+                            </span>
+                          </div>
+                        </div>
+                        <p className="text-sm text-muted-foreground">
+                          Placed within specific sections, reduced visual weight
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Design System Examples */}
+                <div className="bg-slate-50 dark:bg-slate-900/20 p-4 rounded-lg">
+                  <h4 className="font-semibold mb-2 text-slate-800 dark:text-slate-200">Design System Patterns</h4>
+                  <div className="grid md:grid-cols-2 gap-4 text-sm text-slate-700 dark:text-slate-300">
+                    <div>
+                      <strong>Shopify Polaris Banners:</strong>
+                      <ul className="mt-1 space-y-1">
+                        <li>• Focus on merchant workflows</li>
+                        <li>• Include primary and secondary actions</li>
+                        <li>• Use for important changes or conditions</li>
+                        <li>• Always provide clear next steps</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <strong>Enterprise Guidelines:</strong>
+                      <ul className="mt-1 space-y-1">
+                        <li>• Consistent placement across applications</li>
+                        <li>• Respect information hierarchy</li>
+                        <li>• Consider banner fatigue</li>
+                        <li>• Test on mobile breakpoints</li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
@@ -391,6 +585,8 @@ export default function AlertsPage() {
                             <li>• Near the relevant content or action</li>
                             <li>• At the top of forms for validation errors</li>
                             <li>• In the main content area for page-level alerts</li>
+                            <li>• Critical alerts above global navigation</li>
+                            <li>• Banners below page headers (Polaris pattern)</li>
                             <li>• Consistent positioning across similar contexts</li>
                           </ul>
                         </div>
@@ -527,10 +723,11 @@ export default function AlertsPage() {
                       <div>
                         <h5 className="font-medium mb-3">ARIA Roles & Announcements</h5>
                         <ul className="text-sm space-y-1">
-                          <li>• <strong>role=&quot;alert&quot;:</strong> For urgent messages</li>
+                          <li>• <strong>role=&quot;alert&quot;:</strong> For urgent messages (Visa recommendation)</li>
                           <li>• <strong>role=&quot;status&quot;:</strong> For non-urgent updates</li>
                           <li>• <strong>aria-live=&quot;polite&quot;:</strong> For non-interrupting alerts</li>
                           <li>• <strong>aria-live=&quot;assertive&quot;:</strong> For critical alerts</li>
+                          <li>• <strong>aria-atomic=&quot;true&quot;:</strong> Read entire alert content</li>
                         </ul>
                       </div>
 
@@ -541,6 +738,7 @@ export default function AlertsPage() {
                           <li>• <strong>Icons:</strong> Don&apos;t rely solely on color</li>
                           <li>• <strong>Focus management:</strong> Clear focus indicators</li>
                           <li>• <strong>Text size:</strong> Responds to zoom up to 200%</li>
+                          <li>• <strong>Never auto-focus:</strong> Avoid interrupting workflows</li>
                         </ul>
                       </div>
                     </div>
@@ -745,6 +943,10 @@ export default function AlertsPage() {
               if (url.includes('apple.com')) return 'Apple Human Interface Guidelines - Alerts'
               if (url.includes('spectrum.adobe.com')) return 'Adobe Spectrum - Alert Banner'
               if (url.includes('w3.org')) return 'WAI-ARIA Authoring Practices - Alert Pattern'
+              if (url.includes('polaris-react.shopify.com')) return 'Shopify Polaris - Banner Component'
+              if (url.includes('base.uber.com')) return 'Uber Base Design System - Banner'
+              if (url.includes('design.visa.com')) return 'Visa Design System - Banner Accessibility'
+              if (url.includes('system.design.orange.com')) return 'Orange Design System - Alerts'
               return url
             }}
           />
