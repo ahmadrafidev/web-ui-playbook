@@ -26,7 +26,7 @@ This is very much a learning exercise for me, and I'm certain there are gaps and
 
 ## 🎮 Interactive Playground
 
-Explore our components in action! Visit our [**Live Playground**](https://web-ui-playbook.vercel.app/) to see, interact with, and understand each component.
+Explore our components in action! Visit our [**Live Playground**](https://www.webuiplaybook.com/) to see, interact with, and understand each component.
 
 ### 🧩 Component Library
 
@@ -38,16 +38,22 @@ Explore our components in action! Visit our [**Live Playground**](https://web-ui
 
 | Component | Description | Status | Playground Link |
 |-----------|-------------|--------|-----------------|
-| 🚨 **Alerts** | Success, warning, error, and info alerts | ✅ Complete | [Play with Alerts](https://web-ui-playbook.vercel.app/playground/alerts) |
-| 🔘 **Buttons** | Primary, secondary, and action buttons | ✅ Complete | [Play with Buttons](https://web-ui-playbook.vercel.app/playground/buttons) |
-| ☑️ **Checkbox** | Selection controls and checkboxes | ✅ Complete | [Play with Checkbox](https://web-ui-playbook.vercel.app/playground/checkbox) |
-| 🍔 **Menu** | Navigation menus and dropdowns | ✅ Complete | [Play with Menu](https://web-ui-playbook.vercel.app/playground/menu) |
-| 🪟 **Modal** | Dialog boxes and overlay windows | ✅ Complete | [Play with Modal](https://web-ui-playbook.vercel.app/playground/modal) |
-| 🎚️ **Slider** | Range inputs and value sliders | ✅ Complete | [Play with Slider](https://web-ui-playbook.vercel.app/playground/slider) |
-| 🔄 **Switch** | Toggle controls and switches | ✅ Complete | [Play with Switch](https://web-ui-playbook.vercel.app/playground/switch) |
-| 📑 **Tabs** | Tab navigation and content panels | ✅ Complete | [Play with Tabs](https://web-ui-playbook.vercel.app/playground/tabs) |
-| 📝 **Text Input** | Form inputs and text fields | ✅ Complete | [Play with Text Input](https://web-ui-playbook.vercel.app/playground/text-input) |
-| 💭 **Tooltips** | Hover information and help text | ✅ Complete | [Play with Tooltips](https://web-ui-playbook.vercel.app/playground/tooltips) |
+| 🚨 **Alerts** | Success, warning, error, and info alerts | ✅ Complete | [Play with Alerts](https://www.webuiplaybook.com/playground/alerts) |
+| 👤 **Avatar** | User profile pictures and avatars | ✅ Complete | [Play with Avatar](https://www.webuiplaybook.com/playground/avatar) |
+| 🏷️ **Badge** | Labels, tags, and status indicators | ✅ Complete | [Play with Badge](https://www.webuiplaybook.com/playground/badge) |
+| 🔘 **Buttons** | Primary, secondary, and action buttons | ✅ Complete | [Play with Buttons](https://www.webuiplaybook.com/playground/buttons) |
+| 🃏 **Card** | Content containers and card layouts | ✅ Complete | [Play with Card](https://www.webuiplaybook.com/playground/card) |
+| ☑️ **Checkbox** | Selection controls and checkboxes | ✅ Complete | [Play with Checkbox](https://www.webuiplaybook.com/playground/checkbox) |
+| 📝 **Combobox** | Searchable dropdown selections | ✅ Complete | [Play with Combobox](https://www.webuiplaybook.com/playground/combobox) |
+| 🍔 **Menu** | Navigation menus and dropdowns | ✅ Complete | [Play with Menu](https://www.webuiplaybook.com/playground/menu) |
+| 🪟 **Modal** | Dialog boxes and overlay windows | ✅ Complete | [Play with Modal](https://www.webuiplaybook.com/playground/modal) |
+| 📊 **Progress Indicators** | Loading bars and progress displays | ✅ Complete | [Play with Progress Indicators](https://www.webuiplaybook.com/playground/progress-indicators) |
+| 🔘 **Radio Button** | Single selection controls | ✅ Complete | [Play with Radio Button](https://www.webuiplaybook.com/playground/radio-button) |
+| 🎚️ **Slider** | Range inputs and value sliders | ✅ Complete | [Play with Slider](https://www.webuiplaybook.com/playground/slider) |
+| 🔄 **Switch** | Toggle controls and switches | ✅ Complete | [Play with Switch](https://www.webuiplaybook.com/playground/switch) |
+| 📑 **Tabs** | Tab navigation and content panels | ✅ Complete | [Play with Tabs](https://www.webuiplaybook.com/playground/tabs) |
+| 📝 **Text Input** | Form inputs and text fields | ✅ Complete | [Play with Text Input](https://www.webuiplaybook.com/playground/text-input) |
+| 💭 **Tooltips** | Hover information and help text | ✅ Complete | [Play with Tooltips](https://www.webuiplaybook.com/playground/tooltips) |
 
 > **💡 Pro Tip**: Visit the main playground at [Web UI Playbook Website](https://www.webuiplaybook.com/) to search and browse all components in one place!
 
