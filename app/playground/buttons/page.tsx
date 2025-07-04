@@ -327,7 +327,7 @@ export default function ButtonsPage() {
                             <li>• Use descriptive loading text ("Saving..." not "Loading...")</li>
                             <li>• Show success feedback briefly before reverting</li>
                             <li>• Provide immediate feedback (≤100ms perceived delay)</li>
-                            <li>• Use skeleton screens for longer operations (>1 second)</li>
+                            <li>• Use skeleton screens for longer operations (&gt;1 second)</li>
                           </ul>
                         </div>
 
