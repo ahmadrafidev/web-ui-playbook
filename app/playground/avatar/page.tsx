@@ -273,7 +273,7 @@ export default function AvatarPage() {
     <div className="min-h-screen bg-background">
       {/* Mobile Warning */}
       {MobileWarning}
-      <div className="container max-w-5xl mx-auto px-4 py-8">
+      <div className="container max-w-4xl mx-auto px-4 py-8">
 
         {/* Introduction */}
         <div className="mb-10">

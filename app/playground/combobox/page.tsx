@@ -383,7 +383,7 @@ export default function ComboboxPage() {
   return (
     <div className="min-h-screen bg-background">
       {MobileWarning}
-      <div className="container max-w-5xl mx-auto px-4 py-8">
+      <div className="container max-w-4xl mx-auto px-4 py-8">
 
         {/* Introduction */}
         <div className="mb-10">

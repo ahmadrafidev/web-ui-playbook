@@ -19,6 +19,8 @@ const tabsComponentsUrlReference = [
   "https://base.uber.com/6d2425e9f/p/2345e5-tabs"
 ]
 
+
+// TODO: Improve the content inside Tabs Components
 export default function TabsPage() {
   const { MobileWarning } = useMobileWarning()
   const [activeTab, setActiveTab] = useState("purpose")
@@ -49,7 +51,7 @@ export default function TabsPage() {
       {/* Mobile Warning */}
       {MobileWarning}
 
-      <div className="container max-w-5xl mx-auto px-4 py-8">
+      <div className="container max-w-4xl mx-auto px-4 py-8">
 
         {/* Introduction */}
         <div className="mb-10">

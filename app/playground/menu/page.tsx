@@ -81,6 +81,8 @@ const menuComponentsUrlReference = [
   "https://base.uber.com/6d2425e9f/p/2313a4-menu"
 ]
 
+
+// TODO: Improve the content inside Menu Components
 export default function MenuPage() {
   const { MobileWarning } = useMobileWarning()
 
@@ -88,7 +90,7 @@ export default function MenuPage() {
     <div className="min-h-screen bg-background">
       {/* Mobile Warning */}
       {MobileWarning}
-      <div className="container max-w-5xl mx-auto px-4 py-8">
+      <div className="container max-w-4xl mx-auto px-4 py-8">
 
         {/* Introduction */}
         <div className="mb-10">

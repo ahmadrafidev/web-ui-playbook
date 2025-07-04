@@ -14,7 +14,7 @@ export default function HomePage() {
   } = useComponentSearch(componentSections)
 
   return (
-    <div className="min-h-screen max-w-5xl mx-auto bg-gradient-to-br from-background to-secondary/10">
+    <div className="min-h-screen max-w-4xl mx-auto bg-gradient-to-br from-background to-secondary/10">
       {/* Hero Section */}
       <HeroSection />
 

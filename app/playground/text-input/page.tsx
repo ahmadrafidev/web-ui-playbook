@@ -246,7 +246,7 @@ export default function TextInputPage() {
     <div className="min-h-screen bg-background">
       {/* Mobile Warning */}
       {MobileWarning}
-      <div className="container max-w-5xl mx-auto px-4 py-8">
+      <div className="container max-w-4xl mx-auto px-4 py-8">
         <div className="mb-10">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
             <h2 className="text-4xl font-bold text-foreground">Text Input</h2>
