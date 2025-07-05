@@ -103,10 +103,12 @@ export default function MenuPage() {
             or application menus (persistent navigation).
           </p>
           <div className="flex flex-wrap gap-2">
-            <Badge variant="outline">WAI-ARIA 1.2</Badge>
-            <Badge variant="outline">WCAG 2.1 AA</Badge>
-            <Badge variant="outline">Platform Adaptive</Badge>
-            <Badge variant="outline">Enterprise Ready</Badge>
+            <Badge variant="outline">Interactive Navigation</Badge>
+            <Badge variant="outline">Keyboard Accessible</Badge>
+            <Badge variant="outline">WAI-ARIA Compliant</Badge>
+            <Badge variant="outline">Hierarchical Structure</Badge>
+            <Badge variant="outline">Multi-Platform Support</Badge>
+            <Badge variant="outline">Context Aware</Badge>
           </div>
         </div>
 
