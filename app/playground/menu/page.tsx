@@ -15,20 +15,19 @@ import {
   Scissors,
   ClipboardPaste,
   File,
-  Flag,
   Folder,
   Search,
-  Keyboard,
-  Heart,
   Star,
-  Bookmark,
-  Home,
   Bell,
-  Archive,
-  Zap,
-  Shield,
-  Globe,
-  LogOut
+  LogOut,
+  ChevronRight,
+  ChevronDown,
+  Check,
+  AlertCircle,
+  Info,
+  ArrowUpDown,
+  Command,
+  Menu as MenuIcon
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -68,6 +67,7 @@ import {
   MenubarSubContent,
   MenubarSubTrigger,
 } from "@/components/ui/menubar"
+import { Separator } from "@/components/ui/separator"
 
 const menuComponentsUrlReference = [
   "https://www.w3.org/WAI/tutorials/menus/",
@@ -97,17 +97,16 @@ export default function MenuPage() {
             <EditButton filePath="app/playground/menu/page.tsx" />
           </div>
           <p className="text-base md:text-lg text-muted-foreground mb-6">
-            Comprehensive menu system following W3C WAI-ARIA specifications, Apple Human Interface Guidelines, 
-            Material Design principles, and industry best practices from GitHub Primer, Adobe Spectrum, IBM Carbon, 
-            and Twilio Paste. Designed for optimal accessibility, usability, and cross-platform compatibility.
+            A menu is a user interface element that presents a list of choices or actions to users. When triggered, 
+            it displays a panel containing menu items that users can select to perform actions, navigate to different views, 
+            or change settings. Menus can be contextual (appearing on right-click), dropdown (triggered by a button), 
+            or application menus (persistent navigation).
           </p>
           <div className="flex flex-wrap gap-2">
-            <Badge>WAI-ARIA 1.2 Compliant</Badge>
-            <Badge>WCAG 2.1 AA</Badge>
-            <Badge>Touch Optimized</Badge>
-            <Badge>Hierarchical Structure</Badge>
-            <Badge>Contextual Actions</Badge>
-            <Badge>Progressive Enhancement</Badge>
+            <Badge variant="outline">WAI-ARIA 1.2</Badge>
+            <Badge variant="outline">WCAG 2.1 AA</Badge>
+            <Badge variant="outline">Platform Adaptive</Badge>
+            <Badge variant="outline">Enterprise Ready</Badge>
           </div>
         </div>
 
@@ -365,170 +364,235 @@ export default function MenuPage() {
           <TabsContent value="patterns" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Design System Patterns (Adobe Spectrum & Twilio Paste)</CardTitle>
+                <CardTitle>Enterprise Menu Patterns</CardTitle>
                 <CardDescription>
-                  Industry-standard menu patterns from Adobe Spectrum, Twilio Paste, Uber Base, and GitHub Primer following 
-                  consistent interaction models and accessibility standards across major design systems.
+                  Industry-standard menu patterns from leading design systems, optimized for accessibility,
+                  usability, and cross-platform compatibility. Implements best practices from Adobe Spectrum,
+                  Twilio Paste, GitHub Primer, and Material Design.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <h4 className="font-semibold mb-3 text-lg">Multi-Select Menu (Spectrum Pattern)</h4>
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button variant="outline">
-                          <Star className="mr-2 h-4 w-4" />
-                          Favorites
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent className="w-56">
-                        <DropdownMenuLabel>Bookmark Options</DropdownMenuLabel>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuCheckboxItem checked>
-                          <Heart className="mr-2 h-4 w-4" />
-                          Liked
-                        </DropdownMenuCheckboxItem>
-                        <DropdownMenuCheckboxItem>
-                          <Star className="mr-2 h-4 w-4" />
-                          Starred
-                        </DropdownMenuCheckboxItem>
-                        <DropdownMenuCheckboxItem checked>
-                          <Bookmark className="mr-2 h-4 w-4" />
-                          Bookmarked
-                        </DropdownMenuCheckboxItem>
-                        <DropdownMenuCheckboxItem>
-                          <Archive className="mr-2 h-4 w-4" />
-                          Archived
-                        </DropdownMenuCheckboxItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
+                    <h4 className="font-semibold mb-3 text-lg">Selection Menus (Spectrum Pattern)</h4>
+                    <div className="space-y-4">
+                      <div>
+                        <h5 className="text-sm font-medium mb-2">Single Select</h5>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button variant="outline">
+                              <Check className="mr-2 h-4 w-4" />
+                              Select Option
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent className="w-56">
+                            <DropdownMenuLabel>Choose One</DropdownMenuLabel>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuRadioGroup value="option1">
+                              <DropdownMenuRadioItem value="option1">
+                                Option 1
+                                <DropdownMenuShortcut>⌘1</DropdownMenuShortcut>
+                              </DropdownMenuRadioItem>
+                              <DropdownMenuRadioItem value="option2">
+                                Option 2
+                                <DropdownMenuShortcut>⌘2</DropdownMenuShortcut>
+                              </DropdownMenuRadioItem>
+                              <DropdownMenuRadioItem value="option3">
+                                Option 3
+                                <DropdownMenuShortcut>⌘3</DropdownMenuShortcut>
+                              </DropdownMenuRadioItem>
+                            </DropdownMenuRadioGroup>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </div>
+
+                      <div>
+                        <h5 className="text-sm font-medium mb-2">Multi Select</h5>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button variant="outline">
+                              <ArrowUpDown className="mr-2 h-4 w-4" />
+                              Multiple Options
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent className="w-56">
+                            <DropdownMenuLabel>Select Multiple</DropdownMenuLabel>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuCheckboxItem checked>
+                              Option A
+                              <DropdownMenuShortcut>⌘A</DropdownMenuShortcut>
+                            </DropdownMenuCheckboxItem>
+                            <DropdownMenuCheckboxItem>
+                              Option B
+                              <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+                            </DropdownMenuCheckboxItem>
+                            <DropdownMenuCheckboxItem>
+                              Option C
+                              <DropdownMenuShortcut>⌘C</DropdownMenuShortcut>
+                            </DropdownMenuCheckboxItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </div>
+                    </div>
                   </div>
 
                   <div>
-                    <h4 className="font-semibold mb-3 text-lg">Single Selection (Paste Pattern)</h4>
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button variant="outline">
-                          <Settings className="mr-2 h-4 w-4" />
-                          Theme
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent className="w-56">
-                        <DropdownMenuLabel>Appearance</DropdownMenuLabel>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuRadioGroup value="system">
-                          <DropdownMenuRadioItem value="light">
-                            Light
-                          </DropdownMenuRadioItem>
-                          <DropdownMenuRadioItem value="dark">
-                            Dark
-                          </DropdownMenuRadioItem>
-                          <DropdownMenuRadioItem value="system">
-                            System
-                          </DropdownMenuRadioItem>
-                        </DropdownMenuRadioGroup>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  <h4 className="font-semibold text-lg">Command Palette (GitHub Primer Pattern)</h4>
-                  <div className="p-4 border rounded-lg">
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button variant="outline" className="w-full justify-start">
-                          <Search className="mr-2 h-4 w-4" />
-                          Search commands...
-                          <DropdownMenuShortcut className="ml-auto">⌘K</DropdownMenuShortcut>
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent className="w-80">
-                        <DropdownMenuLabel>Quick Actions</DropdownMenuLabel>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuItem>
-                          <Home className="mr-2 h-4 w-4" />
-                          Go to Dashboard
-                          <DropdownMenuShortcut>⌘H</DropdownMenuShortcut>
-                        </DropdownMenuItem>
-                        <DropdownMenuItem>
-                          <Plus className="mr-2 h-4 w-4" />
-                          Create New Project
-                          <DropdownMenuShortcut>⌘N</DropdownMenuShortcut>
-                        </DropdownMenuItem>
-                        <DropdownMenuItem>
-                          <Search className="mr-2 h-4 w-4" />
-                          Search Projects
-                          <DropdownMenuShortcut>⌘F</DropdownMenuShortcut>
-                        </DropdownMenuItem>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuLabel>Settings</DropdownMenuLabel>
-                        <DropdownMenuItem>
-                          <Settings className="mr-2 h-4 w-4" />
-                          Preferences
-                          <DropdownMenuShortcut>⌘,</DropdownMenuShortcut>
-                        </DropdownMenuItem>
-                        <DropdownMenuItem>
-                          <Keyboard className="mr-2 h-4 w-4" />
-                          Keyboard Shortcuts
-                          <DropdownMenuShortcut>⌘/</DropdownMenuShortcut>
-                        </DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  <h4 className="font-semibold text-lg">Mobile-First Patterns (Apple HIG & Material Design 3)</h4>
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="p-4 border rounded-lg">
-                      <h5 className="font-medium mb-2">Bottom Sheet Style (Material Design 3)</h5>
-                      <p className="text-sm text-muted-foreground mb-3">
-                        Following Material Design 3 and iOS Human Interface Guidelines for mobile-optimized menu presentation 
-                        with proper touch targets and gesture support.
-                      </p>
+                    <h4 className="font-semibold mb-3 text-lg">Command Menu (Primer Pattern)</h4>
+                    <div className="space-y-4">
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                          <Button variant="outline" size="sm">More Options</Button>
+                          <Button variant="outline" className="w-full justify-start">
+                            <Command className="mr-2 h-4 w-4" />
+                            Command Menu
+                            <DropdownMenuShortcut className="ml-auto">⌘K</DropdownMenuShortcut>
+                          </Button>
                         </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end" className="w-48">
+                        <DropdownMenuContent className="w-64">
+                          <DropdownMenuItem>
+                            <Search className="mr-2 h-4 w-4" />
+                            Search...
+                            <DropdownMenuShortcut>⌘F</DropdownMenuShortcut>
+                          </DropdownMenuItem>
+                          <DropdownMenuSeparator />
+                          <DropdownMenuItem>
+                            <Plus className="mr-2 h-4 w-4" />
+                            New Item
+                            <DropdownMenuShortcut>⌘N</DropdownMenuShortcut>
+                          </DropdownMenuItem>
+                          <DropdownMenuItem>
+                            <Edit3 className="mr-2 h-4 w-4" />
+                            Edit
+                            <DropdownMenuShortcut>⌘E</DropdownMenuShortcut>
+                          </DropdownMenuItem>
+                          <DropdownMenuSeparator />
+                          <DropdownMenuGroup>
+                            <DropdownMenuItem>
+                              <Copy className="mr-2 h-4 w-4" />
+                              Copy
+                              <DropdownMenuShortcut>⌘C</DropdownMenuShortcut>
+                            </DropdownMenuItem>
+                            <DropdownMenuItem>
+                              <ClipboardPaste className="mr-2 h-4 w-4" />
+                              Paste
+                              <DropdownMenuShortcut>⌘V</DropdownMenuShortcut>
+                            </DropdownMenuItem>
+                          </DropdownMenuGroup>
+                        </DropdownMenuContent>
+                      </DropdownMenu>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <h4 className="font-semibold text-lg">Mobile Patterns (Material & Uber)</h4>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="p-4 border rounded-lg">
+                      <h5 className="font-medium mb-2">Bottom Sheet Menu</h5>
+                      <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                          <Button variant="outline" size="sm">
+                            <MenuIcon className="mr-2 h-4 w-4" />
+                            Actions
+                          </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent className="w-56" align="start" side="bottom">
                           <DropdownMenuItem>
                             <Share className="mr-2 h-4 w-4" />
                             Share
                           </DropdownMenuItem>
                           <DropdownMenuItem>
-                            <Bookmark className="mr-2 h-4 w-4" />
-                            Save
+                            <Edit3 className="mr-2 h-4 w-4" />
+                            Edit
                           </DropdownMenuItem>
                           <DropdownMenuItem>
-                            <Flag className="mr-2 h-4 w-4" />
-                            Report
+                            <Copy className="mr-2 h-4 w-4" />
+                            Duplicate
+                          </DropdownMenuItem>
+                          <DropdownMenuSeparator />
+                          <DropdownMenuItem variant="destructive">
+                            <Trash2 className="mr-2 h-4 w-4" />
+                            Delete
                           </DropdownMenuItem>
                         </DropdownMenuContent>
                       </DropdownMenu>
                     </div>
-                    
+
                     <div className="p-4 border rounded-lg">
-                      <h5 className="font-medium mb-2">Overflow Menu (IBM Carbon Pattern)</h5>
-                      <p className="text-sm text-muted-foreground mb-3">
-                        IBM Carbon Design System&apos;s three-dot overflow pattern for constrained spaces with 
-                        proper accessibility and keyboard navigation support.
-                      </p>
+                      <h5 className="font-medium mb-2">Overflow Menu (Carbon)</h5>
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                           <Button variant="ghost" size="sm">
                             <MoreVertical className="h-4 w-4" />
                           </Button>
                         </DropdownMenuTrigger>
-                        <DropdownMenuContent>
-                          <DropdownMenuItem>View details</DropdownMenuItem>
-                          <DropdownMenuItem>Edit</DropdownMenuItem>
+                        <DropdownMenuContent align="end">
+                          <DropdownMenuItem>
+                            View Details
+                          </DropdownMenuItem>
+                          <DropdownMenuItem>
+                            Quick Edit
+                          </DropdownMenuItem>
                           <DropdownMenuSeparator />
-                          <DropdownMenuItem variant="destructive">Remove</DropdownMenuItem>
+                          <DropdownMenuItem variant="destructive">
+                            Remove
+                          </DropdownMenuItem>
                         </DropdownMenuContent>
                       </DropdownMenu>
                     </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <h4 className="font-semibold text-lg">Hierarchical Menus (Apple HIG)</h4>
+                  <div className="p-4 border rounded-lg">
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button variant="outline">
+                          <Folder className="mr-2 h-4 w-4" />
+                          File Menu
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent className="w-56">
+                        <DropdownMenuLabel>File Operations</DropdownMenuLabel>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem>
+                          <Plus className="mr-2 h-4 w-4" />
+                          New File
+                          <DropdownMenuShortcut>⌘N</DropdownMenuShortcut>
+                        </DropdownMenuItem>
+                        <DropdownMenuSub>
+                          <DropdownMenuSubTrigger>
+                            <Folder className="mr-2 h-4 w-4" />
+                            Open Recent
+                            <ChevronRight className="ml-auto h-4 w-4" />
+                          </DropdownMenuSubTrigger>
+                          <DropdownMenuSubContent>
+                            <DropdownMenuItem>Document.pdf</DropdownMenuItem>
+                            <DropdownMenuItem>Spreadsheet.xlsx</DropdownMenuItem>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuItem>Clear Recent</DropdownMenuItem>
+                          </DropdownMenuSubContent>
+                        </DropdownMenuSub>
+                        <DropdownMenuSub>
+                          <DropdownMenuSubTrigger>
+                            <Download className="mr-2 h-4 w-4" />
+                            Export As
+                            <ChevronRight className="ml-auto h-4 w-4" />
+                          </DropdownMenuSubTrigger>
+                          <DropdownMenuSubContent>
+                            <DropdownMenuItem>PDF Document</DropdownMenuItem>
+                            <DropdownMenuItem>Word Document</DropdownMenuItem>
+                            <DropdownMenuItem>Plain Text</DropdownMenuItem>
+                          </DropdownMenuSubContent>
+                        </DropdownMenuSub>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem variant="destructive">
+                          <Trash2 className="mr-2 h-4 w-4" />
+                          Delete
+                          <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
                   </div>
                 </div>
               </CardContent>
@@ -650,134 +714,177 @@ export default function MenuPage() {
           <TabsContent value="hierarchy" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Information Architecture & Grouping (Atlassian & Carbon)</CardTitle>
+                <CardTitle>Menu Anatomy & Organization</CardTitle>
                 <CardDescription>
-                  Organizing menu content following Atlassian Design System and IBM Carbon Design System patterns for optimal 
-                  discoverability, cognitive load management, and user experience across enterprise applications.
+                  Essential structural elements and organization patterns for menus, following best practices from 
+                  Material Design, Apple HIG, and Adobe Spectrum.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="space-y-4">
-                  <h4 className="font-semibold text-lg">Grouping & Separators</h4>
-                  <div className="p-4 border rounded-lg">
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button variant="outline">
-                          <Folder className="mr-2 h-4 w-4" />
-                          File Menu
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 className="font-semibold mb-3 text-lg">Core Components</h4>
+                    <div className="space-y-3">
+                      <div className="p-4 border rounded-lg">
+                        <h5 className="text-sm font-medium mb-2">1. Trigger Element</h5>
+                        <p className="text-sm text-muted-foreground mb-3">
+                          The interactive element that opens the menu (button, icon, or text).
+                        </p>
+                        <Button variant="outline" className="w-full justify-between">
+                          Menu Trigger
+                          <ChevronDown className="h-4 w-4 opacity-50" />
                         </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent className="w-56">
-                        <DropdownMenuLabel>Create</DropdownMenuLabel>
-                        <DropdownMenuItem>
-                          <File className="mr-2 h-4 w-4" />
-                          New Document
-                        </DropdownMenuItem>
-                        <DropdownMenuItem>
-                          <Folder className="mr-2 h-4 w-4" />
-                          New Folder
-                        </DropdownMenuItem>
-                        
-                        <DropdownMenuSeparator />
-                        
-                        <DropdownMenuLabel>Import/Export</DropdownMenuLabel>
-                        <DropdownMenuGroup>
-                          <DropdownMenuItem>
-                            <Download className="mr-2 h-4 w-4" />
-                            Import File
-                          </DropdownMenuItem>
-                          <DropdownMenuSub>
-                            <DropdownMenuSubTrigger>
-                              <Share className="mr-2 h-4 w-4" />
-                              Export As
-                            </DropdownMenuSubTrigger>
-                            <DropdownMenuSubContent>
-                              <DropdownMenuItem>PDF Document</DropdownMenuItem>
-                              <DropdownMenuItem>Word Document</DropdownMenuItem>
-                              <DropdownMenuItem>Plain Text</DropdownMenuItem>
-                              <DropdownMenuSeparator />
-                              <DropdownMenuItem>JSON Data</DropdownMenuItem>
-                              <DropdownMenuItem>CSV File</DropdownMenuItem>
-                            </DropdownMenuSubContent>
-                          </DropdownMenuSub>
-                        </DropdownMenuGroup>
-                        
-                        <DropdownMenuSeparator />
-                        
-                        <DropdownMenuLabel>Recent</DropdownMenuLabel>
-                        <DropdownMenuItem>Document1.pdf</DropdownMenuItem>
-                        <DropdownMenuItem>Project-Files.zip</DropdownMenuItem>
-                        <DropdownMenuItem disabled>No recent files</DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
+                      </div>
+
+                      <div className="p-4 border rounded-lg">
+                        <h5 className="text-sm font-medium mb-2">2. Menu Container</h5>
+                        <p className="text-sm text-muted-foreground mb-3">
+                          The floating panel that contains menu items and sections.
+                        </p>
+                        <div className="border rounded-md p-2 bg-muted/50">
+                          <div className="p-2 text-sm">Menu Container</div>
+                          <Separator className="my-2" />
+                          <div className="space-y-1">
+                            <div className="p-2 text-sm bg-accent/50 rounded-sm">Item 1</div>
+                            <div className="p-2 text-sm bg-accent/50 rounded-sm">Item 2</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="p-4 border rounded-lg">
+                        <h5 className="text-sm font-medium mb-2">3. Menu Items</h5>
+                        <p className="text-sm text-muted-foreground mb-3">
+                          Individual interactive options within the menu.
+                        </p>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button variant="outline">View Items</Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent>
+                            <DropdownMenuItem>
+                              <User className="mr-2 h-4 w-4" />
+                              Basic Item
+                            </DropdownMenuItem>
+                            <DropdownMenuItem disabled>
+                              <AlertCircle className="mr-2 h-4 w-4" />
+                              Disabled Item
+                            </DropdownMenuItem>
+                            <DropdownMenuItem>
+                              <Info className="mr-2 h-4 w-4" />
+                              With Icon
+                              <DropdownMenuShortcut>⌘I</DropdownMenuShortcut>
+                            </DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="font-semibold mb-3 text-lg">Organization Patterns</h4>
+                    <div className="space-y-3">
+                      <div className="p-4 border rounded-lg">
+                        <h5 className="text-sm font-medium mb-2">1. Grouping & Sections</h5>
+                        <p className="text-sm text-muted-foreground mb-3">
+                          Logical grouping of related items with clear visual separation.
+                        </p>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button variant="outline">Grouped Items</Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent className="w-56">
+                            <DropdownMenuLabel>Group 1</DropdownMenuLabel>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuItem>Item 1.1</DropdownMenuItem>
+                            <DropdownMenuItem>Item 1.2</DropdownMenuItem>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuLabel>Group 2</DropdownMenuLabel>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuItem>Item 2.1</DropdownMenuItem>
+                            <DropdownMenuItem>Item 2.2</DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </div>
+
+                      <div className="p-4 border rounded-lg">
+                        <h5 className="text-sm font-medium mb-2">2. Hierarchy & Nesting</h5>
+                        <p className="text-sm text-muted-foreground mb-3">
+                          Submenus for organizing complex options and actions.
+                        </p>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button variant="outline">Nested Menu</Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent>
+                            <DropdownMenuItem>Main Option</DropdownMenuItem>
+                            <DropdownMenuSub>
+                              <DropdownMenuSubTrigger>
+                                <ChevronRight className="mr-2 h-4 w-4" />
+                                Submenu
+                              </DropdownMenuSubTrigger>
+                              <DropdownMenuSubContent>
+                                <DropdownMenuItem>Sub-option 1</DropdownMenuItem>
+                                <DropdownMenuItem>Sub-option 2</DropdownMenuItem>
+                              </DropdownMenuSubContent>
+                            </DropdownMenuSub>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </div>
+
+                      <div className="p-4 border rounded-lg">
+                        <h5 className="text-sm font-medium mb-2">3. Visual Hierarchy</h5>
+                        <p className="text-sm text-muted-foreground mb-3">
+                          Using icons, typography, and spacing for clear visual organization.
+                        </p>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button variant="outline">Visual Elements</Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent className="w-56">
+                            <DropdownMenuLabel className="font-bold">Primary Actions</DropdownMenuLabel>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuItem>
+                              <Star className="mr-2 h-4 w-4" />
+                              Featured Item
+                            </DropdownMenuItem>
+                            <DropdownMenuItem className="text-muted-foreground">
+                              <Info className="mr-2 h-4 w-4" />
+                              Secondary Item
+                            </DropdownMenuItem>
+                            <DropdownMenuItem variant="destructive">
+                              <Trash2 className="mr-2 h-4 w-4" />
+                              Danger Action
+                            </DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
                 <div className="space-y-4">
-                  <h4 className="font-semibold text-lg">Multi-level Navigation</h4>
-                  <div className="p-4 border rounded-lg">
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button variant="outline">
-                          <Globe className="mr-2 h-4 w-4" />
-                          Navigation
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent className="w-56">
-                        <DropdownMenuItem>
-                          <Home className="mr-2 h-4 w-4" />
-                          Dashboard
-                        </DropdownMenuItem>
-                        
-                        <DropdownMenuSub>
-                          <DropdownMenuSubTrigger>
-                            <User className="mr-2 h-4 w-4" />
-                            Profile
-                          </DropdownMenuSubTrigger>
-                          <DropdownMenuSubContent>
-                            <DropdownMenuItem>View Profile</DropdownMenuItem>
-                            <DropdownMenuItem>Edit Profile</DropdownMenuItem>
-                            <DropdownMenuSeparator />
-                            <DropdownMenuSub>
-                              <DropdownMenuSubTrigger>Privacy Settings</DropdownMenuSubTrigger>
-                              <DropdownMenuSubContent>
-                                <DropdownMenuItem>Public Profile</DropdownMenuItem>
-                                <DropdownMenuItem>Private Profile</DropdownMenuItem>
-                                <DropdownMenuItem>Friends Only</DropdownMenuItem>
-                              </DropdownMenuSubContent>
-                            </DropdownMenuSub>
-                          </DropdownMenuSubContent>
-                        </DropdownMenuSub>
-                        
-                        <DropdownMenuSub>
-                          <DropdownMenuSubTrigger>
-                            <Settings className="mr-2 h-4 w-4" />
-                            Settings
-                          </DropdownMenuSubTrigger>
-                          <DropdownMenuSubContent>
-                            <DropdownMenuItem>
-                              <Bell className="mr-2 h-4 w-4" />
-                              Notifications
-                            </DropdownMenuItem>
-                            <DropdownMenuItem>
-                              <Shield className="mr-2 h-4 w-4" />
-                              Security
-                            </DropdownMenuItem>
-                            <DropdownMenuItem>
-                              <Zap className="mr-2 h-4 w-4" />
-                              Performance
-                            </DropdownMenuItem>
-                          </DropdownMenuSubContent>
-                        </DropdownMenuSub>
-                        
-                        <DropdownMenuSeparator />
-                        
-                        <DropdownMenuItem>
-                          <HelpCircle className="mr-2 h-4 w-4" />
-                          Help & Support
-                        </DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
+                  <h4 className="font-semibold text-lg">Layout Guidelines</h4>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="p-4 border rounded-lg">
+                      <h5 className="font-medium mb-2">Spacing & Alignment</h5>
+                      <ul className="space-y-2 text-sm">
+                        <li>• Consistent padding (16px recommended)</li>
+                        <li>• Aligned icons and text</li>
+                        <li>• Clear item separation</li>
+                        <li>• Adequate touch targets (44px)</li>
+                        <li>• Proper text wrapping</li>
+                      </ul>
+                    </div>
+                    <div className="p-4 border rounded-lg">
+                      <h5 className="font-medium mb-2">Responsive Behavior</h5>
+                      <ul className="space-y-2 text-sm">
+                        <li>• Mobile-first approach</li>
+                        <li>• Adaptive width and height</li>
+                        <li>• Dynamic positioning</li>
+                        <li>• Scrollable when needed</li>
+                        <li>• Platform-specific adjustments</li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </CardContent>
@@ -788,148 +895,204 @@ export default function MenuPage() {
           <TabsContent value="states" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Interactive States & Feedback (Carbon & Material Design 3)</CardTitle>
+                <CardTitle>Menu States & Interactions</CardTitle>
                 <CardDescription>
-                  Consistent state management patterns based on IBM Carbon Design System and Material Design 3 specifications 
-                  for menu interactions, including loading states, error handling, and progressive enhancement.
+                  Comprehensive guide to menu states, transitions, and interaction feedback based on Material Design, 
+                  Apple HIG, and Adobe Spectrum guidelines.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <h4 className="font-semibold mb-3 text-lg">Loading & Disabled States</h4>
-                    <div className="space-y-3">
-                      <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                          <Button variant="outline">
-                            <Zap className="mr-2 h-4 w-4" />
-                            System States
-                          </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent className="w-56">
-                          <DropdownMenuLabel>System Actions</DropdownMenuLabel>
-                          <DropdownMenuSeparator />
-                          <DropdownMenuItem>
-                            <Settings className="mr-2 h-4 w-4" />
-                            Available Action
-                          </DropdownMenuItem>
-                          <DropdownMenuItem disabled>
-                            <Globe className="mr-2 h-4 w-4" />
-                            Disabled Action
-                          </DropdownMenuItem>
-                          <DropdownMenuItem disabled>
-                            <Shield className="mr-2 h-4 w-4" />
-                            Inactive due to outage
-                          </DropdownMenuItem>
-                        </DropdownMenuContent>
-                      </DropdownMenu>
+                    <h4 className="font-semibold mb-3 text-lg">Menu Item States</h4>
+                    <div className="space-y-4">
+                      <div className="p-4 border rounded-lg">
+                        <h5 className="text-sm font-medium mb-2">Interactive States</h5>
+                        <div className="space-y-2">
+                          <div className="p-2 rounded bg-background hover:bg-accent">
+                            Default State
+                          </div>
+                          <div className="p-2 rounded bg-accent">
+                            Hover State
+                          </div>
+                          <div className="p-2 rounded bg-accent/80">
+                            Active/Pressed State
+                          </div>
+                          <div className="p-2 rounded bg-muted text-muted-foreground">
+                            Disabled State
+                          </div>
+                          <div className="p-2 rounded bg-accent ring-2 ring-ring ring-offset-2">
+                            Focused State
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="p-4 border rounded-lg">
+                        <h5 className="text-sm font-medium mb-2">Selection States</h5>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button variant="outline">Selection Demo</Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent>
+                            <DropdownMenuCheckboxItem checked>
+                              Selected Item
+                            </DropdownMenuCheckboxItem>
+                            <DropdownMenuCheckboxItem>
+                              Unselected Item
+                            </DropdownMenuCheckboxItem>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuRadioGroup value="option1">
+                              <DropdownMenuRadioItem value="option1">
+                                Radio Selected
+                              </DropdownMenuRadioItem>
+                              <DropdownMenuRadioItem value="option2">
+                                Radio Unselected
+                              </DropdownMenuRadioItem>
+                            </DropdownMenuRadioGroup>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </div>
                     </div>
                   </div>
 
                   <div>
-                    <h4 className="font-semibold mb-3 text-lg">Selection States</h4>
-                    <div className="space-y-3">
-                      <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                          <Button variant="outline">
-                            <Star className="mr-2 h-4 w-4" />
-                            Multi-Select Options
-                          </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent className="w-56">
-                          <DropdownMenuLabel>Content Preferences</DropdownMenuLabel>
-                          <DropdownMenuSeparator />
-                          <DropdownMenuCheckboxItem checked>
-                            <Heart className="mr-2 h-4 w-4" />
-                            Favorited Items
-                          </DropdownMenuCheckboxItem>
-                          <DropdownMenuCheckboxItem>
-                            <Bell className="mr-2 h-4 w-4" />
-                            Notifications
-                          </DropdownMenuCheckboxItem>
-                          <DropdownMenuCheckboxItem checked>
-                            <Archive className="mr-2 h-4 w-4" />
-                            Archived Content
-                          </DropdownMenuCheckboxItem>
-                        </DropdownMenuContent>
-                      </DropdownMenu>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  <h4 className="font-semibold text-lg">Inactive Menu Items (Primer Pattern)</h4>
-                  <div className="space-y-3">
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button variant="outline">
-                          <Settings className="mr-2 h-4 w-4" />
-                          System Actions
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent className="w-56">
-                        <DropdownMenuLabel>Available Actions</DropdownMenuLabel>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuItem>
-                          <Edit3 className="mr-2 h-4 w-4" />
-                          Edit Settings
-                        </DropdownMenuItem>
-                        <DropdownMenuItem disabled>
-                          <Globe className="mr-2 h-4 w-4" />
-                          Network unavailable - Check connection
-                        </DropdownMenuItem>
-                        <DropdownMenuItem>
-                          <Shield className="mr-2 h-4 w-4" />
-                          Security Settings
-                        </DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                    <p className="text-sm text-muted-foreground">
-                      Inactive items remain focusable but display explanatory text directly in the item (Primer pattern).
-                    </p>
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  <h4 className="font-semibold text-lg">Error & Recovery States</h4>
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="p-4 border rounded-lg bg-destructive/5">
-                      <h5 className="font-medium mb-2 text-destructive">Critical Actions</h5>
-                      <p className="text-sm text-muted-foreground mb-3">
-                        Following Carbon&apos;s overflow menu pattern for destructive actions with clear visual separation.
-                      </p>
-                      <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                          <Button variant="outline" size="sm">Manage Content</Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent>
-                          <DropdownMenuItem>
-                            <Edit3 className="mr-2 h-4 w-4" />
-                            Edit Content
-                          </DropdownMenuItem>
-                          <DropdownMenuItem>
-                            <Copy className="mr-2 h-4 w-4" />
-                            Duplicate
-                          </DropdownMenuItem>
-                          <DropdownMenuSeparator />
-                          <DropdownMenuItem variant="destructive">
-                            <Trash2 className="mr-2 h-4 w-4" />
-                            Delete Permanently
-                          </DropdownMenuItem>
-                        </DropdownMenuContent>
-                      </DropdownMenu>
-                    </div>
-                    
-                    <div className="p-4 border rounded-lg">
-                      <h5 className="font-medium mb-2">Progressive Enhancement</h5>
-                      <p className="text-sm text-muted-foreground mb-3">
-                        Graceful degradation when JavaScript is disabled, following W3C progressive enhancement principles.
-                      </p>
-                      <div className="text-sm">
-                        <p>• Native HTML fallbacks</p>
-                        <p>• Semantic navigation structures</p>
-                        <p>• Server-side rendering support</p>
+                    <h4 className="font-semibold mb-3 text-lg">Menu Container States</h4>
+                    <div className="space-y-4">
+                      <div className="p-4 border rounded-lg">
+                        <h5 className="text-sm font-medium mb-2">Open/Close States</h5>
+                        <div className="space-y-4">
+                          <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                              <Button>
+                                <MenuIcon className="mr-2 h-4 w-4" />
+                                Click to Open
+                              </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent>
+                              <DropdownMenuItem>Option 1</DropdownMenuItem>
+                              <DropdownMenuItem>Option 2</DropdownMenuItem>
+                            </DropdownMenuContent>
+                          </DropdownMenu>
+                        </div>
                       </div>
+
+                      <div className="p-4 border rounded-lg">
+                        <h5 className="text-sm font-medium mb-2">Loading States</h5>
+                        <div className="space-y-2">
+                          <Button disabled className="w-full">
+                            <div className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
+                            Loading...
+                          </Button>
+                          <div className="p-4 rounded bg-muted space-y-2">
+                            <div className="h-4 bg-muted-foreground/20 rounded animate-pulse" />
+                            <div className="h-4 bg-muted-foreground/20 rounded animate-pulse" />
+                            <div className="h-4 bg-muted-foreground/20 rounded animate-pulse" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <h4 className="font-semibold text-lg">Feedback & Validation States</h4>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="p-4 border rounded-lg">
+                      <h5 className="font-medium mb-2">Success/Error States</h5>
+                      <div className="space-y-2">
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button variant="outline">Action States</Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent>
+                            <DropdownMenuItem className="text-green-600 dark:text-green-400">
+                              <Check className="mr-2 h-4 w-4" />
+                              Action Completed
+                            </DropdownMenuItem>
+                            <DropdownMenuItem variant="destructive">
+                              <AlertCircle className="mr-2 h-4 w-4" />
+                              Action Failed
+                            </DropdownMenuItem>
+                            <DropdownMenuItem disabled>
+                              <Info className="mr-2 h-4 w-4" />
+                              Processing...
+                            </DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </div>
+                    </div>
+
+                    <div className="p-4 border rounded-lg">
+                      <h5 className="font-medium mb-2">Confirmation States</h5>
+                      <div className="space-y-2">
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button variant="outline">Destructive Action</Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent>
+                            <DropdownMenuItem variant="destructive">
+                              <Trash2 className="mr-2 h-4 w-4" />
+                              Delete Item
+                            </DropdownMenuItem>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuLabel className="text-xs text-muted-foreground">
+                              This action cannot be undone
+                            </DropdownMenuLabel>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <h4 className="font-semibold text-lg">Platform-Specific States</h4>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="p-4 border rounded-lg">
+                      <h5 className="font-medium mb-2">Touch Interactions</h5>
+                      <ul className="space-y-2 text-sm">
+                        <li>• Touch highlight feedback</li>
+                        <li>• Ripple effects (Material)</li>
+                        <li>• Haptic feedback</li>
+                        <li>• Gesture transitions</li>
+                        <li>• Press-and-hold states</li>
+                      </ul>
+                    </div>
+                    <div className="p-4 border rounded-lg">
+                      <h5 className="font-medium mb-2">Desktop Interactions</h5>
+                      <ul className="space-y-2 text-sm">
+                        <li>• Hover effects</li>
+                        <li>• Focus indicators</li>
+                        <li>• Keyboard navigation states</li>
+                        <li>• Right-click context</li>
+                        <li>• Tooltip states</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <h4 className="font-semibold text-lg">Animation & Transitions</h4>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="p-4 border rounded-lg">
+                      <h5 className="font-medium mb-2">Opening/Closing</h5>
+                      <ul className="space-y-2 text-sm">
+                        <li>• Scale and fade animations</li>
+                        <li>• Direction-based transitions</li>
+                        <li>• Smooth easing curves</li>
+                        <li>• Coordinated motion</li>
+                        <li>• Performance optimization</li>
+                      </ul>
+                    </div>
+                    <div className="p-4 border rounded-lg">
+                      <h5 className="font-medium mb-2">State Changes</h5>
+                      <ul className="space-y-2 text-sm">
+                        <li>• Smooth color transitions</li>
+                        <li>• Icon animations</li>
+                        <li>• Loading indicators</li>
+                        <li>• Selection animations</li>
+                        <li>• Error/success transitions</li>
+                      </ul>
                     </div>
                   </div>
                 </div>
@@ -941,169 +1104,193 @@ export default function MenuPage() {
           <TabsContent value="accessibility" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Comprehensive Accessibility Standards (W3C WAI-ARIA 1.2)</CardTitle>
+                <CardTitle>Menu Accessibility</CardTitle>
                 <CardDescription>
-                  WCAG 2.1 AA compliant patterns following W3C WAI-ARIA 1.2 specifications, Apple Human Interface Guidelines 
-                  accessibility standards, and industry best practices from major design systems including Material Design, 
-                  IBM Carbon, and Adobe Spectrum.
+                  Essential accessibility features and best practices for creating inclusive menu experiences that work for all users.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <h4 className="font-semibold mb-3 text-lg">Keyboard Navigation (Carbon Pattern)</h4>
+                    <h4 className="font-semibold mb-3 text-lg">Keyboard Navigation</h4>
                     <div className="space-y-3">
-                      <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded">
-                        <strong className="text-blue-800 dark:text-blue-200 text-sm">Tab:</strong>
-                        <p className="text-blue-700 dark:text-blue-300 text-sm">Navigate to menu trigger (Carbon accessibility)</p>
+                      <div className="p-4 bg-muted rounded-lg">
+                        <h5 className="font-medium mb-2">Essential Shortcuts</h5>
+                        <div className="space-y-2">
+                          <div className="flex items-center justify-between text-sm">
+                            <span>Open menu</span>
+                            <kbd className="px-2 py-1 bg-background rounded text-xs">Space/Enter</kbd>
+                          </div>
+                          <div className="flex items-center justify-between text-sm">
+                            <span>Navigate items</span>
+                            <kbd className="px-2 py-1 bg-background rounded text-xs">↑/↓</kbd>
+                          </div>
+                          <div className="flex items-center justify-between text-sm">
+                            <span>Access submenu</span>
+                            <kbd className="px-2 py-1 bg-background rounded text-xs">→</kbd>
+                          </div>
+                          <div className="flex items-center justify-between text-sm">
+                            <span>Exit submenu</span>
+                            <kbd className="px-2 py-1 bg-background rounded text-xs">←</kbd>
+                          </div>
+                          <div className="flex items-center justify-between text-sm">
+                            <span>Close menu</span>
+                            <kbd className="px-2 py-1 bg-background rounded text-xs">Esc</kbd>
+                          </div>
+                          <div className="flex items-center justify-between text-sm">
+                            <span>Jump to first/last</span>
+                            <kbd className="px-2 py-1 bg-background rounded text-xs">Home/End</kbd>
+                          </div>
+                        </div>
                       </div>
-                      <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded">
-                        <strong className="text-blue-800 dark:text-blue-200 text-sm">Space/Enter:</strong>
-                        <p className="text-blue-700 dark:text-blue-300 text-sm">Open menu or activate item (W3C standard)</p>
-                      </div>
-                      <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded">
-                        <strong className="text-blue-800 dark:text-blue-200 text-sm">Arrow Keys:</strong>
-                        <p className="text-blue-700 dark:text-blue-300 text-sm">Navigate menu items (Up/Down for vertical, Left/Right for horizontal)</p>
-                      </div>
-                      <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded">
-                        <strong className="text-blue-800 dark:text-blue-200 text-sm">Escape:</strong>
-                        <p className="text-blue-700 dark:text-blue-300 text-sm">Close menu and return focus to trigger (Carbon pattern)</p>
+
+                      <div className="p-4 border rounded-lg">
+                        <h5 className="font-medium mb-2">Type-Ahead Navigation</h5>
+                        <p className="text-sm text-muted-foreground mb-3">
+                          Users can type characters to jump to matching menu items.
+                        </p>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button variant="outline">Try Type-Ahead</Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent>
+                            <DropdownMenuItem>Print Document</DropdownMenuItem>
+                            <DropdownMenuItem>Save File</DropdownMenuItem>
+                            <DropdownMenuItem>Share Link</DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
                       </div>
                     </div>
                   </div>
 
                   <div>
-                    <h4 className="font-semibold mb-3 text-lg">ARIA Labels & Roles (Carbon & W3C)</h4>
+                    <h4 className="font-semibold mb-3 text-lg">ARIA Implementation</h4>
                     <div className="space-y-3">
-                      <div className="p-3 border rounded-lg">
-                        <strong className="text-sm">role=&quot;menu&quot;:</strong>
-                        <p className="text-sm text-muted-foreground">Identifies menu container (W3C WAI-ARIA 1.2)</p>
+                      <div className="p-4 border rounded-lg">
+                        <h5 className="font-medium mb-2">Role Assignments</h5>
+                        <div className="space-y-2 text-sm">
+                          <p className="font-mono bg-muted p-1 rounded">role="menu"</p>
+                          <p className="font-mono bg-muted p-1 rounded">role="menuitem"</p>
+                          <p className="font-mono bg-muted p-1 rounded">role="menuitemcheckbox"</p>
+                          <p className="font-mono bg-muted p-1 rounded">role="menuitemradio"</p>
+                        </div>
                       </div>
-                      <div className="p-3 border rounded-lg">
-                        <strong className="text-sm">role=&quot;menuitem&quot;:</strong>
-                        <p className="text-sm text-muted-foreground">Individual menu items with tabindex=&quot;-1&quot; (Carbon pattern)</p>
-                      </div>
-                      <div className="p-3 border rounded-lg">
-                        <strong className="text-sm">aria-expanded:</strong>
-                        <p className="text-sm text-muted-foreground">Indicates menu state (true/false)</p>
-                      </div>
-                      <div className="p-3 border rounded-lg">
-                        <strong className="text-sm">aria-haspopup=&quot;true&quot;:</strong>
-                        <p className="text-sm text-muted-foreground">Indicates submenu presence (Carbon accessibility)</p>
-                      </div>
-                      <div className="p-3 border rounded-lg">
-                        <strong className="text-sm">aria-label:</strong>
-                        <p className="text-sm text-muted-foreground">Names the overflow menu (Carbon requirement)</p>
+
+                      <div className="p-4 border rounded-lg">
+                        <h5 className="font-medium mb-2">State Management</h5>
+                        <div className="space-y-2 text-sm">
+                          <p className="font-mono bg-muted p-1 rounded">aria-expanded="true/false"</p>
+                          <p className="font-mono bg-muted p-1 rounded">aria-checked="true/false/mixed"</p>
+                          <p className="font-mono bg-muted p-1 rounded">aria-disabled="true/false"</p>
+                          <p className="font-mono bg-muted p-1 rounded">aria-haspopup="true"</p>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 <div className="space-y-4">
-                  <h4 className="font-semibold text-lg">W3C WAI Menu Structure Guidelines</h4>
-                  <div className="space-y-3 p-4 border rounded-lg">
-                    <p className="text-sm text-muted-foreground mb-4">
-                      Following W3C WAI tutorials for proper menu markup and navigation patterns.
-                    </p>
-                    <ul className="space-y-2 text-sm">
-                      <li>• <strong>Semantic Structure:</strong> Use appropriate HTML elements (nav, ul, li) for navigation menus</li>
-                      <li>• <strong>ARIA Landmarks:</strong> Identify regions with navigation landmarks</li>
-                      <li>• <strong>Current Location:</strong> Indicate user&apos;s location within navigation</li>
-                      <li>• <strong>Multiple Ways:</strong> Provide alternative navigation methods</li>
-                      <li>• <strong>Bypass Blocks:</strong> Allow skipping repeated navigation content</li>
-                    </ul>
+                  <h4 className="font-semibold text-lg">Screen Reader Support</h4>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="p-4 border rounded-lg">
+                      <h5 className="font-medium mb-2">Descriptive Labels</h5>
+                      <div className="space-y-3">
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button variant="outline" aria-label="User settings menu">
+                              <User className="h-4 w-4" />
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent>
+                            <DropdownMenuItem aria-label="Edit profile settings">
+                              <Edit3 className="mr-2 h-4 w-4" />
+                              Edit Profile
+                            </DropdownMenuItem>
+                            <DropdownMenuItem aria-label="View notification preferences">
+                              <Bell className="mr-2 h-4 w-4" />
+                              Notifications
+                            </DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                        <p className="text-sm text-muted-foreground">
+                          Clear, descriptive labels for icons and actions
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="p-4 border rounded-lg">
+                      <h5 className="font-medium mb-2">Live Announcements</h5>
+                      <div className="space-y-2 text-sm">
+                        <div className="p-2 bg-muted rounded">
+                          Menu opened
+                          <span className="text-muted-foreground ml-2">(announced)</span>
+                        </div>
+                        <div className="p-2 bg-muted rounded">
+                          Option selected
+                          <span className="text-muted-foreground ml-2">(announced)</span>
+                        </div>
+                        <div className="p-2 bg-muted rounded">
+                          Menu closed
+                          <span className="text-muted-foreground ml-2">(announced)</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
                 <div className="space-y-4">
                   <h4 className="font-semibold text-lg">Focus Management</h4>
-                  <div className="space-y-3 p-4 border rounded-lg">
-                    <p className="text-sm text-muted-foreground mb-4">
-                      Proper focus management ensures users can navigate menus efficiently with assistive technologies.
-                    </p>
-                    <ul className="space-y-2 text-sm">
-                      <li>• <strong>Initial Focus:</strong> First menu item receives focus when menu opens</li>
-                      <li>• <strong>Focus Trapping:</strong> Focus remains within menu until closed</li>
-                      <li>• <strong>Return Focus:</strong> Focus returns to trigger when menu closes</li>
-                      <li>• <strong>Visual Indicators:</strong> Clear focus indicators for keyboard users</li>
-                      <li>• <strong>Skip Navigation:</strong> Allow bypassing long menus when appropriate</li>
-                    </ul>
-                  </div>
-                </div>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="p-4 border rounded-lg">
+                      <h5 className="font-medium mb-2">Focus Behavior</h5>
+                      <ul className="space-y-2 text-sm">
+                        <li>• Focus moves to first menu item on open</li>
+                        <li>• Focus is trapped within open menu</li>
+                        <li>• Focus returns to trigger on close</li>
+                        <li>• Focus visible at all times</li>
+                        <li>• Focus ring follows system preferences</li>
+                      </ul>
+                    </div>
 
-                <div className="space-y-4">
-                  <h4 className="font-semibold text-lg">ARIA Implementation Standards</h4>
-                  <div className="space-y-3 p-4 border rounded-lg">
-                    <div className="grid gap-3">
-                      <div>
-                        <strong className="text-sm">Role Definitions (W3C Standard):</strong>
-                        <p className="text-sm text-muted-foreground">role=&quot;menu&quot;, role=&quot;menubar&quot;, role=&quot;menuitem&quot; for application menus vs. nav elements for navigation</p>
-                      </div>
-                      <div>
-                        <strong className="text-sm">State Management:</strong>
-                        <p className="text-sm text-muted-foreground">aria-expanded, aria-haspopup=&quot;menu&quot;, aria-current for navigation menus</p>
-                      </div>
-                      <div>
-                        <strong className="text-sm">Focus Management Pattern:</strong>
-                        <p className="text-sm text-muted-foreground">aria-activedescendant or element.focus() following Carbon and Material Design patterns</p>
-                      </div>
-                      <div>
-                        <strong className="text-sm">Screen Reader Testing:</strong>
-                        <p className="text-sm text-muted-foreground">Validated with JAWS, NVDA, VoiceOver, and TalkBack across platforms</p>
+                    <div className="p-4 border rounded-lg">
+                      <h5 className="font-medium mb-2">Focus Indicators</h5>
+                      <div className="space-y-2">
+                        <div className="p-2 rounded bg-accent ring-2 ring-ring ring-offset-2">
+                          Focused menu item
+                        </div>
+                        <div className="p-2 rounded bg-muted">
+                          Unfocused menu item
+                        </div>
+                        <p className="text-sm text-muted-foreground">
+                          High contrast focus indicators that meet WCAG requirements
+                        </p>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 <div className="space-y-4">
-                  <h4 className="font-semibold text-lg">GitHub Primer ActionMenu Guidelines</h4>
-                  <div className="grid gap-4">
+                  <h4 className="font-semibold text-lg">Additional Considerations</h4>
+                  <div className="grid md:grid-cols-2 gap-4">
                     <div className="p-4 border rounded-lg">
-                      <h5 className="font-medium mb-2">Avoid Input Controls</h5>
-                      <p className="text-sm text-muted-foreground mb-3">
-                        Focus should remain on menu items. Don&apos;t include form elements like buttons, inputs, or checkboxes.
-                      </p>
-                      <ul className="text-sm space-y-1">
-                        <li>• Use ActionMenu for quick actions only</li>
-                        <li>• Use SelectPanel for filterable data</li>
-                        <li>• Use Dialog for complex interactions</li>
+                      <h5 className="font-medium mb-2">Motion & Animation</h5>
+                      <ul className="space-y-2 text-sm">
+                        <li>• Respects reduced motion preferences</li>
+                        <li>• No flashing or blinking content</li>
+                        <li>• Smooth transitions for context</li>
+                        <li>• Optional animation effects</li>
+                        <li>• Stable positioning during updates</li>
                       </ul>
                     </div>
-                    
-                    <div className="p-4 border rounded-lg">
-                      <h5 className="font-medium mb-2">Icon Consistency</h5>
-                      <p className="text-sm text-muted-foreground mb-3">
-                        All items should have icons or none should have icons. Avoid mixing items with and without icons.
-                      </p>
-                      <ul className="text-sm space-y-1">
-                        <li>• Consistent icon usage across all menu items</li>
-                        <li>• Avoid crossmark icons for select items</li>
-                        <li>• Reserve trailing visuals for submenu indicators</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
 
-                <div className="space-y-4">
-                  <h4 className="font-semibold text-lg">Platform-Specific Guidelines</h4>
-                  <div className="grid gap-4">
                     <div className="p-4 border rounded-lg">
-                      <h5 className="font-medium mb-2">Touch & Mobile (Apple HIG)</h5>
-                      <ul className="text-sm space-y-1">
-                        <li>• Minimum 44pt touch targets</li>
-                        <li>• Swipe gestures for menu navigation</li>
-                        <li>• VoiceOver rotor support</li>
-                        <li>• Dynamic Type compatibility</li>
-                      </ul>
-                    </div>
-                    
-                    <div className="p-4 border rounded-lg">
-                      <h5 className="font-medium mb-2">Desktop Applications (W3C)</h5>
-                      <ul className="text-sm space-y-1">
-                        <li>• Full keyboard navigation support</li>
-                        <li>• High contrast mode compatibility</li>
-                        <li>• Reduced motion preferences</li>
-                        <li>• Multiple input method support</li>
+                      <h5 className="font-medium mb-2">Visual Design</h5>
+                      <ul className="space-y-2 text-sm">
+                        <li>• Sufficient color contrast (4.5:1)</li>
+                        <li>• Multiple visual state indicators</li>
+                        <li>• Clear visual hierarchy</li>
+                        <li>• Consistent spacing and alignment</li>
+                        <li>• Adequate touch targets (44px)</li>
                       </ul>
                     </div>
                   </div>
