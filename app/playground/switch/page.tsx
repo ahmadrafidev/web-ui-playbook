@@ -653,7 +653,7 @@ export default function SwitchPage() {
                     <p className="text-sm text-muted-foreground">
                       Switches automatically provide proper ARIA attributes for screen reader compatibility:
                     </p>
-                    <div className="bg-muted p-3 rounded text-sm font-mono">
+                    <div className="bg-muted p-3 rounded text-sm ">
                       <div>role=&quot;switch&quot;</div>
                       <div>aria-checked=&quot;true|false&quot;</div>
                       <div>aria-labelledby=&quot;[label-id]&quot;</div>

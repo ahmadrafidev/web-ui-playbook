@@ -237,7 +237,7 @@ export default function SliderPage() {
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
                         <Label className="font-medium">Temperature</Label>
-                        <span className="text-sm font-mono">{formatTemperature(temperature[0])}</span>
+                        <span className="text-sm ">{formatTemperature(temperature[0])}</span>
                       </div>
                       <Slider
                         value={temperature}
@@ -277,7 +277,7 @@ export default function SliderPage() {
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
                         <Label className="font-medium">Working Hours</Label>
-                        <span className="text-sm font-mono">
+                        <span className="text-sm ">
                           {formatTime(timeRange[0])} - {formatTime(timeRange[1])}
                         </span>
                       </div>
@@ -298,7 +298,7 @@ export default function SliderPage() {
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
                         <Label className="font-medium">Trip Duration</Label>
-                        <span className="text-sm font-mono">
+                        <span className="text-sm ">
                           {dateRange[0]} - {dateRange[1]} days
                         </span>
                       </div>
@@ -321,7 +321,7 @@ export default function SliderPage() {
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
                         <Label className="font-medium">Quality Level</Label>
-                        <span className="text-sm font-mono">Level {discreteValue[0]}</span>
+                        <span className="text-sm ">Level {discreteValue[0]}</span>
                       </div>
                       <Slider
                         value={discreteValue}
@@ -343,7 +343,7 @@ export default function SliderPage() {
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
                         <Label className="font-medium">Step Increment</Label>
-                        <span className="text-sm font-mono">{stepValue[0]}%</span>
+                        <span className="text-sm ">{stepValue[0]}%</span>
                       </div>
                       <Slider
                         value={stepValue}

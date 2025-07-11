@@ -1171,20 +1171,20 @@ export default function MenuPage() {
                       <div className="p-4 border rounded-lg">
                         <h5 className="font-medium mb-2">Role Assignments</h5>
                         <div className="space-y-2 text-sm">
-                          <p className="font-mono bg-muted p-1 rounded">role="menu"</p>
-                          <p className="font-mono bg-muted p-1 rounded">role="menuitem"</p>
-                          <p className="font-mono bg-muted p-1 rounded">role="menuitemcheckbox"</p>
-                          <p className="font-mono bg-muted p-1 rounded">role="menuitemradio"</p>
+                          <p className=" bg-muted p-1 rounded">role="menu"</p>
+                          <p className=" bg-muted p-1 rounded">role="menuitem"</p>
+                          <p className=" bg-muted p-1 rounded">role="menuitemcheckbox"</p>
+                          <p className=" bg-muted p-1 rounded">role="menuitemradio"</p>
                         </div>
                       </div>
 
                       <div className="p-4 border rounded-lg">
                         <h5 className="font-medium mb-2">State Management</h5>
                         <div className="space-y-2 text-sm">
-                          <p className="font-mono bg-muted p-1 rounded">aria-expanded="true/false"</p>
-                          <p className="font-mono bg-muted p-1 rounded">aria-checked="true/false/mixed"</p>
-                          <p className="font-mono bg-muted p-1 rounded">aria-disabled="true/false"</p>
-                          <p className="font-mono bg-muted p-1 rounded">aria-haspopup="true"</p>
+                          <p className=" bg-muted p-1 rounded">aria-expanded="true/false"</p>
+                          <p className=" bg-muted p-1 rounded">aria-checked="true/false/mixed"</p>
+                          <p className=" bg-muted p-1 rounded">aria-disabled="true/false"</p>
+                          <p className=" bg-muted p-1 rounded">aria-haspopup="true"</p>
                         </div>
                       </div>
                     </div>

@@ -793,27 +793,27 @@ export default function ComboboxPage() {
                       </thead>
                       <tbody className="text-sm">
                         <tr>
-                          <td className="border border-border p-3 font-mono">Down Arrow</td>
+                          <td className="border border-border p-3 ">Down Arrow</td>
                           <td className="border border-border p-3">Move focus to next option</td>
                           <td className="border border-border p-3">When dropdown is open</td>
                         </tr>
                         <tr>
-                          <td className="border border-border p-3 font-mono">Up Arrow</td>
+                          <td className="border border-border p-3 ">Up Arrow</td>
                           <td className="border border-border p-3">Move focus to previous option</td>
                           <td className="border border-border p-3">When dropdown is open</td>
                         </tr>
                         <tr>
-                          <td className="border border-border p-3 font-mono">Enter</td>
+                          <td className="border border-border p-3 ">Enter</td>
                           <td className="border border-border p-3">Select focused option</td>
                           <td className="border border-border p-3">When option is focused</td>
                         </tr>
                         <tr>
-                          <td className="border border-border p-3 font-mono">Escape</td>
+                          <td className="border border-border p-3 ">Escape</td>
                           <td className="border border-border p-3">Close dropdown</td>
                           <td className="border border-border p-3">When dropdown is open</td>
                         </tr>
                         <tr>
-                          <td className="border border-border p-3 font-mono">Tab</td>
+                          <td className="border border-border p-3 ">Tab</td>
                           <td className="border border-border p-3">Move to next focusable element</td>
                           <td className="border border-border p-3">Always</td>
                         </tr>
