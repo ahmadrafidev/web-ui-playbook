@@ -7,11 +7,32 @@ interface EditButtonProps {
   className?: string
 }
 
+function generateGitHubEditUrl(filePath?: string): string {
+  const baseRepo = "ahmadrafidev/web-ui-playbook"
+  const branch = "main"
+  
+  if (!filePath) {
+    return `https://github.com/${baseRepo}/pulls`
+  }
+  
+  return `https://github.com/${baseRepo}/edit/${branch}/${filePath}`
+}
+
+function generateAriaLabel(filePath?: string): string {
+  if (!filePath) {
+    return "View pull requests - Opens GitHub in new tab"
+  }
+  
+  const fileName = filePath.split('/').pop() || 'file'
+  return `Edit ${fileName} on GitHub - Opens file editor in new tab`
+}
+
 export function EditButton({ 
   filePath,
   className = ""
 }: EditButtonProps) {
-  const githubPullsUrl = "https://github.com/ahmadrafidev/web-ui-playbook/pulls"
+  const editUrl = generateGitHubEditUrl(filePath)
+  const ariaLabel = generateAriaLabel(filePath)
   
   return (
     <Button
@@ -21,13 +42,13 @@ export function EditButton({
       className={`gap-2 ${className}`}
     >
       <Link
-        href={githubPullsUrl}
+        href={editUrl}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={`Edit ${filePath ? filePath : 'this page'} - Opens GitHub pull requests in new tab`}
+        aria-label={ariaLabel}
       >
         <Edit3 className="h-4 w-4" />
-        Edit this page
+        {filePath ? "Edit this file" : "View Pull Requests"}
       </Link>
     </Button>
   )
