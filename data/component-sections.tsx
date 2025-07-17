@@ -51,7 +51,7 @@ export const componentSections: ComponentSection[] = [
     name: "Tooltips",
     href: "/playground/tooltips",
     description: "Contextual information that appears on hover or focus",
-    status: "In Progress",
+    status: "Complete",
     preview: <TooltipsPreview />,
   },
   {
