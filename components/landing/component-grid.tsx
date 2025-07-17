@@ -13,11 +13,11 @@ export function ComponentGrid({ components }: ComponentGridProps) {
   );
 
   return (
-    <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+    <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 px-2 space-y-4 md:space-y-0">
       {sortedComponents.map((section, index) => (
         <Link key={index} href={section.href}>
           <Card 
-            className="group relative overflow-hidden rounded-lg h-full border-border/50
+            className="group relative overflow-hidden rounded-xl h-full border-border/50
               hover:shadow-2xl hover:shadow-primary/10 hover:border-primary/20
               motion-safe:transform-gpu motion-safe:transition-all motion-safe:duration-500 motion-safe:ease-out
               motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-8
