@@ -42,13 +42,6 @@ export default function ButtonsPage() {
             Buttons are foundational interactive elements that enable users to trigger actions, submit data, and navigate through interfaces. 
             Buttons serve as the primary mechanism for user interaction, providing clear affordances and predictable behavior across all platforms.
           </p>
-          <div className="flex flex-wrap gap-2">
-            <Badge>Interactive</Badge>
-            <Badge>Accessible</Badge>
-            <Badge>Responsive</Badge>
-            <Badge>Semantic</Badge>
-            <Badge>Touch Friendly</Badge>
-          </div>
         </div>
 
         <Tabs defaultValue="purpose" className="space-y-6">

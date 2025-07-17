@@ -394,13 +394,6 @@ export default function ComboboxPage() {
           <p className="text-base md:text-lg text-muted-foreground mb-6">
             A combobox is an input control that combines a text field with a dropdown list, allowing users to either type to filter options or select from a predefined list. It provides an efficient way to handle large datasets while maintaining searchability and accessibility.
           </p>
-          <div className="flex flex-wrap gap-2">
-            <Badge>Searchable</Badge>
-            <Badge>Accessible</Badge>
-            <Badge>Keyboard Navigation</Badge>
-            <Badge>Multi-select</Badge>
-            <Badge>Customizable</Badge>
-          </div>
         </div>
 
         <Tabs defaultValue="purpose" className="space-y-6">

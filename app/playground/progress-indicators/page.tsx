@@ -193,13 +193,6 @@ export default function ProgressIndicatorsPage() {
             loading data, or multi-step user flows. They provide visual feedback to users about the current 
             state of operations and help set appropriate expectations for completion time.
           </p>
-          <div className="flex flex-wrap gap-2">
-            <Badge>Visual Feedback</Badge>
-            <Badge>Accessibility</Badge>
-            <Badge>Performance</Badge>
-            <Badge>User Experience</Badge>
-            <Badge>ARIA Compliant</Badge>
-          </div>
         </div>
 
         <Tabs defaultValue="purpose" className="space-y-6">

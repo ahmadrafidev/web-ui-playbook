@@ -86,13 +86,6 @@ export default function SliderPage() {
             They typically have a slider thumb that can be moved along a bar, rail, or track to change the value. 
             Sliders are ideal for settings, filters, and numeric input where the precise value is less important than the relative position.
           </p>
-          <div className="flex flex-wrap gap-2">
-            <Badge>Range Input</Badge>
-            <Badge>Accessible</Badge>
-            <Badge>Touch Friendly</Badge>
-            <Badge>Keyboard Navigable</Badge>
-            <Badge>ARIA Compliant</Badge>
-          </div>
         </div>
 
         <Tabs defaultValue="purpose" className="space-y-6">
@@ -152,13 +145,13 @@ export default function SliderPage() {
                 <div className="space-y-4">
                   <h4 className="font-semibold text-lg">Common Use Cases</h4>
                   <div className="grid gap-4">
-                                         <div className="p-4 border rounded-lg space-y-3">
-                       <div className="flex items-center gap-3">
-                         <Sun className="h-5 w-5 text-orange-500" />
-                         <Label className="text-base font-medium">Brightness Control</Label>
-                         <span className="text-sm text-muted-foreground ml-auto">{brightness[0]}%</span>
-                       </div>
-                      <Slider
+                    <div className="p-4 border rounded-lg space-y-3">
+                      <div className="flex items-center gap-3">
+                        <Sun className="h-5 w-5 text-orange-500" />
+                        <Label className="text-base font-medium">Brightness Control</Label>
+                        <span className="text-sm text-muted-foreground ml-auto">{brightness[0]}%</span>
+                      </div>
+                    <Slider
                         value={brightness}
                         onValueChange={setBrightness}
                         max={100}

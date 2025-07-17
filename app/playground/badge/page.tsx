@@ -226,13 +226,6 @@ export default function BadgePage() {
             Badges are visual indicators that communicate the status, category, or attribute of an object or element. 
             They provide quick recognition and help users understand the state or importance of information at a glance.
           </p>
-          <div className="flex flex-wrap gap-2">
-            <Badge>Visual Indicator</Badge>
-            <Badge>Status Communication</Badge>
-            <Badge>Accessible</Badge>
-            <Badge>Semantic</Badge>
-            <Badge>Contextual</Badge>
-          </div>
         </div>
 
         <Tabs defaultValue="purpose" className="space-y-6">

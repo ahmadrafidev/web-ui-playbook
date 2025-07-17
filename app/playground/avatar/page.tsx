@@ -285,13 +285,6 @@ export default function AvatarPage() {
             Avatars are visual representations of users, entities, or objects. They provide a quick way to identify 
             individuals and add personality to interfaces through images, initials, or icons.
           </p>
-          <div className="flex flex-wrap gap-2">
-            <Badge>Accessible</Badge>
-            <Badge>Responsive</Badge>
-            <Badge>Customizable</Badge>
-            <Badge>Interactive</Badge>
-            <Badge>Status Indicators</Badge>
-          </div>
         </div>
 
         <Tabs defaultValue="purpose" className="space-y-6">

@@ -251,13 +251,6 @@ export default function ModalPage() {
             Modals are overlaid windows that focus user attention on specific tasks or information 
             while preserving the context of the underlying page. They require user interaction to dismiss.
           </p>
-          <div className="flex flex-wrap gap-2">
-            <Badge>Focus Management</Badge>
-            <Badge>Keyboard Accessible</Badge>
-            <Badge>ARIA Compliant</Badge>
-            <Badge>Responsive</Badge>
-            <Badge>Customizable</Badge>
-          </div>
         </div>
 
         <Tabs defaultValue="purpose" className="space-y-6">

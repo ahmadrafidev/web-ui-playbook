@@ -63,13 +63,6 @@ export default function TabsPage() {
             Tabs are used to organize related content into sections that can be navigated without leaving the current page. 
             They allow users to switch between different views of related information efficiently, with only one panel visible at a time.
           </p>
-          <div className="flex flex-wrap gap-2">
-            <Badge>Navigation</Badge>
-            <Badge>Content Organization</Badge>
-            <Badge>Keyboard Accessible</Badge>
-            <Badge>ARIA Compliant</Badge>
-            <Badge>Responsive</Badge>
-          </div>
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">

@@ -41,14 +41,6 @@ export default function CardPage() {
             Cards are flexible containers that group related content and actions. They serve as entry points to more detailed information 
             and provide a preview of content in a scannable format. Cards are one of the most versatile UI components.
           </p>
-          <div className="flex flex-wrap gap-2">
-            <Badge>Flexible</Badge>
-            <Badge>Content Container</Badge>
-            <Badge>Interactive</Badge>
-            <Badge>Accessible</Badge>
-            <Badge>Responsive</Badge>
-            <Badge>Scannable</Badge>
-          </div>
         </div>
 
         <Tabs defaultValue="purpose" className="space-y-6">

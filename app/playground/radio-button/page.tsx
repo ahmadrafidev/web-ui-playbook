@@ -23,7 +23,6 @@ const radioButtonComponentsUrlReference = [
 export default function RadioButtonPage() {
   const { MobileWarning } = useMobileWarning()
   
-  // State for different radio groups
   const [paymentMethod, setPaymentMethod] = useState("credit-card")
   const [contactPreference, setContactPreference] = useState("email")
   const [theme, setTheme] = useState("system")
@@ -47,13 +46,6 @@ export default function RadioButtonPage() {
             Radio buttons allow users to select one option from a set of mutually exclusive choices. They work in groups where 
             only one option can be selected at a time. When a user selects a new option, the previous selection is automatically deselected.
           </p>
-          <div className="flex flex-wrap gap-2">
-            <Badge>Single Select</Badge>
-            <Badge>Mutually Exclusive</Badge>
-            <Badge>Form Control</Badge>
-            <Badge>Accessible</Badge>
-            <Badge>WCAG Compliant</Badge>
-          </div>
         </div>
 
         <Tabs defaultValue="purpose" className="space-y-6">

@@ -256,13 +256,6 @@ export default function TextInputPage() {
             Text inputs allow users to enter and edit single-line text content. They are fundamental form elements that provide accessible, 
             flexible data entry with proper validation, states, and user feedback mechanisms.
           </p>
-          <div className="flex flex-wrap gap-2">
-            <Badge>Form Input</Badge>
-            <Badge>Accessible</Badge>
-            <Badge>Validation</Badge>
-            <Badge>Keyboard Navigable</Badge>
-            <Badge>Responsive</Badge>
-          </div>
         </div>
 
         <Tabs defaultValue="purpose" className="space-y-6">

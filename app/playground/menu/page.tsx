@@ -102,14 +102,6 @@ export default function MenuPage() {
             or change settings. Menus can be contextual (appearing on right-click), dropdown (triggered by a button), 
             or application menus (persistent navigation).
           </p>
-          <div className="flex flex-wrap gap-2">
-            <Badge variant="outline">Interactive Navigation</Badge>
-            <Badge variant="outline">Keyboard Accessible</Badge>
-            <Badge variant="outline">WAI-ARIA Compliant</Badge>
-            <Badge variant="outline">Hierarchical Structure</Badge>
-            <Badge variant="outline">Multi-Platform Support</Badge>
-            <Badge variant="outline">Context Aware</Badge>
-          </div>
         </div>
 
         <Tabs defaultValue="types" className="space-y-6">

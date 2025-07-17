@@ -71,13 +71,6 @@ export default function SwitchPage() {
             ideal for settings that take effect instantly. Unlike checkboxes, switches clearly indicate an &quot;on&quot; or &quot;off&quot; 
             state and are commonly used for preferences, settings, and binary controls.
           </p>
-          <div className="flex flex-wrap gap-2">
-            <Badge>Binary Toggle</Badge>
-            <Badge>Immediate Action</Badge>
-            <Badge>Settings</Badge>
-            <Badge>Accessible</Badge>
-            <Badge>Touch Friendly</Badge>
-          </div>
         </div>
 
         <Tabs defaultValue="purpose" className="space-y-6">

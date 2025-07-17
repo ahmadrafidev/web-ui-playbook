@@ -39,13 +39,6 @@ export default function TooltipsPage() {
             hover over or focus on them. They enhance usability without cluttering the interface, offering just-in-time 
             information that helps users understand functionality.
           </p>
-          <div className="flex flex-wrap gap-2">
-            <Badge>Contextual</Badge>
-            <Badge>Non-intrusive</Badge>
-            <Badge>Accessible</Badge>
-            <Badge>Progressive Enhancement</Badge>
-            <Badge>Responsive</Badge>
-          </div>
         </div>
 
         <Tabs defaultValue="purpose" className="space-y-6">

@@ -40,13 +40,6 @@ export default function AlertsPage() {
             Alerts provide important messages to users about system status, user actions, or contextual information. 
             They are designed to be non-intrusive while ensuring critical information is communicated effectively.
           </p>
-          <div className="flex flex-wrap gap-2">
-            <Badge>Non-intrusive</Badge>
-            <Badge>Contextual</Badge>
-            <Badge>Accessible</Badge>
-            <Badge>Temporary</Badge>
-            <Badge>Actionable</Badge>
-          </div>
         </div>
 
         <Tabs defaultValue="purpose" className="space-y-6">

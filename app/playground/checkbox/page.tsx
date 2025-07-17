@@ -79,13 +79,6 @@ export default function CheckboxPage() {
             Checkboxes allow users to select one or more options from a set. Unlike radio buttons, checkboxes are independent 
             and allow multiple selections. They&apos;re essential for forms, settings, and multi-selection interfaces.
           </p>
-          <div className="flex flex-wrap gap-2">
-            <Badge>Multi-Select</Badge>
-            <Badge>Independent</Badge>
-            <Badge>Accessible</Badge>
-            <Badge>Form Control</Badge>
-            <Badge>WCAG Compliant</Badge>
-          </div>
         </div>
 
         <Tabs defaultValue="purpose" className="space-y-6">
