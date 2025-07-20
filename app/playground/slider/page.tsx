@@ -56,6 +56,9 @@ export default function SliderPage() {
   
   // Disabled states
   const [disabledValue] = useState([50])
+  
+  // Keyboard navigation example
+  const [keyboardTestValue, setKeyboardTestValue] = useState([50])
 
   const formatTemperature = (value: number) => `${value}°C`
   const formatTime = (value: number) => {
@@ -716,10 +719,13 @@ export default function SliderPage() {
                   </div>
 
                   <div className="p-4 border rounded-lg space-y-3">
-                    <Label className="font-medium">Try keyboard navigation:</Label>
+                    <div className="flex items-center justify-between">
+                      <Label className="font-medium">Try keyboard navigation:</Label>
+                      <span className="text-sm text-muted-foreground">Current: {keyboardTestValue[0]}%</span>
+                    </div>
                     <Slider
-                      value={[50]}
-                      onValueChange={(value) => {}}
+                      value={keyboardTestValue}
+                      onValueChange={setKeyboardTestValue}
                       max={100}
                       className="w-full"
                     />
