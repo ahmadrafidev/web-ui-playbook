@@ -1024,7 +1024,7 @@ export default function ProgressIndicatorsPage() {
         </Tabs>
 
         {/* References Section */}
-        <div className="mt-8">
+        <div className="mt-6">
           <ComponentReferences
             title="References & Further Reading"
             description="Essential resources for progress indicator implementation and best practices from leading design systems."

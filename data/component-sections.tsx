@@ -79,7 +79,7 @@ export const componentSections: ComponentSection[] = [
     name: "Switch",
     href: "/playground/switch",
     description: "Toggle controls for binary on/off states",
-    status: "In Progress",
+    status: "Complete",
     preview: <SwitchPreview />,
   },
   {

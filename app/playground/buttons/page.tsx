@@ -1307,7 +1307,7 @@ const handleSave = async () => {
         </Tabs>
 
         {/* References Section */}
-        <div className="mt-8">
+        <div className="mt-6">
           <ComponentReferences
             title="References & Further Reading"
             description="Essential references for button component implementation and best practices from leading design systems."

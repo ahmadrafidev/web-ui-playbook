@@ -684,7 +684,7 @@ export default function TabsPage() {
         </Tabs>
 
         {/* References Section */}
-        <div className="mt-8">
+        <div className="mt-6">
           <ComponentReferences
             title="References & Further Reading"
             description="Essential references for tab component implementation and accessibility best practices."

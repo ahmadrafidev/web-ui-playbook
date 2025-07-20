@@ -884,7 +884,7 @@ export default function TextInputPage() {
         </Tabs>
 
         {/* References Section */}
-        <div className="mt-8">
+        <div className="mt-6">
           <ComponentReferences
             title="References & Further Reading"
             description="Essential references for text input component implementation and best practices."

@@ -929,7 +929,7 @@ export default function AlertsPage() {
         </Tabs>
 
         {/* References Section */}
-        <div className="mt-8">
+        <div className="mt-6">
           <ComponentReferences
             title="References & Further Reading"
             description="Essential resources for alert component implementation and best practices."

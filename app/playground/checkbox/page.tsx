@@ -636,7 +636,7 @@ export default function CheckboxPage() {
         </Tabs>
 
         {/* References */}
-        <div className="mt-8">
+        <div className="mt-6">
           <ComponentReferences
             description="External resources and design system references for checkbox components."
             urls={checkboxComponentsUrlReference}

@@ -863,7 +863,7 @@ export default function AvatarPage() {
         </Tabs>
 
         {/* Component References */}
-        <div className="mt-12">
+        <div className="mt-6">
           <ComponentReferences
             title="References & Further Reading"
             description="Essential references for avatar component implementation and best practices from leading design systems."

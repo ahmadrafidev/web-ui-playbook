@@ -772,7 +772,7 @@ export default function BadgePage() {
         </Tabs>
 
         {/* References Section */}
-        <div className="mt-8">
+        <div className="mt-6">
           <ComponentReferences
             title="References & Further Reading"
             description="Essential references for badge component implementation and best practices from leading design systems."

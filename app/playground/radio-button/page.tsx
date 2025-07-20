@@ -933,7 +933,7 @@ export default function RadioButtonPage() {
         </Tabs>
 
         {/* References */}
-        <div className="mt-12">
+        <div className="mt-6">
           <ComponentReferences 
             description="External resources and design system references for radio button components."
             urls={radioButtonComponentsUrlReference}

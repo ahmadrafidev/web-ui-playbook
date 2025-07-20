@@ -1641,7 +1641,7 @@ function validateTooltipAccessibility(trigger, tooltip) {
         </Tabs>
 
         {/* References Section */}
-        <div className="mt-8">
+        <div className="mt-6">
           <ComponentReferences
             title="References & Further Reading"
             description="Comprehensive resources for tooltip component implementation and accessibility."

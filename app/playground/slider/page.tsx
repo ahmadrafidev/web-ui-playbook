@@ -807,7 +807,7 @@ export default function SliderPage() {
         </Tabs>
 
         {/* References */}
-        <div className="mt-12">
+        <div className="mt-6">
           <ComponentReferences
             urls={sliderComponentsUrlReference}
             getTitleFunction={getSliderUrlTitle}
