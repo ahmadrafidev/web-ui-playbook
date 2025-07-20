@@ -224,6 +224,13 @@ export default function TextInputPage() {
   const [cardInput, setCardInput] = useState("")
   const [errorInput, setErrorInput] = useState("")
   const [successInput, setSuccessInput] = useState("Valid input")
+  const [accessibleEmailInput, setAccessibleEmailInput] = useState("")
+  const [accessiblePasswordInput, setAccessiblePasswordInput] = useState("")
+  const [accessibleFormData, setAccessibleFormData] = useState({
+    firstName: "",
+    lastName: "",
+    username: ""
+  })
   
   const getTitleFunction = (url: string): string => {
     const urlMap: Record<string, string> = {
@@ -270,7 +277,7 @@ export default function TextInputPage() {
           <TabsContent value="purpose" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>When to Use Text Input</CardTitle>
+                <CardTitle className="text-xl font-bold">When to Use Text Input</CardTitle>
                 <CardDescription>
                   Understanding the appropriate use cases for text input components in your interface.
                 </CardDescription>
@@ -346,7 +353,7 @@ export default function TextInputPage() {
           <TabsContent value="variants" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Input Variants & Sizes</CardTitle>
+                <CardTitle className="text-xl font-bold">Input Variants & Sizes</CardTitle>
                 <CardDescription>
                   Different visual styles and sizes to match your design requirements.
                 </CardDescription>
@@ -467,7 +474,7 @@ export default function TextInputPage() {
           <TabsContent value="states" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Input States</CardTitle>
+                <CardTitle className="text-xl font-bold">Input States</CardTitle>
                 <CardDescription>
                   Various states that text inputs can have for better user feedback and accessibility.
                 </CardDescription>
@@ -559,7 +566,7 @@ export default function TextInputPage() {
           <TabsContent value="patterns" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Common Input Patterns</CardTitle>
+                <CardTitle className="text-xl font-bold">Common Input Patterns</CardTitle>
                 <CardDescription>
                   Real-world examples and patterns for implementing text inputs effectively.
                 </CardDescription>
@@ -682,7 +689,7 @@ export default function TextInputPage() {
           <TabsContent value="accessibility" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Accessibility Guidelines</CardTitle>
+                <CardTitle className="text-xl font-bold">Accessibility Guidelines</CardTitle>
                 <CardDescription>
                   Ensuring text inputs are accessible to all users with proper ARIA support and keyboard navigation.
                 </CardDescription>
@@ -739,23 +746,134 @@ export default function TextInputPage() {
                   </div>
                 </div>
 
+                <div className="space-y-6">
+                  <h4 className="font-semibold text-lg">Interactive Accessible Examples</h4>
+                  
+                  <div className="space-y-6">
+                    <div className="p-4 border rounded-lg bg-muted/20">
+                      <h5 className="font-medium mb-3">Complete Accessible Email Input</h5>
+                      <TextInput
+                        id="accessible-email"
+                        label="Email Address"
+                        type="email"
+                        placeholder="Enter your email address"
+                        value={accessibleEmailInput}
+                        onChange={setAccessibleEmailInput}
+                        onClear={() => setAccessibleEmailInput("")}
+                        leftIcon={<Mail className="h-4 w-4" />}
+                        required
+                        autoComplete="email"
+                        description="We'll use this to send you important account updates and notifications"
+                        error={accessibleEmailInput && !accessibleEmailInput.includes("@") ? "Please enter a valid email address" : undefined}
+                        success={accessibleEmailInput.includes("@") && accessibleEmailInput.includes(".") ? "Email format looks good" : undefined}
+                      />
+                      <div className="mt-3 text-sm text-muted-foreground">
+                        <p><strong>Accessibility Features:</strong> Proper labeling, semantic input type, ARIA descriptions, validation feedback, keyboard navigation, and screen reader support.</p>
+                      </div>
+                    </div>
+
+                    <div className="p-4 border rounded-lg bg-muted/20">
+                      <h5 className="font-medium mb-3">Accessible Password Input</h5>
+                      <TextInput
+                        id="accessible-password"
+                        label="Password"
+                        type="password"
+                        placeholder="Enter your password"
+                        value={accessiblePasswordInput}
+                        onChange={setAccessiblePasswordInput}
+                        leftIcon={<Lock className="h-4 w-4" />}
+                        required
+                        autoComplete="current-password"
+                        description="Password must be at least 8 characters long"
+                        error={accessiblePasswordInput && accessiblePasswordInput.length < 8 ? "Password must be at least 8 characters" : undefined}
+                        success={accessiblePasswordInput.length >= 8 ? "Password length is good" : undefined}
+                      />
+                      <div className="mt-3 text-sm text-muted-foreground">
+                        <p><strong>Features:</strong> Password visibility toggle, length validation, secure autocomplete, and clear error messaging.</p>
+                      </div>
+                    </div>
+
+                    <div className="p-4 border rounded-lg bg-muted/20">
+                      <h5 className="font-medium mb-3">Accessible Form Group</h5>
+                      <div className="space-y-4">
+                        <div className="grid md:grid-cols-2 gap-4">
+                          <TextInput
+                            id="accessible-first-name"
+                            label="First Name"
+                            placeholder="Enter your first name"
+                            value={accessibleFormData.firstName}
+                            onChange={(value) => setAccessibleFormData(prev => ({ ...prev, firstName: value }))}
+                            required
+                            autoComplete="given-name"
+                            leftIcon={<User className="h-4 w-4" />}
+                          />
+                          <TextInput
+                            id="accessible-last-name"
+                            label="Last Name"
+                            placeholder="Enter your last name"
+                            value={accessibleFormData.lastName}
+                            onChange={(value) => setAccessibleFormData(prev => ({ ...prev, lastName: value }))}
+                            required
+                            autoComplete="family-name"
+                            leftIcon={<User className="h-4 w-4" />}
+                          />
+                        </div>
+                        <TextInput
+                          id="accessible-username"
+                          label="Username"
+                          placeholder="Choose a unique username"
+                          value={accessibleFormData.username}
+                          onChange={(value) => setAccessibleFormData(prev => ({ ...prev, username: value }))}
+                          onClear={() => setAccessibleFormData(prev => ({ ...prev, username: "" }))}
+                          required
+                          autoComplete="username"
+                          description="Username must be 3-20 characters, letters and numbers only"
+                          maxLength={20}
+                          error={accessibleFormData.username && accessibleFormData.username.length < 3 ? "Username must be at least 3 characters" : undefined}
+                          success={accessibleFormData.username.length >= 3 && accessibleFormData.username.length <= 20 ? "Username is available" : undefined}
+                        />
+                      </div>
+                      <div className="mt-3 text-sm text-muted-foreground">
+                        <p><strong>Features:</strong> Logical tab order, proper field grouping, consistent labeling, and coordinated validation states.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 <div className="space-y-4">
-                  <h4 className="font-semibold text-lg">Accessible Example</h4>
-                  <div className="p-4 border rounded-lg bg-muted/20">
-                    <TextInput
-                      id="accessible-email"
-                      label="Email Address"
-                      type="email"
-                      placeholder="Enter your email address"
-                      value=""
-                      onChange={() => {}}
-                      leftIcon={<Mail className="h-4 w-4" />}
-                      required
-                      autoComplete="email"
-                      description="We'll use this to send you important account updates"
-                    />
-                    <div className="mt-4 text-sm text-muted-foreground">
-                      <p><strong>Features:</strong> Proper labeling, semantic input type, autocomplete, required indicator, and helpful description.</p>
+                  <h4 className="font-semibold text-lg">Screen Reader Announcements</h4>
+                  <div className="p-4 border rounded-lg bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800">
+                    <div className="space-y-3 text-sm">
+                      <div><strong>Field Focus:</strong> "Email Address, required, edit text, Enter your email address"</div>
+                      <div><strong>Error State:</strong> "Email Address, required, invalid entry, Please enter a valid email address"</div>
+                      <div><strong>Success State:</strong> "Email Address, required, Email format looks good"</div>
+                      <div><strong>Description:</strong> "We'll use this to send you important account updates"</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <h4 className="font-semibold text-lg">WCAG 2.1 Compliance</h4>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="p-4 border rounded-lg">
+                      <h5 className="font-medium mb-2">Level AA Requirements</h5>
+                      <ul className="text-sm space-y-1">
+                        <li>✓ Color contrast ratio ≥ 4.5:1</li>
+                        <li>✓ Keyboard accessible navigation</li>
+                        <li>✓ Focus indicators visible</li>
+                        <li>✓ Error identification and description</li>
+                        <li>✓ Labels and instructions provided</li>
+                      </ul>
+                    </div>
+                    <div className="p-4 border rounded-lg">
+                      <h5 className="font-medium mb-2">Enhanced Features</h5>
+                      <ul className="text-sm space-y-1">
+                        <li>✓ Touch target size ≥ 44px</li>
+                        <li>✓ Consistent interaction patterns</li>
+                        <li>✓ Clear visual hierarchy</li>
+                        <li>✓ Meaningful error messages</li>
+                        <li>✓ Progressive enhancement</li>
+                      </ul>
                     </div>
                   </div>
                 </div>
