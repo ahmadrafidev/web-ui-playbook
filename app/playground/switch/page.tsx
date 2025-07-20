@@ -40,6 +40,9 @@ export default function SwitchPage() {
     activityStatus: false,
     analytics: false
   })
+  const [hasError, setHasError] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [asyncSetting, setAsyncSetting] = useState(false)
 
   const handleNotificationChange = (setting: keyof typeof notificationSettings, checked: boolean) => {
     setNotificationSettings(prev => ({ ...prev, [setting]: checked }))
@@ -51,6 +54,17 @@ export default function SwitchPage() {
 
   const handlePrivacyChange = (setting: keyof typeof privacySettings, checked: boolean) => {
     setPrivacySettings(prev => ({ ...prev, [setting]: checked }))
+  }
+
+  const handleAsyncToggle = async (checked: boolean) => {
+    setIsLoading(true)
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000))
+      setAsyncSetting(checked)
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -85,7 +99,7 @@ export default function SwitchPage() {
           <TabsContent value="purpose" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Primary Purpose of Switch</CardTitle>
+                <CardTitle className="text-xl font-bold">Primary Purpose of Switch</CardTitle>
                 <CardDescription>
                   Understanding when and why to use switches in your interface design.
                 </CardDescription>
@@ -262,25 +276,76 @@ export default function SwitchPage() {
                   </div>
                 </div>
 
-                {/* Loading State Concept */}
+                {/* Loading & Error States */}
                 <div className="space-y-4">
-                  <h4 className="font-semibold text-lg">Loading & Processing States</h4>
+                  <h4 className="font-semibold text-lg">Loading & Error States</h4>
+                  
+                  {/* Async Loading Demo */}
                   <div className="p-4 border rounded-lg space-y-4">
+                    <h5 className="font-medium text-sm">Async Operations</h5>
                     <p className="text-sm text-muted-foreground">
-                      For switches that trigger async operations, consider showing loading states:
+                      For switches that trigger async operations, provide proper loading feedback:
                     </p>
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
                         <div>
-                          <Label className="text-sm font-medium">Processing State</Label>
-                          <p className="text-xs text-muted-foreground">Disabled while saving...</p>
+                          <Label className="text-sm font-medium">Async Setting</Label>
+                          <p className="text-xs text-muted-foreground">
+                            {isLoading ? "Saving..." : "Changes saved automatically"}
+                          </p>
                         </div>
-                        <Switch disabled className="opacity-75" />
+                        <Switch 
+                          checked={asyncSetting}
+                          onCheckedChange={handleAsyncToggle}
+                          disabled={isLoading}
+                        />
                       </div>
                       <div className="text-xs text-muted-foreground">
-                        💡 <strong>Best Practice:</strong> Provide visual feedback during state transitions, 
-                        especially for switches that trigger network requests or complex operations.
+                        💡 <strong>Try it:</strong> Toggle the switch above to see the loading state in action.
                       </div>
+                    </div>
+                  </div>
+
+                  {/* Error States Demo */}
+                  <div className="p-4 border rounded-lg space-y-4">
+                    <h5 className="font-medium text-sm">Error & Validation States</h5>
+                    <p className="text-sm text-muted-foreground">
+                      Handle validation errors and show clear feedback to users:
+                    </p>
+                    <div className="space-y-3">
+                      <div className={`p-3 border rounded ${hasError ? 'border-red-500 bg-red-50 dark:bg-red-900/20' : 'border-border'}`}>
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <Label className="text-sm font-medium">Required Setting</Label>
+                            <p className={`text-xs ${hasError ? 'text-red-500' : 'text-muted-foreground'}`}>
+                              {hasError ? "This setting is required for security compliance" : "Must be enabled for proper operation"}
+                            </p>
+                          </div>
+                          <Switch 
+                            onCheckedChange={(checked) => {
+                              if (!checked) setHasError(true)
+                              else setHasError(false)
+                            }}
+                            defaultChecked
+                          />
+                        </div>
+                      </div>
+                      
+                      <div className="p-3 border border-orange-200 dark:border-orange-800 bg-orange-50 dark:bg-orange-900/20 rounded">
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <Label className="text-sm font-medium">Limited Feature</Label>
+                            <p className="text-xs text-orange-600 dark:text-orange-400">
+                              Warning: This feature requires a premium subscription
+                            </p>
+                          </div>
+                          <Switch disabled />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="text-xs text-muted-foreground">
+                      💡 <strong>Best Practice:</strong> Always provide clear error messages and visual indicators 
+                      for validation states. Use color, icons, and descriptive text.
                     </div>
                   </div>
                 </div>
@@ -595,6 +660,167 @@ export default function SwitchPage() {
                   </div>
                 </div>
 
+                {/* Code Implementation Examples */}
+                <div className="space-y-4">
+                  <h4 className="font-semibold text-lg">Code Implementation</h4>
+                  
+                  {/* Basic Implementation */}
+                  <div className="p-4 border rounded-lg space-y-4">
+                    <h5 className="font-medium text-sm">Basic Switch Implementation</h5>
+                    <pre className="bg-muted p-3 rounded text-sm overflow-x-auto">
+                      <code>{`// Basic controlled switch
+import { Switch } from "@/components/ui/switch"
+import { Label } from "@/components/ui/label"
+import { useState } from "react"
+
+const [isEnabled, setIsEnabled] = useState(false)
+
+<div className="flex items-center justify-between">
+  <Label htmlFor="feature-toggle">
+    Enable Feature
+  </Label>
+  <Switch 
+    id="feature-toggle"
+    checked={isEnabled}
+    onCheckedChange={setIsEnabled}
+  />
+</div>`}</code>
+                    </pre>
+                  </div>
+
+                  {/* TypeScript Examples */}
+                  <div className="p-4 border rounded-lg space-y-4">
+                    <h5 className="font-medium text-sm">TypeScript Integration</h5>
+                    <pre className="bg-muted p-3 rounded text-sm overflow-x-auto">
+                      <code>{`// Type-safe switch group component
+interface SwitchGroupProps {
+  settings: Record<string, boolean>
+  onSettingChange: (key: string, value: boolean) => void
+  disabled?: boolean
+}
+
+const SwitchGroup: React.FC<SwitchGroupProps> = ({ 
+  settings, 
+  onSettingChange,
+  disabled = false
+}) => {
+  return (
+    <div className="space-y-3">
+      {Object.entries(settings).map(([key, value]) => (
+        <div key={key} className="flex items-center justify-between">
+          <Label htmlFor={key} className="text-sm capitalize">
+            {key.replace(/([A-Z])/g, ' $1').trim()}
+          </Label>
+          <Switch
+            id={key}
+            checked={value}
+            onCheckedChange={(checked) => onSettingChange(key, checked)}
+            disabled={disabled}
+          />
+        </div>
+      ))}
+    </div>
+  )
+}`}</code>
+                    </pre>
+                  </div>
+
+                  {/* Advanced Patterns */}
+                  <div className="p-4 border rounded-lg space-y-4">
+                    <h5 className="font-medium text-sm">Advanced Patterns</h5>
+                    <pre className="bg-muted p-3 rounded text-sm overflow-x-auto">
+                      <code>{`// Async switch with error handling
+const [loading, setLoading] = useState(false)
+const [error, setError] = useState<string | null>(null)
+
+const handleAsyncToggle = useCallback(async (checked: boolean) => {
+  setLoading(true)
+  setError(null)
+  
+  try {
+    await updateUserPreference('notifications', checked)
+    setNotifications(checked)
+  } catch (err) {
+    setError('Failed to update setting')
+    // Revert optimistic update
+    setNotifications(!checked)
+  } finally {
+    setLoading(false)
+  }
+}, [])
+
+// With optimistic updates and error handling
+<div className="flex items-center justify-between">
+  <div>
+    <Label>Push Notifications</Label>
+    {error && <p className="text-xs text-red-500">{error}</p>}
+  </div>
+  <Switch 
+    checked={notifications}
+    onCheckedChange={handleAsyncToggle}
+    disabled={loading}
+  />
+</div>`}</code>
+                    </pre>
+                  </div>
+
+                  {/* Performance Optimized */}
+                  <div className="p-4 border rounded-lg space-y-4">
+                    <h5 className="font-medium text-sm">Performance Optimized Example</h5>
+                    <pre className="bg-muted p-3 rounded text-sm overflow-x-auto">
+                      <code>{`// Memoized switch list for large datasets
+const SwitchList = React.memo(({ 
+  items, 
+  onToggle 
+}: { 
+  items: Array<{id: string, label: string, checked: boolean}>
+  onToggle: (id: string, checked: boolean) => void 
+}) => {
+  return (
+    <div className="space-y-2">
+      {items.map((item) => (
+        <SwitchItem
+          key={item.id}
+          item={item}
+          onToggle={onToggle}
+        />
+      ))}
+    </div>
+  )
+})
+
+const SwitchItem = React.memo(({ item, onToggle }) => {
+  const handleChange = useCallback((checked: boolean) => {
+    onToggle(item.id, checked)
+  }, [item.id, onToggle])
+
+  return (
+    <div className="flex items-center justify-between">
+      <Label>{item.label}</Label>
+      <Switch checked={item.checked} onCheckedChange={handleChange} />
+    </div>
+  )
+})`}</code>
+                    </pre>
+                  </div>
+                </div>
+
+                {/* Performance Tips */}
+                <div className="space-y-4">
+                  <h4 className="font-semibold text-lg">Performance Optimization</h4>
+                  <div className="p-4 border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                    <h5 className="font-medium text-blue-800 dark:text-blue-200 mb-2">⚡ Performance Tips</h5>
+                    <ul className="text-sm text-blue-700 dark:text-blue-300 space-y-1">
+                      <li>• Use useCallback for event handlers in lists to prevent unnecessary re-renders</li>
+                      <li>• Wrap switch groups with React.memo when they have stable props</li>
+                      <li>• Debounce rapid state changes for expensive operations (API calls)</li>
+                      <li>• Consider virtualization for large switch lists (&gt;100 items)</li>
+                      <li>• Use controlled components sparingly - prefer uncontrolled when possible</li>
+                      <li>• Batch state updates when toggling multiple related switches</li>
+                    </ul>
+                  </div>
+                </div>
+
                 {/* Best Practices */}
                 <div className="space-y-4">
                   <h4 className="font-semibold text-lg">Implementation Best Practices</h4>
@@ -631,7 +857,7 @@ export default function SwitchPage() {
           <TabsContent value="accessibility" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Accessibility Guidelines</CardTitle>
+                <CardTitle className="text-xl font-bold">Accessibility Guidelines</CardTitle>
                 <CardDescription>
                   Ensuring switches are accessible to all users, including those using assistive technologies.
                 </CardDescription>
@@ -659,6 +885,77 @@ export default function SwitchPage() {
                         </div>
                         <Switch id="aria-demo" />
                       </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Advanced ARIA Implementation */}
+                <div className="space-y-4">
+                  <h4 className="font-semibold text-lg">Advanced ARIA Implementation</h4>
+                  <div className="p-4 border rounded-lg space-y-4">
+                    <p className="text-sm text-muted-foreground">
+                      Enhanced examples with comprehensive ARIA attributes for complex scenarios:
+                    </p>
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <Label htmlFor="aria-enhanced" className="text-sm font-medium">
+                            Advanced Features
+                          </Label>
+                          <p id="aria-enhanced-desc" className="text-xs text-muted-foreground">
+                            Enables experimental features with beta status
+                          </p>
+                        </div>
+                        <Switch 
+                          id="aria-enhanced"
+                          aria-describedby="aria-enhanced-desc"
+                          aria-label="Enable advanced experimental features"
+                        />
+                      </div>
+                      
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <Label htmlFor="aria-required" className="text-sm font-medium">
+                            Required Setting *
+                          </Label>
+                          <p id="aria-required-desc" className="text-xs text-muted-foreground">
+                            This setting is required for the application to function properly
+                          </p>
+                        </div>
+                        <Switch 
+                          id="aria-required"
+                          aria-describedby="aria-required-desc"
+                          aria-required="true"
+                          defaultChecked
+                        />
+                      </div>
+
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <Label htmlFor="aria-invalid" className="text-sm font-medium">
+                            Setting with Validation
+                          </Label>
+                          <p id="aria-invalid-desc" className="text-xs text-red-500">
+                            Error: This setting conflicts with your current plan
+                          </p>
+                        </div>
+                        <Switch 
+                          id="aria-invalid"
+                          aria-describedby="aria-invalid-desc"
+                          aria-invalid="true"
+                          disabled
+                        />
+                      </div>
+                    </div>
+                    
+                    <div className="mt-4 p-3 bg-purple-50 dark:bg-purple-900/20 rounded border border-purple-200 dark:border-purple-800">
+                      <h6 className="font-medium text-purple-800 dark:text-purple-200 text-sm mb-2">Screen Reader Announcements</h6>
+                      <ul className="text-xs text-purple-700 dark:text-purple-300 space-y-1">
+                        <li>• &quot;Advanced Features, switch, off&quot; (when focused)</li>
+                        <li>• &quot;Enables experimental features with beta status&quot; (description)</li>
+                        <li>• &quot;Advanced Features, switch, on&quot; (when toggled)</li>
+                        <li>• &quot;Required Setting, required, switch, on&quot; (for required switches)</li>
+                      </ul>
                     </div>
                   </div>
                 </div>
@@ -838,7 +1135,7 @@ export default function SwitchPage() {
         </Tabs>
 
         {/* Component References */}
-        <div className="mt-12">
+        <div className="mt-8">
           <ComponentReferences
             description="External resources and design system references for switch components."
             urls={switchComponentsUrlReference}

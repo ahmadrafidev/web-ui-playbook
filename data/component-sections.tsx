@@ -86,7 +86,7 @@ export const componentSections: ComponentSection[] = [
     name: "Text Input",
     href: "/playground/text-input",
     description: "Fields for entering and editing single-line text",
-    status: "In Progress",
+    status: "Complete",
     preview: <TextInputPreview />,
   },
   {
