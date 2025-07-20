@@ -104,78 +104,105 @@ export default function SwitchPage() {
                   Understanding when and why to use switches in your interface design.
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <h4 className="font-semibold mb-3 text-lg">Core Purpose</h4>
-                    <ul className="space-y-2 text-sm">
-                      <li>• <strong>Instant Toggle:</strong> Immediate state changes with visual feedback</li>
-                      <li>• <strong>Settings Control:</strong> Enable/disable features and preferences</li>
-                      <li>• <strong>Binary States:</strong> Clear on/off, enabled/disabled states</li>
-                      <li>• <strong>Mobile Optimized:</strong> Touch-friendly interaction patterns</li>
-                    </ul>
-                  </div>
-
-                  <div>
-                    <h4 className="font-semibold mb-3 text-lg">Switch vs Checkbox vs Radio</h4>
-                    <div className="space-y-3">
-                      <div className="p-3 bg-green-50 dark:bg-green-900/20 rounded">
-                        <strong className="text-green-800 dark:text-green-200">Use Switch When:</strong>
-                        <ul className="text-sm mt-1 text-green-700 dark:text-green-300">
-                          <li>• Immediate effect required</li>
-                          <li>• Settings and preferences</li>
-                          <li>• Clear on/off states</li>
-                          <li>• Mobile interfaces</li>
-                        </ul>
+              <CardContent className="space-y-8">
+                
+                {/* Core Purpose */}
+                <div className="space-y-4">
+                  <h4 className="text-lg font-semibold">What Switches Do</h4>
+                  <p className="text-base text-muted-foreground leading-relaxed">
+                    Switches provide immediate binary control for settings and preferences with instant visual feedback.
+                  </p>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <h5 className="text-base font-medium mb-3">Key Characteristics</h5>
+                      <ul className="space-y-2 text-base text-muted-foreground">
+                        <li>• Immediate state changes</li>
+                        <li>• Enable/disable features</li>
+                        <li>• Clear on/off states</li>
+                        <li>• Touch-friendly interaction</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h5 className="text-base font-medium mb-3">Try It Out</h5>
+                      <div className="flex items-center justify-between p-4 border rounded">
+                        <div>
+                          <Label htmlFor="demo-switch" className="text-base font-medium">Enable Notifications</Label>
+                          <p className="text-sm text-muted-foreground">Receive updates and alerts</p>
+                        </div>
+                        <Switch 
+                          id="demo-switch"
+                          checked={singleSwitch}
+                          onCheckedChange={setSingleSwitch}
+                        />
                       </div>
-                      <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded">
-                        <strong className="text-blue-800 dark:text-blue-200">Use Checkbox When:</strong>
-                        <ul className="text-sm mt-1 text-blue-700 dark:text-blue-300">
-                          <li>• Form submissions</li>
-                          <li>• Multiple selections</li>
-                          <li>• Agreement confirmations</li>
-                        </ul>
-                      </div>
-                      <div className="p-3 bg-purple-50 dark:bg-purple-900/20 rounded">
-                        <strong className="text-purple-800 dark:text-purple-200">Use Radio When:</strong>
-                        <ul className="text-sm mt-1 text-purple-700 dark:text-purple-300">
-                          <li>• Single selection only</li>
-                          <li>• Mutually exclusive options</li>
-                          <li>• Limited choices (2-6 items)</li>
-                        </ul>
-                      </div>
+                      <p className="text-sm text-muted-foreground mt-2">
+                        Notice how the change happens immediately when toggled.
+                      </p>
                     </div>
                   </div>
                 </div>
 
+                {/* When to Use Each Control */}
                 <div className="space-y-4">
-                  <h4 className="font-semibold text-lg">Interactive Switch Examples</h4>
-                  <div className="grid gap-4">
-                    <div className="flex items-center justify-between p-4 border rounded-lg">
-                      <div className="space-y-1">
-                        <Label htmlFor="demo-switch" className="text-base font-medium">Enable Notifications</Label>
-                        <p className="text-sm text-muted-foreground">Receive updates and alerts</p>
-                      </div>
-                      <Switch 
-                        id="demo-switch"
-                        checked={singleSwitch}
-                        onCheckedChange={setSingleSwitch}
-                      />
+                  <h4 className="text-lg font-semibold">Choosing the Right Control</h4>
+                  <p className="text-base text-muted-foreground">
+                    Different controls serve different purposes. Here's when to use each one:
+                  </p>
+                  <div className="grid md:grid-cols-3 gap-6">
+                    <div className="p-4 border rounded">
+                      <h5 className="text-base font-semibold mb-3 text-foreground">Switches</h5>
+                      <ul className="space-y-2 text-base text-muted-foreground">
+                        <li>• Immediate settings</li>
+                        <li>• Binary preferences</li>
+                        <li>• Mobile interfaces</li>
+                        <li>• Feature toggles</li>
+                      </ul>
                     </div>
                     
-                    <div className="p-4 border rounded-lg space-y-4">
-                      <h5 className="font-medium">Settings Panel Example</h5>
+                    <div className="p-4 border rounded">
+                      <h5 className="text-base font-semibold mb-3 text-foreground">Checkboxes</h5>
+                      <ul className="space-y-2 text-base text-muted-foreground">
+                        <li>• Form submissions</li>
+                        <li>• Multiple selections</li>
+                        <li>• Agreement confirmations</li>
+                        <li>• Optional features</li>
+                      </ul>
+                    </div>
+
+                    <div className="p-4 border rounded">
+                      <h5 className="text-base font-semibold mb-3 text-foreground">Radio Buttons</h5>
+                      <ul className="space-y-2 text-base text-muted-foreground">
+                        <li>• Single selection</li>
+                        <li>• Mutually exclusive</li>
+                        <li>• Limited options (2-6)</li>
+                        <li>• Required choices</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Interactive Example */}
+                <div className="space-y-4">
+                  <h4 className="text-lg font-semibold">Common Settings Pattern</h4>
+                  <p className="text-base text-muted-foreground">
+                    Here's how switches typically appear in settings panels with immediate effect:
+                  </p>
+                  <div className="max-w-2xl">
+                    <div className="p-4 border rounded">
                       <div className="space-y-3">
                         {[
-                          { id: 'wifi', label: 'Wi-Fi', checked: true },
-                          { id: 'bluetooth', label: 'Bluetooth', checked: false },
-                          { id: 'location', label: 'Location Services', checked: true },
-                          { id: 'airplane', label: 'Airplane Mode', checked: false }
+                          { id: 'wifi', label: 'Wi-Fi', description: 'Connect to wireless networks', checked: true },
+                          { id: 'bluetooth', label: 'Bluetooth', description: 'Connect to devices', checked: false },
+                          { id: 'location', label: 'Location Services', description: 'Allow location access', checked: true },
+                          { id: 'airplane', label: 'Airplane Mode', description: 'Disable all connections', checked: false }
                         ].map((setting) => (
                           <div key={setting.id} className="flex items-center justify-between">
-                            <Label htmlFor={setting.id} className="text-sm font-medium">
-                              {setting.label}
-                            </Label>
+                            <div>
+                              <Label htmlFor={setting.id} className="text-base font-medium">
+                                {setting.label}
+                              </Label>
+                              <p className="text-sm text-muted-foreground">{setting.description}</p>
+                            </div>
                             <Switch 
                               id={setting.id}
                               defaultChecked={setting.checked}
@@ -187,16 +214,32 @@ export default function SwitchPage() {
                   </div>
                 </div>
 
+                {/* When NOT to Use */}
                 <div className="space-y-4">
-                  <h4 className="font-semibold text-lg">When NOT to Use Switch</h4>
-                  <div className="grid gap-3">
-                    <div className="p-3 bg-red-50 dark:bg-red-900/20 rounded border border-red-200 dark:border-red-800">
-                      <strong className="text-red-800 dark:text-red-200">Avoid for:</strong>
-                      <ul className="text-sm mt-1 text-red-700 dark:text-red-300 space-y-1">
+                  <h4 className="text-lg font-semibold">When NOT to Use Switches</h4>
+                  <p className="text-base text-muted-foreground">
+                    Avoid switches in these scenarios where immediate action isn't appropriate:
+                  </p>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <h5 className="text-base font-medium mb-3">Inappropriate Use Cases</h5>
+                      <ul className="space-y-2 text-base text-muted-foreground">
                         <li>• Actions requiring confirmation (like delete operations)</li>
-                        <li>• Form submissions where state isn&apos;t immediately applied</li>
-                        <li>• Multiple related options (use checkbox group instead)</li>
-                        <li>• Choices that need additional context or explanation</li>
+                        <li>• Form submissions with delayed effect</li>
+                        <li>• Multiple related options that should be grouped</li>
+                        <li>• Complex choices needing additional explanation</li>
+                      </ul>
+                    </div>
+                    
+                    <div className="p-4 border rounded bg-muted/20">
+                      <h5 className="text-base font-medium mb-3">Best Practice</h5>
+                      <p className="text-base text-muted-foreground mb-3">
+                        If the action isn't immediate or easily reversible, consider these alternatives:
+                      </p>
+                      <ul className="space-y-1 text-sm text-muted-foreground">
+                        <li>• <strong>Button:</strong> For actions requiring confirmation</li>
+                        <li>• <strong>Checkbox:</strong> For form submissions</li>
+                        <li>• <strong>Radio group:</strong> For mutually exclusive options</li>
                       </ul>
                     </div>
                   </div>
@@ -209,7 +252,7 @@ export default function SwitchPage() {
           <TabsContent value="states" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Switch States & Variants</CardTitle>
+                <CardTitle className="text-xl font-bold">Switch States & Variants</CardTitle>
                 <CardDescription>
                   Different states and visual feedback patterns for switches.
                 </CardDescription>
@@ -357,7 +400,7 @@ export default function SwitchPage() {
           <TabsContent value="sizes" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Sizes & Layout Patterns</CardTitle>
+                <CardTitle className="text-xl font-bold">Sizes & Layout Patterns</CardTitle>
                 <CardDescription>
                   Different sizing options and layout patterns for switches in various contexts.
                 </CardDescription>
@@ -366,22 +409,42 @@ export default function SwitchPage() {
                 
                 {/* Size Variations */}
                 <div className="space-y-4">
-                  <h4 className="font-semibold text-lg">Size Considerations</h4>
+                  <h4 className="font-semibold text-lg">Switch Sizes</h4>
                   <div className="p-4 border rounded-lg space-y-4">
                     <p className="text-sm text-muted-foreground">
-                      The default switch size is optimized for both desktop and mobile interactions. 
-                      Maintain consistent sizing within your interface for better usability.
+                      While the default size is recommended for most use cases, you can customize switch sizes for specific contexts.
                     </p>
-                    <div className="space-y-3">
+                    <div className="space-y-4">
                       <div className="flex items-center justify-between">
-                        <Label className="text-sm font-medium">Standard Switch (Recommended)</Label>
+                        <div>
+                          <Label className="text-sm font-medium">Small Switch</Label>
+                          <p className="text-xs text-muted-foreground">For compact interfaces and dense layouts</p>
+                        </div>
+                        <Switch className="h-4 w-7 [&>span]:h-3 [&>span]:w-3 [&>span]:data-[state=checked]:translate-x-3" />
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <Label className="text-sm font-medium">Default Switch (Recommended)</Label>
+                          <p className="text-xs text-muted-foreground">Standard size optimized for touch and desktop</p>
+                        </div>
                         <Switch />
                       </div>
-                      <div className="text-xs text-muted-foreground">
-                        • Minimum 44px touch target (iOS guidelines)
-                        • Adequate spacing for finger interaction
-                        • Clear visual feedback
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <Label className="text-sm font-medium">Large Switch</Label>
+                          <p className="text-xs text-muted-foreground">For emphasis and accessibility needs</p>
+                        </div>
+                        <Switch className="h-6 w-11 [&>span]:h-5 [&>span]:w-5 [&>span]:data-[state=checked]:translate-x-5" />
                       </div>
+                    </div>
+                    <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded">
+                      <h6 className="text-sm font-medium text-blue-800 dark:text-blue-200 mb-1">Accessibility Guidelines</h6>
+                      <ul className="text-xs text-blue-700 dark:text-blue-300 space-y-1">
+                        <li>• Minimum 44px touch target (iOS guidelines)</li>
+                        <li>• Default size meets WCAG 2.1 target size requirements</li>
+                        <li>• Larger sizes improve accessibility for motor impairments</li>
+                        <li>• Maintain consistent sizing within your interface</li>
+                      </ul>
                     </div>
                   </div>
                 </div>
@@ -492,7 +555,7 @@ export default function SwitchPage() {
           <TabsContent value="patterns" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Common Usage Patterns</CardTitle>
+                <CardTitle className="text-xl font-bold">Common Usage Patterns</CardTitle>
                 <CardDescription>
                   Real-world examples and patterns for implementing switches effectively.
                 </CardDescription>
@@ -1135,7 +1198,7 @@ const SwitchItem = React.memo(({ item, onToggle }) => {
         </Tabs>
 
         {/* Component References */}
-        <div className="mt-8">
+        <div className="mt-6">
           <ComponentReferences
             description="External resources and design system references for switch components."
             urls={switchComponentsUrlReference}
