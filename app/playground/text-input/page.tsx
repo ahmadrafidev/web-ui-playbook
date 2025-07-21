@@ -264,17 +264,17 @@ export default function TextInputPage() {
           </p>
         </div>
 
-        <Tabs defaultValue="purpose" className="space-y-6">
+        <Tabs defaultValue="overview" className="space-y-6">
           <TabsList className="grid w-full grid-cols-5">
-            <TabsTrigger value="purpose">Purpose</TabsTrigger>
+            <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="variants">Variants</TabsTrigger>
             <TabsTrigger value="states">States</TabsTrigger>
             <TabsTrigger value="patterns">Patterns</TabsTrigger>
             <TabsTrigger value="accessibility">Accessibility</TabsTrigger>
           </TabsList>
 
-          {/* Purpose */}
-          <TabsContent value="purpose" className="space-y-8">
+          {/* Overview */}
+          <TabsContent value="overview" className="space-y-8">
             <Card>
               <CardHeader>
                 <CardTitle className="text-xl font-bold">When to Use Text Input</CardTitle>

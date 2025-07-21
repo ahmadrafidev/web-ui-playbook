@@ -40,17 +40,17 @@ export default function TooltipsPage() {
           </p>
         </div>
 
-        <Tabs defaultValue="purpose" className="space-y-6">
+        <Tabs defaultValue="overview" className="space-y-6">
           <TabsList className="grid w-full grid-cols-5">
-            <TabsTrigger value="purpose">Purpose</TabsTrigger>
+            <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="types">Types & Variants</TabsTrigger>
             <TabsTrigger value="interaction">Interaction</TabsTrigger>
             <TabsTrigger value="placement">Placement & UX</TabsTrigger>
             <TabsTrigger value="accessibility">Accessibility</TabsTrigger>
           </TabsList>
 
-          {/* Purpose of Tooltips */}
-          <TabsContent value="purpose" className="space-y-8">
+          {/* Overview of Tooltips */}
+          <TabsContent value="overview" className="space-y-8">
             <Card>
               <CardHeader>
                 <CardTitle>Primary Purpose of Tooltips</CardTitle>

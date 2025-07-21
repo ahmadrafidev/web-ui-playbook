@@ -65,7 +65,7 @@ export const componentSections: ComponentSection[] = [
     name: "Radio Button",
     href: "/playground/radio-button",
     description: "Controls for selecting one option from multiple choices",
-    status: "In Progress",
+    status: "Complete",
     preview: <RadioButtonPreview />,
   },
   {

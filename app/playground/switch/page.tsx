@@ -86,9 +86,9 @@ export default function SwitchPage() {
           </p>
         </div>
 
-        <Tabs defaultValue="purpose" className="space-y-6">
+        <Tabs defaultValue="overview" className="space-y-6">
           <TabsList className="grid w-full grid-cols-5">
-            <TabsTrigger value="purpose">Purpose</TabsTrigger>
+            <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="states">States</TabsTrigger>
             <TabsTrigger value="sizes">Sizes & Layout</TabsTrigger>
             <TabsTrigger value="patterns">Patterns</TabsTrigger>
@@ -96,7 +96,7 @@ export default function SwitchPage() {
           </TabsList>
 
           {/* Purpose of Switch */}
-          <TabsContent value="purpose" className="space-y-8">
+          <TabsContent value="overview" className="space-y-8">
             <Card>
               <CardHeader>
                 <CardTitle className="text-xl font-bold">Primary Purpose of Switch</CardTitle>
