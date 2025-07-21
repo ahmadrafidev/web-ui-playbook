@@ -42,8 +42,8 @@ export default function RadioButtonPage() {
             <EditButton filePath="app/playground/radio-button/page.tsx" />
           </div>
           <p className="text-base md:text-lg text-muted-foreground mb-6">
-            Radio buttons allow users to select one option from a set of mutually exclusive choices. They work in groups where 
-            only one option can be selected at a time. When a user selects a new option, the previous selection is automatically deselected.
+            Radio buttons let users select one option from a group of choices. Only one option can be selected at a time—selecting 
+            a new option automatically deselects the previous one. Best used for 2-6 mutually exclusive options that users need to compare.
           </p>
         </div>
 

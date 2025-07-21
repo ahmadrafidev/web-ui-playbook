@@ -107,7 +107,7 @@ export const componentSections: ComponentSection[] = [
     name: "Slider",
     href: "/playground/slider",
     description: "Interactive controls for selecting values within a range",
-    status: "In Progress",
+    status: "Complete",
     preview: <SliderPreview />,
   },
   {
