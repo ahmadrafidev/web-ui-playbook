@@ -12,15 +12,12 @@ import {
   Share,
   Trash2,
   Copy,
-  Scissors,
-  ClipboardPaste,
   File,
   Folder,
   Search,
   Star,
   Bell,
   LogOut,
-  ChevronRight,
   ChevronDown,
   Check,
   AlertCircle,
@@ -32,7 +29,6 @@ import {
   Archive,
   Calendar,
   Mail,
-  Phone,
   MessageSquare,
   Shield,
   Palette,
@@ -41,9 +37,7 @@ import {
   Sun,
   Globe,
   Eye,
-  EyeOff,
   Heart,
-  Bookmark,
   Clock,
   Users,
   Home,
@@ -79,14 +73,7 @@ import {
   MenubarSeparator,
   MenubarShortcut,
   MenubarTrigger,
-  MenubarCheckboxItem,
-  MenubarRadioGroup,
-  MenubarRadioItem,
-  MenubarSub,
-  MenubarSubContent,
-  MenubarSubTrigger,
 } from "@/components/ui/menubar"
-import { Separator } from "@/components/ui/separator"
 import { Badge } from "@/components/ui/badge"
 
 const menuComponentsUrlReference = [
@@ -379,7 +366,7 @@ export default function MenuPage() {
                       <div className="flex gap-2 flex-wrap">
                         <DropdownMenu>
                           <DropdownMenuTrigger asChild>
-                            <Badge variant="success" className="cursor-pointer hover:bg-green-600">
+                            <Badge variant="secondary" className="cursor-pointer hover:bg-secondary/80 bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-100">
                               Available
                             </Badge>
                           </DropdownMenuTrigger>
@@ -407,7 +394,7 @@ export default function MenuPage() {
 
                         <DropdownMenu>
                           <DropdownMenuTrigger asChild>
-                            <Badge variant="destructive" className="cursor-pointer hover:bg-red-600">
+                            <Badge variant="destructive" className="cursor-pointer hover:bg-destructive/90">
                               3 Alerts
                             </Badge>
                           </DropdownMenuTrigger>
@@ -868,7 +855,7 @@ export default function MenuPage() {
                       <h4 className="font-semibold mb-3">Code Actions</h4>
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                          <Button variant="primary">
+                          <Button variant="default">
                             <Download className="mr-2 h-4 w-4" />
                             Code
                           </Button>
