@@ -100,7 +100,7 @@ export const componentSections: ComponentSection[] = [
     name: "Modal",
     href: "/playground/modal",
     description: "Overlay windows that focus attention on specific tasks",
-    status: "In Progress",
+    status: "Complete",
     preview: <ModalPreview />,
   },
   {
