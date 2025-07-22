@@ -6,10 +6,24 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Progress } from "@/components/ui/progress"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
+import { Badge } from "@/components/ui/badge"
 import { ComponentReferences } from "@/components/component-references"
 import { EditButton } from "@/components/edit-button"
 import { useMobileWarning } from "@/hooks/use-mobile-warning"
-import { Loader2, CheckCircle, AlertTriangle, Upload, Download, Wifi, Cpu } from "lucide-react"
+import { 
+  Loader2, 
+  CheckCircle, 
+  AlertTriangle, 
+  Upload, 
+  Download, 
+  Wifi, 
+  Cpu, 
+  Clock,
+  PlayCircle,
+  PauseCircle,
+  XCircle,
+  Info
+} from "lucide-react"
 
 const progressIndicatorsUrlReference = [
   "https://base.uber.com/6d2425e9f/p/6945cd-progress-circle",
@@ -30,47 +44,73 @@ function getProgressUrlTitle(url: string): string {
   return 'Design System Reference'
 }
 
-// Custom Loading Dots Component
-function LoadingDots({ className = "", size = "md" }: { className?: string; size?: "sm" | "md" | "lg" }) {
+// Enhanced Loading Dots Component
+function LoadingDots({ 
+  className = "", 
+  size = "md",
+  variant = "default"
+}: { 
+  className?: string; 
+  size?: "sm" | "md" | "lg";
+  variant?: "default" | "pulse" | "bounce"
+}) {
   const sizeClasses = {
-    sm: "w-1.5 h-1.5",
-    md: "w-2 h-2", 
-    lg: "w-3 h-3"
+    sm: "w-1 h-1",
+    md: "w-1.5 h-1.5", 
+    lg: "w-2 h-2"
+  }
+
+  const animationStyles = {
+    default: "animate-pulse",
+    pulse: "animate-pulse",
+    bounce: "animate-bounce"
   }
   
   return (
-    <div className={`flex items-center space-x-1 ${className}`}>
+    <div className={`flex items-center space-x-1 ${className}`} role="status" aria-label="Loading">
       {[0, 1, 2].map((i) => (
         <div
           key={i}
-          className={`${sizeClasses[size]} bg-primary rounded-full animate-pulse`}
+          className={`${sizeClasses[size]} bg-primary rounded-full ${animationStyles[variant]}`}
           style={{
             animationDelay: `${i * 0.2}s`,
-            animationDuration: '1.4s'
+            animationDuration: variant === "bounce" ? '1s' : '1.4s'
           }}
         />
       ))}
+      <span className="sr-only">Loading content, please wait...</span>
     </div>
   )
 }
 
-// Custom Circular Progress Component
+// Enhanced Circular Progress Component
 function CircularProgress({ 
   value = 0, 
   size = 60, 
   strokeWidth = 6,
   className = "",
-  showValue = false
+  showValue = false,
+  variant = "default",
+  status = "normal"
 }: { 
   value?: number; 
   size?: number; 
   strokeWidth?: number;
   className?: string;
   showValue?: boolean;
+  variant?: "default" | "gradient";
+  status?: "normal" | "warning" | "error" | "success";
 }) {
   const radius = (size - strokeWidth) / 2
   const circumference = 2 * Math.PI * radius
   const strokeDashoffset = circumference - (value / 100) * circumference
+
+  const statusColors = {
+    normal: "text-primary",
+    warning: "text-yellow-500",
+    error: "text-red-500",
+    success: "text-green-500"
+  }
 
   return (
     <div className={`relative inline-flex items-center justify-center ${className}`}>
@@ -78,6 +118,8 @@ function CircularProgress({
         width={size}
         height={size}
         className="transform -rotate-90"
+        role="img"
+        aria-labelledby={`progress-${value}`}
       >
         <circle
           cx={size / 2}
@@ -98,11 +140,19 @@ function CircularProgress({
           strokeDasharray={circumference}
           strokeDashoffset={strokeDashoffset}
           strokeLinecap="round"
-          className="text-primary transition-all duration-300 ease-in-out"
+          className={`${statusColors[status]} transition-all duration-500 ease-in-out`}
         />
+        {variant === "gradient" && (
+          <defs>
+            <linearGradient id={`gradient-${size}`} x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="rgb(59 130 246)" />
+              <stop offset="100%" stopColor="rgb(147 51 234)" />
+            </linearGradient>
+          </defs>
+        )}
       </svg>
       {showValue && (
-        <span className="absolute text-sm font-medium">
+        <span className="absolute text-sm font-medium" id={`progress-${value}`}>
           {Math.round(value)}%
         </span>
       )}
@@ -110,29 +160,135 @@ function CircularProgress({
   )
 }
 
-// Indeterminate Progress Bar Component
-function IndeterminateProgress({ className = "" }: { className?: string }) {
+// Enhanced Indeterminate Progress Bar Component
+function IndeterminateProgress({ 
+  className = "",
+  variant = "slide"
+}: { 
+  className?: string;
+  variant?: "slide" | "pulse" | "wave"
+}) {
   return (
-    <div className={`w-full bg-primary/20 rounded-full h-2 overflow-hidden ${className}`}>
+    <div 
+      className={`w-full bg-primary/20 rounded-full h-2 overflow-hidden ${className}`}
+      role="progressbar"
+      aria-label="Loading in progress"
+    >
       <div 
-        className="h-full bg-primary rounded-full w-1/3"
+        className={`h-full bg-primary rounded-full ${
+          variant === "slide" ? "w-1/3" : variant === "pulse" ? "w-full animate-pulse" : "w-1/4"
+        }`}
         style={{
-          animation: 'indeterminateSlide 2s infinite ease-in-out'
+          animation: variant === "slide" 
+            ? 'indeterminateSlide 2s infinite ease-in-out' 
+            : variant === "wave" 
+            ? 'indeterminateWave 1.5s infinite ease-in-out'
+            : undefined
         }}
       />
       <style jsx>{`
         @keyframes indeterminateSlide {
-          0% {
-            transform: translateX(-100%);
-          }
-          50% {
-            transform: translateX(200%);
-          }
-          100% {
-            transform: translateX(-100%);
-          }
+          0% { transform: translateX(-100%); }
+          50% { transform: translateX(200%); }
+          100% { transform: translateX(-100%); }
+        }
+        @keyframes indeterminateWave {
+          0%, 100% { transform: translateX(-100%) scaleX(1); }
+          50% { transform: translateX(0%) scaleX(1.5); }
         }
       `}</style>
+    </div>
+  )
+}
+
+// Step Progress Component
+function StepProgress({ 
+  currentStep, 
+  totalSteps, 
+  steps,
+  orientation = "horizontal"
+}: {
+  currentStep: number;
+  totalSteps: number;
+  steps: string[];
+  orientation?: "horizontal" | "vertical";
+}) {
+  if (orientation === "vertical") {
+    return (
+      <div className="space-y-4">
+        {steps.map((label, index) => {
+          const stepNum = index + 1
+          const isCompleted = stepNum < currentStep
+          const isCurrent = stepNum === currentStep
+          
+          return (
+            <div key={stepNum} className="flex items-start gap-4">
+              <div className="flex flex-col items-center">
+                <div 
+                  className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium border-2 transition-all duration-300 ${
+                    isCompleted
+                      ? 'bg-primary text-primary-foreground border-primary' 
+                      : isCurrent
+                      ? 'border-primary text-primary bg-background ring-2 ring-primary/20'
+                      : 'border-muted text-muted-foreground bg-muted'
+                  }`}
+                >
+                  {isCompleted ? <CheckCircle className="w-4 h-4" /> : stepNum}
+                </div>
+                {index < steps.length - 1 && (
+                  <div 
+                    className={`w-0.5 h-8 transition-colors duration-300 ${
+                      isCompleted ? 'bg-primary' : 'bg-muted'
+                    }`} 
+                  />
+                )}
+              </div>
+              <div className="flex-1 pt-1">
+                <h4 className={`font-medium transition-colors ${isCurrent ? 'text-primary' : ''}`}>
+                  {label}
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  {isCompleted ? 'Completed' : isCurrent ? 'In Progress' : 'Pending'}
+                </p>
+              </div>
+            </div>
+          )
+        })}
+      </div>
+    )
+  }
+
+  return (
+    <div className="space-y-4">
+      <div className="flex items-center space-x-2">
+        {steps.map((step, index) => (
+          <div key={index} className="flex items-center">
+            <div 
+              className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium border-2 transition-all duration-300 ${
+                index + 1 <= currentStep 
+                  ? 'bg-primary text-primary-foreground border-primary' 
+                  : index + 1 === currentStep + 1
+                  ? 'border-primary text-primary bg-background'
+                  : 'border-muted text-muted-foreground bg-muted'
+              }`}
+            >
+              {index + 1 < currentStep ? <CheckCircle className="w-4 h-4" /> : index + 1}
+            </div>
+            {index < steps.length - 1 && (
+              <div 
+                className={`w-12 h-0.5 transition-colors duration-300 ${
+                  index + 1 < currentStep ? 'bg-primary' : 'bg-muted'
+                }`} 
+              />
+            )}
+          </div>
+        ))}
+      </div>
+      <div className="grid grid-cols-4 gap-2 text-xs text-muted-foreground">
+        {steps.map((step, index) => (
+          <span key={index} className="text-center">{step}</span>
+        ))}
+      </div>
     </div>
   )
 }
@@ -142,10 +298,15 @@ export default function ProgressIndicatorsPage() {
   
   // State for various progress examples
   const [uploadProgress, setUploadProgress] = useState(0)
-  const downloadProgress = 45
+  const [downloadProgress, setDownloadProgress] = useState(45)
   const [circularProgress, setCircularProgress] = useState(75)
   const [stepProgress, setStepProgress] = useState(2)
   const [isLoading, setIsLoading] = useState(false)
+  const [systemMetrics, setSystemMetrics] = useState({
+    cpu: 45,
+    memory: 78,
+    storage: 32
+  })
 
   // Simulate upload progress
   const simulateUpload = () => {
@@ -159,6 +320,20 @@ export default function ProgressIndicatorsPage() {
         return prev + Math.random() * 15
       })
     }, 200)
+  }
+
+  // Simulate download progress
+  const simulateDownload = () => {
+    setDownloadProgress(0)
+    const interval = setInterval(() => {
+      setDownloadProgress(prev => {
+        if (prev >= 100) {
+          clearInterval(interval)
+          return 100
+        }
+        return prev + Math.random() * 10
+      })
+    }, 300)
   }
 
   // Simulate loading with timeout
@@ -175,6 +350,20 @@ export default function ProgressIndicatorsPage() {
     return () => clearInterval(interval)
   }, [])
 
+  // Simulate system metrics
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSystemMetrics(prev => ({
+        cpu: Math.max(10, Math.min(90, prev.cpu + (Math.random() - 0.5) * 10)),
+        memory: Math.max(30, Math.min(95, prev.memory + (Math.random() - 0.5) * 5)),
+        storage: prev.storage
+      }))
+    }, 2000)
+    return () => clearInterval(interval)
+  }, [])
+
+  const stepLabels = ["Account", "Profile", "Preferences", "Complete"]
+
   return (
     <div className="min-h-screen bg-background">
       {/* Mobile Warning */}
@@ -183,344 +372,379 @@ export default function ProgressIndicatorsPage() {
 
         {/* Introduction */}
         <div className="mb-10">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
-            <h2 className="text-4xl font-bold text-foreground">Progress Indicators</h2>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+            <div>
+              <h1 className="text-4xl font-bold text-foreground mb-2">Progress Indicators</h1>
+              <p className="text-xl text-muted-foreground">
+                Visual feedback for system processes and user flows
+              </p>
+            </div>
             <EditButton filePath="app/playground/progress-indicators/page.tsx" />
           </div>
-          <p className="text-base md:text-lg text-muted-foreground mb-6">
-            Progress indicators communicate the progress of system processes such as downloading, uploading, 
-            loading data, or multi-step user flows. They provide visual feedback to users about the current 
-            state of operations and help set appropriate expectations for completion time.
-          </p>
+          
+
         </div>
 
-        <Tabs defaultValue="purpose" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-5">
-            <TabsTrigger value="purpose">Purpose</TabsTrigger>
-            <TabsTrigger value="types">Types</TabsTrigger>
-            <TabsTrigger value="variants">Variants</TabsTrigger>
-            <TabsTrigger value="patterns">Usage Patterns</TabsTrigger>
-            <TabsTrigger value="accessibility">Accessibility</TabsTrigger>
+        <Tabs defaultValue="overview" className="space-y-8">
+          <TabsList className="grid w-full grid-cols-4">
+            <TabsTrigger value="overview">Overview</TabsTrigger>
+            <TabsTrigger value="components">Components</TabsTrigger>
+            <TabsTrigger value="patterns">Patterns</TabsTrigger>
+            <TabsTrigger value="guidelines">Guidelines</TabsTrigger>
           </TabsList>
 
-          {/* Purpose Tab */}
-          <TabsContent value="purpose" className="space-y-8">
-            <Card>
-              <CardHeader>
-                <CardTitle>Primary Purpose of Progress Indicators</CardTitle>
-                <CardDescription>
-                  Understanding when and why to use progress indicators in your interface design.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <h4 className="font-semibold mb-3 text-lg">Core Purpose</h4>
-                    <ul className="space-y-2 text-sm">
-                      <li>• <strong>System Feedback:</strong> Show ongoing system processes</li>
-                      <li>• <strong>Time Estimation:</strong> Help users understand wait times</li>
-                      <li>• <strong>Process Status:</strong> Indicate completion percentage</li>
-                      <li>• <strong>User Guidance:</strong> Show progress in multi-step flows</li>
-                    </ul>
-                  </div>
-
-                  <div>
-                    <h4 className="font-semibold mb-3 text-lg">Progress Types</h4>
-                    <div className="space-y-3">
-                      <div className="p-3 bg-green-50 dark:bg-green-900/20 rounded">
-                        <strong className="text-green-800 dark:text-green-200">Determinate:</strong>
-                        <ul className="text-sm mt-1 text-green-700 dark:text-green-300">
-                          <li>• Known duration or completion percentage</li>
-                          <li>• File uploads, downloads, installations</li>
-                          <li>• Multi-step forms or wizards</li>
-                        </ul>
-                      </div>
-                      <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded">
-                        <strong className="text-blue-800 dark:text-blue-200">Indeterminate:</strong>
-                        <ul className="text-sm mt-1 text-blue-700 dark:text-blue-300">
-                          <li>• Unknown duration or progress</li>
-                          <li>• Data processing, API calls</li>
-                          <li>• System initialization</li>
-                        </ul>
-                      </div>
+          {/* Overview Tab */}
+          <TabsContent value="overview" className="space-y-8">
+            <div className="grid md:grid-cols-2 gap-6 mb-8">
+              <Card className="border-l-4 border-l-blue-500">
+                <CardContent className="pt-6">
+                  <div className="flex items-start gap-3">
+                    <Info className="h-5 w-5 text-blue-500 mt-0.5" />
+                    <div>
+                      <h3 className="font-semibold mb-2">Purpose</h3>
+                      <p className="text-sm text-muted-foreground">
+                        Progress indicators provide visual feedback about ongoing processes, helping users 
+                        understand system status and set appropriate expectations for completion time.
+                      </p>
                     </div>
                   </div>
-                </div>
+                </CardContent>
+              </Card>
 
-                <div className="space-y-4">
-                  <h4 className="font-semibold text-lg">Common Use Cases</h4>
-                  <div className="grid gap-4">
-                    <div className="p-4 border rounded-lg space-y-3">
-                      <div className="flex items-center gap-3">
-                        <Upload className="h-5 w-5 text-blue-500" />
-                        <Label className="text-base font-medium">File Upload Progress</Label>
-                        <span className="text-sm text-muted-foreground ml-auto">{Math.round(uploadProgress)}%</span>
+              <Card className="border-l-4 border-l-green-500">
+                <CardContent className="pt-6">
+                  <div className="flex items-start gap-3">
+                    <Clock className="h-5 w-5 text-green-500 mt-0.5" />
+                    <div>
+                      <h3 className="font-semibold mb-2">When to Use</h3>
+                      <p className="text-sm text-muted-foreground">
+                        Use for operations longer than 1 second, file transfers, multi-step processes, 
+                        system monitoring, and any time users need feedback about ongoing activities.
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-8">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Badge variant="secondary">Determinate</Badge>
+                    Known Progress
+                  </CardTitle>
+                  <CardDescription>
+                    Use when you can calculate the percentage of completion
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div className="space-y-4">
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <Label className="text-sm font-medium">File Upload</Label>
+                        <span className="text-xs text-muted-foreground">{Math.round(uploadProgress)}%</span>
                       </div>
                       <Progress value={uploadProgress} className="w-full" />
-                      <Button onClick={simulateUpload} variant="outline" size="sm">
-                        Simulate Upload
+                      <Button onClick={simulateUpload} variant="outline" size="sm" className="w-full">
+                        <Upload className="h-4 w-4 mr-2" />
+                        Start Upload
                       </Button>
                     </div>
 
-                    <div className="p-4 border rounded-lg space-y-3">
-                      <div className="flex items-center gap-3">
-                        <Download className="h-5 w-5 text-green-500" />
-                        <Label className="text-base font-medium">Download Progress</Label>
-                        <span className="text-sm text-muted-foreground ml-auto">{downloadProgress}%</span>
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <Label className="text-sm font-medium">Download</Label>
+                        <span className="text-xs text-muted-foreground">{Math.round(downloadProgress)}%</span>
                       </div>
                       <Progress value={downloadProgress} className="w-full" />
-                    </div>
-
-                    <div className="p-4 border rounded-lg space-y-3">
-                      <div className="flex items-center gap-3">
-                        <Loader2 className="h-5 w-5 text-orange-500 animate-spin" />
-                        <Label className="text-base font-medium">Processing Data</Label>
-                      </div>
-                      <LoadingDots size="md" />
+                      <Button onClick={simulateDownload} variant="outline" size="sm" className="w-full">
+                        <Download className="h-4 w-4 mr-2" />
+                        Start Download
+                      </Button>
                     </div>
                   </div>
+
+                  <div className="pt-4 border-t">
+                    <h4 className="font-medium mb-3">Best for:</h4>
+                    <ul className="text-sm text-muted-foreground space-y-1">
+                      <li>• File transfers and uploads</li>
+                      <li>• Installation processes</li>
+                      <li>• Data imports/exports</li>
+                      <li>• Multi-step forms</li>
+                    </ul>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Badge variant="outline">Indeterminate</Badge>
+                    Unknown Duration
+                  </CardTitle>
+                  <CardDescription>
+                    Use when you cannot predict completion time or percentage
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="text-center space-y-3">
+                      <Label className="text-sm font-medium">Loading Dots</Label>
+                      <div className="flex justify-center py-4">
+                        <LoadingDots size="lg" />
+                      </div>
+                    </div>
+
+                    <div className="text-center space-y-3">
+                      <Label className="text-sm font-medium">Spinning Icon</Label>
+                      <div className="flex justify-center py-4">
+                        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-3">
+                    <Label className="text-sm font-medium">Indeterminate Bar</Label>
+                    <IndeterminateProgress />
+                  </div>
+
+                  <Button 
+                    onClick={simulateLoading} 
+                    disabled={isLoading}
+                    variant="outline"
+                    className="w-full"
+                  >
+                    {isLoading ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Processing...
+                      </>
+                    ) : (
+                      <>
+                        <PlayCircle className="mr-2 h-4 w-4" />
+                        Start Process
+                      </>
+                    )}
+                  </Button>
+
+                  <div className="pt-4 border-t">
+                    <h4 className="font-medium mb-3">Best for:</h4>
+                    <ul className="text-sm text-muted-foreground space-y-1">
+                      <li>• API requests</li>
+                      <li>• Data processing</li>
+                      <li>• System initialization</li>
+                      <li>• Background tasks</li>
+                    </ul>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Progress Types Comparison</CardTitle>
+                <CardDescription>
+                  Understanding when to use different progress indicator types
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b">
+                        <th className="text-left p-3 font-medium">Type</th>
+                        <th className="text-left p-3 font-medium">Use Case</th>
+                        <th className="text-left p-3 font-medium">Duration</th>
+                        <th className="text-left p-3 font-medium">User Action</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y">
+                      <tr>
+                        <td className="p-3">
+                          <Badge variant="secondary">Linear Bar</Badge>
+                        </td>
+                        <td className="p-3">File uploads, downloads</td>
+                        <td className="p-3">Known</td>
+                        <td className="p-3">Wait & monitor</td>
+                      </tr>
+                      <tr>
+                        <td className="p-3">
+                          <Badge variant="secondary">Circular</Badge>
+                        </td>
+                        <td className="p-3">Compact spaces, dashboards</td>
+                        <td className="p-3">Known/Unknown</td>
+                        <td className="p-3">Quick glance</td>
+                      </tr>
+                      <tr>
+                        <td className="p-3">
+                          <Badge variant="outline">Loading Dots</Badge>
+                        </td>
+                        <td className="p-3">Content loading</td>
+                        <td className="p-3">Unknown</td>
+                        <td className="p-3">Wait briefly</td>
+                      </tr>
+                      <tr>
+                        <td className="p-3">
+                          <Badge variant="outline">Step Progress</Badge>
+                        </td>
+                        <td className="p-3">Multi-step workflows</td>
+                        <td className="p-3">Variable</td>
+                        <td className="p-3">Active participation</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </CardContent>
             </Card>
           </TabsContent>
 
-          {/* Types Tab */}
-          <TabsContent value="types" className="space-y-8">
-            <Card>
-              <CardHeader>
-                <CardTitle>Linear Progress Indicators</CardTitle>
-                <CardDescription>
-                  Horizontal progress bars for showing completion percentage or ongoing processes.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="space-y-4">
-                  <div className="space-y-3">
-                    <Label className="text-base font-medium">Determinate Linear Progress</Label>
-                    <div className="space-y-2">
-                      <Progress value={33} className="w-full" />
-                      <Progress value={66} className="w-full" />
-                      <Progress value={100} className="w-full" />
-                    </div>
-                    <p className="text-sm text-muted-foreground">
-                      Shows specific completion percentage with precise progress indication.
-                    </p>
-                  </div>
-
-                  <div className="space-y-3">
-                    <Label className="text-base font-medium">Different Sizes</Label>
-                    <div className="space-y-3">
-                      <div>
-                        <span className="text-sm text-muted-foreground">Small (1px height)</span>
-                        <Progress value={75} className="w-full h-1" />
-                      </div>
-                      <div>
-                        <span className="text-sm text-muted-foreground">Default (8px height)</span>
-                        <Progress value={75} className="w-full" />
-                      </div>
-                      <div>
-                        <span className="text-sm text-muted-foreground">Large (12px height)</span>
-                        <Progress value={75} className="w-full h-3" />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="space-y-3">
-                    <Label className="text-base font-medium">With Status Indicators</Label>
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-3">
-                        <Progress value={25} className="flex-1" />
-                        <AlertTriangle className="h-4 w-4 text-yellow-500" />
-                        <span className="text-sm">25% - Warning</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <Progress value={75} className="flex-1" />
-                        <Loader2 className="h-4 w-4 text-blue-500 animate-spin" />
-                        <span className="text-sm">75% - Processing</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <Progress value={100} className="flex-1" />
-                        <CheckCircle className="h-4 w-4 text-green-500" />
-                        <span className="text-sm">100% - Complete</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Circular Progress Indicators</CardTitle>
-                <CardDescription>
-                  Compact circular progress indicators for space-constrained interfaces.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="grid md:grid-cols-3 gap-6">
-                  <div className="space-y-3 text-center">
-                    <Label className="text-base font-medium">Small (40px)</Label>
-                    <div className="flex justify-center">
-                      <CircularProgress value={circularProgress} size={40} strokeWidth={4} />
-                    </div>
-                    <p className="text-sm text-muted-foreground">Compact size for tight spaces</p>
-                  </div>
-
-                  <div className="space-y-3 text-center">
-                    <Label className="text-base font-medium">Medium (60px)</Label>
-                    <div className="flex justify-center">
-                      <CircularProgress value={circularProgress} size={60} strokeWidth={6} showValue />
-                    </div>
-                    <p className="text-sm text-muted-foreground">Standard size with percentage</p>
-                  </div>
-
-                  <div className="space-y-3 text-center">
-                    <Label className="text-base font-medium">Large (80px)</Label>
-                    <div className="flex justify-center">
-                      <CircularProgress value={circularProgress} size={80} strokeWidth={8} showValue />
-                    </div>
-                    <p className="text-sm text-muted-foreground">Prominent display size</p>
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  <Label className="text-base font-medium">Circular Progress with Context</Label>
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="p-4 border rounded-lg flex items-center gap-4">
-                      <CircularProgress value={85} size={50} strokeWidth={5} />
-                      <div>
-                        <p className="font-medium">System Update</p>
-                        <p className="text-sm text-muted-foreground">Installing security patches...</p>
-                      </div>
-                    </div>
-                    <div className="p-4 border rounded-lg flex items-center gap-4">
-                      <CircularProgress value={60} size={50} strokeWidth={5} />
-                      <div>
-                        <p className="font-medium">Backup Process</p>
-                        <p className="text-sm text-muted-foreground">Syncing files to cloud...</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Loading Indicators</CardTitle>
-                <CardDescription>
-                  Indeterminate progress indicators for unknown duration processes.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="grid md:grid-cols-3 gap-6">
-                  <div className="space-y-3 text-center">
-                    <Label className="text-base font-medium">Loading Dots</Label>
-                    <div className="flex justify-center py-4">
-                      <LoadingDots size="lg" />
-                    </div>
-                    <p className="text-sm text-muted-foreground">Subtle pulsing animation</p>
-                  </div>
-
-                  <div className="space-y-3 text-center">
-                    <Label className="text-base font-medium">Spinning Icon</Label>
-                    <div className="flex justify-center py-4">
-                      <Loader2 className="h-8 w-8 animate-spin text-primary" />
-                    </div>
-                    <p className="text-sm text-muted-foreground">Classic spinning loader</p>
-                  </div>
-
-                  <div className="space-y-3 text-center">
-                    <Label className="text-base font-medium">Indeterminate Bar</Label>
-                    <div className="py-4">
-                      <IndeterminateProgress />
-                    </div>
-                    <p className="text-sm text-muted-foreground">Continuous sliding animation</p>
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  <Label className="text-base font-medium">Loading States in Context</Label>
-                  <div className="space-y-3">
-                    <div className="p-4 border rounded-lg">
-                      <div className="flex items-center gap-3 mb-3">
-                        <Wifi className="h-5 w-5 text-blue-500" />
-                        <span className="font-medium">Connecting to server...</span>
-                        <LoadingDots size="sm" className="ml-auto" />
-                      </div>
-                    </div>
-                    
-                    <div className="p-4 border rounded-lg">
-                      <div className="flex items-center gap-3 mb-3">
-                        <Cpu className="h-5 w-5 text-purple-500" />
-                        <span className="font-medium">Processing data...</span>
-                        <Loader2 className="h-4 w-4 animate-spin ml-auto" />
-                      </div>
-                    </div>
-
-                    <Button 
-                      onClick={simulateLoading} 
-                      disabled={isLoading}
-                      className="w-full"
-                    >
-                      {isLoading ? (
-                        <>
-                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                          Loading...
-                        </>
-                      ) : (
-                        'Start Loading Process'
-                      )}
-                    </Button>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          {/* Variants Tab */}
-          <TabsContent value="variants" className="space-y-8">
-            <Card>
-              <CardHeader>
-                <CardTitle>Step Progress Indicators</CardTitle>
-                <CardDescription>
-                  Multi-step progress indicators for wizards, forms, and sequential processes.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="space-y-4">
-                  <Label className="text-base font-medium">Horizontal Step Progress</Label>
-                  <div className="flex items-center space-x-2">
-                    {[1, 2, 3, 4].map((step, index) => (
-                      <div key={step} className="flex items-center">
-                        <div 
-                          className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium border-2 ${
-                            step <= stepProgress 
-                              ? 'bg-primary text-primary-foreground border-primary' 
-                              : step === stepProgress + 1
-                              ? 'border-primary text-primary bg-background'
-                              : 'border-muted text-muted-foreground bg-muted'
-                          }`}
-                        >
-                          {step < stepProgress ? <CheckCircle className="w-4 h-4" /> : step}
+          {/* Components Tab */}
+          <TabsContent value="components" className="space-y-8">
+            <div className="grid lg:grid-cols-2 gap-8">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Linear Progress Bars</CardTitle>
+                  <CardDescription>
+                    Horizontal bars showing completion percentage
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div className="space-y-8">
+                    <div>
+                      <Label className="text-sm font-medium mb-2 block">Size Variations</Label>
+                      <div className="space-y-3">
+                        <div>
+                          <span className="text-xs text-muted-foreground">Small (2px)</span>
+                          <Progress value={75} className="w-full h-0.5" />
                         </div>
-                        {index < 3 && (
-                          <div 
-                            className={`w-12 h-0.5 ${
-                              step < stepProgress ? 'bg-primary' : 'bg-muted'
-                            }`} 
-                          />
-                        )}
+                        <div>
+                          <span className="text-xs text-muted-foreground">Default (8px)</span>
+                          <Progress value={75} className="w-full" />
+                        </div>
+                        <div>
+                          <span className="text-xs text-muted-foreground">Large (12px)</span>
+                          <Progress value={75} className="w-full h-3" />
+                        </div>
                       </div>
-                    ))}
+                    </div>
+
+                    <div>
+                      <Label className="text-sm font-medium mb-2 block">With Status Icons</Label>
+                      <div className="space-y-3">
+                        <div className="flex items-center gap-3">
+                          <Progress value={25} className="flex-1" />
+                          <AlertTriangle className="h-4 w-4 text-yellow-500" />
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <Progress value={75} className="flex-1" />
+                          <Loader2 className="h-4 w-4 text-blue-500 animate-spin" />
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <Progress value={100} className="flex-1" />
+                          <CheckCircle className="h-4 w-4 text-green-500" />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <Label className="text-sm font-medium mb-2 block">Indeterminate Variants</Label>
+                      <div className="space-y-3">
+                        <IndeterminateProgress variant="slide" />
+                        <IndeterminateProgress variant="pulse" />
+                        <IndeterminateProgress variant="wave" />
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex justify-between text-sm text-muted-foreground">
-                    <span>Account</span>
-                    <span>Profile</span>
-                    <span>Preferences</span>
-                    <span>Complete</span>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle>Circular Progress</CardTitle>
+                  <CardDescription>
+                    Compact circular indicators for space-constrained layouts
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div className="grid grid-cols-3 gap-4 text-center">
+                    <div className="space-y-2">
+                      <CircularProgress value={circularProgress} size={40} strokeWidth={4} />
+                      <Label className="text-xs">Small</Label>
+                    </div>
+                    <div className="space-y-2">
+                      <CircularProgress value={circularProgress} size={60} strokeWidth={6} showValue />
+                      <Label className="text-xs">Medium</Label>
+                    </div>
+                    <div className="space-y-2">
+                      <CircularProgress value={circularProgress} size={80} strokeWidth={8} showValue />
+                      <Label className="text-xs">Large</Label>
+                    </div>
                   </div>
-                  <div className="flex gap-2">
+
+                  <div>
+                    <Label className="text-sm font-medium mb-3 block">Status Variants</Label>
+                    <div className="grid grid-cols-4 gap-4 text-center">
+                      <div className="space-y-2">
+                        <CircularProgress value={75} size={50} strokeWidth={5} status="normal" />
+                        <Label className="text-xs">Normal</Label>
+                      </div>
+                      <div className="space-y-2">
+                        <CircularProgress value={65} size={50} strokeWidth={5} status="warning" />
+                        <Label className="text-xs">Warning</Label>
+                      </div>
+                      <div className="space-y-2">
+                        <CircularProgress value={25} size={50} strokeWidth={5} status="error" />
+                        <Label className="text-xs">Error</Label>
+                      </div>
+                      <div className="space-y-2">
+                        <CircularProgress value={100} size={50} strokeWidth={5} status="success" />
+                        <Label className="text-xs">Success</Label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <Label className="text-sm font-medium mb-3 block">Loading Indicators</Label>
+                    <div className="grid grid-cols-3 gap-4 text-center">
+                      <div className="space-y-2">
+                        <LoadingDots size="sm" className="justify-center" />
+                        <Label className="text-xs">Dots Small</Label>
+                      </div>
+                      <div className="space-y-2">
+                        <LoadingDots size="md" variant="bounce" className="justify-center" />
+                        <Label className="text-xs">Bounce</Label>
+                      </div>
+                      <div className="space-y-2">
+                        <Loader2 className="h-6 w-6 animate-spin text-primary mx-auto" />
+                        <Label className="text-xs">Spinner</Label>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Step Progress Components</CardTitle>
+                <CardDescription>
+                  Multi-step indicators for workflows and processes
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-8">
+                <div>
+                  <div className="flex justify-between items-center mb-4">
+                    <Label className="text-base font-medium">Horizontal Step Progress</Label>
+                    <span className="text-sm text-muted-foreground">Step {stepProgress} of {stepLabels.length}</span>
+                  </div>
+                  <StepProgress 
+                    currentStep={stepProgress} 
+                    totalSteps={stepLabels.length}
+                    steps={stepLabels}
+                    orientation="horizontal"
+                  />
+                  <div className="flex gap-2 mt-4">
                     <Button 
                       variant="outline" 
                       size="sm" 
@@ -531,143 +755,41 @@ export default function ProgressIndicatorsPage() {
                     </Button>
                     <Button 
                       size="sm" 
-                      onClick={() => setStepProgress(Math.min(4, stepProgress + 1))}
-                      disabled={stepProgress >= 4}
+                      onClick={() => setStepProgress(Math.min(stepLabels.length, stepProgress + 1))}
+                      disabled={stepProgress >= stepLabels.length}
                     >
                       Next
                     </Button>
                   </div>
                 </div>
 
-                <div className="space-y-4">
-                  <Label className="text-base font-medium">Vertical Step Progress</Label>
-                  <div className="space-y-4">
-                    {['Personal Info', 'Contact Details', 'Verification', 'Complete'].map((label, index) => {
-                      const stepNum = index + 1
-                      const isCompleted = stepNum < stepProgress
-                      const isCurrent = stepNum === stepProgress
-                      
-                      return (
-                        <div key={stepNum} className="flex items-start gap-4">
-                          <div className="flex flex-col items-center">
-                            <div 
-                              className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium border-2 ${
-                                isCompleted
-                                  ? 'bg-primary text-primary-foreground border-primary' 
-                                  : isCurrent
-                                  ? 'border-primary text-primary bg-background'
-                                  : 'border-muted text-muted-foreground bg-muted'
-                              }`}
-                            >
-                              {isCompleted ? <CheckCircle className="w-4 h-4" /> : stepNum}
-                            </div>
-                            {index < 3 && (
-                              <div 
-                                className={`w-0.5 h-8 ${
-                                  isCompleted ? 'bg-primary' : 'bg-muted'
-                                }`} 
-                              />
-                            )}
-                          </div>
-                          <div className="flex-1 pt-1">
-                            <h4 className={`font-medium ${isCurrent ? 'text-primary' : ''}`}>
-                              {label}
-                            </h4>
-                            <p className="text-sm text-muted-foreground">
-                              {isCompleted ? 'Completed' : isCurrent ? 'In Progress' : 'Pending'}
-                            </p>
-                          </div>
-                        </div>
-                      )
-                    })}
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Specialized Progress Variants</CardTitle>
-                <CardDescription>
-                  Custom progress indicators for specific use cases and contexts.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-4">
-                    <Label className="text-base font-medium">Segmented Progress</Label>
-                    <div className="flex space-x-1">
-                      {[1, 2, 3, 4, 5].map((segment) => (
-                        <div 
-                          key={segment}
-                          className={`h-2 flex-1 rounded ${
-                            segment <= 3 ? 'bg-primary' : 'bg-muted'
-                          }`} 
-                        />
-                      ))}
-                    </div>
-                    <p className="text-sm text-muted-foreground">3 of 5 tasks completed</p>
+                <div className="grid lg:grid-cols-2 gap-8">
+                  <div>
+                    <Label className="text-base font-medium mb-4 block">Vertical Step Progress</Label>
+                    <StepProgress 
+                      currentStep={stepProgress} 
+                      totalSteps={stepLabels.length}
+                      steps={stepLabels}
+                      orientation="vertical"
+                    />
                   </div>
 
-                  <div className="space-y-4">
-                    <Label className="text-base font-medium">Ring Progress</Label>
-                    <div className="flex justify-center">
-                      <div className="relative">
-                        <CircularProgress value={70} size={60} strokeWidth={8} />
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <span className="text-xs font-medium">70%</span>
-                        </div>
+                  <div>
+                    <Label className="text-base font-medium mb-4 block">Segmented Progress</Label>
+                    <div className="space-y-4">
+                      <div className="flex space-x-1">
+                        {[1, 2, 3, 4, 5].map((segment) => (
+                          <div 
+                            key={segment}
+                            className={`h-2 flex-1 rounded transition-colors duration-300 ${
+                              segment <= stepProgress ? 'bg-primary' : 'bg-muted'
+                            }`} 
+                          />
+                        ))}
                       </div>
-                    </div>
-                    <p className="text-sm text-muted-foreground text-center">Storage usage indicator</p>
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  <Label className="text-base font-medium">Multi-Progress Indicators</Label>
-                  <div className="space-y-3">
-                    <div className="space-y-2">
-                      <div className="flex justify-between text-sm">
-                        <span>CPU Usage</span>
-                        <span>45%</span>
-                      </div>
-                      <Progress value={45} className="w-full h-1" />
-                    </div>
-                    <div className="space-y-2">
-                      <div className="flex justify-between text-sm">
-                        <span>Memory</span>
-                        <span>78%</span>
-                      </div>
-                      <Progress value={78} className="w-full h-1" />
-                    </div>
-                    <div className="space-y-2">
-                      <div className="flex justify-between text-sm">
-                        <span>Storage</span>
-                        <span>32%</span>
-                      </div>
-                      <Progress value={32} className="w-full h-1" />
+                      <p className="text-sm text-muted-foreground">{stepProgress} of 5 tasks completed</p>
                     </div>
                   </div>
-                </div>
-
-                <div className="space-y-4">
-                  <Label className="text-base font-medium">Progress with Milestones</Label>
-                  <div className="relative">
-                    <Progress value={65} className="w-full" />
-                    <div className="absolute top-0 left-1/4 transform -translate-x-1/2">
-                      <div className="w-2 h-2 bg-primary rounded-full -mt-0.5" />
-                      <span className="text-xs text-muted-foreground absolute -bottom-5 -left-4">25%</span>
-                    </div>
-                    <div className="absolute top-0 left-1/2 transform -translate-x-1/2">
-                      <div className="w-2 h-2 bg-primary rounded-full -mt-0.5" />
-                      <span className="text-xs text-muted-foreground absolute -bottom-5 -left-4">50%</span>
-                    </div>
-                    <div className="absolute top-0 left-3/4 transform -translate-x-1/2">
-                      <div className="w-2 h-2 bg-muted rounded-full -mt-0.5" />
-                      <span className="text-xs text-muted-foreground absolute -bottom-5 -left-4">75%</span>
-                    </div>
-                  </div>
-                  <p className="text-sm text-muted-foreground mt-6">Project milestone tracking</p>
                 </div>
               </CardContent>
             </Card>
@@ -675,279 +797,346 @@ export default function ProgressIndicatorsPage() {
 
           {/* Patterns Tab */}
           <TabsContent value="patterns" className="space-y-8">
+            <div className="grid lg:grid-cols-2 gap-8">
+              <Card>
+                <CardHeader>
+                  <CardTitle>File Operations</CardTitle>
+                  <CardDescription>
+                    Progress patterns for uploads, downloads, and file processing
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="p-4 border rounded-lg space-y-3">
+                    <div className="flex items-center gap-3">
+                      <Upload className="h-4 w-4 text-blue-500" />
+                      <span className="text-sm font-medium">document.pdf</span>
+                      <span className="text-sm text-muted-foreground ml-auto">
+                        {Math.round(uploadProgress)}%
+                      </span>
+                    </div>
+                    <Progress value={uploadProgress} className="w-full h-1" />
+                    <div className="flex justify-between text-xs text-muted-foreground">
+                      <span>2.3 MB / 5.1 MB</span>
+                      <span>{uploadProgress < 100 ? '45s remaining' : 'Complete'}</span>
+                    </div>
+                  </div>
+                  
+                  <div className="p-4 border rounded-lg space-y-3">
+                    <div className="flex items-center gap-3">
+                      <Download className="h-4 w-4 text-green-500" />
+                      <span className="text-sm font-medium">software-update.zip</span>
+                      <Loader2 className="h-4 w-4 animate-spin ml-auto" />
+                    </div>
+                    <IndeterminateProgress className="h-1" />
+                    <p className="text-xs text-muted-foreground">Calculating time remaining...</p>
+                  </div>
+
+                  <div className="p-4 border rounded-lg space-y-3">
+                    <div className="flex items-center gap-3">
+                      <CheckCircle className="h-4 w-4 text-green-500" />
+                      <span className="text-sm font-medium">backup.tar</span>
+                      <Badge variant="secondary" className="ml-auto text-xs">Complete</Badge>
+                    </div>
+                    <Progress value={100} className="w-full h-1" />
+                    <p className="text-xs text-muted-foreground">Uploaded successfully</p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle>System Monitoring</CardTitle>
+                  <CardDescription>
+                    Real-time system metrics and resource usage indicators
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center">
+                      <div className="flex items-center gap-2">
+                        <Cpu className="h-4 w-4 text-blue-500" />
+                        <span className="text-sm font-medium">CPU Usage</span>
+                      </div>
+                      <span className="text-sm text-muted-foreground">{Math.round(systemMetrics.cpu)}%</span>
+                    </div>
+                    <Progress value={systemMetrics.cpu} className="w-full h-2" />
+                  </div>
+                  
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center">
+                      <div className="flex items-center gap-2">
+                        <div className="h-4 w-4 bg-purple-500 rounded-sm" />
+                        <span className="text-sm font-medium">Memory</span>
+                      </div>
+                      <span className="text-sm text-muted-foreground">{Math.round(systemMetrics.memory)}%</span>
+                    </div>
+                    <Progress value={systemMetrics.memory} className="w-full h-2" />
+                  </div>
+                  
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center">
+                      <div className="flex items-center gap-2">
+                        <div className="h-4 w-4 bg-orange-500 rounded-sm" />
+                        <span className="text-sm font-medium">Storage</span>
+                      </div>
+                      <span className="text-sm text-muted-foreground">{systemMetrics.storage}%</span>
+                    </div>
+                    <Progress value={systemMetrics.storage} className="w-full h-2" />
+                  </div>
+
+                  <div className="pt-4 text-center">
+                    <div className="flex justify-center mb-2">
+                      <CircularProgress 
+                        value={Math.round((systemMetrics.cpu + systemMetrics.memory + systemMetrics.storage) / 3)} 
+                        size={60} 
+                        strokeWidth={6} 
+                        showValue 
+                      />
+                    </div>
+                    <p className="text-sm font-medium">Overall System Load</p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
             <Card>
               <CardHeader>
-                <CardTitle>Common Usage Patterns</CardTitle>
+                <CardTitle>Interactive Progress Scenarios</CardTitle>
                 <CardDescription>
-                  Real-world examples of progress indicators in different contexts and applications.
+                  Common real-world progress indicator implementations
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <h4 className="font-semibold mb-3 text-lg">File Operations</h4>
-                    <div className="space-y-4">
-                      <div className="p-4 border rounded-lg space-y-3">
-                        <div className="flex items-center gap-3">
-                          <Upload className="h-4 w-4 text-blue-500" />
-                          <span className="text-sm font-medium">Uploading file.pdf</span>
-                          <span className="text-sm text-muted-foreground ml-auto">
-                            {Math.round(uploadProgress)}%
-                          </span>
-                        </div>
-                        <Progress value={uploadProgress} className="w-full h-1" />
-                        <div className="flex justify-between text-xs text-muted-foreground">
-                          <span>2.3 MB / 5.1 MB</span>
-                          <span>45 seconds remaining</span>
-                        </div>
-                      </div>
-                      
-                      <div className="p-4 border rounded-lg space-y-3">
-                        <div className="flex items-center gap-3">
-                          <Download className="h-4 w-4 text-green-500" />
-                          <span className="text-sm font-medium">Downloading update</span>
-                          <Loader2 className="h-4 w-4 animate-spin ml-auto" />
-                        </div>
-                        <IndeterminateProgress className="h-1" />
-                        <p className="text-xs text-muted-foreground">Calculating time remaining...</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h4 className="font-semibold mb-3 text-lg">System Status</h4>
-                    <div className="space-y-4">
-                      <div className="p-4 border rounded-lg">
-                        <div className="flex items-center justify-between mb-3">
-                          <span className="text-sm font-medium">Memory Usage</span>
-                          <span className="text-sm text-muted-foreground">6.2 GB / 8 GB</span>
-                        </div>
-                        <Progress value={78} className="w-full h-2" />
-                      </div>
-                      
-                      <div className="p-4 border rounded-lg">
-                        <div className="flex items-center justify-between mb-3">
-                          <span className="text-sm font-medium">Storage Space</span>
-                          <span className="text-sm text-muted-foreground">455 GB / 1 TB</span>
-                        </div>
-                        <Progress value={45} className="w-full h-2" />
-                      </div>
-                      
-                      <div className="p-4 border rounded-lg text-center">
-                        <div className="flex justify-center mb-2">
-                          <CircularProgress value={92} size={50} strokeWidth={4} showValue />
-                        </div>
-                        <p className="text-sm font-medium">CPU Usage</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold mb-3 text-lg">Multi-Step Processes</h4>
                   <div className="space-y-4">
+                    <h4 className="font-semibold">Form Wizard Progress</h4>
                     <div className="p-4 border rounded-lg">
-                      <div className="flex items-center justify-between mb-4">
+                      <div className="flex justify-between items-center mb-4">
                         <h5 className="font-medium">Account Setup</h5>
                         <span className="text-sm text-muted-foreground">Step {stepProgress} of 4</span>
                       </div>
-                      <div className="flex items-center space-x-2 mb-4">
-                        {[1, 2, 3, 4].map((step, index) => (
-                          <div key={step} className="flex items-center">
-                            <div 
-                              className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium border ${
-                                step <= stepProgress 
-                                  ? 'bg-primary text-primary-foreground border-primary' 
-                                  : 'border-muted text-muted-foreground bg-muted'
-                              }`}
-                            >
-                              {step < stepProgress ? '✓' : step}
-                            </div>
-                            {index < 3 && (
-                              <div 
-                                className={`w-8 h-0.5 ${
-                                  step < stepProgress ? 'bg-primary' : 'bg-muted'
-                                }`} 
-                              />
-                            )}
-                          </div>
-                        ))}
-                      </div>
-                      
-                      <div className="text-sm text-muted-foreground">
+                      <StepProgress 
+                        currentStep={stepProgress} 
+                        totalSteps={4}
+                        steps={["Personal", "Contact", "Verify", "Complete"]}
+                        orientation="horizontal"
+                      />
+                      <div className="mt-4 text-sm text-muted-foreground">
                         {stepProgress === 1 && "Enter your personal information"}
-                        {stepProgress === 2 && "Verify your email address"}
-                        {stepProgress === 3 && "Set up your preferences"}
+                        {stepProgress === 2 && "Provide contact details"}
+                        {stepProgress === 3 && "Verify your email address"}
                         {stepProgress === 4 && "Review and complete setup"}
                       </div>
                     </div>
                   </div>
+
+                  <div className="space-y-4">
+                    <h4 className="font-semibold">Loading States</h4>
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="p-3 border rounded text-center space-y-2">
+                        <LoadingDots size="sm" className="justify-center" />
+                        <p className="text-xs text-muted-foreground">Loading...</p>
+                      </div>
+                      <div className="p-3 border rounded text-center space-y-2">
+                        <Loader2 className="h-5 w-5 animate-spin mx-auto text-primary" />
+                        <p className="text-xs text-muted-foreground">Processing...</p>
+                      </div>
+                      <div className="p-3 border rounded text-center space-y-2">
+                        <CircularProgress value={0} size={30} strokeWidth={3} />
+                        <p className="text-xs text-muted-foreground">Initializing...</p>
+                      </div>
+                      <div className="p-3 border rounded text-center space-y-2">
+                        <IndeterminateProgress className="h-1" />
+                        <p className="text-xs text-muted-foreground">Connecting...</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
                 <div>
-                  <h4 className="font-semibold mb-3 text-lg">Loading States</h4>
+                  <h4 className="font-semibold mb-4">Status Contexts</h4>
                   <div className="grid md:grid-cols-3 gap-4">
-                    <div className="p-4 border rounded-lg text-center space-y-3">
-                      <LoadingDots size="md" className="justify-center" />
-                      <p className="text-sm text-muted-foreground">Loading content...</p>
-                    </div>
-                    
-                    <div className="p-4 border rounded-lg text-center space-y-3">
-                      <Loader2 className="h-6 w-6 animate-spin mx-auto text-primary" />
-                      <p className="text-sm text-muted-foreground">Processing request...</p>
-                    </div>
-                    
-                    <div className="p-4 border rounded-lg text-center space-y-3">
-                      <div className="flex justify-center">
-                        <CircularProgress value={0} size={40} strokeWidth={4} />
+                    <div className="p-4 border rounded-lg space-y-3">
+                      <div className="flex items-center gap-2">
+                        <Wifi className="h-4 w-4 text-blue-500" />
+                        <span className="text-sm font-medium">Connection Status</span>
                       </div>
-                      <p className="text-sm text-muted-foreground">Initializing...</p>
+                      <IndeterminateProgress />
+                      <p className="text-xs text-muted-foreground">Establishing connection...</p>
                     </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
 
-            <Card>
-              <CardHeader>
-                <CardTitle>Best Practices</CardTitle>
-                <CardDescription>
-                  Guidelines for implementing effective progress indicators.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-4">
-                    <h4 className="font-semibold text-lg text-green-600">✅ Do</h4>
-                    <ul className="space-y-2 text-sm">
-                      <li>• Provide accurate progress information when possible</li>
-                      <li>• Use appropriate indicators for the context</li>
-                      <li>• Include time estimates for long operations</li>
-                      <li>• Show progress immediately when operations begin</li>
-                      <li>• Use consistent visual styling across your app</li>
-                      <li>• Provide clear completion states</li>
-                    </ul>
-                  </div>
+                    <div className="p-4 border rounded-lg space-y-3">
+                      <div className="flex items-center gap-2">
+                        <AlertTriangle className="h-4 w-4 text-yellow-500" />
+                        <span className="text-sm font-medium">Warning State</span>
+                      </div>
+                      <Progress value={30} className="w-full" />
+                      <p className="text-xs text-muted-foreground">Low storage space</p>
+                    </div>
 
-                  <div className="space-y-4">
-                    <h4 className="font-semibold text-lg text-red-600">❌ Don&apos;t</h4>
-                    <ul className="space-y-2 text-sm">
-                      <li>• Show progress bars for very quick operations (&lt; 1s)</li>
-                      <li>• Use determinate progress without accurate data</li>
-                      <li>• Forget to handle error states</li>
-                      <li>• Make progress bars too small to see clearly</li>
-                      <li>• Use only color to convey progress state</li>
-                      <li>• Leave users without feedback during long operations</li>
-                    </ul>
+                    <div className="p-4 border rounded-lg space-y-3">
+                      <div className="flex items-center gap-2">
+                        <XCircle className="h-4 w-4 text-red-500" />
+                        <span className="text-sm font-medium">Error State</span>
+                      </div>
+                      <Progress value={75} className="w-full" />
+                      <p className="text-xs text-muted-foreground">Process failed at 75%</p>
+                    </div>
                   </div>
                 </div>
               </CardContent>
             </Card>
           </TabsContent>
 
-          {/* Accessibility Tab */}
-          <TabsContent value="accessibility" className="space-y-8">
+          {/* Guidelines Tab */}
+          <TabsContent value="guidelines" className="space-y-8">
+            <div className="grid lg:grid-cols-2 gap-8">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-green-600">✅ Best Practices</CardTitle>
+                  <CardDescription>
+                    Follow these guidelines for effective progress indicators
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3 text-sm">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <strong>Show immediate feedback</strong> - Display progress indicators as soon as an operation begins
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <strong>Provide accurate information</strong> - Use determinate progress when you can calculate completion percentage
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <strong>Include time estimates</strong> - Show remaining time for operations longer than 10 seconds
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <strong>Handle error states</strong> - Provide clear feedback when operations fail
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <strong>Use consistent styling</strong> - Maintain visual consistency across your application
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <strong>Provide completion feedback</strong> - Clearly indicate when operations finish successfully
+                      </div>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-red-600">❌ Common Mistakes</CardTitle>
+                  <CardDescription>
+                    Avoid these pitfalls when implementing progress indicators
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3 text-sm">
+                    <li className="flex items-start gap-3">
+                      <XCircle className="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <strong>Don't use for quick operations</strong> - Avoid progress bars for actions under 1 second
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <XCircle className="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <strong>Don't fake progress</strong> - Never show inaccurate progress percentages
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <XCircle className="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <strong>Don't leave users hanging</strong> - Always provide feedback during long operations
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <XCircle className="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <strong>Don't rely only on color</strong> - Use additional visual cues beyond color changes
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <XCircle className="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <strong>Don't make them too small</strong> - Ensure progress indicators are clearly visible
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <XCircle className="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <strong>Don't ignore accessibility</strong> - Include proper ARIA attributes and screen reader support
+                      </div>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
+
             <Card>
               <CardHeader>
-                <CardTitle>Accessibility Requirements</CardTitle>
+                <CardTitle>Accessibility Guidelines</CardTitle>
                 <CardDescription>
-                  Essential accessibility considerations for progress indicators to ensure inclusive design.
+                  Essential accessibility requirements for inclusive progress indicators
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <h4 className="font-semibold mb-3 text-lg">ARIA Support</h4>
-                    <ul className="space-y-2 text-sm">
-                      <li>• <strong>role=&quot;progressbar&quot;:</strong> Identifies the element as a progress indicator</li>
-                      <li>• <strong>aria-valuenow:</strong> Current progress value</li>
-                      <li>• <strong>aria-valuemin:</strong> Minimum value (usually 0)</li>
-                      <li>• <strong>aria-valuemax:</strong> Maximum value (usually 100)</li>
-                      <li>• <strong>aria-label:</strong> Descriptive label for screen readers</li>
-                      <li>• <strong>aria-describedby:</strong> Reference to detailed description</li>
-                    </ul>
+                    <h4 className="font-semibold mb-3">ARIA Attributes</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="p-2 bg-muted rounded">
+                        <code>role="progressbar"</code> - Identifies progress element
+                      </div>
+                      <div className="p-2 bg-muted rounded">
+                        <code>aria-valuenow</code> - Current progress value
+                      </div>
+                      <div className="p-2 bg-muted rounded">
+                        <code>aria-valuemin/max</code> - Progress range
+                      </div>
+                      <div className="p-2 bg-muted rounded">
+                        <code>aria-label</code> - Descriptive label
+                      </div>
+                      <div className="p-2 bg-muted rounded">
+                        <code>aria-live</code> - Announce updates
+                      </div>
+                    </div>
                   </div>
 
                   <div>
-                    <h4 className="font-semibold mb-3 text-lg">Visual Requirements</h4>
+                    <h4 className="font-semibold mb-3">Visual Requirements</h4>
                     <ul className="space-y-2 text-sm">
-                      <li>• <strong>Color Contrast:</strong> Minimum 3:1 ratio for progress vs background</li>
-                      <li>• <strong>Size:</strong> Minimum 44px touch target for interactive elements</li>
-                      <li>• <strong>Focus Indicators:</strong> Clear visual focus states</li>
-                      <li>• <strong>High Contrast Mode:</strong> Visible in Windows High Contrast</li>
-                      <li>• <strong>Reduced Motion:</strong> Respect prefers-reduced-motion</li>
+                      <li>• <strong>Color contrast:</strong> Minimum 3:1 ratio</li>
+                      <li>• <strong>Focus indicators:</strong> Clear visual focus states</li>
+                      <li>• <strong>High contrast mode:</strong> Windows compatibility</li>
+                      <li>• <strong>Reduced motion:</strong> Respect user preferences</li>
+                      <li>• <strong>Touch targets:</strong> 44px minimum for interactive elements</li>
                     </ul>
                   </div>
                 </div>
 
                 <div>
-                  <h4 className="font-semibold mb-3 text-lg">Screen Reader Announcements</h4>
-                  <div className="space-y-4">
-                    <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                      <h5 className="font-medium mb-2 text-blue-800 dark:text-blue-200">
-                        Live Regions for Dynamic Updates
-                      </h5>
-                      <div className="space-y-2 text-sm text-blue-700 dark:text-blue-300">
-                        <p>• Use <code>aria-live=&quot;polite&quot;</code> for non-urgent progress updates</p>
-                        <p>• Use <code>aria-live=&quot;assertive&quot;</code> for critical progress states</p>
-                        <p>• Announce completion and error states clearly</p>
-                      </div>
-                    </div>
-
-                    <div className="p-4 border rounded-lg">
-                      <Label className="font-medium mb-2 block">Accessible Progress Example</Label>
-                      <div className="space-y-3">
-                        <Progress 
-                          value={downloadProgress} 
-                          className="w-full"
-                          aria-label={`Download progress: ${downloadProgress}% complete`}
-                        />
-                        <div 
-                          aria-live="polite" 
-                          aria-atomic="true"
-                          className="sr-only"
-                        >
-                          Download {downloadProgress}% complete
-                        </div>
-                        <p className="text-sm text-muted-foreground">
-                          This progress bar includes proper ARIA attributes and live region updates.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold mb-3 text-lg">Keyboard Navigation</h4>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <h5 className="font-medium mb-3">Navigation Requirements</h5>
-                      <ul className="text-sm space-y-1">
-                        <li>• <strong>Tab:</strong> Move focus to interactive progress elements</li>
-                        <li>• <strong>Enter/Space:</strong> Activate controls (if interactive)</li>
-                        <li>• <strong>Arrow Keys:</strong> Adjust values in step progresss</li>
-                        <li>• <strong>Escape:</strong> Cancel operations (if applicable)</li>
-                      </ul>
-                    </div>
-
-                    <div>
-                      <h5 className="font-medium mb-3">Focus Management</h5>
-                      <ul className="text-sm space-y-1">
-                        <li>• Progress indicators should be focusable if interactive</li>
-                        <li>• Non-interactive progress should not receive focus</li>
-                        <li>• Clear visual focus indicators are required</li>
-                        <li>• Focus should move logically through step indicators</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold mb-3 text-lg">Implementation Examples</h4>
-                  <div className="space-y-4">
-                    <div className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
-                      <pre className="text-sm">
-{`<!-- Accessible linear progress bar -->
+                  <h4 className="font-semibold mb-3">Implementation Example</h4>
+                  <div className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
+                    <pre className="text-sm">
+{`<!-- Accessible progress bar -->
 <div
   role="progressbar"
   aria-valuenow="65"
@@ -960,62 +1149,66 @@ export default function ProgressIndicatorsPage() {
 </div>
 <div id="upload-status" aria-live="polite">
   Upload 65% complete. Estimated time: 30 seconds
-</div>
-
-<!-- Accessible step progress -->
-<ol role="list" aria-label="Account setup steps">
-  <li aria-current="step">
-    <div role="img" aria-label="Step 1 completed">✓</div>
-    Personal Information
-  </li>
-  <li aria-current="step">
-    <div role="img" aria-label="Step 2 in progress">2</div>
-    Email Verification
-  </li>
-  <li>
-    <div role="img" aria-label="Step 3 pending">3</div>
-    Preferences
-  </li>
-</ol>
-
-<!-- Accessible loading indicator -->
-<div
-  role="status"
-  aria-label="Loading content"
-  aria-live="polite"
->
-  <svg className="animate-spin" aria-hidden="true">
-    <!-- spinner icon -->
-  </svg>
-  <span className="sr-only">Loading, please wait...</span>
 </div>`}
-                      </pre>
-                    </div>
+                    </pre>
                   </div>
                 </div>
 
                 <div>
-                  <h4 className="font-semibold mb-3 text-lg">Testing Checklist</h4>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
-                      <h5 className="font-medium mb-2 text-green-800 dark:text-green-200">Screen Reader Testing</h5>
-                      <ul className="text-sm text-green-700 dark:text-green-300 space-y-1">
-                        <li>□ Progress values are announced correctly</li>
-                        <li>□ Completion states are announced</li>
+                  <h4 className="font-semibold mb-3">Testing Checklist</h4>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <h5 className="font-medium">Screen Reader Testing</h5>
+                      <ul className="text-sm space-y-1">
+                        <li>□ Progress values announced correctly</li>
+                        <li>□ Completion states communicated</li>
+                        <li>□ Error states clearly described</li>
                         <li>□ Loading states provide feedback</li>
-                        <li>□ Error states are clearly communicated</li>
                       </ul>
                     </div>
-
-                    <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                      <h5 className="font-medium mb-2 text-blue-800 dark:text-blue-200">Visual Testing</h5>
-                      <ul className="text-sm text-blue-700 dark:text-blue-300 space-y-1">
+                    <div className="space-y-2">
+                      <h5 className="font-medium">Visual Testing</h5>
+                      <ul className="text-sm space-y-1">
                         <li>□ Sufficient color contrast</li>
                         <li>□ Visible in high contrast mode</li>
                         <li>□ Clear focus indicators</li>
-                        <li>□ Readable at 200% zoom level</li>
+                        <li>□ Readable at 200% zoom</li>
                       </ul>
                     </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Performance Considerations</CardTitle>
+                <CardDescription>
+                  Optimize progress indicators for better user experience
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 className="font-semibold mb-3">Animation Performance</h4>
+                    <ul className="text-sm space-y-2">
+                      <li>• Use CSS transforms instead of changing layout properties</li>
+                      <li>• Implement `will-change` for animated elements</li>
+                      <li>• Consider `prefers-reduced-motion` for accessibility</li>
+                      <li>• Debounce rapid progress updates to avoid jank</li>
+                      <li>• Use `requestAnimationFrame` for smooth animations</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h4 className="font-semibold mb-3">Update Frequency</h4>
+                    <ul className="text-sm space-y-2">
+                      <li>• Update progress at most 10 times per second</li>
+                      <li>• Batch multiple progress updates together</li>
+                      <li>• Avoid updating progress on every byte transferred</li>
+                      <li>• Use meaningful progress thresholds (5%, 10%, etc.)</li>
+                      <li>• Consider user perception over technical accuracy</li>
+                    </ul>
                   </div>
                 </div>
               </CardContent>
@@ -1026,8 +1219,8 @@ export default function ProgressIndicatorsPage() {
         {/* References Section */}
         <div className="mt-6">
           <ComponentReferences
-            title="References & Further Reading"
-            description="Essential resources for progress indicator implementation and best practices from leading design systems."
+            title="References & Resources"
+            description="Essential design system references and best practices for implementing progress indicators."
             urls={progressIndicatorsUrlReference}
             getTitleFunction={getProgressUrlTitle}
           />
