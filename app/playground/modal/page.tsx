@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from "react"
-import { X, AlertTriangle, Info, XCircle, Settings, Code2, Eye, Zap, CheckCircle, HelpCircle, FileText } from "lucide-react"
+import { X, AlertTriangle, Info, XCircle, Settings, Code2, CheckCircle, HelpCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -916,7 +916,7 @@ export default function ModalPage() {
                         <div>transition: all 200ms ease-out;</div>
                         <div>transform: scale(0.95);</div>
                         <div>opacity: 0;</div>
-                        <div className="mt-1 text-green-600">/* Open state */</div>
+                        <div className="mt-1 text-green-600">{`/* Open state */`}</div>
                         <div>transform: scale(1);</div>
                         <div>opacity: 1;</div>
                       </div>
