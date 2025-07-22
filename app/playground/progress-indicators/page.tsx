@@ -20,7 +20,6 @@ import {
   Cpu, 
   Clock,
   PlayCircle,
-  PauseCircle,
   XCircle,
   Info
 } from "lucide-react"
@@ -204,12 +203,10 @@ function IndeterminateProgress({
 // Step Progress Component
 function StepProgress({ 
   currentStep, 
-  totalSteps, 
   steps,
   orientation = "horizontal"
 }: {
   currentStep: number;
-  totalSteps: number;
   steps: string[];
   orientation?: "horizontal" | "vertical";
 }) {
@@ -740,7 +737,6 @@ export default function ProgressIndicatorsPage() {
                   </div>
                   <StepProgress 
                     currentStep={stepProgress} 
-                    totalSteps={stepLabels.length}
                     steps={stepLabels}
                     orientation="horizontal"
                   />
@@ -768,7 +764,6 @@ export default function ProgressIndicatorsPage() {
                     <Label className="text-base font-medium mb-4 block">Vertical Step Progress</Label>
                     <StepProgress 
                       currentStep={stepProgress} 
-                      totalSteps={stepLabels.length}
                       steps={stepLabels}
                       orientation="vertical"
                     />
@@ -917,7 +912,6 @@ export default function ProgressIndicatorsPage() {
                       </div>
                       <StepProgress 
                         currentStep={stepProgress} 
-                        totalSteps={4}
                         steps={["Personal", "Contact", "Verify", "Complete"]}
                         orientation="horizontal"
                       />
