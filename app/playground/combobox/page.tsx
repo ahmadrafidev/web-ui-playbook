@@ -1,9 +1,10 @@
 "use client"
 
 import { useState, useRef, useEffect, useCallback, useMemo } from "react"
-import { ChevronDown, ChevronUp, Search, X, Check, AlertCircle, CheckCircle2, Loader2 } from "lucide-react"
+import { ChevronDown, ChevronUp, Search, X, Check, AlertCircle, CheckCircle2, Loader2, Info, User, Globe, Tag, Settings } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Badge } from "@/components/ui/badge"
 import { ComponentReferences } from "@/components/component-references"
 import { EditButton } from "@/components/edit-button"
 import { useMobileWarning } from "@/hooks/use-mobile-warning"
@@ -17,7 +18,6 @@ const comboboxComponentsUrlReference = [
   "https://gestalt.pinterest.systems/web/combobox"
 ]
 
-// Sample data for examples
 const countries = [
   { value: "us", label: "United States", code: "🇺🇸" },
   { value: "ca", label: "Canada", code: "🇨🇦" },
@@ -26,18 +26,30 @@ const countries = [
   { value: "fr", label: "France", code: "🇫🇷" },
   { value: "jp", label: "Japan", code: "🇯🇵" },
   { value: "au", label: "Australia", code: "🇦🇺" },
-  { value: "br", label: "Brazil", code: "🇧🇷" }
+  { value: "br", label: "Brazil", code: "🇧🇷" },
+  { value: "in", label: "India", code: "🇮🇳" },
+  { value: "cn", label: "China", code: "🇨🇳" }
 ]
 
-const tags = [
-  { value: "react", label: "React" },
-  { value: "typescript", label: "TypeScript" },
-  { value: "javascript", label: "JavaScript" },
-  { value: "nextjs", label: "Next.js" },
-  { value: "tailwind", label: "Tailwind CSS" },
-  { value: "nodejs", label: "Node.js" },
-  { value: "python", label: "Python" },
-  { value: "vue", label: "Vue.js" }
+const technologies = [
+  { value: "react", label: "React", category: "Frontend" },
+  { value: "typescript", label: "TypeScript", category: "Language" },
+  { value: "javascript", label: "JavaScript", category: "Language" },
+  { value: "nextjs", label: "Next.js", category: "Framework" },
+  { value: "tailwind", label: "Tailwind CSS", category: "Styling" },
+  { value: "nodejs", label: "Node.js", category: "Backend" },
+  { value: "python", label: "Python", category: "Language" },
+  { value: "vue", label: "Vue.js", category: "Frontend" },
+  { value: "angular", label: "Angular", category: "Frontend" },
+  { value: "svelte", label: "Svelte", category: "Frontend" }
+]
+
+const users = [
+  { value: "john", label: "John Doe", email: "john@example.com", role: "Admin" },
+  { value: "jane", label: "Jane Smith", email: "jane@example.com", role: "User" },
+  { value: "bob", label: "Bob Johnson", email: "bob@example.com", role: "Editor" },
+  { value: "alice", label: "Alice Brown", email: "alice@example.com", role: "User" },
+  { value: "charlie", label: "Charlie Wilson", email: "charlie@example.com", role: "Admin" }
 ]
 
 // Combobox Option Interface
@@ -45,6 +57,9 @@ interface ComboboxOption {
   value: string
   label: string
   code?: string
+  category?: string
+  email?: string
+  role?: string
   disabled?: boolean
 }
 
@@ -66,6 +81,7 @@ interface ComboboxProps {
   emptyMessage?: string
   maxHeight?: string
   className?: string
+  variant?: "default" | "search" | "tags"
 }
 
 function Combobox({
@@ -81,11 +97,11 @@ function Combobox({
   success,
   description,
   allowMultiple = false,
-
   isLoading = false,
   emptyMessage = "No options found",
   maxHeight = "200px",
-  className = ""
+  className = "",
+  variant = "default"
 }: ComboboxProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [inputValue, setInputValue] = useState("")
@@ -104,7 +120,9 @@ function Combobox({
   const filteredOptions = useMemo(() => {
     if (!inputValue) return options
     return options.filter(option =>
-      option.label.toLowerCase().includes(inputValue.toLowerCase())
+      option.label.toLowerCase().includes(inputValue.toLowerCase()) ||
+      option.category?.toLowerCase().includes(inputValue.toLowerCase()) ||
+      option.email?.toLowerCase().includes(inputValue.toLowerCase())
     )
   }, [options, inputValue])
 
@@ -195,6 +213,13 @@ function Combobox({
   const hasError = !!error
   const hasSuccess = !!success && !hasError
 
+  // Variant styles
+  const variantStyles = {
+    default: "border-input",
+    search: "border-input bg-muted/30",
+    tags: "border-dashed border-2"
+  }
+
   return (
     <div className={`relative ${className}`} ref={containerRef}>
       {label && (
@@ -237,7 +262,7 @@ function Combobox({
         relative flex items-center border rounded-md transition-all duration-200
         ${hasError ? 'border-red-500 focus-within:border-red-500' : ''}
         ${hasSuccess ? 'border-green-500 focus-within:border-green-500' : ''}
-        ${!hasError && !hasSuccess ? 'border-input focus-within:border-primary' : ''}
+        ${!hasError && !hasSuccess ? `${variantStyles[variant]} focus-within:border-primary` : ''}
         ${disabled ? 'opacity-50 cursor-not-allowed bg-muted' : 'bg-background'}
         focus-within:ring-2 focus-within:ring-primary/20
       `}>
@@ -307,7 +332,7 @@ function Combobox({
             id={`${id}-listbox`}
             role="listbox"
             aria-multiselectable={allowMultiple}
-            className="py-1"
+            className="py-1 overflow-y-auto"
             style={{ maxHeight }}
             tabIndex={-1}
           >
@@ -325,18 +350,31 @@ function Combobox({
                   aria-selected={selectedValues.includes(option.value)}
                   onClick={() => handleSelect(option)}
                   className={`
-                    px-3 py-2 cursor-pointer transition-colors flex items-center justify-between
+                    px-3 py-2 cursor-pointer transition-colors
                     ${index === focusedIndex ? 'bg-primary/10' : ''}
                     ${selectedValues.includes(option.value) ? 'bg-primary/5' : ''}
                     ${option.disabled ? 'opacity-50 cursor-not-allowed' : 'hover:bg-muted'}
                   `}
                 >
-                  <span className="flex items-center gap-2">
-                    {option.code} {option.label}
-                  </span>
-                  {selectedValues.includes(option.value) && (
-                    <Check className="h-4 w-4 text-primary" />
-                  )}
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2 min-w-0 flex-1">
+                      {option.code && <span className="flex-shrink-0">{option.code}</span>}
+                      <span className="truncate">{option.label}</span>
+                      {option.category && (
+                        <Badge variant="secondary" className="text-xs flex-shrink-0">
+                          {option.category}
+                        </Badge>
+                      )}
+                      {option.email && (
+                        <span className="text-xs text-muted-foreground truncate">
+                          {option.email}
+                        </span>
+                      )}
+                    </div>
+                    {selectedValues.includes(option.value) && (
+                      <Check className="h-4 w-4 text-primary flex-shrink-0 ml-2" />
+                    )}
+                  </div>
                 </li>
               ))
             ) : (
@@ -377,6 +415,7 @@ export default function ComboboxPage() {
   const [singleValue, setSingleValue] = useState("")
   const [countryValue, setCountryValue] = useState("")
   const [tagValues, setTagValues] = useState<string[]>([])
+  const [userValue, setUserValue] = useState("")
   const [loadingValue, setLoadingValue] = useState("")
 
   return (
@@ -386,96 +425,386 @@ export default function ComboboxPage() {
 
         {/* Introduction */}
         <div className="mb-10">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
-            <h2 className="text-4xl font-bold text-foreground">Combobox</h2>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+            <div>
+              <h1 className="text-4xl font-bold text-foreground mb-2">Combobox</h1>
+              <p className="text-xl text-muted-foreground">
+                Searchable select component for efficient option selection
+              </p>
+            </div>
             <EditButton filePath="app/playground/combobox/page.tsx" />
           </div>
-          <p className="text-base md:text-lg text-muted-foreground mb-6">
-            A combobox is an input control that combines a text field with a dropdown list, allowing users to either type to filter options or select from a predefined list. It provides an efficient way to handle large datasets while maintaining searchability and accessibility.
-          </p>
         </div>
 
-        <Tabs defaultValue="purpose" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-5">
-            <TabsTrigger value="purpose">Purpose</TabsTrigger>
-            <TabsTrigger value="variants">Variants</TabsTrigger>
-            <TabsTrigger value="states">States</TabsTrigger>
-            <TabsTrigger value="behavior">Behavior</TabsTrigger>
-            <TabsTrigger value="accessibility">Accessibility</TabsTrigger>
+        <Tabs defaultValue="overview" className="space-y-8">
+          <TabsList className="grid w-full grid-cols-4">
+            <TabsTrigger value="overview">Overview</TabsTrigger>
+            <TabsTrigger value="components">Components</TabsTrigger>
+            <TabsTrigger value="patterns">Patterns</TabsTrigger>
+            <TabsTrigger value="guidelines">Guidelines</TabsTrigger>
           </TabsList>
 
-          {/* Purpose */}
-          <TabsContent value="purpose" className="space-y-8">
+          {/* Overview */}
+          <TabsContent value="overview" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>When to Use Combobox</CardTitle>
+                <CardTitle className="text-xl font-bold">Purpose of Comboboxes</CardTitle>
                 <CardDescription>
-                  Understanding the appropriate use cases for combobox components in your interface.
+                  Understanding the core purpose and benefits of combobox components in user interfaces.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="grid md:grid-cols-3 gap-4">
+                  <div className="p-4 border rounded-lg text-center">
+                    <h4 className="font-semibold mb-2">Efficient Search</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Enable users to quickly find options from large datasets through real-time filtering and search.
+                    </p>
+                  </div>
+                  
+                  <div className="p-4 border rounded-lg text-center">
+                    <h4 className="font-semibold mb-2">Flexible Input</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Combine the benefits of free text input with the convenience of predefined selection options.
+                    </p>
+                  </div>
+                  
+                  <div className="p-4 border rounded-lg text-center">
+                    <h4 className="font-semibold mb-2">Space Efficiency</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Provide access to many options without consuming interface space until activated.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <h4 className="text-lg font-semibold">Core Functions</h4>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="space-y-3">
+                      <div className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <strong className="text-sm">Filter Large Lists:</strong>
+                          <p className="text-xs text-muted-foreground">Help users navigate through extensive option sets with instant search filtering</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <strong className="text-sm">Enable Multi-Selection:</strong>
+                          <p className="text-xs text-muted-foreground">Support selecting multiple values with visual tag representation</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="space-y-3">
+                      <div className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <strong className="text-sm">Provide Suggestions:</strong>
+                          <p className="text-xs text-muted-foreground">Offer autocomplete and predictive options to speed up data entry</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <strong className="text-sm">Maintain Context:</strong>
+                          <p className="text-xs text-muted-foreground">Keep users in their current workflow while providing rich selection options</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-xl font-bold">When to Use Comboboxes</CardTitle>
+                <CardDescription>
+                  Understanding the appropriate contexts for combobox components.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <h4 className="font-semibold mb-3 text-lg">Primary Use Cases</h4>
-                    <ul className="space-y-2 text-sm">
-                      <li>• <strong>Large Option Sets:</strong> When you have many options ({">"}10) that benefit from search</li>
-                      <li>• <strong>Predictive Search:</strong> Auto-complete functionality for known values</li>
-                      <li>• <strong>Tagging Systems:</strong> Adding multiple tags or categories</li>
-                      <li>• <strong>Data Entry:</strong> Forms with searchable reference data</li>
-                    </ul>
+                  <div className="space-y-4">
+                    <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
+                      <div className="flex items-center gap-2 mb-3">
+                        <CheckCircle2 className="h-5 w-5 text-green-600" />
+                        <strong className="text-green-800 dark:text-green-200">Use Comboboxes When:</strong>
+                      </div>
+                      <ul className="text-sm text-green-700 dark:text-green-300 space-y-1">
+                        <li>• You have 10+ options that benefit from search</li>
+                        <li>• Users need to find specific items quickly</li>
+                        <li>• Supporting both selection and free text input</li>
+                        <li>• Implementing tagging or multi-selection</li>
+                        <li>• Working with dynamic or remote data</li>
+                        <li>• Users are familiar with the option set</li>
+                      </ul>
+                    </div>
                   </div>
 
-                  <div>
-                    <h4 className="font-semibold mb-3 text-lg">Combobox vs Alternatives</h4>
-                    <div className="space-y-3">
-                      <div className="p-3 bg-green-50 dark:bg-green-900/20 rounded">
-                        <strong className="text-green-800 dark:text-green-200">Use Combobox When:</strong>
-                        <ul className="text-sm mt-1 text-green-700 dark:text-green-300">
-                          <li>• Many options need filtering</li>
-                          <li>• Users know what they&apos;re looking for</li>
-                          <li>• Custom input is allowed</li>
-                        </ul>
+                  <div className="space-y-4">
+                    <div className="p-4 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800">
+                      <div className="flex items-center gap-2 mb-3">
+                        <X className="h-5 w-5 text-red-600" />
+                        <strong className="text-red-800 dark:text-red-200">Avoid Comboboxes When:</strong>
                       </div>
-                      <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded">
-                        <strong className="text-blue-800 dark:text-blue-200">Use Select When:</strong>
-                        <ul className="text-sm mt-1 text-blue-700 dark:text-blue-300">
-                          <li>• Few options ({"<"}10)</li>
-                          <li>• Users need to see all options</li>
-                          <li>• No custom input needed</li>
-                        </ul>
-                      </div>
+                      <ul className="text-sm text-red-700 dark:text-red-300 space-y-1">
+                        <li>• You have fewer than 5-7 simple options</li>
+                        <li>• Users need to see all options at once</li>
+                        <li>• Options are unfamiliar to users</li>
+                        <li>• No search functionality is needed</li>
+                        <li>• Mobile-first interfaces with limited space</li>
+                        <li>• Simple yes/no or on/off selections</li>
+                      </ul>
                     </div>
                   </div>
                 </div>
 
                 <div className="space-y-4">
-                  <h4 className="font-semibold text-lg">Basic Example</h4>
-                  <div className="p-6 border rounded-lg space-y-4">
+                  <h4 className="text-lg font-semibold">Combobox vs Alternatives</h4>
+                  <div className="grid gap-4">
+                    <div className="flex items-start gap-4 p-4 border rounded-lg">
+                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2"></div>
+                      <div>
+                        <strong>Combobox vs Select Dropdown:</strong>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          Use comboboxes for searchable large lists (10+). Use select dropdowns for 
+                          small, well-known option sets where users benefit from seeing all choices.
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start gap-4 p-4 border rounded-lg">
+                      <div className="w-2 h-2 bg-purple-600 rounded-full mt-2"></div>
+                      <div>
+                        <strong>Combobox vs Autocomplete:</strong>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          Use comboboxes for structured selection from known options. Use autocomplete 
+                          for free-form input with helpful suggestions.
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start gap-4 p-4 border rounded-lg">
+                      <div className="w-2 h-2 bg-green-600 rounded-full mt-2"></div>
+                      <div>
+                        <strong>Combobox vs Radio/Checkbox Groups:</strong>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          Use comboboxes for large option sets requiring search. Use radio/checkbox groups 
+                          for small sets where all options should be visible simultaneously.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <div className="grid lg:grid-cols-2 gap-8">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Badge variant="secondary">Single Select</Badge>
+                    Choose One Option
+                  </CardTitle>
+                  <CardDescription>
+                    Standard combobox for selecting a single value from a searchable list
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div className="space-y-4">
                     <Combobox
-                      id="basic-combobox"
-                      label="Select Country"
+                      id="country-select"
+                      label="Country"
                       placeholder="Search countries..."
                       options={countries}
                       value={countryValue}
                       onChange={(value) => setCountryValue(value as string)}
-                      description="Choose your country from the list"
+                      description="Select your country from the list"
                     />
                     {countryValue && (
-                      <p className="text-sm text-muted-foreground">
-                        Selected: {countries.find(c => c.value === countryValue)?.label}
-                      </p>
+                      <div className="p-3 bg-muted/50 rounded border">
+                        <p className="text-sm">
+                          Selected: <strong>{countries.find(c => c.value === countryValue)?.label}</strong>
+                        </p>
+                      </div>
                     )}
+                  </div>
+
+                  <div className="pt-4 border-t">
+                    <h4 className="font-medium mb-3">Best for:</h4>
+                    <ul className="text-sm text-muted-foreground space-y-1">
+                      <li>• Country/region selection</li>
+                      <li>• Category selection</li>
+                      <li>• User assignment</li>
+                      <li>• Status selection</li>
+                    </ul>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Badge variant="outline">Multi Select</Badge>
+                    Choose Multiple Options
+                  </CardTitle>
+                  <CardDescription>
+                    Tag-based combobox for selecting multiple values with visual feedback
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div className="space-y-4">
+                    <Combobox
+                      id="tech-select"
+                      label="Technologies"
+                      placeholder="Add technologies..."
+                      options={technologies}
+                      value={tagValues}
+                      onChange={(value) => setTagValues(value as string[])}
+                      allowMultiple={true}
+                      variant="tags"
+                      description="Select multiple technologies you work with"
+                    />
+                    {tagValues.length > 0 && (
+                      <div className="p-3 bg-muted/50 rounded border">
+                        <p className="text-sm">
+                          Selected {tagValues.length} technolog{tagValues.length === 1 ? 'y' : 'ies'}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="pt-4 border-t">
+                    <h4 className="font-medium mb-3">Best for:</h4>
+                    <ul className="text-sm text-muted-foreground space-y-1">
+                      <li>• Skills and tags</li>
+                      <li>• Category filtering</li>
+                      <li>• Permission assignment</li>
+                      <li>• Multi-criteria selection</li>
+                    </ul>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Combobox vs Alternatives</CardTitle>
+                <CardDescription>
+                  Understanding when to use combobox over other input components
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b">
+                        <th className="text-left p-3 font-medium">Component</th>
+                        <th className="text-left p-3 font-medium">Options Count</th>
+                        <th className="text-left p-3 font-medium">Search</th>
+                        <th className="text-left p-3 font-medium">Custom Input</th>
+                        <th className="text-left p-3 font-medium">Use Case</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y">
+                      <tr>
+                        <td className="p-3">
+                          <Badge variant="default">Combobox</Badge>
+                        </td>
+                        <td className="p-3">10+ options</td>
+                        <td className="p-3">✅ Yes</td>
+                        <td className="p-3">✅ Optional</td>
+                        <td className="p-3">Large datasets, search required</td>
+                      </tr>
+                      <tr>
+                        <td className="p-3">
+                          <Badge variant="secondary">Select</Badge>
+                        </td>
+                        <td className="p-3">2-10 options</td>
+                        <td className="p-3">❌ No</td>
+                        <td className="p-3">❌ No</td>
+                        <td className="p-3">Fixed options, clear choices</td>
+                      </tr>
+                      <tr>
+                        <td className="p-3">
+                          <Badge variant="outline">Autocomplete</Badge>
+                        </td>
+                        <td className="p-3">Any</td>
+                        <td className="p-3">✅ Yes</td>
+                        <td className="p-3">✅ Yes</td>
+                        <td className="p-3">Free text with suggestions</td>
+                      </tr>
+                      <tr>
+                        <td className="p-3">
+                          <Badge variant="outline">Radio Group</Badge>
+                        </td>
+                        <td className="p-3">2-5 options</td>
+                        <td className="p-3">❌ No</td>
+                        <td className="p-3">❌ No</td>
+                        <td className="p-3">Always visible options</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Core Features</CardTitle>
+                <CardDescription>
+                  Essential functionality and interaction patterns
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
+                        <Search className="h-4 w-4 text-blue-600 dark:text-blue-400" />
+                      </div>
+                      <h4 className="font-semibold">Real-time Search</h4>
+                    </div>
+                    <p className="text-sm text-muted-foreground">
+                      Filter options instantly as users type, with case-insensitive matching across multiple fields.
+                    </p>
+                  </div>
+
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
+                        <ChevronDown className="h-4 w-4 text-green-600 dark:text-green-400" />
+                      </div>
+                      <h4 className="font-semibold">Keyboard Navigation</h4>
+                    </div>
+                    <p className="text-sm text-muted-foreground">
+                      Full keyboard support with arrow keys, Enter selection, and Escape to close for accessibility.
+                    </p>
+                  </div>
+
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center">
+                        <Tag className="h-4 w-4 text-purple-600 dark:text-purple-400" />
+                      </div>
+                      <h4 className="font-semibold">Multi-selection</h4>
+                    </div>
+                    <p className="text-sm text-muted-foreground">
+                      Support for multiple value selection with visual tag representation and easy removal.
+                    </p>
                   </div>
                 </div>
               </CardContent>
             </Card>
           </TabsContent>
 
-          {/* Variants */}
-          <TabsContent value="variants" className="space-y-8">
+          {/* Components */}
+          <TabsContent value="components" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Combobox Variants</CardTitle>
+                <CardTitle className="text-xl font-bold">Combobox Variants</CardTitle>
                 <CardDescription>
                   Different types and configurations of combobox components for various use cases.
                 </CardDescription>
@@ -489,7 +818,7 @@ export default function ComboboxPage() {
                         id="single-select"
                         label="Technology"
                         placeholder="Choose a technology..."
-                        options={tags}
+                        options={technologies}
                         value={singleValue}
                         onChange={(value) => setSingleValue(value as string)}
                       />
@@ -503,7 +832,7 @@ export default function ComboboxPage() {
                         id="multi-select"
                         label="Skills"
                         placeholder="Add your skills..."
-                        options={tags}
+                        options={technologies}
                         value={tagValues}
                         onChange={(value) => setTagValues(value as string[])}
                         allowMultiple={true}
@@ -568,277 +897,570 @@ export default function ComboboxPage() {
                       />
                     </div>
                   </div>
+
+                  <div>
+                    <h4 className="font-semibold mb-3 text-lg">User Selection with Rich Content</h4>
+                    <div className="p-4 border rounded-lg">
+                      <Combobox
+                        id="user-rich-content"
+                        label="Assign User"
+                        placeholder="Search users..."
+                        options={users}
+                        value={userValue}
+                        onChange={(value) => setUserValue(value as string)}
+                        description="Select a user to assign this task"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="font-semibold mb-3 text-lg">Options with Categories</h4>
+                    <div className="p-4 border rounded-lg">
+                      <Combobox
+                        id="categorized-options"
+                        label="Technology Stack"
+                        placeholder="Search technologies..."
+                        options={technologies}
+                        description="Technologies are grouped by category"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="font-semibold mb-3 text-lg">Options with Icons</h4>
+                    <div className="p-4 border rounded-lg">
+                      <Combobox
+                        id="icon-options"
+                        label="Country Selection"
+                        placeholder="Search countries..."
+                        options={countries}
+                        description="Countries display with flag icons"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="font-semibold mb-3 text-lg">Visual Style Variants</h4>
+                    <div className="grid md:grid-cols-3 gap-4">
+                      <div className="p-4 border rounded-lg">
+                        <h5 className="font-medium mb-2">Default</h5>
+                        <Combobox
+                          id="default-variant"
+                          placeholder="Default style..."
+                          options={technologies.slice(0, 4)}
+                          variant="default"
+                        />
+                      </div>
+                      <div className="p-4 border rounded-lg">
+                        <h5 className="font-medium mb-2">Search</h5>
+                        <Combobox
+                          id="search-variant"
+                          placeholder="Search style..."
+                          options={technologies.slice(0, 4)}
+                          variant="search"
+                        />
+                      </div>
+                      <div className="p-4 border rounded-lg">
+                        <h5 className="font-medium mb-2">Tags</h5>
+                        <Combobox
+                          id="tags-variant"
+                          placeholder="Tag style..."
+                          options={technologies.slice(0, 4)}
+                          variant="tags"
+                          allowMultiple={true}
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
           </TabsContent>
 
-          {/* States */}
-          <TabsContent value="states" className="space-y-8">
+          {/* Patterns */}
+          <TabsContent value="patterns" className="space-y-8">
+            <div className="grid lg:grid-cols-2 gap-8">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Search Patterns</CardTitle>
+                  <CardDescription>
+                    Common search and filtering implementations
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div className="space-y-4">
+                    <div className="p-4 border rounded-lg">
+                      <h5 className="font-medium mb-2">Global Search</h5>
+                      <Combobox
+                        id="global-search"
+                        placeholder="Search everything..."
+                        options={[
+                          ...countries.map(c => ({ ...c, category: "Countries" })),
+                          ...technologies.slice(0, 5)
+                        ]}
+                        variant="search"
+                      />
+                      <p className="text-sm text-muted-foreground mt-2">
+                        Search across multiple data types and categories
+                      </p>
+                    </div>
+
+                    <div className="p-4 border rounded-lg">
+                      <h5 className="font-medium mb-2">Quick Filter</h5>
+                      <Combobox
+                        id="quick-filter"
+                        placeholder="Filter by technology..."
+                        options={technologies}
+                      />
+                      <p className="text-sm text-muted-foreground mt-2">
+                        Instant filtering for data tables or lists
+                      </p>
+                    </div>
+
+                    <div className="p-4 border rounded-lg">
+                      <h5 className="font-medium mb-2">Command Palette Style</h5>
+                      <Combobox
+                        id="command-palette"
+                        placeholder="Type a command..."
+                        options={[
+                          { value: "create", label: "Create new project", category: "Actions" },
+                          { value: "settings", label: "Open settings", category: "Actions" },
+                          { value: "help", label: "View help", category: "Support" }
+                        ]}
+                        variant="search"
+                      />
+                      <p className="text-sm text-muted-foreground mt-2">
+                        Command palette for quick actions and navigation
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle>Selection Patterns</CardTitle>
+                  <CardDescription>
+                    Different approaches to value selection and management
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div className="space-y-4">
+                    <div className="p-4 border rounded-lg">
+                      <h5 className="font-medium mb-2">Tag Management</h5>
+                      <Combobox
+                        id="tag-management"
+                        placeholder="Add tags..."
+                        options={technologies}
+                        allowMultiple={true}
+                        variant="tags"
+                      />
+                      <p className="text-sm text-muted-foreground mt-2">
+                        Multi-select with visual tag representation
+                      </p>
+                    </div>
+
+                    <div className="p-4 border rounded-lg">
+                      <h5 className="font-medium mb-2">Hierarchical Selection</h5>
+                      <Combobox
+                        id="hierarchical"
+                        placeholder="Select category..."
+                        options={technologies}
+                      />
+                      <p className="text-sm text-muted-foreground mt-2">
+                        Organized by categories for better navigation
+                      </p>
+                    </div>
+
+                    <div className="p-4 border rounded-lg">
+                      <h5 className="font-medium mb-2">Recent Items</h5>
+                      <Combobox
+                        id="recent-items"
+                        placeholder="Search or select recent..."
+                        options={[
+                          { value: "recent1", label: "Recently used item 1", category: "Recent" },
+                          { value: "recent2", label: "Recently used item 2", category: "Recent" },
+                          ...technologies.slice(0, 3)
+                        ]}
+                      />
+                      <p className="text-sm text-muted-foreground mt-2">
+                        Prioritize recently used items for efficiency
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
             <Card>
               <CardHeader>
-                <CardTitle>Interactive States</CardTitle>
+                <CardTitle>Advanced Patterns</CardTitle>
                 <CardDescription>
-                  Understanding the different states and visual feedback for combobox interactions.
+                  Sophisticated combobox implementations for complex use cases
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-6">
+              <CardContent>
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <h4 className="font-semibold mb-3 text-lg">Visual States</h4>
-                    <ul className="space-y-2 text-sm">
-                      <li>• <strong>Default:</strong> Ready for user interaction</li>
-                      <li>• <strong>Focused:</strong> Active input with visible focus ring</li>
-                      <li>• <strong>Open:</strong> Dropdown visible with options</li>
-                      <li>• <strong>Filtered:</strong> Options filtered by search term</li>
-                      <li>• <strong>Selected:</strong> Option(s) chosen by user</li>
-                      <li>• <strong>Loading:</strong> Fetching options or data</li>
-                      <li>• <strong>Error:</strong> Invalid input or selection</li>
-                      <li>• <strong>Disabled:</strong> Interaction not allowed</li>
-                    </ul>
+                  <div className="space-y-4">
+                    <h4 className="font-semibold">Async Data Loading</h4>
+                    <div className="p-4 border rounded-lg space-y-3">
+                      <Combobox
+                        id="async-loading"
+                        placeholder="Search remote data..."
+                        options={countries}
+                        isLoading={false}
+                      />
+                      <div className="text-xs text-muted-foreground bg-muted p-2 rounded">
+                        <strong>Implementation:</strong> Debounce search input, fetch data on query change, 
+                        show loading state while fetching, handle empty states gracefully.
+                      </div>
+                    </div>
                   </div>
 
-                  <div>
-                    <h4 className="font-semibold mb-3 text-lg">Interaction Feedback</h4>
-                    <ul className="space-y-2 text-sm">
-                      <li>• <strong>Hover:</strong> Highlight focusable options</li>
-                      <li>• <strong>Keyboard Navigation:</strong> Arrow key highlighting</li>
-                      <li>• <strong>Selection Indication:</strong> Checkmarks or highlighting</li>
-                      <li>• <strong>Multi-select Tags:</strong> Visual chips for selected items</li>
-                      <li>• <strong>Empty State:</strong> &ldquo;No results found&rdquo; message</li>
-                      <li>• <strong>Loading Spinner:</strong> Activity indicator</li>
-                    </ul>
+                  <div className="space-y-4">
+                    <h4 className="font-semibold">Form Integration</h4>
+                    <div className="p-4 border rounded-lg space-y-3">
+                      <Combobox
+                        id="form-integration"
+                        label="Required Selection"
+                        placeholder="Select an option..."
+                        options={technologies.slice(0, 5)}
+                        required={true}
+                        description="This field is required for form submission"
+                      />
+                      <div className="text-xs text-muted-foreground bg-muted p-2 rounded">
+                        <strong>Features:</strong> Form validation, error handling, required field indicators, 
+                        accessible labels and descriptions.
+                      </div>
+                    </div>
                   </div>
-                </div>
 
-                <div>
-                  <h4 className="font-semibold mb-3 text-lg">State Transitions</h4>
-                  <div className="p-4 bg-muted rounded-lg">
-                    <p className="text-sm mb-3">
-                      Combobox states should transition smoothly to provide clear feedback:
-                    </p>
-                    <ul className="text-sm space-y-1">
-                      <li>• <strong>Closed → Open:</strong> Show dropdown with fade-in animation</li>
-                      <li>• <strong>Typing → Filtering:</strong> Update options list in real-time</li>
-                      <li>• <strong>Selection → Confirmation:</strong> Visual feedback and state update</li>
-                      <li>• <strong>Loading → Results:</strong> Replace spinner with options</li>
-                      <li>• <strong>Error → Valid:</strong> Clear error styling and messages</li>
-                    </ul>
+                  <div className="space-y-4">
+                    <h4 className="font-semibold">Custom Rendering</h4>
+                    <div className="p-4 border rounded-lg space-y-3">
+                      <Combobox
+                        id="custom-rendering"
+                        placeholder="Rich option display..."
+                        options={users}
+                      />
+                      <div className="text-xs text-muted-foreground bg-muted p-2 rounded">
+                        <strong>Customization:</strong> Custom option templates, avatar images, 
+                        additional metadata display, grouping and sections.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-4">
+                    <h4 className="font-semibold">Keyboard Shortcuts</h4>
+                    <div className="p-4 border rounded-lg space-y-3">
+                      <div className="space-y-2 text-sm">
+                        <div className="flex justify-between">
+                          <span>Open/Close</span>
+                          <kbd className="px-2 py-1 bg-muted rounded text-xs">↓ / Esc</kbd>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Navigate</span>
+                          <kbd className="px-2 py-1 bg-muted rounded text-xs">↑ ↓</kbd>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Select</span>
+                          <kbd className="px-2 py-1 bg-muted rounded text-xs">Enter</kbd>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Clear Search</span>
+                          <kbd className="px-2 py-1 bg-muted rounded text-xs">Cmd + A</kbd>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </CardContent>
             </Card>
           </TabsContent>
 
-          {/* Behavior */}
-          <TabsContent value="behavior" className="space-y-8">
+          {/* Guidelines */}
+          <TabsContent value="guidelines" className="space-y-8">
+            <div className="grid lg:grid-cols-2 gap-8">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-green-600">✅ Best Practices</CardTitle>
+                  <CardDescription>
+                    Follow these guidelines for effective combobox implementation
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3 text-sm">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <strong>Use for large datasets</strong> - Implement comboboxes when you have 10+ options that benefit from search
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <strong>Provide immediate feedback</strong> - Show filtered results as users type without delays
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <strong>Support keyboard navigation</strong> - Ensure full functionality with arrow keys, Enter, and Escape
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <strong>Handle empty states gracefully</strong> - Show helpful messages when no options match the search
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <strong>Use clear labeling</strong> - Provide descriptive labels and placeholder text
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <strong>Implement proper ARIA</strong> - Use correct roles and attributes for screen readers
+                      </div>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-red-600">❌ Common Pitfalls</CardTitle>
+                  <CardDescription>
+                    Avoid these mistakes when designing combobox interfaces
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3 text-sm">
+                    <li className="flex items-start gap-3">
+                      <X className="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <strong>Don't use for simple selections</strong> - Avoid comboboxes for fewer than 5-7 options
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <X className="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <strong>Don't make filtering too strict</strong> - Allow partial matches and fuzzy search
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <X className="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <strong>Don't ignore loading states</strong> - Always provide feedback during async operations
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <X className="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <strong>Don't forget error handling</strong> - Plan for network failures and invalid states
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <X className="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <strong>Don't disable without explanation</strong> - Always provide context for disabled states
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <X className="h-4 w-4 text-red-500 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <strong>Don't overwhelm with options</strong> - Consider pagination or grouping for very large datasets
+                      </div>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
+
             <Card>
               <CardHeader>
-                <CardTitle>Interaction Behavior</CardTitle>
+                <CardTitle>Accessibility Implementation</CardTitle>
                 <CardDescription>
-                  How combobox components should behave during user interactions and edge cases.
+                  Essential accessibility requirements and ARIA patterns
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <h4 className="font-semibold mb-3 text-lg">Keyboard Navigation</h4>
-                    <div className="space-y-3">
-                      <div className="p-3 border rounded">
-                        <strong>Arrow Keys:</strong>
-                        <p className="text-sm text-muted-foreground">Navigate through options</p>
+                    <h4 className="font-semibold mb-3">Required ARIA Attributes</h4>
+                    <div className="space-y-2 text-sm">
+                      <div className="p-3 bg-muted/50 rounded">
+                        <code className="text-primary">role="combobox"</code>
+                        <p className="text-muted-foreground text-xs mt-1">Identifies the input as a combobox</p>
                       </div>
-                      <div className="p-3 border rounded">
-                        <strong>Enter:</strong>
-                        <p className="text-sm text-muted-foreground">Select focused option</p>
+                      <div className="p-3 bg-muted/50 rounded">
+                        <code className="text-primary">aria-expanded</code>
+                        <p className="text-muted-foreground text-xs mt-1">Indicates if dropdown is open</p>
                       </div>
-                      <div className="p-3 border rounded">
-                        <strong>Escape:</strong>
-                        <p className="text-sm text-muted-foreground">Close dropdown</p>
+                      <div className="p-3 bg-muted/50 rounded">
+                        <code className="text-primary">aria-haspopup="listbox"</code>
+                        <p className="text-muted-foreground text-xs mt-1">Indicates popup type</p>
                       </div>
-                      <div className="p-3 border rounded">
-                        <strong>Tab:</strong>
-                        <p className="text-sm text-muted-foreground">Move to next element</p>
+                      <div className="p-3 bg-muted/50 rounded">
+                        <code className="text-primary">aria-activedescendant</code>
+                        <p className="text-muted-foreground text-xs mt-1">References focused option</p>
                       </div>
                     </div>
                   </div>
 
                   <div>
-                    <h4 className="font-semibold mb-3 text-lg">Search Behavior</h4>
-                    <div className="space-y-3">
-                      <div className="p-3 border rounded">
-                        <strong>Real-time Filtering:</strong>
-                        <p className="text-sm text-muted-foreground">Filter options as user types</p>
+                    <h4 className="font-semibold mb-3">Keyboard Support</h4>
+                    <div className="space-y-3 text-sm">
+                      <div className="flex items-center justify-between p-2 bg-muted/50 rounded">
+                        <span>Open dropdown</span>
+                        <div className="flex gap-1">
+                          <kbd className="px-1.5 py-0.5 bg-background rounded text-xs">↓</kbd>
+                          <kbd className="px-1.5 py-0.5 bg-background rounded text-xs">Space</kbd>
+                        </div>
                       </div>
-                      <div className="p-3 border rounded">
-                        <strong>Case Insensitive:</strong>
-                        <p className="text-sm text-muted-foreground">Match regardless of case</p>
+                      <div className="flex items-center justify-between p-2 bg-muted/50 rounded">
+                        <span>Navigate options</span>
+                        <div className="flex gap-1">
+                          <kbd className="px-1.5 py-0.5 bg-background rounded text-xs">↑</kbd>
+                          <kbd className="px-1.5 py-0.5 bg-background rounded text-xs">↓</kbd>
+                        </div>
                       </div>
-                      <div className="p-3 border rounded">
-                        <strong>Partial Matching:</strong>
-                        <p className="text-sm text-muted-foreground">Match substrings within options</p>
+                      <div className="flex items-center justify-between p-2 bg-muted/50 rounded">
+                        <span>Select option</span>
+                        <kbd className="px-1.5 py-0.5 bg-background rounded text-xs">Enter</kbd>
                       </div>
-                      <div className="p-3 border rounded">
-                        <strong>Empty Results:</strong>
-                        <p className="text-sm text-muted-foreground">Show helpful empty state message</p>
+                      <div className="flex items-center justify-between p-2 bg-muted/50 rounded">
+                        <span>Close dropdown</span>
+                        <kbd className="px-1.5 py-0.5 bg-background rounded text-xs">Esc</kbd>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 <div>
-                  <h4 className="font-semibold mb-3 text-lg">Best Practices</h4>
+                  <h4 className="font-semibold mb-3">Screen Reader Support</h4>
                   <div className="grid md:grid-cols-2 gap-4">
-                    <div className="p-4 border-2 border-green-500 rounded-lg bg-green-50 dark:bg-green-900/20">
-                      <h5 className="font-medium text-green-800 dark:text-green-200 mb-2">✅ Do</h5>
-                      <ul className="text-sm text-green-700 dark:text-green-300 space-y-1">
-                        <li>• Provide clear labels and instructions</li>
-                        <li>• Show loading states for async operations</li>
-                        <li>• Use consistent keyboard shortcuts</li>
-                        <li>• Limit options to prevent overwhelming users</li>
-                        <li>• Clear selection state when needed</li>
+                    <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+                      <strong className="text-blue-800 dark:text-blue-200">Announcements</strong>
+                      <ul className="text-sm mt-2 text-blue-700 dark:text-blue-300 space-y-1">
+                        <li>• Option count when dropdown opens</li>
+                        <li>• Current selection state</li>
+                        <li>• Filter results as user types</li>
+                        <li>• Error and success messages</li>
                       </ul>
                     </div>
 
-                    <div className="p-4 border-2 border-red-500 rounded-lg bg-red-50 dark:bg-red-900/20">
-                      <h5 className="font-medium text-red-800 dark:text-red-200 mb-2">❌ Don&apos;t</h5>
-                      <ul className="text-sm text-red-700 dark:text-red-300 space-y-1">
-                        <li>• Use for simple selections with few options</li>
-                        <li>• Forget to handle empty search results</li>
-                        <li>• Make filtering too strict or confusing</li>
-                        <li>• Ignore loading states for remote data</li>
-                        <li>• Disable without explaining why</li>
+                    <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
+                      <strong className="text-green-800 dark:text-green-200">Labels & Context</strong>
+                      <ul className="text-sm mt-2 text-green-700 dark:text-green-300 space-y-1">
+                        <li>• Clear, descriptive labels</li>
+                        <li>• Help text and instructions</li>
+                        <li>• Required field indicators</li>
+                        <li>• Error descriptions and fixes</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold mb-3">Testing Checklist</h4>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <h5 className="font-medium">Keyboard Testing</h5>
+                      <ul className="text-sm space-y-1">
+                        <li className="flex items-center gap-2">
+                          <input type="checkbox" className="h-4 w-4" />
+                          <span>All functionality available via keyboard</span>
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <input type="checkbox" className="h-4 w-4" />
+                          <span>Focus indicators clearly visible</span>
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <input type="checkbox" className="h-4 w-4" />
+                          <span>Tab order is logical</span>
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <input type="checkbox" className="h-4 w-4" />
+                          <span>No keyboard traps</span>
+                        </li>
+                      </ul>
+                    </div>
+                    <div className="space-y-2">
+                      <h5 className="font-medium">Screen Reader Testing</h5>
+                      <ul className="text-sm space-y-1">
+                        <li className="flex items-center gap-2">
+                          <input type="checkbox" className="h-4 w-4" />
+                          <span>Purpose clearly announced</span>
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <input type="checkbox" className="h-4 w-4" />
+                          <span>States communicated accurately</span>
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <input type="checkbox" className="h-4 w-4" />
+                          <span>Selection changes announced</span>
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <input type="checkbox" className="h-4 w-4" />
+                          <span>Error messages descriptive</span>
+                        </li>
                       </ul>
                     </div>
                   </div>
                 </div>
               </CardContent>
             </Card>
-          </TabsContent>
 
-          {/* Accessibility */}
-          <TabsContent value="accessibility" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Accessibility Guidelines</CardTitle>
+                <CardTitle>Performance Guidelines</CardTitle>
                 <CardDescription>
-                  Essential accessibility features and ARIA patterns for combobox components.
+                  Optimizing combobox performance for better user experience
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-6">
+              <CardContent className="space-y-4">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <h4 className="font-semibold mb-3 text-lg">ARIA Attributes</h4>
-                    <div className="space-y-3 text-sm">
-                      <div className="p-3 border rounded">
-                        <strong>role=&ldquo;combobox&rdquo;:</strong>
-                        <p className="text-muted-foreground">Identifies the input as a combobox</p>
-                      </div>
-                      <div className="p-3 border rounded">
-                        <strong>aria-expanded:</strong>
-                        <p className="text-muted-foreground">Indicates if dropdown is open</p>
-                      </div>
-                      <div className="p-3 border rounded">
-                        <strong>aria-haspopup=&ldquo;listbox&rdquo;:</strong>
-                        <p className="text-muted-foreground">Indicates popup type</p>
-                      </div>
-                      <div className="p-3 border rounded">
-                        <strong>aria-activedescendant:</strong>
-                        <p className="text-muted-foreground">References focused option</p>
-                      </div>
-                    </div>
+                    <h4 className="font-semibold mb-3">Search Optimization</h4>
+                    <ul className="text-sm space-y-2">
+                      <li>• Debounce search input to avoid excessive API calls</li>
+                      <li>• Cache search results for frequently accessed data</li>
+                      <li>• Implement client-side filtering for small datasets</li>
+                      <li>• Use pagination for very large result sets</li>
+                      <li>• Consider search indexing for complex datasets</li>
+                    </ul>
                   </div>
 
                   <div>
-                    <h4 className="font-semibold mb-3 text-lg">Screen Reader Support</h4>
-                    <div className="space-y-3 text-sm">
-                      <div className="p-3 border rounded">
-                        <strong>Label Association:</strong>
-                        <p className="text-muted-foreground">Clear connection between label and input</p>
-                      </div>
-                      <div className="p-3 border rounded">
-                        <strong>Status Announcements:</strong>
-                        <p className="text-muted-foreground">Announce selection changes and errors</p>
-                      </div>
-                      <div className="p-3 border rounded">
-                        <strong>Option Count:</strong>
-                        <p className="text-muted-foreground">Announce number of available options</p>
-                      </div>
-                      <div className="p-3 border rounded">
-                        <strong>Instructions:</strong>
-                        <p className="text-muted-foreground">Provide usage instructions via aria-describedby</p>
-                      </div>
-                    </div>
+                    <h4 className="font-semibold mb-3">Rendering Performance</h4>
+                    <ul className="text-sm space-y-2">
+                      <li>• Virtualize long option lists for smooth scrolling</li>
+                      <li>• Lazy load option content when possible</li>
+                      <li>• Minimize re-renders with proper memoization</li>
+                      <li>• Use CSS transforms for animations</li>
+                      <li>• Implement proper cleanup for event listeners</li>
+                    </ul>
                   </div>
                 </div>
 
-                <div>
-                  <h4 className="font-semibold mb-3 text-lg">Keyboard Support Requirements</h4>
-                  <div className="overflow-x-auto">
-                    <table className="w-full border-collapse border border-border">
-                      <thead>
-                        <tr className="bg-muted">
-                          <th className="border border-border p-3 text-left">Key</th>
-                          <th className="border border-border p-3 text-left">Behavior</th>
-                          <th className="border border-border p-3 text-left">Context</th>
-                        </tr>
-                      </thead>
-                      <tbody className="text-sm">
-                        <tr>
-                          <td className="border border-border p-3 ">Down Arrow</td>
-                          <td className="border border-border p-3">Move focus to next option</td>
-                          <td className="border border-border p-3">When dropdown is open</td>
-                        </tr>
-                        <tr>
-                          <td className="border border-border p-3 ">Up Arrow</td>
-                          <td className="border border-border p-3">Move focus to previous option</td>
-                          <td className="border border-border p-3">When dropdown is open</td>
-                        </tr>
-                        <tr>
-                          <td className="border border-border p-3 ">Enter</td>
-                          <td className="border border-border p-3">Select focused option</td>
-                          <td className="border border-border p-3">When option is focused</td>
-                        </tr>
-                        <tr>
-                          <td className="border border-border p-3 ">Escape</td>
-                          <td className="border border-border p-3">Close dropdown</td>
-                          <td className="border border-border p-3">When dropdown is open</td>
-                        </tr>
-                        <tr>
-                          <td className="border border-border p-3 ">Tab</td>
-                          <td className="border border-border p-3">Move to next focusable element</td>
-                          <td className="border border-border p-3">Always</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold mb-3 text-lg">Implementation Code</h4>
-                  <div className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
-                    <pre className="text-sm">
-                      {`<!-- Accessible Combobox Structure -->
-<div>
-  <label for="combobox-input">Country</label>
-  <input
-    id="combobox-input"
-    type="text"
-    role="combobox"
-    aria-expanded=&ldquo;false&rdquo;
-    aria-haspopup=&ldquo;listbox&rdquo;
-    aria-describedby=&ldquo;combobox-help&rdquo;
-    placeholder=&ldquo;Search countries...&rdquo;
-  />
-  <ul role="listbox" hidden>
-    <li role=&ldquo;option&rdquo; aria-selected=&ldquo;false&rdquo;>United States</li>
-    <li role=&ldquo;option&rdquo; aria-selected=&ldquo;false&rdquo;>Canada</li>
-  </ul>
-  <div id="combobox-help">
-    Type to search or use arrow keys to navigate
-  </div>
-</div>`}
-                    </pre>
+                <div className="p-4 bg-muted/50 rounded-lg">
+                  <h5 className="font-medium mb-2">Implementation Example</h5>
+                  <div className="text-xs bg-gray-900 text-gray-100 p-3 rounded font-mono overflow-x-auto">
+                    <pre>{`// Debounced search with caching
+const useDebounceSearch = (query: string, delay: number = 300) => {
+  const [debouncedQuery, setDebouncedQuery] = useState(query)
+  
+  useEffect(() => {
+    const timer = setTimeout(() => setDebouncedQuery(query), delay)
+    return () => clearTimeout(timer)
+  }, [query, delay])
+  
+  return debouncedQuery
+}`}</pre>
                   </div>
                 </div>
               </CardContent>
@@ -849,7 +1471,7 @@ export default function ComboboxPage() {
         {/* References Section */}
         <div className="mt-6">
           <ComponentReferences
-            title="References & Further Reading"
+            title="References & Resources"
             description="Essential resources for combobox component implementation and accessibility."
             urls={comboboxComponentsUrlReference}
             getTitleFunction={(url: string) => {
