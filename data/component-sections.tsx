@@ -128,7 +128,7 @@ export const componentSections: ComponentSection[] = [
     name: "Progress Indicators",
     href: "/playground/progress-indicators",
     description: "Visual feedback showing the completion status of processes",
-    status: "In Progress",
+    status: "Complete",
     preview: <ProgressIndicatorsPreview />,
   },
 ] 
