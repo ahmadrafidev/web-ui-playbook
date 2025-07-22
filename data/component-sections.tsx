@@ -114,7 +114,7 @@ export const componentSections: ComponentSection[] = [
     name: "Menu",
     href: "/playground/menu",
     description: "Organized lists of actions, options, and navigation items",
-    status: "In Progress",
+    status: "Complete",
     preview: <MenuPreview />,
   },
   {
