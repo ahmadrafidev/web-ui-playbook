@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useRef, useEffect, useCallback, useMemo } from "react"
-import { ChevronDown, ChevronUp, Search, X, Check, AlertCircle, CheckCircle2, Loader2, Info, User, Globe, Tag, Settings } from "lucide-react"
+import { ChevronDown, ChevronUp, Search, X, Check, AlertCircle, CheckCircle2, Loader2, Tag } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
