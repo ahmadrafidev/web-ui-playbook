@@ -72,7 +72,7 @@ export const componentSections: ComponentSection[] = [
     name: "Combobox",
     href: "/playground/combobox",
     description: "Searchable dropdowns that combine input fields with option lists",
-    status: "In Progress",
+    status: "Complete",
     preview: <ComboboxPreview />,
   },
   {
