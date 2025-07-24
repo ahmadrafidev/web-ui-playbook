@@ -101,12 +101,11 @@ export default function MenuPage() {
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
             <h1 className="text-4xl font-bold text-foreground mb-2">Menu</h1>
             <EditButton filePath="app/playground/menu/page.tsx" />
-          </div>
-          
+          </div>    
           <div className="prose prose-slate dark:prose-invert max-w-none">
-            <p className="text-base text-muted-foreground leading-relaxed">
-              Menus display a list of choices or actions that users can select. They appear when triggered and 
-              provide organized access to functionality ranging from simple options to complex navigation structures.
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Menus show a list of options or actions for users to choose from. 
+              They help organize features and navigation in an interface.
             </p>
           </div>
         </div>

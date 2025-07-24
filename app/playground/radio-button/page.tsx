@@ -36,19 +36,16 @@ export default function RadioButtonPage() {
       <div className="container max-w-4xl mx-auto px-4 py-8">
 
         {/* Hero Section */}
-        <div className="mb-12">
+        <div className="mb-6">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
             <div className="space-y-2">
               <h1 className="text-4xl font-bold text-foreground tracking-tight">Radio Button</h1>
             </div>
             <EditButton filePath="app/playground/radio-button/page.tsx" />
           </div>
-          
           <div className="prose prose-neutral dark:prose-invert max-w-none">
             <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-              Radio buttons enable users to select a single option from a group of mutually exclusive choices. 
-              They're essential for forms, settings, and any interface where users need to make a definitive choice 
-              from multiple alternatives.
+              Radio buttons let users pick one option from a list. They are useful when only a single choice is allowed.
             </p>
           </div>
         </div>

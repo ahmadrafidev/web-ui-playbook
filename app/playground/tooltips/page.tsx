@@ -28,15 +28,13 @@ export default function TooltipsPage() {
       <div className="container max-w-4xl mx-auto px-4 py-8">
 
         {/* Introduction */}
-        <div className="mb-10">
+        <div className="mb-6">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
             <h2 className="text-4xl font-bold text-foreground">Tooltips</h2>
             <EditButton filePath="app/playground/tooltips/page.tsx" />
           </div>
           <p className="text-base md:text-lg text-muted-foreground mb-6">
-            Tooltips are small pop-up elements that provide contextual information about interface elements when users 
-            hover over or focus on them. They enhance usability without cluttering the interface, offering just-in-time 
-            information that helps users understand functionality.
+            Tooltips give quick, helpful info when users hover or focus on elements—improving clarity without cluttering the interface.
           </p>
         </div>
 

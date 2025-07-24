@@ -35,8 +35,8 @@ const progressIndicatorsUrlReference = [
 
 function getProgressUrlTitle(url: string): string {
   if (url.includes('base.uber.com')) return 'Uber Base Design System - Progress Circle'
-  if (url.includes('m3.material.io/overview')) return 'Material Design 3 - Progress Indicators Overview'
-  if (url.includes('m3.material.io/accessibility')) return 'Material Design 3 - Progress Indicators Accessibility'
+  if (url.includes('m3.material.io/components/progress-indicators/overview')) return 'Material Design 3 - Progress Indicators Overview'
+  if (url.includes('m3.material.io/components/progress-indicators/accessibility')) return 'Material Design 3 - Progress Indicators Accessibility'
   if (url.includes('spectrum.adobe.com')) return 'Adobe Spectrum - Progress Circle Guidelines'
   if (url.includes('developer.apple.com')) return 'Apple Human Interface Guidelines - Progress Indicators'
   if (url.includes('canvas.workday.com')) return 'Workday Canvas - Loading Dots Component'
@@ -368,18 +368,16 @@ export default function ProgressIndicatorsPage() {
       <div className="container max-w-4xl mx-auto px-4 py-8">
 
         {/* Introduction */}
-        <div className="mb-10">
+        <div className="mb-6">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
             <div>
               <h1 className="text-4xl font-bold text-foreground mb-2">Progress Indicators</h1>
               <p className="text-xl text-muted-foreground">
-                Visual feedback for system processes and user flows
+                Visually displays the completion status or advancement of a task or process, often as a percentage, bar, or animation.
               </p>
             </div>
             <EditButton filePath="app/playground/progress-indicators/page.tsx" />
           </div>
-          
-
         </div>
 
         <Tabs defaultValue="overview" className="space-y-8">

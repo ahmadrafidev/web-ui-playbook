@@ -74,15 +74,13 @@ export default function SwitchPage() {
       <div className="container max-w-4xl mx-auto px-4 py-8">
 
         {/* Introduction */}
-        <div className="mb-10">
+        <div className="mb-6">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
             <h2 className="text-4xl font-bold text-foreground">Switch</h2>
             <EditButton filePath="app/playground/switch/page.tsx" />
           </div>
           <p className="text-base md:text-lg text-muted-foreground mb-6">
-            Switches are used to quickly toggle between two possible states. They provide immediate feedback and are 
-            ideal for settings that take effect instantly. Unlike checkboxes, switches clearly indicate an &quot;on&quot; or &quot;off&quot; 
-            state and are commonly used for preferences, settings, and binary controls.
+            Switches let users quickly toggle settings on or off with immediate feedback. Use them for instant, binary choices like preferences or features.
           </p>
         </div>
 

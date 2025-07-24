@@ -253,14 +253,13 @@ export default function TextInputPage() {
       {/* Mobile Warning */}
       {MobileWarning}
       <div className="container max-w-4xl mx-auto px-4 py-8">
-        <div className="mb-10">
+        <div className="mb-6">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
             <h2 className="text-4xl font-bold text-foreground">Text Input</h2>
             <EditButton filePath="app/playground/text-input/page.tsx" />
           </div>
           <p className="text-base md:text-lg text-muted-foreground mb-6">
-            Text inputs allow users to enter and edit single-line text content. They are fundamental form elements that provide accessible, 
-            flexible data entry with proper validation, states, and user feedback mechanisms.
+            Text inputs let users enter or edit single-line text. They are an essential form element, with support for validation and feedback.
           </p>
         </div>
 

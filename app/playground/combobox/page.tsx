@@ -424,7 +424,7 @@ export default function ComboboxPage() {
       <div className="container max-w-4xl mx-auto px-4 py-8">
 
         {/* Introduction */}
-        <div className="mb-10">
+        <div className="mb-6">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
             <div>
               <h1 className="text-4xl font-bold text-foreground mb-2">Combobox</h1>

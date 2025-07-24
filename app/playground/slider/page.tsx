@@ -78,18 +78,15 @@ export default function SliderPage() {
       <div className="container max-w-4xl mx-auto px-4 py-8">
 
         {/* Introduction */}
-        <div className="mb-10">
+        <div className="mb-6">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
             <h2 className="text-4xl font-bold text-foreground">Slider</h2>
             <EditButton filePath="app/playground/slider/page.tsx" />
           </div>
           <div className="space-y-4">
             <p className="text-base md:text-lg text-muted-foreground">
-              Sliders allow users to select a value or range of values by moving a thumb along a track. 
-              They provide intuitive visual feedback and are ideal for adjusting settings, filtering data, 
-              or selecting values where the relative position matters more than precision.
-            </p>
-            
+              Sliders enable users to swiftly select from a range of values.
+            </p>  
           </div>
         </div>
 
