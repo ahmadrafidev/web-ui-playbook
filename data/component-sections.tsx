@@ -30,7 +30,7 @@ export const componentSections: ComponentSection[] = [
     name: "Avatar",
     href: "/playground/avatar",
     description: "Visual representations of users or entities",
-    status: "In Progress",
+    status: "Complete",
     preview: <AvatarPreview />,
   },
   {

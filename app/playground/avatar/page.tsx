@@ -2,7 +2,7 @@
 
 import React, { useState } from "react"
 import Image from "next/image"
-import { User, Check, Star, Building2, Bot, Crown, X } from "lucide-react"
+import { User, Check, Star, Building2, Bot, Crown, X, CheckCircle } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ComponentReferences } from "@/components/component-references"
@@ -275,20 +275,19 @@ export default function AvatarPage() {
       <div className="container max-w-4xl mx-auto px-4 py-8">
 
         {/* Introduction */}
-        <div className="mb-10">
+        <div className="mb-6">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
             <h2 className="text-4xl font-bold text-foreground">Avatar</h2>
             <EditButton filePath="app/playground/avatar/page.tsx" />
           </div>
           <p className="text-base md:text-lg text-muted-foreground mb-6">
-            Avatars are visual representations of users, entities, or objects. They provide a quick way to identify 
-            individuals and add personality to interfaces through images, initials, or icons.
+            Visual representations of users, entities, or objects for quick identification.
           </p>
         </div>
 
-        <Tabs defaultValue="purpose" className="space-y-6">
+        <Tabs defaultValue="overview" className="space-y-6">
           <TabsList className="grid w-full grid-cols-6">
-            <TabsTrigger value="purpose">Purpose</TabsTrigger>
+            <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="sizes">Sizes</TabsTrigger>
             <TabsTrigger value="variants">Variants</TabsTrigger>
             <TabsTrigger value="states">States</TabsTrigger>
@@ -296,59 +295,159 @@ export default function AvatarPage() {
             <TabsTrigger value="accessibility">Accessibility</TabsTrigger>
           </TabsList>
 
-          {/* Purpose */}
-          <TabsContent value="purpose" className="space-y-8">
+          {/* Overview */}
+          <TabsContent value="overview" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Purpose and Usage</CardTitle>
+                <CardTitle className="text-xl font-bold">Purpose of Avatars</CardTitle>
                 <CardDescription>
-                  Understanding when and how to use avatars effectively in your interface.
+                  Understanding the core purpose and benefits of avatar components in user interfaces.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="grid md:grid-cols-3 gap-4">
+                  <div className="p-4 border rounded-lg text-center">
+                    <h4 className="font-semibold mb-2">Identity</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Represent users, customers, or entities visually for quick identification.
+                    </p>
+                  </div>
+                  <div className="p-4 border rounded-lg text-center">
+                    <h4 className="font-semibold mb-2">Recognition</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Enable fast recognition and personalization in interfaces.
+                    </p>
+                  </div>
+                  <div className="p-4 border rounded-lg text-center">
+                    <h4 className="font-semibold mb-2">Status</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Communicate online/offline presence and other states at a glance.
+                    </p>
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  <h4 className="text-lg font-semibold">Core Functions</h4>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="space-y-3">
+                      <div className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <strong className="text-sm">Visual Identity:</strong>
+                          <p className="text-xs text-muted-foreground">Display user or entity images, initials, or icons for clear identification</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <strong className="text-sm">Status Indication:</strong>
+                          <p className="text-xs text-muted-foreground">Show online, offline, busy, or away states visually</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="space-y-3">
+                      <div className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <strong className="text-sm">Group Representation:</strong>
+                          <p className="text-xs text-muted-foreground">Display teams, participants, or shared entities as avatar groups</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <strong className="text-sm">Personalization:</strong>
+                          <p className="text-xs text-muted-foreground">Add a human touch and context to digital experiences</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-xl font-bold">When to Use Avatars</CardTitle>
+                <CardDescription>
+                  Understanding the appropriate contexts for avatar components.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <h4 className="font-semibold mb-3 text-lg">Core Purpose</h4>
-                    <ul className="space-y-2 text-sm">
-                      <li>• <strong>Identity:</strong> Represent users, customers, or entities</li>
-                      <li>• <strong>Recognition:</strong> Quick visual identification</li>
-                      <li>• <strong>Personalization:</strong> Add human touch to interfaces</li>
-                      <li>• <strong>Status:</strong> Show online/offline states</li>
-                    </ul>
+                  <div className="space-y-4">
+                    <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
+                      <div className="flex items-center gap-2 mb-3">
+                        <CheckCircle className="h-5 w-5 text-green-600" />
+                        <strong className="text-green-800 dark:text-green-200">Use Avatars When:</strong>
+                      </div>
+                      <ul className="text-sm text-green-700 dark:text-green-300 space-y-1">
+                        <li>• Displaying user or entity profiles</li>
+                        <li>• Showing online/offline or custom status</li>
+                        <li>• Representing team members or participants</li>
+                        <li>• Adding personalization to interfaces</li>
+                        <li>• Indicating ownership or authorship</li>
+                      </ul>
+                    </div>
                   </div>
-
-                  <div>
-                    <h4 className="font-semibold mb-3 text-lg">Best Practices</h4>
-                    <ul className="space-y-2 text-sm">
-                      <li>• Always provide meaningful alt text</li>
-                      <li>• Use consistent sizing within contexts</li>
-                      <li>• Implement graceful fallbacks</li>
-                      <li>• Consider cultural sensitivities</li>
-                    </ul>
+                  <div className="space-y-4">
+                    <div className="p-4 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800">
+                      <div className="flex items-center gap-2 mb-3">
+                        <X className="h-5 w-5 text-red-600" />
+                        <strong className="text-red-800 dark:text-red-200">Avoid Avatars When:</strong>
+                      </div>
+                      <ul className="text-sm text-red-700 dark:text-red-300 space-y-1">
+                        <li>• No meaningful visual context is provided</li>
+                        <li>• For purely textual or tabular data</li>
+                        <li>• When space is extremely limited</li>
+                        <li>• When privacy is a concern</li>
+                        <li>• For decorative purposes only</li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
-
                 <div className="space-y-4">
-                  <h4 className="font-semibold text-lg">Avatar Types</h4>
-                  <div className="grid gap-4">
-                    <div className="flex items-center gap-4 p-4 border rounded-lg">
-                      <Avatar src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" name="Profile Avatar" />
-                      <div>
-                        <strong>Profile Avatar:</strong> User profile pictures
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-4 p-4 border rounded-lg">
-                      <Avatar name="John Doe" />
-                      <div>
-                        <strong>Initial Avatar:</strong> Text-based fallback using initials
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-4 p-4 border rounded-lg">
-                      <Avatar icon={<Building2 className="h-1/2 w-1/2" />} />
-                      <div>
-                        <strong>Icon Avatar:</strong> Symbolic representation
-                      </div>
-                    </div>
+                  <h4 className="text-lg font-semibold">Avatar vs Alternatives</h4>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-sm">
+                      <thead>
+                        <tr className="border-b">
+                          <th className="text-left p-3 font-medium">Component</th>
+                          <th className="text-left p-3 font-medium">Primary Use</th>
+                          <th className="text-left p-3 font-medium">Interaction</th>
+                          <th className="text-left p-3 font-medium">Visual Weight</th>
+                          <th className="text-left p-3 font-medium">Example Context</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y">
+                        <tr>
+                          <td className="p-3 font-medium">Avatar</td>
+                          <td className="p-3">Identity, status, group</td>
+                          <td className="p-3">Minimal/optional</td>
+                          <td className="p-3">Medium</td>
+                          <td className="p-3">Profile, team, chat</td>
+                        </tr>
+                        <tr>
+                          <td className="p-3 font-medium">Icon</td>
+                          <td className="p-3">Symbolic, quick action</td>
+                          <td className="p-3">Clickable</td>
+                          <td className="p-3">Low</td>
+                          <td className="p-3">Buttons, menus</td>
+                        </tr>
+                        <tr>
+                          <td className="p-3 font-medium">Initials</td>
+                          <td className="p-3">Fallback, identity</td>
+                          <td className="p-3">None</td>
+                          <td className="p-3">Low</td>
+                          <td className="p-3">No image available</td>
+                        </tr>
+                        <tr>
+                          <td className="p-3 font-medium">Image</td>
+                          <td className="p-3">Personalization</td>
+                          <td className="p-3">None</td>
+                          <td className="p-3">Medium</td>
+                          <td className="p-3">Profile, directory</td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </CardContent>
@@ -415,7 +514,7 @@ export default function AvatarPage() {
           <TabsContent value="sizes" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Avatar Sizes</CardTitle>
+                <CardTitle className="text-xl font-bold">Avatar Sizes</CardTitle>
                 <CardDescription>
                   Different sizes for various use cases and layout requirements.
                 </CardDescription>
@@ -507,7 +606,7 @@ export default function AvatarPage() {
           <TabsContent value="variants" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Avatar Variants</CardTitle>
+                <CardTitle className="text-xl font-bold">Avatar Variants</CardTitle>
                 <CardDescription>
                   Different shapes and styles for various design contexts.
                 </CardDescription>
@@ -583,7 +682,7 @@ export default function AvatarPage() {
           <TabsContent value="states" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Avatar States</CardTitle>
+                <CardTitle className="text-xl font-bold">Avatar States</CardTitle>
                 <CardDescription>
                   Interactive states and status indicators for avatars.
                 </CardDescription>
@@ -675,7 +774,7 @@ export default function AvatarPage() {
           <TabsContent value="groups" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Avatar Groups</CardTitle>
+                <CardTitle className="text-xl font-bold">Avatar Groups</CardTitle>
                 <CardDescription>
                   Displaying multiple avatars together to represent teams or collections.
                 </CardDescription>
@@ -751,11 +850,11 @@ export default function AvatarPage() {
             </Card>
           </TabsContent>
 
-          {/* Accessibility */}
+          {/* Accessibility Tab: add implementation example before checklist */}
           <TabsContent value="accessibility" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Accessibility</CardTitle>
+                <CardTitle className="text-xl font-bold">Accessibility</CardTitle>
                 <CardDescription>
                   Ensuring avatars are accessible to all users, including those using assistive technologies.
                 </CardDescription>
@@ -766,7 +865,7 @@ export default function AvatarPage() {
                     <h4 className="font-semibold mb-3 text-lg">ARIA Guidelines</h4>
                     <ul className="space-y-2 text-sm">
                       <li>• <strong>Alt Text:</strong> Provide meaningful descriptions</li>
-                      <li>• <strong>Role:</strong> Use role=&quot;img&quot; for decorative avatars</li>
+                      <li>• <strong>Role:</strong> Use role="img" for decorative avatars</li>
                       <li>• <strong>Labels:</strong> Include aria-label for screen readers</li>
                       <li>• <strong>Focus:</strong> Ensure keyboard accessibility</li>
                     </ul>
@@ -793,12 +892,32 @@ export default function AvatarPage() {
                         <span className="font-medium text-green-800 dark:text-green-200">Good Example</span>
                       </div>
                       <div className="flex items-center gap-3 mb-2">
-                        <Avatar name="Sarah Connor" alt="Sarah Connor, Project Manager" />
+                        <Avatar
+                          name="Sarah Connor"
+                          alt="Sarah Connor, Project Manager"
+                          status="online"
+                          interactive
+                          aria-label="Sarah Connor, Project Manager, Online"
+                          onClick={() => alert('Avatar clicked!')}
+                          className="focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                        />
                         <span className="text-sm">Sarah Connor</span>
+                        <span className="ml-2 text-green-600 text-xs">● Online</span>
                       </div>
                       <p className="text-sm text-green-700 dark:text-green-300">
-                        Avatar with proper alt text and visible name context
+                        Avatar with proper alt text, ARIA label, visible name context, status indicator, and keyboard accessibility
                       </p>
+                      <pre className="bg-muted p-4 rounded text-xs overflow-x-auto mt-2"><code>{`<Avatar
+  name="Sarah Connor"
+  alt="Sarah Connor, Project Manager"
+  status="online"
+  interactive
+  aria-label="Sarah Connor, Project Manager, Online"
+  onClick={() => alert('Avatar clicked!')}
+  className="focus:ring-2 focus:ring-primary focus:ring-offset-2"
+/>
+<span className="ml-2">Sarah Connor</span>
+<span className="ml-2 text-green-600 text-xs">● Online</span>`}</code></pre>
                     </div>
 
                     <div className="p-4 bg-red-50 dark:bg-red-900/20 rounded-lg">
@@ -812,6 +931,7 @@ export default function AvatarPage() {
                       <p className="text-sm text-red-700 dark:text-red-300">
                         Avatar without context or meaningful alt text
                       </p>
+                      <pre className="bg-muted p-4 rounded text-xs overflow-x-auto mt-2"><code>{`<Avatar name="SC" />`}</code></pre>
                     </div>
                   </div>
 
