@@ -1,9 +1,10 @@
 "use client"
 
-import { Plus, Loader2, CheckCircle } from "lucide-react"
+import { Plus, Loader2, CheckCircle, AlertCircle, Settings, Users, Shield, Eye, Command, Menu as MenuIcon, Filter, Download, Upload, Search, X, Check, Star, Heart, Share, Trash2, Edit3, Copy, MoreHorizontal, Home, User, HelpCircle, Code2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Badge } from "@/components/ui/badge"
 import { ComponentReferences } from "@/components/component-references"
 import { EditButton } from "@/components/edit-button"
 import { useMobileWarning } from "@/hooks/use-mobile-warning"  
@@ -31,162 +32,95 @@ export default function ButtonsPage() {
       {MobileWarning} 
       <div className="container max-w-4xl mx-auto px-4 py-8">
 
-        {/* Introduction */}
-        <div className="mb-10">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
-            <h2 className="text-4xl font-bold text-foreground">Buttons</h2>
+        {/* Header */}
+        <div className="mb-6">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+            <div>
+              <h1 className="text-4xl font-bold text-foreground mb-2">Buttons</h1>
+              <p className="text-lg text-muted-foreground">
+                Foundational interactive elements that enable user actions and workflow navigation.
+              </p>
+            </div>
             <EditButton filePath="app/playground/buttons/page.tsx" />
           </div>
-          <p className="text-base md:text-lg text-muted-foreground mb-6">
-            Buttons are foundational interactive elements that enable users to trigger actions, submit data, and navigate through interfaces. 
-            Buttons serve as the primary mechanism for user interaction, providing clear affordances and predictable behavior across all platforms.
-          </p>
         </div>
 
-        <Tabs defaultValue="purpose" className="space-y-6">
+        <Tabs defaultValue="overview" className="space-y-8">
           <TabsList className="grid w-full grid-cols-6">
-            <TabsTrigger value="purpose">Purpose</TabsTrigger>
-            <TabsTrigger value="states">States</TabsTrigger>
-            <TabsTrigger value="shapes">Shapes</TabsTrigger>
-            <TabsTrigger value="layout">Layout & UX</TabsTrigger>
-            <TabsTrigger value="tokens">Design Tokens</TabsTrigger>
-            <TabsTrigger value="accessibility">Accessibility</TabsTrigger>
+            <TabsTrigger value="overview">Overview</TabsTrigger>
+            <TabsTrigger value="anatomy">Anatomy</TabsTrigger>
+            <TabsTrigger value="variants">Variants</TabsTrigger>
+            <TabsTrigger value="patterns">Patterns</TabsTrigger>
+            <TabsTrigger value="implementation">Code</TabsTrigger>
+            <TabsTrigger value="accessibility">A11y</TabsTrigger>
           </TabsList>
 
-          {/* Purpose of Buttons */}
-          <TabsContent value="purpose" className="space-y-8">
+          {/* Overview */}
+          <TabsContent value="overview" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Primary Purpose of Buttons</CardTitle>
+                <CardTitle className="text-xl font-bold">Purpose of Buttons</CardTitle>
                 <CardDescription>
-                  Understanding when and why to use buttons in your interface design.
+                  Understanding the core purpose and benefits of button components in user interfaces.
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-8">
-                {/* Core Purpose Section */}
-                <div>
-                  <h4 className="font-semibold mb-4 text-lg">Core Purpose of Buttons</h4>
-                  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <div className="p-4 border rounded-lg">
-                      <div className="mb-2">
-                        <Button size="sm">Save</Button>
-                      </div>
-                      <h5 className="font-medium mb-1">Trigger Actions</h5>
-                      <p className="text-xs text-muted-foreground">Submit forms, save data, create items</p>
-                    </div>
-                    <div className="p-4 border rounded-lg">
-                      <div className="mb-2">
-                        <Button size="sm" variant="outline">Open Modal</Button>
-                      </div>
-                      <h5 className="font-medium mb-1">Navigation Control</h5>
-                      <p className="text-xs text-muted-foreground">Open dialogs, modals, or panels</p>
-                    </div>
-                    <div className="p-4 border rounded-lg">
-                      <div className="mb-2">
-                        <Button size="sm" variant="outline">🔇 Toggle</Button>
-                      </div>
-                      <h5 className="font-medium mb-1">State Changes</h5>
-                      <p className="text-xs text-muted-foreground">Toggle features, switch modes</p>
-                    </div>
-                    <div className="p-4 border rounded-lg">
-                      <div className="mb-2">
-                        <Button size="sm" variant="secondary">Start</Button>
-                      </div>
-                      <h5 className="font-medium mb-1">Process Control</h5>
-                      <p className="text-xs text-muted-foreground">Start, stop, pause operations</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Button vs Link Section */}
-                <div>
-                  <h4 className="font-semibold mb-4 text-lg">Button vs Link: Semantic HTML Matters</h4>
-                  <div className="p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg mb-6">
-                    <h5 className="font-medium mb-2 text-amber-800 dark:text-amber-200">Why This Distinction Matters</h5>
-                    <p className="text-sm text-amber-700 dark:text-amber-300">
-                      Following Polaris and Atlassian guidelines, the HTML that renders carries semantic meaning. 
-                      Using the correct element ensures better accessibility for assistive technology users, 
-                      more cohesive visual experiences, and products that are easier to maintain at scale.
+              <CardContent className="space-y-6">
+                <div className="grid md:grid-cols-3 gap-4">
+                  <div className="p-4 border rounded-lg text-center">
+                    <h4 className="font-semibold mb-2">Trigger Actions</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Enable users to initiate functions, submit data, and perform operations with clear affordances.
                     </p>
                   </div>
                   
-                  <div className="grid lg:grid-cols-2 gap-6 mb-6">
-                    <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
-                      <div className="flex items-center gap-2 mb-3">
-                        <Button size="sm">Action</Button>
-                        <strong className="text-green-800 dark:text-green-200">Use Button When:</strong>
-                      </div>
-                      <ul className="text-sm text-green-700 dark:text-green-300 space-y-1">
-                        <li>• <strong>Performing actions:</strong> Save, Delete, Submit, Add</li>
-                        <li>• <strong>State changes:</strong> Toggle features, switch modes</li>
-                        <li>• <strong>Process control:</strong> Start, stop, pause operations</li>
-                        <li>• <strong>Opening overlays:</strong> Modals, dialogs, popovers</li>
-                        <li>• <strong>Form submission:</strong> Submit, reset, validate</li>
-                        <li>• <strong>API calls:</strong> Create, update, delete operations</li>
-                      </ul>
-                    </div>
-                    
-                    <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                      <div className="flex items-center gap-2 mb-3">
-                        <Button variant="link" size="sm">Link</Button>
-                        <strong className="text-blue-800 dark:text-blue-200">Use Link When:</strong>
-                      </div>
-                      <ul className="text-sm text-blue-700 dark:text-blue-300 space-y-1">
-                        <li>• <strong>Navigation:</strong> Between pages or sections</li>
-                        <li>• <strong>External resources:</strong> Opening new websites</li>
-                        <li>• <strong>Downloadable content:</strong> PDFs, documents, files</li>
-                        <li>• <strong>Anchor links:</strong> Jumping to page sections</li>
-                        <li>• <strong>Inline content:</strong> Within paragraphs or sentences</li>
-                        <li>• <strong>Reference links:</strong> Documentation, help articles</li>
-                      </ul>
-                    </div>
+                  <div className="p-4 border rounded-lg text-center">
+                    <h4 className="font-semibold mb-2">Navigate Workflows</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Guide users through processes, open dialogs, and control application state changes.
+                    </p>
                   </div>
-
-                  <div className="grid lg:grid-cols-2 gap-6">
-                    <div className="p-4 bg-red-50 dark:bg-red-900/20 rounded-lg">
-                      <h5 className="font-medium mb-2 text-red-800 dark:text-red-200">❌ Common Mistakes to Avoid</h5>
-                      <ul className="text-sm text-red-700 dark:text-red-300 space-y-1">
-                        <li>• Using buttons for navigation (breaks browser history)</li>
-                        <li>• Using links for form submission (requires JavaScript)</li>
-                        <li>• Styling links as buttons without proper roles</li>
-                        <li>• Using generic onClick handlers on div elements</li>
-                      </ul>
-                    </div>
-
-                    <div className="p-4 bg-gray-50 dark:bg-gray-900/20 rounded-lg">
-                      <h5 className="font-medium mb-2">Accessibility Impact</h5>
-                      <p className="text-sm text-muted-foreground">
-                        Screen readers announce buttons and links differently. Buttons are expected to perform actions, 
-                        links are expected to navigate. Users who rely on keyboard navigation have different expectations 
-                        for these elements (Space vs Enter keys, for example).
-                      </p>
-                    </div>
+                  
+                  <div className="p-4 border rounded-lg text-center">
+                    <h4 className="font-semibold mb-2">Provide Feedback</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Communicate system states, loading progress, and action outcomes to users.
+                    </p>
                   </div>
                 </div>
 
                 <div className="space-y-4">
-                  <h4 className="font-semibold text-lg">Button Types by Function</h4>
-                  <div className="grid gap-4">
-                    <div className="flex items-center gap-4 p-4 border rounded-lg">
-                      <Button>Submit Form</Button>
-                      <div>
-                        <strong>Command Button:</strong> Performs a single action
+                  <h4 className="text-lg font-semibold">Core Functions</h4>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="space-y-3">
+                      <div className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <strong className="text-sm">Form Submission:</strong>
+                          <p className="text-xs text-muted-foreground">Submit forms, save data, and validate user input</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <strong className="text-sm">State Management:</strong>
+                          <p className="text-xs text-muted-foreground">Toggle features, switch modes, and control application state</p>
+                        </div>
                       </div>
                     </div>
-                    <div className="flex items-center gap-4 p-4 border rounded-lg">
-                      <Button variant="outline" className="bg-blue-50">
-                        <span className="mr-2">🔇</span> Muted
-                      </Button>
-                      <div>
-                        <strong>Toggle Button:</strong> Switches between two states
+                    <div className="space-y-3">
+                      <div className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <strong className="text-sm">Navigation Control:</strong>
+                          <p className="text-xs text-muted-foreground">Open overlays, navigate between views, and control user flow</p>
+                        </div>
                       </div>
-                    </div>
-                    <div className="flex items-center gap-4 p-4 border rounded-lg">
-                      <Button variant="outline">
-                        Menu <span className="ml-2">▼</span>
-                      </Button>
-                      <div>
-                        <strong>Menu Button:</strong> Opens a menu of options
+                      <div className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <strong className="text-sm">Process Control:</strong>
+                          <p className="text-xs text-muted-foreground">Start, stop, pause operations and manage workflows</p>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -194,233 +128,481 @@ export default function ButtonsPage() {
               </CardContent>
             </Card>
 
-          </TabsContent>
-
-          {/* Button States */}
-          <TabsContent value="states" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Button States</CardTitle>
+                <CardTitle className="text-xl font-bold">When to Use Buttons</CardTitle>
                 <CardDescription>
-                  Common interactive states that buttons can have and how to implement them properly.
+                  Understanding the appropriate contexts for button components.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-4">
+                    <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
+                      <div className="flex items-center gap-2 mb-3">
+                        <CheckCircle className="h-5 w-5 text-green-600" />
+                        <strong className="text-green-800 dark:text-green-200">Use Buttons When:</strong>
+                      </div>
+                      <ul className="text-sm text-green-700 dark:text-green-300 space-y-1">
+                        <li>• Performing actions (Save, Delete, Submit)</li>
+                        <li>• State changes (Toggle features, switch modes)</li>
+                        <li>• Process control (Start, stop, pause operations)</li>
+                        <li>• Opening overlays (Modals, dialogs, popovers)</li>
+                        <li>• Form submission and validation</li>
+                        <li>• API calls and data operations</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="space-y-4">
+                    <div className="p-4 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800">
+                      <div className="flex items-center gap-2 mb-3">
+                        <X className="h-5 w-5 text-red-600" />
+                        <strong className="text-red-800 dark:text-red-200">Avoid Buttons When:</strong>
+                      </div>
+                      <ul className="text-sm text-red-700 dark:text-red-300 space-y-1">
+                        <li>• Navigation between pages or sections</li>
+                        <li>• Opening external websites or resources</li>
+                        <li>• Downloading content or files</li>
+                        <li>• Jumping to page sections or anchors</li>
+                        <li>• Inline content within text flows</li>
+                        <li>• Reference links to documentation</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <h4 className="text-lg font-semibold">Button vs Alternatives</h4>
+                  <div className="grid gap-4">
+                    <div className="flex items-start gap-4 p-4 border rounded-lg">
+                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2"></div>
+                      <div>
+                        <strong>Button vs Link:</strong>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          Use buttons for actions that change application state. Use links for navigation 
+                          and accessing external resources.
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start gap-4 p-4 border rounded-lg">
+                      <div className="w-2 h-2 bg-purple-600 rounded-full mt-2"></div>
+                      <div>
+                        <strong>Button vs Toggle/Switch:</strong>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          Use buttons for actions requiring confirmation. Use toggles for immediate 
+                          state changes and settings that take effect instantly.
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start gap-4 p-4 border rounded-lg">
+                      <div className="w-2 h-2 bg-green-600 rounded-full mt-2"></div>
+                      <div>
+                        <strong>Button vs Menu Item:</strong>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          Use buttons for primary actions visible on the interface. Use menu items 
+                          for secondary actions grouped within dropdowns or context menus.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <div className="grid lg:grid-cols-2 gap-8">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Badge variant="secondary">Primary</Badge>
+                    Main Actions
+                  </CardTitle>
+                  <CardDescription>
+                    Primary buttons for the most important actions users can take
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div className="space-y-4">
+                    <div className="space-y-3">
+                      <Button className="w-full">Save Changes</Button>
+                      <Button className="w-full">
+                        <Download className="mr-2 h-4 w-4" />
+                        Download File
+                      </Button>
+                      <Button className="w-full" disabled>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Processing...
+                      </Button>
+                    </div>
+                  </div>
+
+                  <div className="pt-4 border-t">
+                    <h4 className="font-medium mb-3">Best for:</h4>
+                    <ul className="text-sm text-muted-foreground space-y-1">
+                      <li>• Form submissions</li>
+                      <li>• Primary CTAs</li>
+                      <li>• Confirmation actions</li>
+                      <li>• Workflow progression</li>
+                    </ul>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Badge variant="outline">Secondary</Badge>
+                    Supporting Actions
+                  </CardTitle>
+                  <CardDescription>
+                    Secondary and tertiary buttons for supporting actions and alternatives
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div className="space-y-4">
+                    <div className="space-y-3">
+                      <Button variant="outline" className="w-full">Cancel</Button>
+                      <Button variant="secondary" className="w-full">
+                        <Settings className="mr-2 h-4 w-4" />
+                        Settings
+                      </Button>
+                      <Button variant="ghost" className="w-full">
+                        <HelpCircle className="mr-2 h-4 w-4" />
+                        Learn More
+                      </Button>
+                    </div>
+                  </div>
+
+                  <div className="pt-4 border-t">
+                    <h4 className="font-medium mb-3">Best for:</h4>
+                    <ul className="text-sm text-muted-foreground space-y-1">
+                      <li>• Cancel actions</li>
+                      <li>• Secondary options</li>
+                      <li>• Subtle interactions</li>
+                      <li>• Supporting workflows</li>
+                    </ul>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Button vs Alternatives Comparison</CardTitle>
+                <CardDescription>
+                  Understanding when to use buttons over other interactive components
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b">
+                        <th className="text-left p-3 font-medium">Component</th>
+                        <th className="text-left p-3 font-medium">Purpose</th>
+                        <th className="text-left p-3 font-medium">Interaction</th>
+                        <th className="text-left p-3 font-medium">Navigation</th>
+                        <th className="text-left p-3 font-medium">Use Case</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y">
+                      <tr>
+                        <td className="p-3">
+                          <Badge variant="default">Button</Badge>
+                        </td>
+                        <td className="p-3">Trigger actions</td>
+                        <td className="p-3">✅ State change</td>
+                        <td className="p-3">❌ No navigation</td>
+                        <td className="p-3">Submit forms, toggle features</td>
+                      </tr>
+                      <tr>
+                        <td className="p-3">
+                          <Badge variant="secondary">Link</Badge>
+                        </td>
+                        <td className="p-3">Navigate</td>
+                        <td className="p-3">❌ No state change</td>
+                        <td className="p-3">✅ Navigation</td>
+                        <td className="p-3">Page navigation, external links</td>
+                      </tr>
+                      <tr>
+                        <td className="p-3">
+                          <Badge variant="outline">Toggle</Badge>
+                        </td>
+                        <td className="p-3">Binary state</td>
+                        <td className="p-3">✅ Immediate change</td>
+                        <td className="p-3">❌ No navigation</td>
+                        <td className="p-3">Settings, feature switches</td>
+                      </tr>
+                      <tr>
+                        <td className="p-3">
+                          <Badge variant="outline">Menu Item</Badge>
+                        </td>
+                        <td className="p-3">Grouped actions</td>
+                        <td className="p-3">✅ Context specific</td>
+                        <td className="p-3">➡️ Optional</td>
+                        <td className="p-3">Dropdown actions, context menus</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Design Principles</CardTitle>
+                <CardDescription>
+                  Core principles for effective button design and user experience
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
+                        <Eye className="h-4 w-4 text-blue-600 dark:text-blue-400" />
+                      </div>
+                      <h4 className="font-semibold">Visual Hierarchy</h4>
+                    </div>
+                    <p className="text-sm text-muted-foreground">
+                      Establish clear action priority with consistent sizing, colors, and visual emphasis patterns.
+                    </p>
+                  </div>
+
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
+                        <Users className="h-4 w-4 text-green-600 dark:text-green-400" />
+                      </div>
+                      <h4 className="font-semibold">Predictable Behavior</h4>
+                    </div>
+                    <p className="text-sm text-muted-foreground">
+                      Ensure consistent interaction patterns and clear outcome expectations across the interface.
+                    </p>
+                  </div>
+
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center">
+                        <Shield className="h-4 w-4 text-purple-600 dark:text-purple-400" />
+                      </div>
+                      <h4 className="font-semibold">Accessible Design</h4>
+                    </div>
+                    <p className="text-sm text-muted-foreground">
+                      Implement proper focus management, keyboard support, and screen reader compatibility.
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          {/* Button Anatomy */}
+          <TabsContent value="anatomy" className="space-y-8">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-xl font-bold">Button Anatomy & Structure</CardTitle>
+                <CardDescription>
+                  Understanding the building blocks and visual design elements of effective buttons.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <h4 className="font-semibold mb-3 text-lg">Interactive States</h4>
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-3 p-3 border rounded-lg">
-                        <Button>Normal</Button>
-                        <span className="text-sm">Default state</span>
-                      </div>
-                      <div className="flex items-center gap-3 p-3 border rounded-lg">
-                        <Button className="hover:bg-primary/90">Hover</Button>
-                        <span className="text-sm">Mouse over state</span>
-                      </div>
-                      <div className="flex items-center gap-3 p-3 border rounded-lg">
-                        <Button className="ring-2 ring-offset-2 ring-primary">Focus</Button>
-                        <span className="text-sm">Keyboard focus</span>
-                      </div>
-                      <div className="flex items-center gap-3 p-3 border rounded-lg">
-                        <Button className="active:scale-95">Active</Button>
-                        <span className="text-sm">Being pressed</span>
-                      </div>
-                    </div>
+                    <h4 className="font-semibold mb-3 text-lg">Essential Elements</h4>
+                    <ul className="space-y-2 text-sm">
+                      <li>• <strong>Container:</strong> Defines button boundaries and click area</li>
+                      <li>• <strong>Label:</strong> Clear, descriptive text indicating action</li>
+                      <li>• <strong>Icon:</strong> Optional visual reinforcement of action</li>
+                      <li>• <strong>State Indicators:</strong> Visual feedback for interaction</li>
+                      <li>• <strong>Focus Ring:</strong> Keyboard navigation indicator</li>
+                      <li>• <strong>Loading State:</strong> Progress feedback for async actions</li>
+                    </ul>
                   </div>
 
                   <div>
-                    <h4 className="font-semibold mb-3 text-lg">Functional States</h4>
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-3 p-3 border rounded-lg">
-                        <Button disabled>
-                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                          Loading
-                        </Button>
-                        <span className="text-sm">Processing action</span>
-                      </div>
-                      <div className="flex items-center gap-3 p-3 border rounded-lg">
-                        <Button disabled>Disabled</Button>
-                        <span className="text-sm">Action unavailable</span>
-                      </div>
-                      <div className="flex items-center gap-3 p-3 border rounded-lg">
-                        <Button variant="outline" className="bg-green-50 border-green-500">
-                          <CheckCircle className="mr-2 h-4 w-4" />
-                          Success
-                        </Button>
-                        <span className="text-sm">Action completed</span>
-                      </div>
-                    </div>
+                    <h4 className="font-semibold mb-3 text-lg">Design Principles</h4>
+                    <ul className="space-y-2 text-sm">
+                      <li>• <strong>Touch Friendly:</strong> Minimum 44px touch target</li>
+                      <li>• <strong>Clear Affordance:</strong> Obviously interactive appearance</li>
+                      <li>• <strong>Consistent Spacing:</strong> Uniform padding and margins</li>
+                      <li>• <strong>Semantic Color:</strong> Meaningful color associations</li>
+                      <li>• <strong>Readable Text:</strong> High contrast and legible typography</li>
+                    </ul>
                   </div>
                 </div>
 
                 <div className="space-y-4">
-                  <h4 className="font-semibold text-lg">Loading States & UX Patterns</h4>
-                  <div className="p-4 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg mb-4">
-                    <h5 className="font-medium mb-2 text-indigo-800 dark:text-indigo-200">Polaris & Gestalt Loading Principles</h5>
-                    <p className="text-sm text-indigo-700 dark:text-indigo-300">
-                      Following Shopify Polaris and Pinterest Gestalt guidelines, loading states should clearly communicate 
-                      progress, maintain user confidence, and provide appropriate feedback during asynchronous operations.
-                    </p>
-                  </div>
-
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <h5 className="font-medium mb-3">Loading Button Patterns</h5>
+                  <h4 className="font-semibold text-lg">Button Structure Examples</h4>
+                  
+                  {/* Basic Button Structure */}
+                  <div className="p-4 border rounded-lg">
+                    <h5 className="font-medium mb-3">Basic Button Elements</h5>
+                    <div className="grid md:grid-cols-2 gap-6">
                       <div className="space-y-4">
-                        <div className="p-3 border rounded-lg">
-                          <div className="flex items-center gap-3 mb-2">
-                            <Button disabled>
-                              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                              Saving...
-                            </Button>
+                        <div className="p-4 border-2 border-dashed rounded-lg">
+                          <Button className="mb-2">Save Document</Button>
+                          <div className="text-xs text-muted-foreground space-y-1">
+                            <div className="flex items-center gap-2">
+                              <div className="w-2 h-2 bg-blue-600 rounded"></div>
+                              <span>Container with background</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <div className="w-2 h-2 bg-green-600 rounded"></div>
+                              <span>Text label with action verb</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <div className="w-2 h-2 bg-purple-600 rounded"></div>
+                              <span>Consistent padding and spacing</span>
+                            </div>
                           </div>
-                          <p className="text-xs text-muted-foreground"><strong>Inline Loading:</strong> Shows progress with spinner and descriptive text</p>
                         </div>
 
-                        <div className="p-3 border rounded-lg">
-                          <div className="flex items-center gap-3 mb-2">
-                            <Button disabled className="min-w-[120px]">
-                              <Loader2 className="h-4 w-4 animate-spin" />
-                            </Button>
+                        <div className="p-4 border-2 border-dashed rounded-lg">
+                          <Button className="mb-2">
+                            <Download className="mr-2 h-4 w-4" />
+                            Download Report
+                          </Button>
+                          <div className="text-xs text-muted-foreground space-y-1">
+                            <div className="flex items-center gap-2">
+                              <div className="w-2 h-2 bg-blue-600 rounded"></div>
+                              <span>Icon for visual reinforcement</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <div className="w-2 h-2 bg-green-600 rounded"></div>
+                              <span>Descriptive label with context</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <div className="w-2 h-2 bg-purple-600 rounded"></div>
+                              <span>Proper icon-text spacing</span>
+                            </div>
                           </div>
-                          <p className="text-xs text-muted-foreground"><strong>Icon Only Loading:</strong> Maintains button size, focuses on progress indicator</p>
-                        </div>
-
-                        <div className="p-3 border rounded-lg">
-                          <div className="flex items-center gap-3 mb-2">
-                            <Button disabled className="opacity-50">
-                              Processing...
-                            </Button>
-                          </div>
-                          <p className="text-xs text-muted-foreground"><strong>Text Only:</strong> Simple text change for quick operations</p>
-                        </div>
-
-                        <div className="p-3 border rounded-lg">
-                          <div className="flex items-center gap-3 mb-2">
-                            <Button disabled className="bg-green-600 hover:bg-green-600">
-                              <CheckCircle className="mr-2 h-4 w-4" />
-                              Saved!
-                            </Button>
-                          </div>
-                          <p className="text-xs text-muted-foreground"><strong>Success State:</strong> Confirms completion with positive feedback</p>
                         </div>
                       </div>
-                    </div>
 
-                    <div>
-                      <h5 className="font-medium mb-3">UX Guidelines</h5>
                       <div className="space-y-4">
-                        <div className="p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
-                          <h6 className="font-medium text-green-800 dark:text-green-200 mb-2">✅ Loading State Best Practices</h6>
-                          <ul className="text-sm text-green-700 dark:text-green-300 space-y-1">
-                            <li>• Keep buttons disabled during loading to prevent double-submission</li>
-                            <li>• Maintain button size to prevent layout shift</li>
-                            <li>• Use descriptive loading text ("Saving..." not "Loading...")</li>
-                            <li>• Show success feedback briefly before reverting</li>
-                            <li>• Provide immediate feedback (≤100ms perceived delay)</li>
-                            <li>• Use skeleton screens for longer operations (&gt;1 second)</li>
-                          </ul>
+                        <div className="p-4 border-2 border-dashed rounded-lg">
+                          <Button disabled className="mb-2">
+                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                            Processing...
+                          </Button>
+                          <div className="text-xs text-muted-foreground space-y-1">
+                            <div className="flex items-center gap-2">
+                              <div className="w-2 h-2 bg-amber-600 rounded"></div>
+                              <span>Loading state indicator</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <div className="w-2 h-2 bg-red-600 rounded"></div>
+                              <span>Disabled interaction state</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <div className="w-2 h-2 bg-blue-600 rounded"></div>
+                              <span>Progressive status text</span>
+                            </div>
+                          </div>
                         </div>
 
-                        <div className="p-3 bg-amber-50 dark:bg-amber-900/20 rounded-lg">
-                          <h6 className="font-medium text-amber-800 dark:text-amber-200 mb-2">⚠️ Timing Considerations</h6>
-                          <ul className="text-sm text-amber-700 dark:text-amber-300 space-y-1">
-                            <li>• <strong>Instant (0-100ms):</strong> No loading state needed</li>
-                            <li>• <strong>Quick (100ms-1s):</strong> Spinner or text change</li>
-                            <li>• <strong>Medium (1-10s):</strong> Progress indicators if possible</li>
-                            <li>• <strong>Long (10s+):</strong> Progress bars, cancel options</li>
-                          </ul>
-                        </div>
-
-                        <div className="p-3 bg-red-50 dark:bg-red-900/20 rounded-lg">
-                          <h6 className="font-medium text-red-800 dark:text-red-200 mb-2">❌ Common Mistakes</h6>
-                          <ul className="text-sm text-red-700 dark:text-red-300 space-y-1">
-                            <li>• Not disabling buttons during async operations</li>
-                            <li>• Using generic "Loading..." text</li>
-                            <li>• Layout shifts when content changes</li>
-                            <li>• No feedback for very quick operations</li>
-                            <li>• Loading states that persist too long</li>
-                          </ul>
+                        <div className="p-4 border-2 border-dashed rounded-lg">
+                          <Button variant="outline" className="mb-2 ring-2 ring-offset-2 ring-primary">
+                            Focused Button
+                          </Button>
+                          <div className="text-xs text-muted-foreground space-y-1">
+                            <div className="flex items-center gap-2">
+                              <div className="w-2 h-2 bg-blue-600 rounded"></div>
+                              <span>Visible focus indicator</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <div className="w-2 h-2 bg-green-600 rounded"></div>
+                              <span>High contrast focus ring</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <div className="w-2 h-2 bg-purple-600 rounded"></div>
+                              <span>Keyboard accessibility</span>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                    <h5 className="font-medium mb-2 text-blue-800 dark:text-blue-200">Implementation Example</h5>
-                    <div className="bg-gray-900 text-gray-100 p-3 rounded text-sm overflow-x-auto">
-                      <pre>{`// Loading state management
-const [isLoading, setIsLoading] = useState(false)
-const [isSuccess, setIsSuccess] = useState(false)
-
-const handleSave = async () => {
-  setIsLoading(true)
-  try {
-    await saveData()
-    setIsSuccess(true)
-    setTimeout(() => setIsSuccess(false), 2000) // Reset after 2s
-  } catch (error) {
-    // Handle error state
-  } finally {
-    setIsLoading(false)
-  }
-}
-
-// Button render
-<Button 
-  onClick={handleSave} 
-  disabled={isLoading || isSuccess}
-  className={isSuccess ? "bg-green-600" : ""}
->
-  {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-  {isSuccess && <CheckCircle className="mr-2 h-4 w-4" />}
-  {isLoading ? "Saving..." : isSuccess ? "Saved!" : "Save Changes"}
-</Button>`}</pre>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  <h4 className="font-semibold text-lg">Toggle States</h4>
-                  <div className="grid gap-4">
-                    <div className="p-4 border rounded-lg">
-                      <div className="flex items-center gap-4 mb-3">
-                        <Button variant="outline" className="bg-red-50 border-red-500">
-                          🔇 Muted
-                        </Button>
-                        <Button variant="outline">
-                          🔊 Unmuted
-                        </Button>
+                  {/* Interactive State Anatomy */}
+                  <div className="p-4 border rounded-lg">
+                    <h5 className="font-medium mb-3">Interactive State Anatomy</h5>
+                    <div className="grid md:grid-cols-4 gap-4">
+                      <div className="text-center space-y-2">
+                        <Button>Default</Button>
+                        <div className="text-xs text-muted-foreground">
+                          <div>Base state</div>
+                          <div>Ready for interaction</div>
+                        </div>
                       </div>
-                      <p className="text-sm text-muted-foreground">
-                        <strong>aria-pressed=&quot;true&quot;</strong> for pressed state, <strong>&quot;false&quot;</strong> for unpressed
-                      </p>
+                      <div className="text-center space-y-2">
+                        <Button className="hover:scale-105 transition-transform">Hover</Button>
+                        <div className="text-xs text-muted-foreground">
+                          <div>Feedback on pointer</div>
+                          <div>Invites interaction</div>
+                        </div>
+                      </div>
+                      <div className="text-center space-y-2">
+                        <Button className="ring-2 ring-offset-2 ring-primary">Focus</Button>
+                        <div className="text-xs text-muted-foreground">
+                          <div>Keyboard navigation</div>
+                          <div>Clear focus indicator</div>
+                        </div>
+                      </div>
+                      <div className="text-center space-y-2">
+                        <Button className="active:scale-95 transition-transform">Active</Button>
+                        <div className="text-xs text-muted-foreground">
+                          <div>Being pressed</div>
+                          <div>Immediate feedback</div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* State Implementation Guidelines */}
-                <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
-                  <h4 className="font-semibold mb-2 text-blue-800 dark:text-blue-200">Implementation Guidelines</h4>
-                  <ul className="text-sm text-blue-700 dark:text-blue-300 space-y-1">
-                    <li>• Always provide visual feedback for all interactive states</li>
-                    <li>• Use <code>aria-disabled=&quot;true&quot;</code> instead of <code>disabled</code> when context is needed</li>
-                    <li>• Announce state changes to screen readers using aria-live regions</li>
-                    <li>• Maintain sufficient color contrast (4.5:1) in all states</li>
-                    <li>• Ensure focus indicators are visible and have 3:1 contrast ratio</li>
-                  </ul>
+                  {/* Sizing and Spacing */}
+                  <div className="p-4 border rounded-lg">
+                    <h5 className="font-medium mb-3">Sizing & Spacing Guidelines</h5>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div>
+                        <h6 className="font-medium mb-2">Touch Target Requirements</h6>
+                        <ul className="text-sm space-y-1">
+                          <li>• <strong>Minimum Size:</strong> 44×44px for touch interfaces</li>
+                          <li>• <strong>Desktop Minimum:</strong> 32×32px for mouse interfaces</li>
+                          <li>• <strong>Icon Buttons:</strong> Square dimensions for consistency</li>
+                          <li>• <strong>Text Buttons:</strong> Auto width with min-width constraints</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h6 className="font-medium mb-2">Spacing Standards</h6>
+                        <ul className="text-sm space-y-1">
+                          <li>• <strong>Internal Padding:</strong> 8-16px vertical, 12-24px horizontal</li>
+                          <li>• <strong>Button Groups:</strong> 8-12px spacing between buttons</li>
+                          <li>• <strong>Icon Spacing:</strong> 8px between icon and text</li>
+                          <li>• <strong>Form Spacing:</strong> 16-24px from form fields</li>
+                        </ul>
+                      </div>
+                    </div>
+                    
+                    <div className="mt-4 flex items-center gap-3 flex-wrap">
+                      <Button size="sm">Small (32px)</Button>
+                      <Button>Medium (40px)</Button>
+                      <Button size="lg">Large (48px)</Button>
+                      <span className="text-sm text-muted-foreground">Standard sizing options</span>
+                    </div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
-
           </TabsContent>
 
-          {/* Button Shapes */}
-          <TabsContent value="shapes" className="space-y-8">
+          {/* Button Variants */}
+          <TabsContent value="variants" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Button Shapes & Variants</CardTitle>
+                <CardTitle>Button Variants</CardTitle>
                 <CardDescription>
                   Common button shapes, sizes, and visual styles for different use cases.
                 </CardDescription>
@@ -537,449 +719,218 @@ const handleSave = async () => {
             </Card>
           </TabsContent>
 
-          {/* Layout & UX Guidelines */}
-          <TabsContent value="layout" className="space-y-8">
+          {/* Button Patterns */}
+          <TabsContent value="patterns" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Layout & UX Guidelines</CardTitle>
+                <CardTitle>Button Patterns</CardTitle>
                 <CardDescription>
-                  Best practices for button positioning, spacing, and responsive behavior.
+                  Common patterns and best practices for button usage across different contexts.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="space-y-6">
                   <div>
-                    <h4 className="font-semibold mb-3 text-lg">Button Placement Do&apos;s and Don&apos;ts</h4>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div className="space-y-4">
-                        <div className="p-4 border-2 border-green-500 rounded-lg bg-green-50 dark:bg-green-900/20">
-                          <h5 className="font-medium text-green-800 dark:text-green-200 mb-2">✅ Do</h5>
-                          <ul className="text-sm text-green-700 dark:text-green-300 space-y-1">
-                            <li>• Place primary actions on the right in dialogs</li>
-                            <li>• Group related buttons together</li>
-                            <li>• Use consistent positioning across your app</li>
-                            <li>• Put destructive actions away from safe actions</li>
-                            <li>• Maintain 44px minimum touch targets</li>
-                          </ul>
-                        </div>
-                        
-                        <div className="p-3 border rounded-lg">
-                          <p className="text-sm mb-2 font-medium">Good Example:</p>
-                          <div className="flex justify-end gap-2">
-                            <Button variant="outline">Cancel</Button>
-                            <Button>Save Changes</Button>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="space-y-4">
-                        <div className="p-4 border-2 border-red-500 rounded-lg bg-red-50 dark:bg-red-900/20">
-                          <h5 className="font-medium text-red-800 dark:text-red-200 mb-2">❌ Don&apos;t</h5>
-                          <ul className="text-sm text-red-700 dark:text-red-300 space-y-1">
-                            <li>• Place multiple primary buttons in same area</li>
-                            <li>• Use inconsistent spacing between buttons</li>
-                            <li>• Make buttons too small for touch interfaces</li>
-                            <li>• Put delete next to save buttons</li>
-                            <li>• Use more than 3-4 actions in a group</li>
-                          </ul>
-                        </div>
-
-                        <div className="p-3 border rounded-lg">
-                          <p className="text-sm mb-2 font-medium">Avoid:</p>
-                          <div className="flex justify-start gap-1">
-                            <Button size="sm">Save</Button>
-                            <Button size="sm">Delete</Button>
-                            <Button size="sm">Edit</Button>
-                            <Button size="sm">Copy</Button>
-                            <Button size="sm">Cancel</Button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h4 className="font-semibold mb-3 text-lg">Content & Writing Guidelines</h4>
+                    <h4 className="font-semibold mb-3 text-lg">Loading States & UX Patterns</h4>
                     <div className="p-4 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg mb-4">
-                      <h5 className="font-medium mb-2 text-indigo-800 dark:text-indigo-200">Polaris Writing Principles</h5>
+                      <h5 className="font-medium mb-2 text-indigo-800 dark:text-indigo-200">Polaris & Gestalt Loading Principles</h5>
                       <p className="text-sm text-indigo-700 dark:text-indigo-300">
-                        Following Shopify Polaris guidelines, button text should be clear, predictable, and help users 
-                        understand exactly what will happen when they interact with the button.
+                        Following Shopify Polaris and Pinterest Gestalt guidelines, loading states should clearly communicate 
+                        progress, maintain user confidence, and provide appropriate feedback during asynchronous operations.
                       </p>
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-6 mb-6">
+                    <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <h5 className="font-medium mb-3 text-green-800 dark:text-green-200">✅ Good Button Text</h5>
-                        <div className="space-y-3">
-                          <div className="flex items-center gap-3">
-                            <Button>Save Changes</Button>
-                            <span className="text-sm">Action + object (when context needed)</span>
+                        <h5 className="font-medium mb-3">Loading Button Patterns</h5>
+                        <div className="space-y-4">
+                          <div className="p-3 border rounded-lg">
+                            <div className="flex items-center gap-3 mb-2">
+                              <Button disabled>
+                                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                Saving...
+                              </Button>
+                            </div>
+                            <p className="text-xs text-muted-foreground"><strong>Inline Loading:</strong> Shows progress with spinner and descriptive text</p>
                           </div>
-                          <div className="flex items-center gap-3">
-                            <Button>Add Product</Button>
-                            <span className="text-sm">Verb + specific noun</span>
+
+                          <div className="p-3 border rounded-lg">
+                            <div className="flex items-center gap-3 mb-2">
+                              <Button disabled className="min-w-[120px]">
+                                <Loader2 className="h-4 w-4 animate-spin" />
+                              </Button>
+                            </div>
+                            <p className="text-xs text-muted-foreground"><strong>Icon Only Loading:</strong> Maintains button size, focuses on progress indicator</p>
                           </div>
-                          <div className="flex items-center gap-3">
-                            <Button>Continue to Checkout</Button>
-                            <span className="text-sm">Clear next step</span>
+
+                          <div className="p-3 border rounded-lg">
+                            <div className="flex items-center gap-3 mb-2">
+                              <Button disabled className="opacity-50">
+                                Processing...
+                              </Button>
+                            </div>
+                            <p className="text-xs text-muted-foreground"><strong>Text Only:</strong> Simple text change for quick operations</p>
                           </div>
-                          <div className="flex items-center gap-3">
-                            <Button variant="destructive">Delete Account</Button>
-                            <span className="text-sm">Specific destructive action</span>
-                          </div>
-                          <div className="flex items-center gap-3">
-                            <Button variant="outline">Edit</Button>
-                            <span className="text-sm">Simple verb when context is clear</span>
+
+                          <div className="p-3 border rounded-lg">
+                            <div className="flex items-center gap-3 mb-2">
+                              <Button disabled className="bg-green-600 hover:bg-green-600">
+                                <CheckCircle className="mr-2 h-4 w-4" />
+                                Saved!
+                              </Button>
+                            </div>
+                            <p className="text-xs text-muted-foreground"><strong>Success State:</strong> Confirms completion with positive feedback</p>
                           </div>
                         </div>
                       </div>
 
                       <div>
-                        <h5 className="font-medium mb-3 text-red-800 dark:text-red-200">❌ Avoid These Patterns</h5>
-                        <div className="space-y-3">
-                          <div className="flex items-center gap-3">
-                            <Button variant="outline">Click Here</Button>
-                            <span className="text-sm">Too generic, no outcome</span>
+                        <h5 className="font-medium mb-3">UX Guidelines</h5>
+                        <div className="space-y-4">
+                          <div className="p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                            <h6 className="font-medium text-green-800 dark:text-green-200 mb-2">✅ Loading State Best Practices</h6>
+                            <ul className="text-sm text-green-700 dark:text-green-300 space-y-1">
+                              <li>• Keep buttons disabled during loading to prevent double-submission</li>
+                              <li>• Maintain button size to prevent layout shift</li>
+                              <li>• Use descriptive loading text ("Saving..." not "Loading...")</li>
+                              <li>• Show success feedback briefly before reverting</li>
+                              <li>• Provide immediate feedback (≤100ms perceived delay)</li>
+                              <li>• Use skeleton screens for longer operations (&gt;1 second)</li>
+                            </ul>
                           </div>
-                          <div className="flex items-center gap-3">
-                            <Button variant="outline">Submit</Button>
-                            <span className="text-sm">What are you submitting?</span>
+
+                          <div className="p-3 bg-amber-50 dark:bg-amber-900/20 rounded-lg">
+                            <h6 className="font-medium text-amber-800 dark:text-amber-200 mb-2">⚠️ Timing Considerations</h6>
+                            <ul className="text-sm text-amber-700 dark:text-amber-300 space-y-1">
+                              <li>• <strong>Instant (0-100ms):</strong> No loading state needed</li>
+                              <li>• <strong>Quick (100ms-1s):</strong> Spinner or text change</li>
+                              <li>• <strong>Medium (1-10s):</strong> Progress indicators if possible</li>
+                              <li>• <strong>Long (10s+):</strong> Progress bars, cancel options</li>
+                            </ul>
                           </div>
-                          <div className="flex items-center gap-3">
-                            <Button variant="outline">OK</Button>
-                            <span className="text-sm">Doesn't describe action</span>
-                          </div>
-                          <div className="flex items-center gap-3">
-                            <Button variant="outline">Learn More</Button>
-                            <span className="text-sm">Learn more about what?</span>
-                          </div>
-                          <div className="flex items-center gap-3">
-                            <Button variant="outline">Get Started</Button>
-                            <span className="text-sm">Start what process?</span>
+
+                          <div className="p-3 bg-red-50 dark:bg-red-900/20 rounded-lg">
+                            <h6 className="font-medium text-red-800 dark:text-red-200 mb-2">❌ Common Mistakes</h6>
+                            <ul className="text-sm text-red-700 dark:text-red-300 space-y-1">
+                              <li>• Not disabling buttons during async operations</li>
+                              <li>• Using generic "Loading..." text</li>
+                              <li>• Layout shifts when content changes</li>
+                              <li>• No feedback for very quick operations</li>
+                              <li>• Loading states that persist too long</li>
+                            </ul>
                           </div>
                         </div>
                       </div>
                     </div>
 
-                    <div className="space-y-4">
-                      <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                        <h5 className="font-medium mb-2 text-blue-800 dark:text-blue-200">Writing Best Practices</h5>
-                        <div className="grid md:grid-cols-2 gap-4 text-sm text-blue-700 dark:text-blue-300">
-                          <div>
-                            <strong>Content Structure:</strong>
-                            <ul className="mt-1 space-y-1">
-                              <li>• Use strong action verbs (Save, Delete, Create)</li>
-                              <li>• Include object when needed (Add Product vs Add)</li>
-                              <li>• Be specific about outcomes</li>
-                              <li>• Match user's mental model</li>
-                            </ul>
-                          </div>
-                          <div>
-                            <strong>Formatting:</strong>
-                            <ul className="mt-1 space-y-1">
-                              <li>• Use sentence case (not Title Case or ALL CAPS)</li>
-                              <li>• Keep to 1-3 words when possible</li>
-                              <li>• No periods or punctuation</li>
-                              <li>• Avoid articles (a, an, the)</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
+                    <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                      <h5 className="font-medium mb-2 text-blue-800 dark:text-blue-200">Implementation Example</h5>
+                      <div className="bg-gray-900 text-gray-100 p-3 rounded text-sm overflow-x-auto">
+                        <pre>{`// Loading state management
+const [isLoading, setIsLoading] = useState(false)
+const [isSuccess, setIsSuccess] = useState(false)
 
-                      <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
-                        <h5 className="font-medium mb-2 text-green-800 dark:text-green-200">Context-Specific Guidelines</h5>
-                        <div className="grid md:grid-cols-2 gap-4 text-sm text-green-700 dark:text-green-300">
-                          <div>
-                            <strong>Forms:</strong>
-                            <ul className="mt-1 space-y-1">
-                              <li>• "Save Settings" (not "Submit")</li>
-                              <li>• "Create Account" (not "Register")</li>
-                              <li>• "Update Profile" (not "Save")</li>
-                            </ul>
-                          </div>
-                          <div>
-                            <strong>Commerce:</strong>
-                            <ul className="mt-1 space-y-1">
-                              <li>• "Add to Cart" (not "Buy Now" unless instant)</li>
-                              <li>• "Complete Purchase" (final step)</li>
-                              <li>• "Continue Shopping" (not "Continue")</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
+const handleSave = async () => {
+  setIsLoading(true)
+  try {
+    await saveData()
+    setIsSuccess(true)
+    setTimeout(() => setIsSuccess(false), 2000) // Reset after 2s
+  } catch (error) {
+    // Handle error state
+  } finally {
+    setIsLoading(false)
+  }
+}
 
-                      <div className="p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg">
-                        <h5 className="font-medium mb-2 text-amber-800 dark:text-amber-200">Voice & Tone</h5>
-                        <p className="text-sm text-amber-700 dark:text-amber-300 mb-2">
-                          Following industry content guidelines, button text should match your product's voice while remaining clear and actionable.
-                        </p>
-                        <div className="text-sm text-amber-700 dark:text-amber-300">
-                          <strong>Examples by tone:</strong>
-                          <ul className="mt-1 space-y-1">
-                            <li>• <strong>Professional:</strong> "Submit Application", "Review Details"</li>
-                            <li>• <strong>Friendly:</strong> "Let's Get Started", "Join the Team"</li>
-                            <li>• <strong>Direct:</strong> "Delete", "Cancel", "Save"</li>
-                          </ul>
-                        </div>
+// Button render
+<Button 
+  onClick={handleSave} 
+  disabled={isLoading || isSuccess}
+  className={isSuccess ? "bg-green-600" : ""}
+>
+  {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+  {isSuccess && <CheckCircle className="mr-2 h-4 w-4" />}
+  {isLoading ? "Saving..." : isSuccess ? "Saved!" : "Save Changes"}
+</Button>`}</pre>
                       </div>
                     </div>
                   </div>
 
-                  <div>
-                    <h4 className="font-semibold mb-3 text-lg">Responsive Considerations</h4>
-                    <div className="space-y-4">
+                  <div className="space-y-4">
+                    <h4 className="font-semibold text-lg">Toggle States</h4>
+                    <div className="grid gap-4">
                       <div className="p-4 border rounded-lg">
-                        <h5 className="font-medium mb-2">Mobile Layout</h5>
-                        <div className="space-y-2">
-                          <Button className="w-full">Full Width Button</Button>
-                          <div className="flex gap-2">
-                            <Button className="flex-1" variant="outline">Cancel</Button>
-                            <Button className="flex-1">Continue</Button>
-                          </div>
+                        <div className="flex items-center gap-4 mb-3">
+                          <Button variant="outline" className="bg-red-50 border-red-500">
+                            🔇 Muted
+                          </Button>
+                          <Button variant="outline">
+                            🔊 Unmuted
+                          </Button>
                         </div>
-                        <p className="text-sm text-muted-foreground mt-2">
-                          Stack buttons vertically on small screens or use equal-width buttons
-                        </p>
-                      </div>
-
-                      <div className="p-4 border rounded-lg">
-                        <h5 className="font-medium mb-2">Desktop Layout</h5>
-                        <div className="flex justify-between items-center">
-                          <Button variant="destructive">Delete Account</Button>
-                          <div className="flex gap-2">
-                            <Button variant="outline">Cancel</Button>
-                            <Button>Save Settings</Button>
-                          </div>
-                        </div>
-                        <p className="text-sm text-muted-foreground mt-2">
-                          Separate destructive actions from primary flows
+                        <p className="text-sm text-muted-foreground">
+                          <strong>aria-pressed=&quot;true&quot;</strong> for pressed state, <strong>&quot;false&quot;</strong> for unpressed
                         </p>
                       </div>
                     </div>
+                  </div>
+
+                  {/* State Implementation Guidelines */}
+                  <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+                    <h4 className="font-semibold mb-2 text-blue-800 dark:text-blue-200">Implementation Guidelines</h4>
+                    <ul className="text-sm text-blue-700 dark:text-blue-300 space-y-1">
+                      <li>• Always provide visual feedback for all interactive states</li>
+                      <li>• Use <code>aria-disabled=&quot;true&quot;</code> instead of <code>disabled</code> when context is needed</li>
+                      <li>• Announce state changes to screen readers using aria-live regions</li>
+                      <li>• Maintain sufficient color contrast (4.5:1) in all states</li>
+                      <li>• Ensure focus indicators are visible and have 3:1 contrast ratio</li>
+                    </ul>
                   </div>
                 </div>
               </CardContent>
             </Card>
           </TabsContent>
 
-          {/* Design Tokens & Theming */}
-          <TabsContent value="tokens" className="space-y-8">
+          {/* Implementation */}
+          <TabsContent value="implementation" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Design Tokens & Theming</CardTitle>
+                <CardTitle>Button Implementation</CardTitle>
                 <CardDescription>
-                  Design token approach inspired by Visa Product Design System and Base (Uber) for scalable, 
-                  consistent button styling across products and platforms.
+                  Essential attributes and patterns for button HTML and CSS.
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="space-y-6">
-                  <div className="p-4 bg-violet-50 dark:bg-violet-900/20 rounded-lg">
-                    <h4 className="font-semibold mb-2 text-violet-800 dark:text-violet-200">What Are Design Tokens?</h4>
-                    <p className="text-sm text-violet-700 dark:text-violet-300">
-                      Design tokens are the fundamental building blocks of a design system. They store design decisions 
-                      like colors, typography, and spacing in a centralized, reusable format that can be shared between 
-                      design and development tools.
-                    </p>
-                  </div>
+              <CardContent className="space-y-4">
+                <div className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
+                  <pre className="text-sm">
+                    {`<!-- Basic button with semantic HTML -->
+<button type="button">
+  Save Changes
+</button>
 
-                  <div>
-                    <h4 className="font-semibold mb-3 text-lg">Core Button Tokens</h4>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h5 className="font-medium mb-3">Color Tokens</h5>
-                        <div className="space-y-3 text-sm">
-                          <div className="flex items-center gap-3 p-2 bg-gray-50 dark:bg-gray-800 rounded">
-                            <div className="w-4 h-4 bg-blue-600 rounded"></div>
-                            <code>--button-primary-bg</code>
-                            <span className="text-muted-foreground">#3b82f6</span>
-                          </div>
-                          <div className="flex items-center gap-3 p-2 bg-gray-50 dark:bg-gray-800 rounded">
-                            <div className="w-4 h-4 bg-blue-700 rounded"></div>
-                            <code>--button-primary-bg-hover</code>
-                            <span className="text-muted-foreground">#1d4ed8</span>
-                          </div>
-                          <div className="flex items-center gap-3 p-2 bg-gray-50 dark:bg-gray-800 rounded">
-                            <div className="w-4 h-4 bg-white border rounded"></div>
-                            <code>--button-primary-text</code>
-                            <span className="text-muted-foreground">#ffffff</span>
-                          </div>
-                        </div>
-                      </div>
+<!-- Icon-only button with accessible name -->
+<button type="button" aria-label="Close dialog">
+  <svg>...</svg>
+</button>
 
-                      <div>
-                        <h5 className="font-medium mb-3">Spacing & Size Tokens</h5>
-                        <div className="space-y-3 text-sm">
-                          <div className="flex items-center gap-3 p-2 bg-gray-50 dark:bg-gray-800 rounded">
-                            <div className="w-4 h-2 bg-gray-400 rounded"></div>
-                            <code>--button-padding-x</code>
-                            <span className="text-muted-foreground">16px</span>
-                          </div>
-                          <div className="flex items-center gap-3 p-2 bg-gray-50 dark:bg-gray-800 rounded">
-                            <div className="w-2 h-4 bg-gray-400 rounded"></div>
-                            <code>--button-padding-y</code>
-                            <span className="text-muted-foreground">8px</span>
-                          </div>
-                          <div className="flex items-center gap-3 p-2 bg-gray-50 dark:bg-gray-800 rounded">
-                            <div className="w-4 h-4 border-2 bg-transparent rounded"></div>
-                            <code>--button-border-radius</code>
-                            <span className="text-muted-foreground">6px</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+<!-- Toggle button -->
+<button type="button" aria-pressed="false">
+  Mute
+</button>
 
-                  <div>
-                    <h4 className="font-semibold mb-3 text-lg">Theming & Customization</h4>
-                    <div className="space-y-4">
-                      <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
-                        <h5 className="font-medium mb-2 text-green-800 dark:text-green-200">Benefits of Token-Based Design</h5>
-                        <ul className="text-sm text-green-700 dark:text-green-300 space-y-1">
-                          <li>• <strong>Consistency:</strong> Same values used across all platforms</li>
-                          <li>• <strong>Scalability:</strong> Easy to update globally</li>
-                          <li>• <strong>Theming:</strong> Support light/dark modes and brand variations</li>
-                          <li>• <strong>Collaboration:</strong> Shared language between design and engineering</li>
-                          <li>• <strong>Maintenance:</strong> Update once, changes everywhere</li>
-                        </ul>
-                      </div>
+<!-- Button with description -->
+<button type="button" aria-describedby="help-text">
+  Delete Account
+</button>
+<div id="help-text">This action cannot be undone</div>
 
-                      <div>
-                        <h5 className="font-medium mb-3">Theme Examples</h5>
-                        <div className="grid md:grid-cols-3 gap-4">
-                          <div className="p-4 bg-white border rounded-lg">
-                            <h6 className="text-sm font-medium mb-2">Light Theme</h6>
-                            <div className="space-y-2">
-                              <Button className="w-full">Primary Action</Button>
-                              <Button variant="outline" className="w-full">Secondary</Button>
-                            </div>
-                          </div>
-                          <div className="p-4 bg-gray-900 text-white border rounded-lg">
-                            <h6 className="text-sm font-medium mb-2">Dark Theme</h6>
-                            <div className="space-y-2">
-                              <Button className="w-full bg-blue-500 hover:bg-blue-600">Primary Action</Button>
-                              <Button variant="outline" className="w-full border-gray-600 text-white hover:bg-gray-800">Secondary</Button>
-                            </div>
-                          </div>
-                          <div className="p-4 bg-purple-50 border rounded-lg">
-                            <h6 className="text-sm font-medium mb-2">Brand Theme</h6>
-                            <div className="space-y-2">
-                              <Button className="w-full bg-purple-600 hover:bg-purple-700">Primary Action</Button>
-                              <Button variant="outline" className="w-full border-purple-600 text-purple-600 hover:bg-purple-50">Secondary</Button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h4 className="font-semibold mb-3 text-lg">Token Categories</h4>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h5 className="font-medium mb-3">Global Tokens</h5>
-                        <p className="text-sm text-muted-foreground mb-3">
-                          Foundation tokens that define your design system's core values.
-                        </p>
-                        <div className="space-y-2 text-sm">
-                          <div className="p-2 bg-gray-50 dark:bg-gray-800 rounded">
-                            <strong>Color Palette:</strong> Primary, secondary, neutral colors
-                          </div>
-                          <div className="p-2 bg-gray-50 dark:bg-gray-800 rounded">
-                            <strong>Typography:</strong> Font families, sizes, weights
-                          </div>
-                          <div className="p-2 bg-gray-50 dark:bg-gray-800 rounded">
-                            <strong>Spacing Scale:</strong> 4px, 8px, 12px, 16px, etc.
-                          </div>
-                        </div>
-                      </div>
-
-                      <div>
-                        <h5 className="font-medium mb-3">Component Tokens</h5>
-                        <p className="text-sm text-muted-foreground mb-3">
-                          Specific tokens that reference global tokens but are scoped to button components.
-                        </p>
-                        <div className="space-y-2 text-sm">
-                          <div className="p-2 bg-gray-50 dark:bg-gray-800 rounded">
-                            <strong>Button Colors:</strong> Primary, secondary, destructive
-                          </div>
-                          <div className="p-2 bg-gray-50 dark:bg-gray-800 rounded">
-                            <strong>Button Sizes:</strong> Small, medium, large
-                          </div>
-                          <div className="p-2 bg-gray-50 dark:bg-gray-800 rounded">
-                            <strong>Button States:</strong> Default, hover, active, disabled
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h4 className="font-semibold mb-3 text-lg">Implementation Example</h4>
-                    <div className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
-                      <pre className="text-sm">
-                        {`/* CSS Custom Properties (Design Tokens) */
-:root {
-  /* Global Color Tokens */
-  --color-primary-500: #3b82f6;
-  --color-primary-600: #2563eb;
-  --color-primary-700: #1d4ed8;
-  
-  /* Button Component Tokens */
-  --button-primary-bg: var(--color-primary-500);
-  --button-primary-bg-hover: var(--color-primary-600);
-  --button-primary-bg-active: var(--color-primary-700);
-  --button-primary-text: #ffffff;
-  
-  /* Spacing Tokens */
-  --space-2: 8px;
-  --space-4: 16px;
-  --radius-md: 6px;
-}
-
-/* Button Implementation */
-.button-primary {
-  background-color: var(--button-primary-bg);
-  color: var(--button-primary-text);
-  padding: var(--space-2) var(--space-4);
-  border-radius: var(--radius-md);
-}
-
-.button-primary:hover {
-  background-color: var(--button-primary-bg-hover);
-}
-
-/* Dark Theme Override */
-[data-theme="dark"] {
-  --button-primary-bg: #60a5fa;
-  --button-primary-bg-hover: #3b82f6;
-}`}
-                      </pre>
-                    </div>
-                  </div>
-
-                  <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                    <h5 className="font-medium mb-2 text-blue-800 dark:text-blue-200">Design Token Tools & Resources</h5>
-                    <div className="grid md:grid-cols-2 gap-4 text-sm text-blue-700 dark:text-blue-300">
-                      <div>
-                        <strong>Design Tools:</strong>
-                        <ul className="mt-1 space-y-1">
-                          <li>• Figma Variables & Tokens</li>
-                          <li>• Adobe XD Design Tokens</li>
-                          <li>• Sketch Symbols & Styles</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <strong>Development:</strong>
-                        <ul className="mt-1 space-y-1">
-                          <li>• Style Dictionary (Amazon)</li>
-                          <li>• Theo (Salesforce)</li>
-                          <li>• CSS Custom Properties</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
+<!-- Disabled button with context -->
+<button type="button" aria-disabled="true" aria-describedby="why-disabled">
+  Submit
+</button>
+<div id="why-disabled">Please fill in all required fields</div>`}
+                  </pre>
                 </div>
               </CardContent>
             </Card>
