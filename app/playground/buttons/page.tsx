@@ -212,6 +212,146 @@ export default function ButtonsPage() {
               </CardContent>
             </Card>
 
+            <Card>
+              <CardHeader>
+                <CardTitle>Button vs Alternatives Comparison</CardTitle>
+                <CardDescription>
+                  Understanding when to use buttons over other interactive components
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b">
+                        <th className="text-left p-2 font-medium">Component</th>
+                        <th className="text-left p-2 font-medium">Primary Use</th>
+                        <th className="text-left p-2 font-medium">Action Type</th>
+                        <th className="text-left p-2 font-medium">Visual Weight</th>
+                        <th className="text-left p-2 font-medium">Example Context</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y">
+                      <tr>
+                        <td className="p-2 font-medium">Button</td>
+                        <td className="p-2">Actions & State Changes</td>
+                        <td className="p-2">Immediate execution</td>
+                        <td className="p-2">High visibility</td>
+                        <td className="p-2">Submit, Save, Delete</td>
+                      </tr>
+                      <tr>
+                        <td className="p-2 font-medium">Link</td>
+                        <td className="p-2">Navigation & References</td>
+                        <td className="p-2">Page transition</td>
+                        <td className="p-2">Text-integrated</td>
+                        <td className="p-2">Go to page, Open docs</td>
+                      </tr>
+                      <tr>
+                        <td className="p-2 font-medium">Toggle</td>
+                        <td className="p-2">Binary State Control</td>
+                        <td className="p-2">Instant toggle</td>
+                        <td className="p-2">Focused utility</td>
+                        <td className="p-2">Dark mode, Notifications</td>
+                      </tr>
+                      <tr>
+                        <td className="p-2 font-medium">Icon Button</td>
+                        <td className="p-2">Space-constrained Actions</td>
+                        <td className="p-2">Quick actions</td>
+                        <td className="p-2">Minimal footprint</td>
+                        <td className="p-2">Close, Edit, More options</td>
+                      </tr>
+                      <tr>
+                        <td className="p-2 font-medium">Menu Item</td>
+                        <td className="p-2">Grouped Actions</td>
+                        <td className="p-2">Contextual actions</td>
+                        <td className="p-2">Hidden until revealed</td>
+                        <td className="p-2">Dropdown options, Context menus</td>
+                      </tr>
+                      <tr>
+                        <td className="p-2 font-medium">Tab</td>
+                        <td className="p-2">View Switching</td>
+                        <td className="p-2">Content filtering</td>
+                        <td className="p-2">Persistent navigation</td>
+                        <td className="p-2">Overview, Details, Settings</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </CardContent>
+            </Card>
+
+            <div className="grid lg:grid-cols-2 gap-8">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Design Principles</CardTitle>
+                  <CardDescription>
+                    Core principles that guide effective button design
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <div>
+                        <strong className="text-sm">Clear Affordance:</strong>
+                        <p className="text-xs text-muted-foreground">Buttons should look clickable and indicate their interactive nature through visual design</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <div>
+                        <strong className="text-sm">Predictable Behavior:</strong>
+                        <p className="text-xs text-muted-foreground">Users should be able to predict what will happen when they click a button</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <div>
+                        <strong className="text-sm">Appropriate Hierarchy:</strong>
+                        <p className="text-xs text-muted-foreground">Visual weight should match the importance of the action</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <div>
+                        <strong className="text-sm">Contextual Relevance:</strong>
+                        <p className="text-xs text-muted-foreground">Button labels and styling should match the current context and user goals</p>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle>Usage Metrics</CardTitle>
+                  <CardDescription>
+                    Key metrics to consider when implementing buttons
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center p-3 bg-muted rounded-lg">
+                      <span className="text-sm font-medium">Click-through Rate</span>
+                      <Badge variant="outline">85-95%</Badge>
+                    </div>
+                    <div className="flex justify-between items-center p-3 bg-muted rounded-lg">
+                      <span className="text-sm font-medium">Touch Target Size</span>
+                      <Badge variant="outline">44px min</Badge>
+                    </div>
+                    <div className="flex justify-between items-center p-3 bg-muted rounded-lg">
+                      <span className="text-sm font-medium">Loading State Duration</span>
+                      <Badge variant="outline">&lt; 3 seconds</Badge>
+                    </div>
+                    <div className="flex justify-between items-center p-3 bg-muted rounded-lg">
+                      <span className="text-sm font-medium">Error Recovery Time</span>
+                      <Badge variant="outline">&lt; 5 seconds</Badge>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
             <div className="grid lg:grid-cols-2 gap-8">
               <Card>
                 <CardHeader>
@@ -300,49 +440,55 @@ export default function ButtonsPage() {
                   <table className="w-full text-sm">
                     <thead>
                       <tr className="border-b">
-                        <th className="text-left p-3 font-medium">Component</th>
-                        <th className="text-left p-3 font-medium">Purpose</th>
-                        <th className="text-left p-3 font-medium">Interaction</th>
-                        <th className="text-left p-3 font-medium">Navigation</th>
-                        <th className="text-left p-3 font-medium">Use Case</th>
+                        <th className="text-left p-2 font-medium">Component</th>
+                        <th className="text-left p-2 font-medium">Primary Use</th>
+                        <th className="text-left p-2 font-medium">Action Type</th>
+                        <th className="text-left p-2 font-medium">Visual Weight</th>
+                        <th className="text-left p-2 font-medium">Example Context</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y">
                       <tr>
-                        <td className="p-3">
-                          <Badge variant="default">Button</Badge>
-                        </td>
-                        <td className="p-3">Trigger actions</td>
-                        <td className="p-3">✅ State change</td>
-                        <td className="p-3">❌ No navigation</td>
-                        <td className="p-3">Submit forms, toggle features</td>
+                        <td className="p-2 font-medium">Button</td>
+                        <td className="p-2">Actions & State Changes</td>
+                        <td className="p-2">Immediate execution</td>
+                        <td className="p-2">High visibility</td>
+                        <td className="p-2">Submit, Save, Delete</td>
                       </tr>
                       <tr>
-                        <td className="p-3">
-                          <Badge variant="secondary">Link</Badge>
-                        </td>
-                        <td className="p-3">Navigate</td>
-                        <td className="p-3">❌ No state change</td>
-                        <td className="p-3">✅ Navigation</td>
-                        <td className="p-3">Page navigation, external links</td>
+                        <td className="p-2 font-medium">Link</td>
+                        <td className="p-2">Navigation & References</td>
+                        <td className="p-2">Page transition</td>
+                        <td className="p-2">Text-integrated</td>
+                        <td className="p-2">Go to page, Open docs</td>
                       </tr>
                       <tr>
-                        <td className="p-3">
-                          <Badge variant="outline">Toggle</Badge>
-                        </td>
-                        <td className="p-3">Binary state</td>
-                        <td className="p-3">✅ Immediate change</td>
-                        <td className="p-3">❌ No navigation</td>
-                        <td className="p-3">Settings, feature switches</td>
+                        <td className="p-2 font-medium">Toggle</td>
+                        <td className="p-2">Binary State Control</td>
+                        <td className="p-2">Instant toggle</td>
+                        <td className="p-2">Focused utility</td>
+                        <td className="p-2">Dark mode, Notifications</td>
                       </tr>
                       <tr>
-                        <td className="p-3">
-                          <Badge variant="outline">Menu Item</Badge>
-                        </td>
-                        <td className="p-3">Grouped actions</td>
-                        <td className="p-3">✅ Context specific</td>
-                        <td className="p-3">➡️ Optional</td>
-                        <td className="p-3">Dropdown actions, context menus</td>
+                        <td className="p-2 font-medium">Icon Button</td>
+                        <td className="p-2">Space-constrained Actions</td>
+                        <td className="p-2">Quick actions</td>
+                        <td className="p-2">Minimal footprint</td>
+                        <td className="p-2">Close, Edit, More options</td>
+                      </tr>
+                      <tr>
+                        <td className="p-2 font-medium">Menu Item</td>
+                        <td className="p-2">Grouped Actions</td>
+                        <td className="p-2">Contextual actions</td>
+                        <td className="p-2">Hidden until revealed</td>
+                        <td className="p-2">Dropdown options, Context menus</td>
+                      </tr>
+                      <tr>
+                        <td className="p-2 font-medium">Tab</td>
+                        <td className="p-2">View Switching</td>
+                        <td className="p-2">Content filtering</td>
+                        <td className="p-2">Persistent navigation</td>
+                        <td className="p-2">Overview, Details, Settings</td>
                       </tr>
                     </tbody>
                   </table>
@@ -354,45 +500,67 @@ export default function ButtonsPage() {
               <CardHeader>
                 <CardTitle>Design Principles</CardTitle>
                 <CardDescription>
-                  Core principles for effective button design and user experience
+                  Core principles that guide effective button design
                 </CardDescription>
               </CardHeader>
-              <CardContent>
-                <div className="grid md:grid-cols-3 gap-6">
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
-                        <Eye className="h-4 w-4 text-blue-600 dark:text-blue-400" />
-                      </div>
-                      <h4 className="font-semibold">Visual Hierarchy</h4>
+              <CardContent className="space-y-4">
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                    <div>
+                      <strong className="text-sm">Clear Affordance:</strong>
+                      <p className="text-xs text-muted-foreground">Buttons should look clickable and indicate their interactive nature through visual design</p>
                     </div>
-                    <p className="text-sm text-muted-foreground">
-                      Establish clear action priority with consistent sizing, colors, and visual emphasis patterns.
-                    </p>
                   </div>
-
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
-                        <Users className="h-4 w-4 text-green-600 dark:text-green-400" />
-                      </div>
-                      <h4 className="font-semibold">Predictable Behavior</h4>
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
+                    <div>
+                      <strong className="text-sm">Predictable Behavior:</strong>
+                      <p className="text-xs text-muted-foreground">Users should be able to predict what will happen when they click a button</p>
                     </div>
-                    <p className="text-sm text-muted-foreground">
-                      Ensure consistent interaction patterns and clear outcome expectations across the interface.
-                    </p>
                   </div>
-
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center">
-                        <Shield className="h-4 w-4 text-purple-600 dark:text-purple-400" />
-                      </div>
-                      <h4 className="font-semibold">Accessible Design</h4>
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                    <div>
+                      <strong className="text-sm">Appropriate Hierarchy:</strong>
+                      <p className="text-xs text-muted-foreground">Visual weight should match the importance of the action</p>
                     </div>
-                    <p className="text-sm text-muted-foreground">
-                      Implement proper focus management, keyboard support, and screen reader compatibility.
-                    </p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 flex-shrink-0"></div>
+                    <div>
+                      <strong className="text-sm">Contextual Relevance:</strong>
+                      <p className="text-xs text-muted-foreground">Button labels and styling should match the current context and user goals</p>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Usage Metrics</CardTitle>
+                <CardDescription>
+                  Key metrics to consider when implementing buttons
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center p-3 bg-muted rounded-lg">
+                    <span className="text-sm font-medium">Click-through Rate</span>
+                    <Badge variant="outline">85-95%</Badge>
+                  </div>
+                  <div className="flex justify-between items-center p-3 bg-muted rounded-lg">
+                    <span className="text-sm font-medium">Touch Target Size</span>
+                    <Badge variant="outline">44px min</Badge>
+                  </div>
+                  <div className="flex justify-between items-center p-3 bg-muted rounded-lg">
+                    <span className="text-sm font-medium">Loading State Duration</span>
+                    <Badge variant="outline">&lt; 3 seconds</Badge>
+                  </div>
+                  <div className="flex justify-between items-center p-3 bg-muted rounded-lg">
+                    <span className="text-sm font-medium">Error Recovery Time</span>
+                    <Badge variant="outline">&lt; 5 seconds</Badge>
                   </div>
                 </div>
               </CardContent>
@@ -723,171 +891,300 @@ export default function ButtonsPage() {
           <TabsContent value="patterns" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Button Patterns</CardTitle>
+                <CardTitle>Common Button Patterns</CardTitle>
                 <CardDescription>
-                  Common patterns and best practices for button usage across different contexts.
+                  Proven patterns and best practices for button usage across different contexts and workflows.
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="space-y-6">
-                  <div>
-                    <h4 className="font-semibold mb-3 text-lg">Loading States & UX Patterns</h4>
-                    <div className="p-4 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg mb-4">
-                      <h5 className="font-medium mb-2 text-indigo-800 dark:text-indigo-200">Polaris & Gestalt Loading Principles</h5>
-                      <p className="text-sm text-indigo-700 dark:text-indigo-300">
-                        Following Shopify Polaris and Pinterest Gestalt guidelines, loading states should clearly communicate 
-                        progress, maintain user confidence, and provide appropriate feedback during asynchronous operations.
-                      </p>
-                    </div>
+              <CardContent className="space-y-8">
+                <div className="grid lg:grid-cols-2 gap-8">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="text-lg">Form Actions</CardTitle>
+                      <CardDescription>Standard patterns for form submission and cancellation</CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <div className="space-y-3">
+                        <div className="p-4 border rounded-lg">
+                          <h5 className="font-medium mb-3">Primary + Secondary</h5>
+                          <div className="flex gap-2">
+                            <Button>Save Changes</Button>
+                            <Button variant="outline">Cancel</Button>
+                          </div>
+                          <p className="text-xs text-muted-foreground mt-2">Most common form pattern</p>
+                        </div>
+                        
+                        <div className="p-4 border rounded-lg">
+                          <h5 className="font-medium mb-3">Multi-step Forms</h5>
+                          <div className="flex justify-between gap-2">
+                            <Button variant="outline">← Back</Button>
+                            <div className="flex gap-2">
+                              <Button variant="ghost">Save Draft</Button>
+                              <Button>Continue →</Button>
+                            </div>
+                          </div>
+                          <p className="text-xs text-muted-foreground mt-2">Wizard navigation pattern</p>
+                        </div>
+                        
+                        <div className="p-4 border rounded-lg">
+                          <h5 className="font-medium mb-3">Critical Actions</h5>
+                          <div className="flex gap-2">
+                            <Button variant="destructive">Delete Account</Button>
+                            <Button variant="outline">Keep Account</Button>
+                          </div>
+                          <p className="text-xs text-muted-foreground mt-2">Destructive action pattern</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
 
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h5 className="font-medium mb-3">Loading Button Patterns</h5>
-                        <div className="space-y-4">
-                          <div className="p-3 border rounded-lg">
-                            <div className="flex items-center gap-3 mb-2">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="text-lg">Loading & States</CardTitle>
+                      <CardDescription>Managing async operations and user feedback</CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <div className="space-y-3">
+                        <div className="p-4 border rounded-lg">
+                          <h5 className="font-medium mb-3">Loading State</h5>
+                          <Button disabled>
+                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                            Saving...
+                          </Button>
+                          <p className="text-xs text-muted-foreground mt-2">Prevents double-submission</p>
+                        </div>
+                        
+                        <div className="p-4 border rounded-lg">
+                          <h5 className="font-medium mb-3">Success Feedback</h5>
+                          <Button className="bg-green-600 hover:bg-green-600">
+                            <CheckCircle className="mr-2 h-4 w-4" />
+                            Saved!
+                          </Button>
+                          <p className="text-xs text-muted-foreground mt-2">Temporary success state</p>
+                        </div>
+                        
+                        <div className="p-4 border rounded-lg">
+                          <h5 className="font-medium mb-3">Error Recovery</h5>
+                          <div className="space-y-2">
+                            <Button variant="destructive" className="w-full">
+                              <AlertCircle className="mr-2 h-4 w-4" />
+                              Failed to Save
+                            </Button>
+                            <Button variant="outline" size="sm" className="w-full">
+                              Try Again
+                            </Button>
+                          </div>
+                          <p className="text-xs text-muted-foreground mt-2">Error state with recovery</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg">Action Groups & Hierarchies</CardTitle>
+                    <CardDescription>Organizing multiple actions with clear visual hierarchy</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-6">
+                    <div className="grid lg:grid-cols-3 gap-6">
+                      <div className="space-y-4">
+                        <h5 className="font-medium">Toolbar Actions</h5>
+                        <div className="flex gap-1 p-2 border rounded-lg">
+                          <Button variant="ghost" size="sm">
+                            <Copy className="h-4 w-4" />
+                          </Button>
+                          <Button variant="ghost" size="sm">
+                            <Edit3 className="h-4 w-4" />
+                          </Button>
+                          <Button variant="ghost" size="sm">
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
+                          <Button variant="ghost" size="sm">
+                            <MoreHorizontal className="h-4 w-4" />
+                          </Button>
+                        </div>
+                        <p className="text-xs text-muted-foreground">Icon-only for space efficiency</p>
+                      </div>
+                      
+                      <div className="space-y-4">
+                        <h5 className="font-medium">Card Actions</h5>
+                        <div className="p-4 border rounded-lg space-y-3">
+                          <div className="flex justify-between items-start">
+                            <div>
+                              <h6 className="font-medium">Project Alpha</h6>
+                              <p className="text-sm text-muted-foreground">Status: In Progress</p>
+                            </div>
+                            <Button variant="ghost" size="sm">
+                              <MoreHorizontal className="h-4 w-4" />
+                            </Button>
+                          </div>
+                          <div className="flex gap-2">
+                            <Button variant="outline" size="sm">View</Button>
+                            <Button size="sm">Edit</Button>
+                          </div>
+                        </div>
+                        <p className="text-xs text-muted-foreground">Primary + secondary actions</p>
+                      </div>
+                      
+                      <div className="space-y-4">
+                        <h5 className="font-medium">Modal Actions</h5>
+                        <div className="p-4 border rounded-lg space-y-4">
+                          <div className="space-y-2">
+                            <h6 className="font-medium">Delete Item?</h6>
+                            <p className="text-sm text-muted-foreground">This action cannot be undone.</p>
+                          </div>
+                          <div className="flex justify-end gap-2">
+                            <Button variant="outline" size="sm">Cancel</Button>
+                            <Button variant="destructive" size="sm">Delete</Button>
+                          </div>
+                        </div>
+                        <p className="text-xs text-muted-foreground">Critical confirmation dialog</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg">Interactive Button States</CardTitle>
+                    <CardDescription>Demonstrating different states and user feedback patterns</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid lg:grid-cols-2 gap-8">
+                      <div className="space-y-6">
+                        <div>
+                          <h5 className="font-medium mb-3">Standard States</h5>
+                          <div className="space-y-3">
+                            <div className="flex items-center gap-3">
+                              <Button>Default</Button>
+                              <span className="text-sm text-muted-foreground">Normal state</span>
+                            </div>
+                            <div className="flex items-center gap-3">
+                              <Button className="hover:bg-primary/90">Hover</Button>
+                              <span className="text-sm text-muted-foreground">Mouse over state</span>
+                            </div>
+                            <div className="flex items-center gap-3">
+                              <Button className="focus:ring-2 focus:ring-ring">Focus</Button>
+                              <span className="text-sm text-muted-foreground">Keyboard focus state</span>
+                            </div>
+                            <div className="flex items-center gap-3">
+                              <Button disabled>Disabled</Button>
+                              <span className="text-sm text-muted-foreground">Non-interactive state</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div>
+                          <h5 className="font-medium mb-3">Toggle States</h5>
+                          <div className="space-y-3">
+                            <div className="flex items-center gap-3">
+                              <Button variant="outline">
+                                <Star className="mr-2 h-4 w-4" />
+                                Favorite
+                              </Button>
+                              <span className="text-sm text-muted-foreground">Inactive toggle</span>
+                            </div>
+                            <div className="flex items-center gap-3">
+                              <Button>
+                                <Star className="mr-2 h-4 w-4 fill-current" />
+                                Favorited
+                              </Button>
+                              <span className="text-sm text-muted-foreground">Active toggle</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="space-y-6">
+                        <div>
+                          <h5 className="font-medium mb-3">Progress States</h5>
+                          <div className="space-y-3">
+                            <div className="flex items-center gap-3">
+                              <Button>
+                                <Upload className="mr-2 h-4 w-4" />
+                                Upload File
+                              </Button>
+                              <span className="text-sm text-muted-foreground">Ready state</span>
+                            </div>
+                            <div className="flex items-center gap-3">
                               <Button disabled>
                                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                Saving...
+                                Uploading...
                               </Button>
+                              <span className="text-sm text-muted-foreground">In progress</span>
                             </div>
-                            <p className="text-xs text-muted-foreground"><strong>Inline Loading:</strong> Shows progress with spinner and descriptive text</p>
-                          </div>
-
-                          <div className="p-3 border rounded-lg">
-                            <div className="flex items-center gap-3 mb-2">
-                              <Button disabled className="min-w-[120px]">
-                                <Loader2 className="h-4 w-4 animate-spin" />
-                              </Button>
-                            </div>
-                            <p className="text-xs text-muted-foreground"><strong>Icon Only Loading:</strong> Maintains button size, focuses on progress indicator</p>
-                          </div>
-
-                          <div className="p-3 border rounded-lg">
-                            <div className="flex items-center gap-3 mb-2">
-                              <Button disabled className="opacity-50">
-                                Processing...
-                              </Button>
-                            </div>
-                            <p className="text-xs text-muted-foreground"><strong>Text Only:</strong> Simple text change for quick operations</p>
-                          </div>
-
-                          <div className="p-3 border rounded-lg">
-                            <div className="flex items-center gap-3 mb-2">
-                              <Button disabled className="bg-green-600 hover:bg-green-600">
+                            <div className="flex items-center gap-3">
+                              <Button className="bg-green-600 hover:bg-green-600">
                                 <CheckCircle className="mr-2 h-4 w-4" />
-                                Saved!
+                                Uploaded!
                               </Button>
+                              <span className="text-sm text-muted-foreground">Completed</span>
                             </div>
-                            <p className="text-xs text-muted-foreground"><strong>Success State:</strong> Confirms completion with positive feedback</p>
                           </div>
                         </div>
-                      </div>
 
-                      <div>
-                        <h5 className="font-medium mb-3">UX Guidelines</h5>
-                        <div className="space-y-4">
-                          <div className="p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
-                            <h6 className="font-medium text-green-800 dark:text-green-200 mb-2">✅ Loading State Best Practices</h6>
-                            <ul className="text-sm text-green-700 dark:text-green-300 space-y-1">
-                              <li>• Keep buttons disabled during loading to prevent double-submission</li>
-                              <li>• Maintain button size to prevent layout shift</li>
-                              <li>• Use descriptive loading text ("Saving..." not "Loading...")</li>
-                              <li>• Show success feedback briefly before reverting</li>
-                              <li>• Provide immediate feedback (≤100ms perceived delay)</li>
-                              <li>• Use skeleton screens for longer operations (&gt;1 second)</li>
-                            </ul>
-                          </div>
-
-                          <div className="p-3 bg-amber-50 dark:bg-amber-900/20 rounded-lg">
-                            <h6 className="font-medium text-amber-800 dark:text-amber-200 mb-2">⚠️ Timing Considerations</h6>
-                            <ul className="text-sm text-amber-700 dark:text-amber-300 space-y-1">
-                              <li>• <strong>Instant (0-100ms):</strong> No loading state needed</li>
-                              <li>• <strong>Quick (100ms-1s):</strong> Spinner or text change</li>
-                              <li>• <strong>Medium (1-10s):</strong> Progress indicators if possible</li>
-                              <li>• <strong>Long (10s+):</strong> Progress bars, cancel options</li>
-                            </ul>
-                          </div>
-
-                          <div className="p-3 bg-red-50 dark:bg-red-900/20 rounded-lg">
-                            <h6 className="font-medium text-red-800 dark:text-red-200 mb-2">❌ Common Mistakes</h6>
-                            <ul className="text-sm text-red-700 dark:text-red-300 space-y-1">
-                              <li>• Not disabling buttons during async operations</li>
-                              <li>• Using generic "Loading..." text</li>
-                              <li>• Layout shifts when content changes</li>
-                              <li>• No feedback for very quick operations</li>
-                              <li>• Loading states that persist too long</li>
-                            </ul>
+                        <div>
+                          <h5 className="font-medium mb-3">Context-Aware States</h5>
+                          <div className="space-y-3">
+                            <div className="flex items-center gap-3">
+                              <Button variant="secondary">
+                                <Download className="mr-2 h-4 w-4" />
+                                Download (2.4 MB)
+                              </Button>
+                              <span className="text-sm text-muted-foreground">With context info</span>
+                            </div>
+                            <div className="flex items-center gap-3">
+                              <Button>
+                                <Users className="mr-2 h-4 w-4" />
+                                Invite Team (3)
+                              </Button>
+                              <span className="text-sm text-muted-foreground">With count badge</span>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
+                  </CardContent>
+                </Card>
 
-                    <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                      <h5 className="font-medium mb-2 text-blue-800 dark:text-blue-200">Implementation Example</h5>
-                      <div className="bg-gray-900 text-gray-100 p-3 rounded text-sm overflow-x-auto">
-                        <pre>{`// Loading state management
-const [isLoading, setIsLoading] = useState(false)
-const [isSuccess, setIsSuccess] = useState(false)
-
-const handleSave = async () => {
-  setIsLoading(true)
-  try {
-    await saveData()
-    setIsSuccess(true)
-    setTimeout(() => setIsSuccess(false), 2000) // Reset after 2s
-  } catch (error) {
-    // Handle error state
-  } finally {
-    setIsLoading(false)
-  }
-}
-
-// Button render
-<Button 
-  onClick={handleSave} 
-  disabled={isLoading || isSuccess}
-  className={isSuccess ? "bg-green-600" : ""}
->
-  {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-  {isSuccess && <CheckCircle className="mr-2 h-4 w-4" />}
-  {isLoading ? "Saving..." : isSuccess ? "Saved!" : "Save Changes"}
-</Button>`}</pre>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="space-y-4">
-                    <h4 className="font-semibold text-lg">Toggle States</h4>
-                    <div className="grid gap-4">
-                      <div className="p-4 border rounded-lg">
-                        <div className="flex items-center gap-4 mb-3">
-                          <Button variant="outline" className="bg-red-50 border-red-500">
-                            🔇 Muted
-                          </Button>
-                          <Button variant="outline">
-                            🔊 Unmuted
-                          </Button>
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg">Pattern Guidelines</CardTitle>
+                    <CardDescription>Best practices for implementing button patterns</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid lg:grid-cols-2 gap-8">
+                      <div className="space-y-4">
+                        <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                          <h5 className="font-medium text-green-800 dark:text-green-200 mb-2">✅ Do</h5>
+                          <ul className="text-sm text-green-700 dark:text-green-300 space-y-1">
+                            <li>• Use consistent patterns across your application</li>
+                            <li>• Group related actions together</li>
+                            <li>• Provide clear feedback for all user actions</li>
+                            <li>• Maintain visual hierarchy with appropriate variants</li>
+                            <li>• Include loading states for async operations</li>
+                            <li>• Use descriptive labels that indicate the outcome</li>
+                          </ul>
                         </div>
-                        <p className="text-sm text-muted-foreground">
-                          <strong>aria-pressed=&quot;true&quot;</strong> for pressed state, <strong>&quot;false&quot;</strong> for unpressed
-                        </p>
+                      </div>
+
+                      <div className="space-y-4">
+                        <div className="p-4 bg-red-50 dark:bg-red-900/20 rounded-lg">
+                          <h5 className="font-medium text-red-800 dark:text-red-200 mb-2">❌ Don't</h5>
+                          <ul className="text-sm text-red-700 dark:text-red-300 space-y-1">
+                            <li>• Mix different button patterns inconsistently</li>
+                            <li>• Use multiple primary buttons in the same context</li>
+                            <li>• Forget to handle loading and error states</li>
+                            <li>• Place destructive actions too prominently</li>
+                            <li>• Use vague labels like "Submit" or "OK"</li>
+                            <li>• Allow double-submission of forms</li>
+                          </ul>
+                        </div>
                       </div>
                     </div>
-                  </div>
-
-                  {/* State Implementation Guidelines */}
-                  <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
-                    <h4 className="font-semibold mb-2 text-blue-800 dark:text-blue-200">Implementation Guidelines</h4>
-                    <ul className="text-sm text-blue-700 dark:text-blue-300 space-y-1">
-                      <li>• Always provide visual feedback for all interactive states</li>
-                      <li>• Use <code>aria-disabled=&quot;true&quot;</code> instead of <code>disabled</code> when context is needed</li>
-                      <li>• Announce state changes to screen readers using aria-live regions</li>
-                      <li>• Maintain sufficient color contrast (4.5:1) in all states</li>
-                      <li>• Ensure focus indicators are visible and have 3:1 contrast ratio</li>
-                    </ul>
-                  </div>
-                </div>
+                  </CardContent>
+                </Card>
               </CardContent>
             </Card>
           </TabsContent>
@@ -940,317 +1237,422 @@ const handleSave = async () => {
           <TabsContent value="accessibility" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Button Accessibility (A11y)</CardTitle>
+                <CardTitle>Button Accessibility Standards</CardTitle>
                 <CardDescription>
-                  Comprehensive accessibility guidelines following WCAG 2.2 AA standards, Visa Global Accessibility Requirements (VGAR), 
-                  Carbon Design System accessibility standards, and Polaris accessibility guidelines.
+                  Comprehensive accessibility guidelines following WCAG 2.2 AA standards, ensuring universal access and compliance with global accessibility regulations.
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="space-y-6">
-                  <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
-                    <h4 className="font-semibold mb-2 text-green-800 dark:text-green-200">WCAG 2.2 AA Compliance</h4>
-                    <p className="text-sm text-green-700 dark:text-green-300">
-                      Our button guidelines meet the latest Web Content Accessibility Guidelines (WCAG) 2.2 Level AA requirements, 
-                      ensuring compliance with global accessibility standards including the Americans with Disabilities Act (ADA), 
-                      European Accessibility Act, and other regional regulations.
-                    </p>
-                  </div>
-
-                  <div>
-                    <h4 className="font-semibold mb-3 text-lg">Core Accessibility Requirements</h4>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h5 className="font-medium mb-3">Keyboard Navigation</h5>
-                        <ul className="text-sm space-y-1">
-                          <li>• <strong>Tab:</strong> Move focus to button</li>
-                          <li>• <strong>Space/Enter:</strong> Activate button</li>
-                          <li>• <strong>Focus visible:</strong> Clear visual indicator (3:1 contrast minimum)</li>
-                          <li>• <strong>Tab order:</strong> Logical sequence following content flow</li>
-                          <li>• <strong>Focus management:</strong> Predictable focus behavior</li>
-                          <li>• <strong>No keyboard traps:</strong> Users can navigate away</li>
-                        </ul>
+              <CardContent className="space-y-8">
+                <div className="grid lg:grid-cols-2 gap-8">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="text-lg">Keyboard Navigation</CardTitle>
+                      <CardDescription>Essential keyboard interaction patterns</CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <div className="space-y-3">
+                        <div className="p-3 border rounded-lg">
+                          <h5 className="font-medium mb-2">Tab Navigation</h5>
+                          <div className="space-y-2">
+                            <Button className="mr-2">First</Button>
+                            <Button className="mr-2">Second</Button>
+                            <Button>Third</Button>
+                          </div>
+                          <p className="text-xs text-muted-foreground mt-2">Use Tab to move between buttons</p>
+                        </div>
+                        
+                        <div className="p-3 border rounded-lg">
+                          <h5 className="font-medium mb-2">Activation</h5>
+                          <Button>Press Space or Enter</Button>
+                          <p className="text-xs text-muted-foreground mt-2">Both keys should activate buttons</p>
+                        </div>
+                        
+                        <div className="p-3 border rounded-lg">
+                          <h5 className="font-medium mb-2">Focus Indicators</h5>
+                          <Button className="focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                            Visible Focus
+                          </Button>
+                          <p className="text-xs text-muted-foreground mt-2">3:1 contrast ratio minimum</p>
+                        </div>
                       </div>
+                    </CardContent>
+                  </Card>
 
-                      <div>
-                        <h5 className="font-medium mb-3">Screen Reader Support</h5>
-                        <ul className="text-sm space-y-1">
-                          <li>• <strong>Role:</strong> Announced as &quot;button&quot;</li>
-                          <li>• <strong>Name:</strong> Clear, descriptive label</li>
-                          <li>• <strong>State:</strong> Pressed, disabled, expanded, etc.</li>
-                          <li>• <strong>Context:</strong> Purpose and outcome</li>
-                          <li>• <strong>Changes:</strong> State updates announced</li>
-                          <li>• <strong>Instructions:</strong> How to interact when custom</li>
-                        </ul>
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="text-lg">Screen Reader Support</CardTitle>
+                      <CardDescription>Semantic markup and ARIA attributes</CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <div className="space-y-3">
+                        <div className="p-3 border rounded-lg">
+                          <h5 className="font-medium mb-2">Descriptive Labels</h5>
+                          <Button aria-label="Save document to cloud storage">
+                            <Upload className="mr-2 h-4 w-4" />
+                            Save
+                          </Button>
+                          <p className="text-xs text-muted-foreground mt-2">Clear, descriptive purpose</p>
+                        </div>
+                        
+                        <div className="p-3 border rounded-lg">
+                          <h5 className="font-medium mb-2">State Announcements</h5>
+                          <Button aria-pressed="false" variant="outline">
+                            <Star className="mr-2 h-4 w-4" />
+                            Favorite
+                          </Button>
+                          <p className="text-xs text-muted-foreground mt-2">Toggle states announced</p>
+                        </div>
+                        
+                        <div className="p-3 border rounded-lg">
+                          <h5 className="font-medium mb-2">Context Information</h5>
+                          <Button aria-describedby="delete-help" variant="destructive">
+                            Delete Account
+                          </Button>
+                          <p id="delete-help" className="text-xs text-muted-foreground mt-2">
+                            This action cannot be undone
+                          </p>
+                        </div>
                       </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg">ARIA Attributes Reference</CardTitle>
+                    <CardDescription>Complete guide to ARIA attributes for button accessibility</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-sm">
+                        <thead>
+                          <tr className="border-b">
+                            <th className="text-left p-3 font-medium">Attribute</th>
+                            <th className="text-left p-3 font-medium">Purpose</th>
+                            <th className="text-left p-3 font-medium">Example</th>
+                            <th className="text-left p-3 font-medium">Use Case</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y">
+                          <tr>
+                            <td className="p-3 font-mono text-xs">aria-label</td>
+                            <td className="p-3">Accessible name when text isn't descriptive</td>
+                            <td className="p-3">
+                              <Button size="sm" aria-label="Close dialog">
+                                <X className="h-4 w-4" />
+                              </Button>
+                            </td>
+                            <td className="p-3">Icon-only buttons</td>
+                          </tr>
+                          <tr>
+                            <td className="p-3 font-mono text-xs">aria-pressed</td>
+                            <td className="p-3">Toggle button state</td>
+                            <td className="p-3">
+                              <Button variant="outline" aria-pressed="false" size="sm">
+                                Mute
+                              </Button>
+                            </td>
+                            <td className="p-3">Toggle controls</td>
+                          </tr>
+                          <tr>
+                            <td className="p-3 font-mono text-xs">aria-expanded</td>
+                            <td className="p-3">Collapsible content state</td>
+                            <td className="p-3">
+                              <Button variant="outline" aria-expanded="false" size="sm">
+                                Menu
+                              </Button>
+                            </td>
+                            <td className="p-3">Dropdown triggers</td>
+                          </tr>
+                          <tr>
+                            <td className="p-3 font-mono text-xs">aria-describedby</td>
+                            <td className="p-3">Reference to description</td>
+                            <td className="p-3">
+                              <Button variant="destructive" size="sm">
+                                Delete
+                              </Button>
+                            </td>
+                            <td className="p-3">Additional context</td>
+                          </tr>
+                          <tr>
+                            <td className="p-3 font-mono text-xs">aria-disabled</td>
+                            <td className="p-3">Disabled but focusable</td>
+                            <td className="p-3">
+                              <Button variant="outline" aria-disabled="true" size="sm">
+                                Submit
+                              </Button>
+                            </td>
+                            <td className="p-3">Form validation</td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
-                  </div>
+                  </CardContent>
+                </Card>
 
-                  <div>
-                    <h4 className="font-semibold mb-3 text-lg">ARIA Attributes</h4>
-                    <div className="space-y-4">
-                      <div className="p-4 border rounded-lg">
-                        <h5 className="font-medium mb-2">Essential ARIA Attributes</h5>
-                        <div className="grid md:grid-cols-2 gap-4 text-sm">
-                          <div>
-                            <p><code>aria-label</code> - For icon-only buttons</p>
-                            <Button size="sm" aria-label="Close notification">
-                              ✕
-                            </Button>
+                <div className="grid lg:grid-cols-2 gap-8">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="text-lg">Touch Target Guidelines</CardTitle>
+                      <CardDescription>WCAG 2.2 compliant sizing and spacing</CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <div className="space-y-4">
+                        <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                          <h5 className="font-medium text-green-800 dark:text-green-200 mb-2">Optimal Sizes</h5>
+                          <div className="space-y-2">
+                            <div className="flex items-center gap-3">
+                              <Button className="min-w-[48px] min-h-[48px]">48px</Button>
+                              <span className="text-sm">Recommended minimum</span>
+                            </div>
+                            <div className="flex items-center gap-3">
+                              <Button className="min-w-[44px] min-h-[44px]" size="sm">44px</Button>
+                              <span className="text-sm">Mobile minimum</span>
+                            </div>
+                            <div className="flex items-center gap-3">
+                              <Button className="min-w-[24px] min-h-[24px]" size="sm">24px</Button>
+                              <span className="text-sm">WCAG 2.2 minimum</span>
+                            </div>
                           </div>
-                          <div>
-                            <p><code>aria-pressed</code> - For toggle buttons</p>
-                            <Button variant="outline" aria-pressed="false">
-                              🔇 Muted
-                            </Button>
+                        </div>
+
+                        <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                          <h5 className="font-medium text-blue-800 dark:text-blue-200 mb-2">Spacing Requirements</h5>
+                          <div className="flex gap-2 items-center">
+                            <Button size="sm">Button 1</Button>
+                            <div className="text-xs text-muted-foreground">8px</div>
+                            <Button size="sm">Button 2</Button>
                           </div>
-                          <div>
-                            <p><code>aria-expanded</code> - For menu buttons</p>
-                            <Button variant="outline" aria-expanded="false">
-                              Options ▼
-                            </Button>
+                          <p className="text-xs text-blue-700 dark:text-blue-300 mt-2">
+                            Minimum 8px spacing between interactive elements
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="text-lg">Color & Contrast</CardTitle>
+                      <CardDescription>Visual accessibility requirements</CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <div className="space-y-4">
+                        <div className="p-4 border rounded-lg">
+                          <h5 className="font-medium mb-2">Contrast Ratios</h5>
+                          <div className="space-y-2">
+                            <div className="flex items-center gap-3">
+                              <Button className="bg-blue-600 text-white">4.5:1 AA</Button>
+                              <span className="text-sm">Normal text minimum</span>
+                            </div>
+                            <div className="flex items-center gap-3">
+                              <Button className="bg-blue-800 text-white">7:1 AAA</Button>
+                              <span className="text-sm">Enhanced contrast</span>
+                            </div>
+                            <div className="flex items-center gap-3">
+                              <Button className="ring-2 ring-blue-500 ring-offset-2">3:1</Button>
+                              <span className="text-sm">Focus indicator minimum</span>
+                            </div>
                           </div>
-                          <div>
-                            <p><code>aria-describedby</code> - Additional context</p>
-                            <Button aria-describedby="delete-help">
+                        </div>
+
+                        <div className="p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg">
+                          <h5 className="font-medium text-amber-800 dark:text-amber-200 mb-2">Color Independence</h5>
+                          <div className="space-y-2">
+                            <Button variant="destructive" size="sm">
+                              <X className="mr-2 h-4 w-4" />
                               Delete
                             </Button>
-                            <p id="delete-help" className="text-xs text-muted-foreground">Cannot be undone</p>
+                            <p className="text-xs text-amber-700 dark:text-amber-300">
+                              Use icons + text, not just color
+                            </p>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h4 className="font-semibold mb-3 text-lg">Touch Target Accessibility</h4>
-                    <div className="p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg mb-4">
-                      <h5 className="font-medium mb-2 text-orange-800 dark:text-orange-200">WCAG 2.2 Target Size Requirements</h5>
-                      <p className="text-sm text-orange-700 dark:text-orange-300">
-                        Following Gestalt (Pinterest) and industry standards, touch targets must meet minimum size requirements 
-                        for accessibility compliance and usability across devices.
-                      </p>
-                    </div>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h5 className="font-medium mb-3">Size Requirements</h5>
-                        <ul className="text-sm space-y-2">
-                          <li>• <strong>Minimum:</strong> 44×44px (iOS), 48×48dp (Android)</li>
-                          <li>• <strong>WCAG 2.2:</strong> 24×24px minimum for AA compliance</li>
-                          <li>• <strong>Recommended:</strong> 48×48px for optimal usability</li>
-                          <li>• <strong>Spacing:</strong> 8px minimum between interactive elements</li>
-                          <li>• <strong>Finger-friendly:</strong> Consider average finger size (57×57px)</li>
-                        </ul>
-                        <div className="mt-3 space-y-2">
-                          <div className="flex items-center gap-2">
-                            <Button className="min-w-[48px] min-h-[48px] bg-green-600">✓</Button>
-                            <span className="text-sm">48×48px - Optimal</span>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <Button className="min-w-[44px] min-h-[44px]">✓</Button>
-                            <span className="text-sm">44×44px - Minimum</span>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <Button size="sm" className="min-w-[24px] min-h-[24px] text-xs">?</Button>
-                            <span className="text-sm text-red-600">24×24px - WCAG AA (borderline)</span>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div>
-                        <h5 className="font-medium mb-3">Mobile Considerations</h5>
-                        <ul className="text-sm space-y-2">
-                          <li>• <strong>Thumb zones:</strong> Consider reachable areas</li>
-                          <li>• <strong>Edge spacing:</strong> 16px from screen edges</li>
-                          <li>• <strong>Button groups:</strong> 8px spacing minimum</li>
-                          <li>• <strong>Dense interfaces:</strong> Increase spacing to 12px+</li>
-                          <li>• <strong>One-handed use:</strong> Place primary actions in thumb reach</li>
-                        </ul>
-                        <div className="mt-3 p-3 bg-gray-100 dark:bg-gray-800 rounded">
-                          <div className="text-xs font-medium mb-2">Button Group Example:</div>
-                          <div className="flex gap-2">
-                            <Button size="sm" className="min-w-[44px] min-h-[44px]">Save</Button>
-                            <Button size="sm" variant="outline" className="min-w-[44px] min-h-[44px]">Cancel</Button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h4 className="font-semibold mb-3 text-lg">Visual Accessibility</h4>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h5 className="font-medium mb-3">Color & Contrast</h5>
-                        <ul className="text-sm space-y-1">
-                          <li>• <strong>Text contrast:</strong> 4.5:1 minimum (7:1 for AAA)</li>
-                          <li>• <strong>Focus indicators:</strong> 3:1 contrast minimum</li>
-                          <li>• <strong>Color independence:</strong> Don&apos;t rely solely on color</li>
-                          <li>• <strong>State indicators:</strong> Multiple visual cues</li>
-                          <li>• <strong>High contrast mode:</strong> System preference support</li>
-                        </ul>
-                        <div className="mt-2 flex gap-2">
-                          <Button className="bg-blue-600 hover:bg-blue-700">Good Contrast</Button>
-                          <Button className="bg-gray-300 text-gray-400 cursor-not-allowed">Poor Contrast</Button>
-                        </div>
-                      </div>
-
-                      <div>
-                        <h5 className="font-medium mb-3">Responsive & Zoom Support</h5>
-                        <ul className="text-sm space-y-1">
-                          <li>• <strong>Zoom support:</strong> Up to 200% without horizontal scroll</li>
-                          <li>• <strong>Text scaling:</strong> Respect system font size preferences</li>
-                          <li>• <strong>Reflow:</strong> Content adapts to narrow viewports</li>
-                          <li>• <strong>Focus indicators:</strong> Scale with content</li>
-                          <li>• <strong>Interactive spacing:</strong> Maintains touch targets when zoomed</li>
-                        </ul>
-                        <div className="mt-2 space-y-2">
-                          <Button className="min-w-[44px] min-h-[44px]">Accessible Size</Button>
-                          <Button size="sm" className="text-xs px-1 py-0 opacity-50">Avoid This</Button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h4 className="font-semibold mb-3 text-lg">Common Accessibility Mistakes</h4>
-                    <div className="space-y-4">
-                      <div className="p-4 border-2 border-red-500 rounded-lg bg-red-50 dark:bg-red-900/20">
-                        <h5 className="font-medium text-red-800 dark:text-red-200 mb-2">❌ Avoid These Mistakes</h5>
-                        <ul className="text-sm text-red-700 dark:text-red-300 space-y-1">
-                          <li>• Using <code>&lt;div&gt;</code> or <code>&lt;span&gt;</code> as buttons without proper roles</li>
-                          <li>• Missing aria-label on icon-only buttons</li>
-                          <li>• Using <code>disabled</code> without explaining why</li>
-                          <li>• Poor color contrast or missing focus indicators</li>
-                          <li>• Buttons that are too small for touch interfaces</li>
-                          <li>• Generic text like &quot;Click here&quot; or &quot;Read more&quot;</li>
-                        </ul>
-                      </div>
-
-                      <div className="p-4 border-2 border-green-500 rounded-lg bg-green-50 dark:bg-green-900/20">
-                        <h5 className="font-medium text-green-800 dark:text-green-200 mb-2">✅ Best Practices</h5>
-                        <ul className="text-sm text-green-700 dark:text-green-300 space-y-1">
-                          <li>• Always use semantic <code>&lt;button&gt;</code> elements</li>
-                          <li>• Provide clear, descriptive labels</li>
-                          <li>• Implement proper keyboard navigation</li>
-                          <li>• Use ARIA attributes appropriately</li>
-                          <li>• Test with screen readers and keyboard only</li>
-                          <li>• Maintain consistent behavior across your app</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h4 className="font-semibold mb-3 text-lg">Testing Your Buttons</h4>
-                    <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                      <h5 className="font-medium mb-2 text-blue-800 dark:text-blue-200">Accessibility Testing Checklist</h5>
-                      <div className="grid md:grid-cols-2 gap-4 text-sm text-blue-700 dark:text-blue-300">
-                        <div>
-                          <strong>Keyboard Testing:</strong>
-                          <ul className="mt-1 space-y-1">
-                            <li>□ Can reach all buttons via Tab</li>
-                            <li>□ Space/Enter activates buttons</li>
-                            <li>□ Focus indicators are visible</li>
-                            <li>□ Tab order is logical</li>
-                          </ul>
-                        </div>
-                        <div>
-                          <strong>Screen Reader Testing:</strong>
-                          <ul className="mt-1 space-y-1">
-                            <li>□ Role announced as &quot;button&quot;</li>
-                            <li>□ Labels are descriptive</li>
-                            <li>□ States are announced</li>
-                            <li>□ Context is provided</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h4 className="font-semibold mb-3 text-lg">International & Global Considerations</h4>
-                    <div className="p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg mb-4">
-                      <h5 className="font-medium mb-2 text-purple-800 dark:text-purple-200">Visa Global Accessibility Requirements (VGAR)</h5>
-                      <p className="text-sm text-purple-700 dark:text-purple-300">
-                        Following Visa's approach to global accessibility, consider international users, different languages, 
-                        cultural contexts, and varying accessibility regulations across regions.
-                      </p>
-                    </div>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h5 className="font-medium mb-3">Language & Localization</h5>
-                        <ul className="text-sm space-y-1">
-                          <li>• <strong>Text expansion:</strong> Allow 200-300% space for translations</li>
-                          <li>• <strong>Right-to-left (RTL):</strong> Support Arabic, Hebrew layouts</li>
-                          <li>• <strong>Character encoding:</strong> UTF-8 for international characters</li>
-                          <li>• <strong>Font support:</strong> Include language-specific fonts</li>
-                          <li>• <strong>Cultural context:</strong> Avoid culture-specific icons/colors</li>
-                        </ul>
-                      </div>
-
-                      <div>
-                        <h5 className="font-medium mb-3">Regional Compliance</h5>
-                        <ul className="text-sm space-y-1">
-                          <li>• <strong>WCAG 2.2 AA:</strong> Global standard baseline</li>
-                          <li>• <strong>ADA (USA):</strong> Americans with Disabilities Act</li>
-                          <li>• <strong>EN 301 549 (EU):</strong> European accessibility standard</li>
-                          <li>• <strong>DDA (Australia):</strong> Disability Discrimination Act</li>
-                          <li>• <strong>JIS X 8341 (Japan):</strong> Japanese accessibility guidelines</li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div className="mt-4 p-3 bg-gray-100 dark:bg-gray-800 rounded">
-                      <h6 className="font-medium mb-2 text-sm">Example: Multi-language Button Labels</h6>
-                      <div className="flex flex-wrap gap-2 text-xs">
-                        <Button size="sm">Save (English)</Button>
-                        <Button size="sm">Guardar (Spanish)</Button>
-                        <Button size="sm">Enregistrer (French)</Button>
-                        <Button size="sm">保存 (Chinese)</Button>
-                        <Button size="sm">حفظ (Arabic)</Button>
-                      </div>
-                    </div>
-                  </div>
+                    </CardContent>
+                  </Card>
                 </div>
-              </CardContent>
-            </Card>
 
-            {/* Accessibility Implementation */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Accessibility Implementation</CardTitle>
-                <CardDescription>Essential accessibility attributes and patterns for buttons.</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
-                  <pre className="text-sm">
-                    {`<!-- Basic button with semantic HTML -->
-<button type="button">
-  Save Changes
-</button>
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg">Accessibility Testing Checklist</CardTitle>
+                    <CardDescription>Comprehensive testing framework for button accessibility</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid lg:grid-cols-2 gap-8">
+                      <div className="space-y-6">
+                        <div className="space-y-4">
+                          <h5 className="font-medium">Keyboard Testing</h5>
+                          <div className="space-y-2 text-sm">
+                            <label className="flex items-center gap-2">
+                              <input type="checkbox" className="rounded" />
+                              <span>All buttons reachable via Tab navigation</span>
+                            </label>
+                            <label className="flex items-center gap-2">
+                              <input type="checkbox" className="rounded" />
+                              <span>Space and Enter keys activate buttons</span>
+                            </label>
+                            <label className="flex items-center gap-2">
+                              <input type="checkbox" className="rounded" />
+                              <span>Focus indicators visible (3:1 contrast)</span>
+                            </label>
+                            <label className="flex items-center gap-2">
+                              <input type="checkbox" className="rounded" />
+                              <span>Tab order follows logical sequence</span>
+                            </label>
+                            <label className="flex items-center gap-2">
+                              <input type="checkbox" className="rounded" />
+                              <span>No keyboard traps present</span>
+                            </label>
+                          </div>
+                        </div>
 
-<!-- Icon-only button with accessible name -->
-<button type="button" aria-label="Close dialog">
-  <svg>...</svg>
-</button>
+                        <div className="space-y-4">
+                          <h5 className="font-medium">Screen Reader Testing</h5>
+                          <div className="space-y-2 text-sm">
+                            <label className="flex items-center gap-2">
+                              <input type="checkbox" className="rounded" />
+                              <span>Button role announced correctly</span>
+                            </label>
+                            <label className="flex items-center gap-2">
+                              <input type="checkbox" className="rounded" />
+                              <span>Descriptive labels provided</span>
+                            </label>
+                            <label className="flex items-center gap-2">
+                              <input type="checkbox" className="rounded" />
+                              <span>State changes announced</span>
+                            </label>
+                            <label className="flex items-center gap-2">
+                              <input type="checkbox" className="rounded" />
+                              <span>Context and purpose clear</span>
+                            </label>
+                            <label className="flex items-center gap-2">
+                              <input type="checkbox" className="rounded" />
+                              <span>No misleading information</span>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
 
-<!-- Toggle button -->
-<button type="button" aria-pressed="false">
-  Mute
-</button>
+                      <div className="space-y-6">
+                        <div className="space-y-4">
+                          <h5 className="font-medium">Visual Testing</h5>
+                          <div className="space-y-2 text-sm">
+                            <label className="flex items-center gap-2">
+                              <input type="checkbox" className="rounded" />
+                              <span>Text contrast meets 4.5:1 ratio</span>
+                            </label>
+                            <label className="flex items-center gap-2">
+                              <input type="checkbox" className="rounded" />
+                              <span>Button states visually distinct</span>
+                            </label>
+                            <label className="flex items-center gap-2">
+                              <input type="checkbox" className="rounded" />
+                              <span>Touch targets meet 44px minimum</span>
+                            </label>
+                            <label className="flex items-center gap-2">
+                              <input type="checkbox" className="rounded" />
+                              <span>High contrast mode support</span>
+                            </label>
+                            <label className="flex items-center gap-2">
+                              <input type="checkbox" className="rounded" />
+                              <span>200% zoom support maintained</span>
+                            </label>
+                          </div>
+                        </div>
 
-<!-- Button with description -->
-<button type="button" aria-describedby="help-text">
-  Delete Account
-</button>
-<div id="help-text">This action cannot be undone</div>
+                        <div className="space-y-4">
+                          <h5 className="font-medium">Mobile Testing</h5>
+                          <div className="space-y-2 text-sm">
+                            <label className="flex items-center gap-2">
+                              <input type="checkbox" className="rounded" />
+                              <span>Touch targets meet platform guidelines</span>
+                            </label>
+                            <label className="flex items-center gap-2">
+                              <input type="checkbox" className="rounded" />
+                              <span>Adequate spacing between buttons</span>
+                            </label>
+                            <label className="flex items-center gap-2">
+                              <input type="checkbox" className="rounded" />
+                              <span>One-handed operation possible</span>
+                            </label>
+                            <label className="flex items-center gap-2">
+                              <input type="checkbox" className="rounded" />
+                              <span>Voice control compatibility</span>
+                            </label>
+                            <label className="flex items-center gap-2">
+                              <input type="checkbox" className="rounded" />
+                              <span>Switch control navigation</span>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
 
-<!-- Disabled button with context -->
-<button type="button" aria-disabled="true" aria-describedby="why-disabled">
-  Submit
-</button>
-<div id="why-disabled">Please fill in all required fields</div>`}
-                  </pre>
+                <div className="grid lg:grid-cols-2 gap-8">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="text-lg">Testing Tools</CardTitle>
+                      <CardDescription>Recommended tools for accessibility testing</CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <div className="space-y-3">
+                        <div className="p-3 border rounded-lg">
+                          <h5 className="font-medium">Automated Testing</h5>
+                          <ul className="text-sm text-muted-foreground mt-1 space-y-1">
+                            <li>• axe DevTools (Browser extension)</li>
+                            <li>• Lighthouse Accessibility Audit</li>
+                            <li>• WAVE Web Accessibility Evaluator</li>
+                            <li>• Pa11y Command Line Tool</li>
+                          </ul>
+                        </div>
+                        
+                        <div className="p-3 border rounded-lg">
+                          <h5 className="font-medium">Manual Testing</h5>
+                          <ul className="text-sm text-muted-foreground mt-1 space-y-1">
+                            <li>• Keyboard-only navigation</li>
+                            <li>• Screen reader testing (NVDA, JAWS, VoiceOver)</li>
+                            <li>• Color contrast analyzers</li>
+                            <li>• Mobile assistive technology</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="text-lg">Common Issues</CardTitle>
+                      <CardDescription>Frequent accessibility problems to avoid</CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <div className="p-4 bg-red-50 dark:bg-red-900/20 rounded-lg">
+                        <h5 className="font-medium text-red-800 dark:text-red-200 mb-2">Critical Issues</h5>
+                        <ul className="text-sm text-red-700 dark:text-red-300 space-y-1">
+                          <li>• Non-semantic HTML (div/span as buttons)</li>
+                          <li>• Missing accessible names</li>
+                          <li>• Insufficient color contrast</li>
+                          <li>• Too-small touch targets</li>
+                          <li>• Missing keyboard support</li>
+                          <li>• Unclear focus indicators</li>
+                        </ul>
+                      </div>
+
+                      <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                        <h5 className="font-medium text-green-800 dark:text-green-200 mb-2">Quick Fixes</h5>
+                        <ul className="text-sm text-green-700 dark:text-green-300 space-y-1">
+                          <li>• Use semantic &lt;button&gt; elements</li>
+                          <li>• Add aria-label for icon buttons</li>
+                          <li>• Test with keyboard navigation</li>
+                          <li>• Verify color contrast ratios</li>
+                          <li>• Include clear focus indicators</li>
+                          <li>• Test with screen readers</li>
+                        </ul>
+                      </div>
+                    </CardContent>
+                  </Card>
                 </div>
               </CardContent>
             </Card>
