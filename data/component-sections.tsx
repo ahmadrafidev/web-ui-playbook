@@ -44,7 +44,7 @@ export const componentSections: ComponentSection[] = [
     name: "Buttons",
     href: "/playground/buttons",
     description: "Clickable elements that trigger actions and navigation",
-    status: "In Progress",
+    status: "Complete",
     preview: <ButtonPreview />,
   },
   {

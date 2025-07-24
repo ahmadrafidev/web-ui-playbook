@@ -34,7 +34,7 @@ export default function ButtonsPage() {
 
         {/* Header */}
         <div className="mb-6">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
             <div>
               <h1 className="text-4xl font-bold text-foreground mb-2">Buttons</h1>
               <p className="text-lg text-muted-foreground">
@@ -770,7 +770,7 @@ export default function ButtonsPage() {
           <TabsContent value="variants" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Button Variants</CardTitle>
+                <CardTitle className="text-xl font-bold">Button Variants</CardTitle>
                 <CardDescription>
                   Common button shapes, sizes, and visual styles for different use cases.
                 </CardDescription>
@@ -891,7 +891,7 @@ export default function ButtonsPage() {
           <TabsContent value="patterns" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Common Button Patterns</CardTitle>
+                <CardTitle className="text-xl font-bold">Common Button Patterns</CardTitle>
                 <CardDescription>
                   Proven patterns and best practices for button usage across different contexts and workflows.
                 </CardDescription>
@@ -1047,8 +1047,8 @@ export default function ButtonsPage() {
 
             <Card>
               <CardHeader>
-                    <CardTitle className="text-lg">Interactive Button States</CardTitle>
-                    <CardDescription>Demonstrating different states and user feedback patterns</CardDescription>
+                <CardTitle className="text-lg">Interactive Button States</CardTitle>
+                <CardDescription>Demonstrating different states and user feedback patterns</CardDescription>
               </CardHeader>
                   <CardContent>
                     <div className="grid lg:grid-cols-2 gap-8">
@@ -1193,7 +1193,7 @@ export default function ButtonsPage() {
           <TabsContent value="implementation" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Button Implementation</CardTitle>
+                <CardTitle className="text-xl font-bold">Button Implementation</CardTitle>
                 <CardDescription>
                   Essential attributes and patterns for button HTML and CSS.
                 </CardDescription>
@@ -1237,7 +1237,7 @@ export default function ButtonsPage() {
           <TabsContent value="accessibility" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Button Accessibility Standards</CardTitle>
+                <CardTitle className="text-xl font-bold">Button Accessibility Standards</CardTitle>
                 <CardDescription>
                   Comprehensive accessibility guidelines following WCAG 2.2 AA standards, ensuring universal access and compliance with global accessibility regulations.
                 </CardDescription>
@@ -1534,7 +1534,7 @@ export default function ButtonsPage() {
                     </div>
                   </div>
 
-                      <div className="space-y-6">
+                  <div className="space-y-6">
                     <div className="space-y-4">
                           <h5 className="font-medium">Visual Testing</h5>
                           <div className="space-y-2 text-sm">
@@ -1560,34 +1560,33 @@ export default function ButtonsPage() {
                             </label>
                     </div>
                   </div>
-
-                        <div className="space-y-4">
-                          <h5 className="font-medium">Mobile Testing</h5>
-                          <div className="space-y-2 text-sm">
-                            <label className="flex items-center gap-2">
-                              <input type="checkbox" className="rounded" />
-                              <span>Touch targets meet platform guidelines</span>
-                            </label>
-                            <label className="flex items-center gap-2">
-                              <input type="checkbox" className="rounded" />
-                              <span>Adequate spacing between buttons</span>
-                            </label>
-                            <label className="flex items-center gap-2">
-                              <input type="checkbox" className="rounded" />
-                              <span>One-handed operation possible</span>
-                            </label>
-                            <label className="flex items-center gap-2">
-                              <input type="checkbox" className="rounded" />
-                              <span>Voice control compatibility</span>
-                            </label>
-                            <label className="flex items-center gap-2">
-                              <input type="checkbox" className="rounded" />
-                              <span>Switch control navigation</span>
-                            </label>
-                        </div>
+                    <div className="space-y-4">
+                      <h5 className="font-medium">Mobile Testing</h5>
+                      <div className="space-y-2 text-sm">
+                        <label className="flex items-center gap-2">
+                          <input type="checkbox" className="rounded" />
+                          <span>Touch targets meet platform guidelines</span>
+                        </label>
+                        <label className="flex items-center gap-2">
+                          <input type="checkbox" className="rounded" />
+                          <span>Adequate spacing between buttons</span>
+                        </label>
+                        <label className="flex items-center gap-2">
+                          <input type="checkbox" className="rounded" />
+                          <span>One-handed operation possible</span>
+                        </label>
+                        <label className="flex items-center gap-2">
+                          <input type="checkbox" className="rounded" />
+                          <span>Voice control compatibility</span>
+                        </label>
+                        <label className="flex items-center gap-2">
+                          <input type="checkbox" className="rounded" />
+                          <span>Switch control navigation</span>
+                        </label>
                         </div>
                       </div>
                     </div>
+                  </div>
                   </CardContent>
                 </Card>
 
@@ -1624,8 +1623,8 @@ export default function ButtonsPage() {
 
             <Card>
               <CardHeader>
-                      <CardTitle className="text-lg">Common Issues</CardTitle>
-                      <CardDescription>Frequent accessibility problems to avoid</CardDescription>
+                <CardTitle className="text-lg">Common Issues</CardTitle>
+                <CardDescription>Frequent accessibility problems to avoid</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                       <div className="p-4 bg-red-50 dark:bg-red-900/20 rounded-lg">
