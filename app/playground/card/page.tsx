@@ -1,6 +1,6 @@
 "use client"
 
-import { Heart, Star, Share2, Bookmark, MoreHorizontal, Calendar, User, MessageCircle, ArrowRight, CheckCircle, AlertCircle, FileImage, Video, ShoppingCart, Eye, Download, X, Settings, Filter, Users, Shield, Check, Code2 } from "lucide-react"
+import { Heart, Star, Share2, Bookmark, MoreHorizontal, Calendar, User, ArrowRight, CheckCircle, FileImage, Video, ShoppingCart, Eye, Download, X, Settings, Users, Shield, Code2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
