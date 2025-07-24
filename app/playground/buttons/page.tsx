@@ -1,6 +1,6 @@
 "use client"
 
-import { Plus, Loader2, CheckCircle, AlertCircle, Settings, Users, Shield, Eye, Command, Menu as MenuIcon, Filter, Download, Upload, Search, X, Check, Star, Heart, Share, Trash2, Edit3, Copy, MoreHorizontal, Home, User, HelpCircle, Code2 } from "lucide-react"
+import { Plus, Loader2, CheckCircle, AlertCircle, Settings, Users, Download, Upload, X, Star, Trash2, Edit3, Copy, MoreHorizontal, HelpCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -71,22 +71,22 @@ export default function ButtonsPage() {
                     <p className="text-sm text-muted-foreground">
                       Enable users to initiate functions, submit data, and perform operations with clear affordances.
                     </p>
-                  </div>
+                      </div>
                   
                   <div className="p-4 border rounded-lg text-center">
                     <h4 className="font-semibold mb-2">Navigate Workflows</h4>
                     <p className="text-sm text-muted-foreground">
                       Guide users through processes, open dialogs, and control application state changes.
                     </p>
-                  </div>
+                    </div>
                   
                   <div className="p-4 border rounded-lg text-center">
                     <h4 className="font-semibold mb-2">Provide Feedback</h4>
                     <p className="text-sm text-muted-foreground">
                       Communicate system states, loading progress, and action outcomes to users.
                     </p>
-                  </div>
-                </div>
+                      </div>
+                    </div>
 
                 <div className="space-y-4">
                   <h4 className="text-lg font-semibold">Core Functions</h4>
@@ -97,30 +97,30 @@ export default function ButtonsPage() {
                         <div>
                           <strong className="text-sm">Form Submission:</strong>
                           <p className="text-xs text-muted-foreground">Submit forms, save data, and validate user input</p>
-                        </div>
                       </div>
+                    </div>
                       <div className="flex items-start gap-3">
                         <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                         <div>
                           <strong className="text-sm">State Management:</strong>
                           <p className="text-xs text-muted-foreground">Toggle features, switch modes, and control application state</p>
-                        </div>
                       </div>
                     </div>
+                  </div>
                     <div className="space-y-3">
                       <div className="flex items-start gap-3">
                         <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
                         <div>
                           <strong className="text-sm">Navigation Control:</strong>
                           <p className="text-xs text-muted-foreground">Open overlays, navigate between views, and control user flow</p>
-                        </div>
+                </div>
                       </div>
                       <div className="flex items-start gap-3">
                         <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
-                        <div>
+                <div>
                           <strong className="text-sm">Process Control:</strong>
                           <p className="text-xs text-muted-foreground">Start, stop, pause operations and manage workflows</p>
-                        </div>
+                  </div>
                       </div>
                     </div>
                   </div>
@@ -152,8 +152,8 @@ export default function ButtonsPage() {
                         <li>• API calls and data operations</li>
                       </ul>
                     </div>
-                  </div>
-
+                    </div>
+                    
                   <div className="space-y-4">
                     <div className="p-4 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800">
                       <div className="flex items-center gap-2 mb-3">
@@ -169,8 +169,8 @@ export default function ButtonsPage() {
                         <li>• Reference links to documentation</li>
                       </ul>
                     </div>
+                    </div>
                   </div>
-                </div>
 
                 <div className="space-y-4">
                   <h4 className="text-lg font-semibold">Button vs Alternatives</h4>
@@ -185,7 +185,7 @@ export default function ButtonsPage() {
                         </p>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-start gap-4 p-4 border rounded-lg">
                       <div className="w-2 h-2 bg-purple-600 rounded-full mt-2"></div>
                       <div>
@@ -193,9 +193,9 @@ export default function ButtonsPage() {
                         <p className="text-sm text-muted-foreground mt-1">
                           Use buttons for actions requiring confirmation. Use toggles for immediate 
                           state changes and settings that take effect instantly.
-                        </p>
-                      </div>
+                      </p>
                     </div>
+                  </div>
                     
                     <div className="flex items-start gap-4 p-4 border rounded-lg">
                       <div className="w-2 h-2 bg-green-600 rounded-full mt-2"></div>
@@ -205,7 +205,7 @@ export default function ButtonsPage() {
                           Use buttons for primary actions visible on the interface. Use menu items 
                           for secondary actions grouped within dropdowns or context menus.
                         </p>
-                      </div>
+                </div>
                     </div>
                   </div>
                 </div>
@@ -289,7 +289,7 @@ export default function ButtonsPage() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="space-y-4">
+                <div className="space-y-4">
                     <div className="flex items-start gap-3">
                       <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                       <div>
@@ -316,41 +316,41 @@ export default function ButtonsPage() {
                       <div>
                         <strong className="text-sm">Contextual Relevance:</strong>
                         <p className="text-xs text-muted-foreground">Button labels and styling should match the current context and user goals</p>
-                      </div>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </CardContent>
+            </Card>
 
-              <Card>
-                <CardHeader>
+            <Card>
+              <CardHeader>
                   <CardTitle>Usage Metrics</CardTitle>
-                  <CardDescription>
+                <CardDescription>
                     Key metrics to consider when implementing buttons
-                  </CardDescription>
-                </CardHeader>
+                </CardDescription>
+              </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-4">
                     <div className="flex justify-between items-center p-3 bg-muted rounded-lg">
                       <span className="text-sm font-medium">Click-through Rate</span>
                       <Badge variant="outline">85-95%</Badge>
-                    </div>
+                      </div>
                     <div className="flex justify-between items-center p-3 bg-muted rounded-lg">
                       <span className="text-sm font-medium">Touch Target Size</span>
                       <Badge variant="outline">44px min</Badge>
-                    </div>
+                      </div>
                     <div className="flex justify-between items-center p-3 bg-muted rounded-lg">
                       <span className="text-sm font-medium">Loading State Duration</span>
                       <Badge variant="outline">&lt; 3 seconds</Badge>
-                    </div>
+                      </div>
                     <div className="flex justify-between items-center p-3 bg-muted rounded-lg">
                       <span className="text-sm font-medium">Error Recovery Time</span>
                       <Badge variant="outline">&lt; 5 seconds</Badge>
+                      </div>
                     </div>
-                  </div>
                 </CardContent>
               </Card>
-            </div>
+                  </div>
 
             <div className="grid lg:grid-cols-2 gap-8">
               <Card>
@@ -372,11 +372,11 @@ export default function ButtonsPage() {
                         Download File
                       </Button>
                       <Button className="w-full" disabled>
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                         Processing...
-                      </Button>
-                    </div>
-                  </div>
+                        </Button>
+                      </div>
+                      </div>
 
                   <div className="pt-4 border-t">
                     <h4 className="font-medium mb-3">Best for:</h4>
@@ -407,13 +407,13 @@ export default function ButtonsPage() {
                       <Button variant="secondary" className="w-full">
                         <Settings className="mr-2 h-4 w-4" />
                         Settings
-                      </Button>
+                        </Button>
                       <Button variant="ghost" className="w-full">
                         <HelpCircle className="mr-2 h-4 w-4" />
                         Learn More
                       </Button>
+                      </div>
                     </div>
-                  </div>
 
                   <div className="pt-4 border-t">
                     <h4 className="font-medium mb-3">Best for:</h4>
@@ -426,7 +426,7 @@ export default function ButtonsPage() {
                   </div>
                 </CardContent>
               </Card>
-            </div>
+                </div>
 
             <Card>
               <CardHeader>
@@ -492,7 +492,7 @@ export default function ButtonsPage() {
                       </tr>
                     </tbody>
                   </table>
-                </div>
+                  </div>
               </CardContent>
             </Card>
 
@@ -504,28 +504,28 @@ export default function ButtonsPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="space-y-4">
+                      <div className="space-y-4">
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                     <div>
                       <strong className="text-sm">Clear Affordance:</strong>
                       <p className="text-xs text-muted-foreground">Buttons should look clickable and indicate their interactive nature through visual design</p>
-                    </div>
-                  </div>
+                          </div>
+                        </div>
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
                     <div>
                       <strong className="text-sm">Predictable Behavior:</strong>
                       <p className="text-xs text-muted-foreground">Users should be able to predict what will happen when they click a button</p>
-                    </div>
-                  </div>
+                          </div>
+                        </div>
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
                     <div>
                       <strong className="text-sm">Appropriate Hierarchy:</strong>
                       <p className="text-xs text-muted-foreground">Visual weight should match the importance of the action</p>
-                    </div>
-                  </div>
+                          </div>
+                        </div>
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-orange-600 rounded-full mt-2 flex-shrink-0"></div>
                     <div>
@@ -549,19 +549,19 @@ export default function ButtonsPage() {
                   <div className="flex justify-between items-center p-3 bg-muted rounded-lg">
                     <span className="text-sm font-medium">Click-through Rate</span>
                     <Badge variant="outline">85-95%</Badge>
-                  </div>
+                          </div>
                   <div className="flex justify-between items-center p-3 bg-muted rounded-lg">
                     <span className="text-sm font-medium">Touch Target Size</span>
                     <Badge variant="outline">44px min</Badge>
-                  </div>
+                        </div>
                   <div className="flex justify-between items-center p-3 bg-muted rounded-lg">
                     <span className="text-sm font-medium">Loading State Duration</span>
                     <Badge variant="outline">&lt; 3 seconds</Badge>
-                  </div>
+                      </div>
                   <div className="flex justify-between items-center p-3 bg-muted rounded-lg">
                     <span className="text-sm font-medium">Error Recovery Time</span>
                     <Badge variant="outline">&lt; 5 seconds</Badge>
-                  </div>
+                    </div>
                 </div>
               </CardContent>
             </Card>
@@ -578,7 +578,7 @@ export default function ButtonsPage() {
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div>
+                    <div>
                     <h4 className="font-semibold mb-3 text-lg">Essential Elements</h4>
                     <ul className="space-y-2 text-sm">
                       <li>• <strong>Container:</strong> Defines button boundaries and click area</li>
@@ -587,8 +587,8 @@ export default function ButtonsPage() {
                       <li>• <strong>State Indicators:</strong> Visual feedback for interaction</li>
                       <li>• <strong>Focus Ring:</strong> Keyboard navigation indicator</li>
                       <li>• <strong>Loading State:</strong> Progress feedback for async actions</li>
-                    </ul>
-                  </div>
+                          </ul>
+                        </div>
 
                   <div>
                     <h4 className="font-semibold mb-3 text-lg">Design Principles</h4>
@@ -598,9 +598,9 @@ export default function ButtonsPage() {
                       <li>• <strong>Consistent Spacing:</strong> Uniform padding and margins</li>
                       <li>• <strong>Semantic Color:</strong> Meaningful color associations</li>
                       <li>• <strong>Readable Text:</strong> High contrast and legible typography</li>
-                    </ul>
+                          </ul>
                   </div>
-                </div>
+                        </div>
 
                 <div className="space-y-4">
                   <h4 className="font-semibold text-lg">Button Structure Examples</h4>
@@ -616,7 +616,7 @@ export default function ButtonsPage() {
                             <div className="flex items-center gap-2">
                               <div className="w-2 h-2 bg-blue-600 rounded"></div>
                               <span>Container with background</span>
-                            </div>
+                        </div>
                             <div className="flex items-center gap-2">
                               <div className="w-2 h-2 bg-green-600 rounded"></div>
                               <span>Text label with action verb</span>
@@ -624,9 +624,9 @@ export default function ButtonsPage() {
                             <div className="flex items-center gap-2">
                               <div className="w-2 h-2 bg-purple-600 rounded"></div>
                               <span>Consistent padding and spacing</span>
-                            </div>
-                          </div>
-                        </div>
+                      </div>
+                    </div>
+                  </div>
 
                         <div className="p-4 border-2 border-dashed rounded-lg">
                           <Button className="mb-2">
@@ -637,7 +637,7 @@ export default function ButtonsPage() {
                             <div className="flex items-center gap-2">
                               <div className="w-2 h-2 bg-blue-600 rounded"></div>
                               <span>Icon for visual reinforcement</span>
-                            </div>
+                    </div>
                             <div className="flex items-center gap-2">
                               <div className="w-2 h-2 bg-green-600 rounded"></div>
                               <span>Descriptive label with context</span>
@@ -647,15 +647,15 @@ export default function ButtonsPage() {
                               <span>Proper icon-text spacing</span>
                             </div>
                           </div>
-                        </div>
-                      </div>
+                  </div>
+                </div>
 
-                      <div className="space-y-4">
+                <div className="space-y-4">
                         <div className="p-4 border-2 border-dashed rounded-lg">
                           <Button disabled className="mb-2">
                             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                             Processing...
-                          </Button>
+                        </Button>
                           <div className="text-xs text-muted-foreground space-y-1">
                             <div className="flex items-center gap-2">
                               <div className="w-2 h-2 bg-amber-600 rounded"></div>
@@ -675,12 +675,12 @@ export default function ButtonsPage() {
                         <div className="p-4 border-2 border-dashed rounded-lg">
                           <Button variant="outline" className="mb-2 ring-2 ring-offset-2 ring-primary">
                             Focused Button
-                          </Button>
+                        </Button>
                           <div className="text-xs text-muted-foreground space-y-1">
                             <div className="flex items-center gap-2">
                               <div className="w-2 h-2 bg-blue-600 rounded"></div>
                               <span>Visible focus indicator</span>
-                            </div>
+                      </div>
                             <div className="flex items-center gap-2">
                               <div className="w-2 h-2 bg-green-600 rounded"></div>
                               <span>High contrast focus ring</span>
@@ -691,9 +691,9 @@ export default function ButtonsPage() {
                             </div>
                           </div>
                         </div>
-                      </div>
                     </div>
                   </div>
+                </div>
 
                   {/* Interactive State Anatomy */}
                   <div className="p-4 border rounded-lg">
@@ -741,7 +741,7 @@ export default function ButtonsPage() {
                           <li>• <strong>Desktop Minimum:</strong> 32×32px for mouse interfaces</li>
                           <li>• <strong>Icon Buttons:</strong> Square dimensions for consistency</li>
                           <li>• <strong>Text Buttons:</strong> Auto width with min-width constraints</li>
-                        </ul>
+                  </ul>
                       </div>
                       <div>
                         <h6 className="font-medium mb-2">Spacing Standards</h6>
@@ -912,8 +912,8 @@ export default function ButtonsPage() {
                             <Button variant="outline">Cancel</Button>
                           </div>
                           <p className="text-xs text-muted-foreground mt-2">Most common form pattern</p>
-                        </div>
-                        
+                      </div>
+
                         <div className="p-4 border rounded-lg">
                           <h5 className="font-medium mb-3">Multi-step Forms</h5>
                           <div className="flex justify-between gap-2">
@@ -921,11 +921,11 @@ export default function ButtonsPage() {
                             <div className="flex gap-2">
                               <Button variant="ghost">Save Draft</Button>
                               <Button>Continue →</Button>
-                            </div>
+                        </div>
                           </div>
                           <p className="text-xs text-muted-foreground mt-2">Wizard navigation pattern</p>
-                        </div>
-                        
+                  </div>
+
                         <div className="p-4 border rounded-lg">
                           <h5 className="font-medium mb-3">Critical Actions</h5>
                           <div className="flex gap-2">
@@ -933,8 +933,8 @@ export default function ButtonsPage() {
                             <Button variant="outline">Keep Account</Button>
                           </div>
                           <p className="text-xs text-muted-foreground mt-2">Destructive action pattern</p>
+                          </div>
                         </div>
-                      </div>
                     </CardContent>
                   </Card>
 
@@ -944,7 +944,7 @@ export default function ButtonsPage() {
                       <CardDescription>Managing async operations and user feedback</CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
-                      <div className="space-y-3">
+                        <div className="space-y-3">
                         <div className="p-4 border rounded-lg">
                           <h5 className="font-medium mb-3">Loading State</h5>
                           <Button disabled>
@@ -952,7 +952,7 @@ export default function ButtonsPage() {
                             Saving...
                           </Button>
                           <p className="text-xs text-muted-foreground mt-2">Prevents double-submission</p>
-                        </div>
+                          </div>
                         
                         <div className="p-4 border rounded-lg">
                           <h5 className="font-medium mb-3">Success Feedback</h5>
@@ -961,7 +961,7 @@ export default function ButtonsPage() {
                             Saved!
                           </Button>
                           <p className="text-xs text-muted-foreground mt-2">Temporary success state</p>
-                        </div>
+                          </div>
                         
                         <div className="p-4 border rounded-lg">
                           <h5 className="font-medium mb-3">Error Recovery</h5>
@@ -975,11 +975,11 @@ export default function ButtonsPage() {
                             </Button>
                           </div>
                           <p className="text-xs text-muted-foreground mt-2">Error state with recovery</p>
-                        </div>
-                      </div>
+                          </div>
+                          </div>
                     </CardContent>
                   </Card>
-                </div>
+                    </div>
 
                 <Card>
                   <CardHeader>
@@ -988,7 +988,7 @@ export default function ButtonsPage() {
                   </CardHeader>
                   <CardContent className="space-y-6">
                     <div className="grid lg:grid-cols-3 gap-6">
-                      <div className="space-y-4">
+                    <div className="space-y-4">
                         <h5 className="font-medium">Toolbar Actions</h5>
                         <div className="flex gap-1 p-2 border rounded-lg">
                           <Button variant="ghost" size="sm">
@@ -1003,18 +1003,18 @@ export default function ButtonsPage() {
                           <Button variant="ghost" size="sm">
                             <MoreHorizontal className="h-4 w-4" />
                           </Button>
-                        </div>
+                          </div>
                         <p className="text-xs text-muted-foreground">Icon-only for space efficiency</p>
                       </div>
-                      
+
                       <div className="space-y-4">
                         <h5 className="font-medium">Card Actions</h5>
                         <div className="p-4 border rounded-lg space-y-3">
                           <div className="flex justify-between items-start">
-                            <div>
+                          <div>
                               <h6 className="font-medium">Project Alpha</h6>
                               <p className="text-sm text-muted-foreground">Status: In Progress</p>
-                            </div>
+                          </div>
                             <Button variant="ghost" size="sm">
                               <MoreHorizontal className="h-4 w-4" />
                             </Button>
@@ -1022,48 +1022,48 @@ export default function ButtonsPage() {
                           <div className="flex gap-2">
                             <Button variant="outline" size="sm">View</Button>
                             <Button size="sm">Edit</Button>
-                          </div>
                         </div>
-                        <p className="text-xs text-muted-foreground">Primary + secondary actions</p>
                       </div>
-                      
-                      <div className="space-y-4">
+                        <p className="text-xs text-muted-foreground">Primary + secondary actions</p>
+                  </div>
+
+                    <div className="space-y-4">
                         <h5 className="font-medium">Modal Actions</h5>
                         <div className="p-4 border rounded-lg space-y-4">
-                          <div className="space-y-2">
+                        <div className="space-y-2">
                             <h6 className="font-medium">Delete Item?</h6>
                             <p className="text-sm text-muted-foreground">This action cannot be undone.</p>
                           </div>
                           <div className="flex justify-end gap-2">
                             <Button variant="outline" size="sm">Cancel</Button>
                             <Button variant="destructive" size="sm">Delete</Button>
-                          </div>
                         </div>
-                        <p className="text-xs text-muted-foreground">Critical confirmation dialog</p>
                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                        <p className="text-xs text-muted-foreground">Critical confirmation dialog</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
 
-                <Card>
-                  <CardHeader>
+            <Card>
+              <CardHeader>
                     <CardTitle className="text-lg">Interactive Button States</CardTitle>
                     <CardDescription>Demonstrating different states and user feedback patterns</CardDescription>
-                  </CardHeader>
+              </CardHeader>
                   <CardContent>
                     <div className="grid lg:grid-cols-2 gap-8">
-                      <div className="space-y-6">
-                        <div>
+                <div className="space-y-6">
+                  <div>
                           <h5 className="font-medium mb-3">Standard States</h5>
                           <div className="space-y-3">
                             <div className="flex items-center gap-3">
                               <Button>Default</Button>
                               <span className="text-sm text-muted-foreground">Normal state</span>
-                            </div>
+                          </div>
                             <div className="flex items-center gap-3">
                               <Button className="hover:bg-primary/90">Hover</Button>
                               <span className="text-sm text-muted-foreground">Mouse over state</span>
-                            </div>
+                          </div>
                             <div className="flex items-center gap-3">
                               <Button className="focus:ring-2 focus:ring-ring">Focus</Button>
                               <span className="text-sm text-muted-foreground">Keyboard focus state</span>
@@ -1071,11 +1071,11 @@ export default function ButtonsPage() {
                             <div className="flex items-center gap-3">
                               <Button disabled>Disabled</Button>
                               <span className="text-sm text-muted-foreground">Non-interactive state</span>
-                            </div>
                           </div>
                         </div>
+                      </div>
 
-                        <div>
+                      <div>
                           <h5 className="font-medium mb-3">Toggle States</h5>
                           <div className="space-y-3">
                             <div className="flex items-center gap-3">
@@ -1084,20 +1084,20 @@ export default function ButtonsPage() {
                                 Favorite
                               </Button>
                               <span className="text-sm text-muted-foreground">Inactive toggle</span>
-                            </div>
+                          </div>
                             <div className="flex items-center gap-3">
                               <Button>
                                 <Star className="mr-2 h-4 w-4 fill-current" />
                                 Favorited
                               </Button>
                               <span className="text-sm text-muted-foreground">Active toggle</span>
-                            </div>
-                          </div>
                         </div>
                       </div>
+                    </div>
+                  </div>
 
                       <div className="space-y-6">
-                        <div>
+                  <div>
                           <h5 className="font-medium mb-3">Progress States</h5>
                           <div className="space-y-3">
                             <div className="flex items-center gap-3">
@@ -1106,7 +1106,7 @@ export default function ButtonsPage() {
                                 Upload File
                               </Button>
                               <span className="text-sm text-muted-foreground">Ready state</span>
-                            </div>
+                      </div>
                             <div className="flex items-center gap-3">
                               <Button disabled>
                                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -1120,9 +1120,9 @@ export default function ButtonsPage() {
                                 Uploaded!
                               </Button>
                               <span className="text-sm text-muted-foreground">Completed</span>
+                          </div>
                             </div>
                           </div>
-                        </div>
 
                         <div>
                           <h5 className="font-medium mb-3">Context-Aware States</h5>
@@ -1140,11 +1140,11 @@ export default function ButtonsPage() {
                                 Invite Team (3)
                               </Button>
                               <span className="text-sm text-muted-foreground">With count badge</span>
-                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
+                  </div>
                   </CardContent>
                 </Card>
 
@@ -1180,9 +1180,9 @@ export default function ButtonsPage() {
                             <li>• Use vague labels like "Submit" or "OK"</li>
                             <li>• Allow double-submission of forms</li>
                           </ul>
-                        </div>
-                      </div>
-                    </div>
+                          </div>
+                          </div>
+                          </div>
                   </CardContent>
                 </Card>
               </CardContent>
@@ -1199,8 +1199,8 @@ export default function ButtonsPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
-                  <pre className="text-sm">
+                    <div className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
+                      <pre className="text-sm">
                     {`<!-- Basic button with semantic HTML -->
 <button type="button">
   Save Changes
@@ -1227,7 +1227,7 @@ export default function ButtonsPage() {
   Submit
 </button>
 <div id="why-disabled">Please fill in all required fields</div>`}
-                  </pre>
+                      </pre>
                 </div>
               </CardContent>
             </Card>
@@ -1259,22 +1259,22 @@ export default function ButtonsPage() {
                             <Button>Third</Button>
                           </div>
                           <p className="text-xs text-muted-foreground mt-2">Use Tab to move between buttons</p>
-                        </div>
-                        
+                  </div>
+
                         <div className="p-3 border rounded-lg">
                           <h5 className="font-medium mb-2">Activation</h5>
                           <Button>Press Space or Enter</Button>
                           <p className="text-xs text-muted-foreground mt-2">Both keys should activate buttons</p>
-                        </div>
-                        
+                      </div>
+
                         <div className="p-3 border rounded-lg">
                           <h5 className="font-medium mb-2">Focus Indicators</h5>
                           <Button className="focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
                             Visible Focus
                           </Button>
                           <p className="text-xs text-muted-foreground mt-2">3:1 contrast ratio minimum</p>
-                        </div>
                       </div>
+                    </div>
                     </CardContent>
                   </Card>
 
@@ -1290,28 +1290,28 @@ export default function ButtonsPage() {
                           <Button aria-label="Save document to cloud storage">
                             <Upload className="mr-2 h-4 w-4" />
                             Save
-                          </Button>
+                            </Button>
                           <p className="text-xs text-muted-foreground mt-2">Clear, descriptive purpose</p>
-                        </div>
+                          </div>
                         
                         <div className="p-3 border rounded-lg">
                           <h5 className="font-medium mb-2">State Announcements</h5>
                           <Button aria-pressed="false" variant="outline">
                             <Star className="mr-2 h-4 w-4" />
                             Favorite
-                          </Button>
+                            </Button>
                           <p className="text-xs text-muted-foreground mt-2">Toggle states announced</p>
-                        </div>
+                          </div>
                         
                         <div className="p-3 border rounded-lg">
                           <h5 className="font-medium mb-2">Context Information</h5>
                           <Button aria-describedby="delete-help" variant="destructive">
                             Delete Account
-                          </Button>
+                            </Button>
                           <p id="delete-help" className="text-xs text-muted-foreground mt-2">
                             This action cannot be undone
                           </p>
-                        </div>
+                          </div>
                       </div>
                     </CardContent>
                   </Card>
@@ -1369,8 +1369,8 @@ export default function ButtonsPage() {
                             <td className="p-3">Reference to description</td>
                             <td className="p-3">
                               <Button variant="destructive" size="sm">
-                                Delete
-                              </Button>
+                              Delete
+                            </Button>
                             </td>
                             <td className="p-3">Additional context</td>
                           </tr>
@@ -1386,7 +1386,7 @@ export default function ButtonsPage() {
                           </tr>
                         </tbody>
                       </table>
-                    </div>
+                          </div>
                   </CardContent>
                 </Card>
 
@@ -1404,7 +1404,7 @@ export default function ButtonsPage() {
                             <div className="flex items-center gap-3">
                               <Button className="min-w-[48px] min-h-[48px]">48px</Button>
                               <span className="text-sm">Recommended minimum</span>
-                            </div>
+                        </div>
                             <div className="flex items-center gap-3">
                               <Button className="min-w-[44px] min-h-[44px]" size="sm">44px</Button>
                               <span className="text-sm">Mobile minimum</span>
@@ -1412,9 +1412,9 @@ export default function ButtonsPage() {
                             <div className="flex items-center gap-3">
                               <Button className="min-w-[24px] min-h-[24px]" size="sm">24px</Button>
                               <span className="text-sm">WCAG 2.2 minimum</span>
-                            </div>
-                          </div>
-                        </div>
+                      </div>
+                    </div>
+                  </div>
 
                         <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
                           <h5 className="font-medium text-blue-800 dark:text-blue-200 mb-2">Spacing Requirements</h5>
@@ -1425,9 +1425,9 @@ export default function ButtonsPage() {
                           </div>
                           <p className="text-xs text-blue-700 dark:text-blue-300 mt-2">
                             Minimum 8px spacing between interactive elements
-                          </p>
-                        </div>
-                      </div>
+                      </p>
+                    </div>
+                          </div>
                     </CardContent>
                   </Card>
 
@@ -1444,7 +1444,7 @@ export default function ButtonsPage() {
                             <div className="flex items-center gap-3">
                               <Button className="bg-blue-600 text-white">4.5:1 AA</Button>
                               <span className="text-sm">Normal text minimum</span>
-                            </div>
+                          </div>
                             <div className="flex items-center gap-3">
                               <Button className="bg-blue-800 text-white">7:1 AAA</Button>
                               <span className="text-sm">Enhanced contrast</span>
@@ -1452,9 +1452,9 @@ export default function ButtonsPage() {
                             <div className="flex items-center gap-3">
                               <Button className="ring-2 ring-blue-500 ring-offset-2">3:1</Button>
                               <span className="text-sm">Focus indicator minimum</span>
-                            </div>
                           </div>
                         </div>
+                      </div>
 
                         <div className="p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg">
                           <h5 className="font-medium text-amber-800 dark:text-amber-200 mb-2">Color Independence</h5>
@@ -1471,7 +1471,7 @@ export default function ButtonsPage() {
                       </div>
                     </CardContent>
                   </Card>
-                </div>
+                  </div>
 
                 <Card>
                   <CardHeader>
@@ -1504,8 +1504,8 @@ export default function ButtonsPage() {
                               <input type="checkbox" className="rounded" />
                               <span>No keyboard traps present</span>
                             </label>
-                          </div>
                         </div>
+                      </div>
 
                         <div className="space-y-4">
                           <h5 className="font-medium">Screen Reader Testing</h5>
@@ -1530,12 +1530,12 @@ export default function ButtonsPage() {
                               <input type="checkbox" className="rounded" />
                               <span>No misleading information</span>
                             </label>
-                          </div>
-                        </div>
                       </div>
+                    </div>
+                  </div>
 
                       <div className="space-y-6">
-                        <div className="space-y-4">
+                    <div className="space-y-4">
                           <h5 className="font-medium">Visual Testing</h5>
                           <div className="space-y-2 text-sm">
                             <label className="flex items-center gap-2">
@@ -1558,8 +1558,8 @@ export default function ButtonsPage() {
                               <input type="checkbox" className="rounded" />
                               <span>200% zoom support maintained</span>
                             </label>
-                          </div>
-                        </div>
+                    </div>
+                  </div>
 
                         <div className="space-y-4">
                           <h5 className="font-medium">Mobile Testing</h5>
@@ -1584,7 +1584,7 @@ export default function ButtonsPage() {
                               <input type="checkbox" className="rounded" />
                               <span>Switch control navigation</span>
                             </label>
-                          </div>
+                        </div>
                         </div>
                       </div>
                     </div>
@@ -1606,9 +1606,9 @@ export default function ButtonsPage() {
                             <li>• Lighthouse Accessibility Audit</li>
                             <li>• WAVE Web Accessibility Evaluator</li>
                             <li>• Pa11y Command Line Tool</li>
-                          </ul>
-                        </div>
-                        
+                        </ul>
+                      </div>
+
                         <div className="p-3 border rounded-lg">
                           <h5 className="font-medium">Manual Testing</h5>
                           <ul className="text-sm text-muted-foreground mt-1 space-y-1">
@@ -1616,18 +1616,18 @@ export default function ButtonsPage() {
                             <li>• Screen reader testing (NVDA, JAWS, VoiceOver)</li>
                             <li>• Color contrast analyzers</li>
                             <li>• Mobile assistive technology</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
+                        </ul>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
 
-                  <Card>
-                    <CardHeader>
+            <Card>
+              <CardHeader>
                       <CardTitle className="text-lg">Common Issues</CardTitle>
                       <CardDescription>Frequent accessibility problems to avoid</CardDescription>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
+              </CardHeader>
+              <CardContent className="space-y-4">
                       <div className="p-4 bg-red-50 dark:bg-red-900/20 rounded-lg">
                         <h5 className="font-medium text-red-800 dark:text-red-200 mb-2">Critical Issues</h5>
                         <ul className="text-sm text-red-700 dark:text-red-300 space-y-1">
