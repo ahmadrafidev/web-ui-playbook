@@ -44,7 +44,7 @@ export const componentSections: ComponentSection[] = [
     name: "Card",
     href: "/playground/card",
     description: "Flexible containers that organize and display related content",
-    status: "In Progress",
+    status: "Complete",
     preview: <CardPreview />,
   },
   {
@@ -58,7 +58,7 @@ export const componentSections: ComponentSection[] = [
     name: "Checkbox",
     href: "/playground/checkbox",
     description: "Controls for selecting multiple options from a list",
-    status: "In Progress",
+    status: "Complete",
     preview: <CheckboxPreview />,
   },
   {
