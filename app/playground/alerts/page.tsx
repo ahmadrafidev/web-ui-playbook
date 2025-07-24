@@ -36,14 +36,13 @@ export default function AlertsPage() {
             <EditButton filePath="app/playground/alerts/page.tsx" />
           </div>
           <p className="text-base md:text-lg text-muted-foreground mb-6">
-            Alerts provide important messages to users about system status, user actions, or contextual information. 
-            They are designed to be non-intrusive while ensuring critical information is communicated effectively.
+            Alerts highlight important information, errors, or warnings that require user attention.
           </p>
         </div>
 
-        <Tabs defaultValue="purpose" className="space-y-6">
+        <Tabs defaultValue="overview" className="space-y-6">
           <TabsList className="grid w-full grid-cols-6">
-            <TabsTrigger value="purpose">Purpose</TabsTrigger>
+            <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="types">Alert Types</TabsTrigger>
             <TabsTrigger value="banners">Banners</TabsTrigger>
             <TabsTrigger value="interaction">Interaction</TabsTrigger>
@@ -51,93 +50,139 @@ export default function AlertsPage() {
             <TabsTrigger value="accessibility">Accessibility</TabsTrigger>
           </TabsList>
 
-          {/* Purpose of Alerts */}
-          <TabsContent value="purpose" className="space-y-8">
+          {/* Overview of Alerts */}
+          <TabsContent value="overview" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Primary Purpose of Alerts</CardTitle>
+                <CardTitle className="text-xl font-bold">Purpose of Alerts</CardTitle>
                 <CardDescription>
                   Understanding when and why to use alerts in your interface design.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <h4 className="font-semibold mb-3 text-lg">Core Purpose</h4>
-                    <ul className="space-y-2 text-sm">
-                      <li>• <strong>System Feedback:</strong> Confirm actions and show status</li>
-                      <li>• <strong>Error Communication:</strong> Inform about failures or issues</li>
-                      <li>• <strong>Warnings:</strong> Alert about potential problems</li>
-                      <li>• <strong>Contextual Information:</strong> Provide helpful tips or updates</li>
-                    </ul>
+                <div className="grid md:grid-cols-3 gap-4">
+                  <div className="p-4 border rounded-lg text-center">
+                    <h4 className="font-semibold mb-2">System Feedback</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Confirm actions and show status.
+                    </p>
                   </div>
-
-                  <div>
-                    <h4 className="font-semibold mb-3 text-lg">Alert vs Other Components</h4>
-                    <div className="space-y-3">
-                      <div className="p-3 bg-green-50 dark:bg-green-900/20 rounded">
-                        <strong className="text-green-800 dark:text-green-200">Use Alert When:</strong>
-                        <ul className="text-sm mt-1 text-green-700 dark:text-green-300">
-                          <li>• Important but non-blocking message</li>
-                          <li>• Temporary information</li>
-                          <li>• Context-specific feedback</li>
-                        </ul>
-                      </div>
-                      <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded">
-                        <strong className="text-blue-800 dark:text-blue-200">Use Toast/Snackbar When:</strong>
-                        <ul className="text-sm mt-1 text-blue-700 dark:text-blue-300">
-                          <li>• Brief notifications</li>
-                          <li>• Auto-dismissible messages</li>
-                          <li>• Global system updates</li>
-                        </ul>
-                      </div>
-                    </div>
+                  <div className="p-4 border rounded-lg text-center">
+                    <h4 className="font-semibold mb-2">Error Communication</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Inform about failures or issues.
+                    </p>
+                  </div>
+                  <div className="p-4 border rounded-lg text-center">
+                    <h4 className="font-semibold mb-2">Warnings & Context</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Alert about potential problems or provide helpful tips.
+                    </p>
                   </div>
                 </div>
 
                 <div className="space-y-4">
-                  <h4 className="font-semibold text-lg">Alert Usage Scenarios</h4>
-                  <div className="grid gap-4">
-                    <div className="flex items-start gap-4 p-4 border rounded-lg">
-                      <div className="p-2 bg-red-100 dark:bg-red-900/30 rounded">
-                        <XCircle className="h-4 w-4 text-red-600 dark:text-red-400" />
-                      </div>
-                      <div className="flex-1">
-                        <strong>Error Alerts:</strong> Network failures, validation errors, system issues
-                        <Alert className="mt-2 border-red-500/20 bg-red-500/10">
-                          <XCircle className="h-4 w-4 text-red-600 dark:text-red-400" />
-                          <AlertDescription className="text-red-700 dark:text-red-300">
-                            Unable to save changes. Please check your connection and try again.
-                          </AlertDescription>
-                        </Alert>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-start gap-4 p-4 border rounded-lg">
-                      <div className="p-2 bg-yellow-100 dark:bg-yellow-900/30 rounded">
-                        <AlertCircle className="h-4 w-4 text-yellow-600 dark:text-yellow-400" />
-                      </div>
-                      <div className="flex-1">
-                        <strong>Warning Alerts:</strong> Data loss warnings, irreversible actions
-                        <Alert className="mt-2 border-yellow-500/20 bg-yellow-500/10">
-                          <AlertCircle className="h-4 w-4 text-yellow-600 dark:text-yellow-400" />
-                          <AlertDescription className="text-yellow-700 dark:text-yellow-300">
-                            You have unsaved changes. They will be lost if you leave this page.
-                          </AlertDescription>
-                        </Alert>
-                      </div>
-                    </div>
+                  <h4 className="text-lg font-semibold">Alert vs Alternatives</h4>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-sm">
+                      <thead>
+                        <tr className="border-b">
+                          <th className="text-left p-3 font-medium">Component</th>
+                          <th className="text-left p-3 font-medium">Primary Use</th>
+                          <th className="text-left p-3 font-medium">Interaction</th>
+                          <th className="text-left p-3 font-medium">Visual Weight</th>
+                          <th className="text-left p-3 font-medium">Example Context</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y">
+                        <tr>
+                          <td className="p-3 font-medium">Alert</td>
+                          <td className="p-3">System feedback, errors, warnings</td>
+                          <td className="p-3">Minimal/optional</td>
+                          <td className="p-3">Medium</td>
+                          <td className="p-3">Validation, status, errors</td>
+                        </tr>
+                        <tr>
+                          <td className="p-3 font-medium">Toast/Snackbar</td>
+                          <td className="p-3">Brief notifications</td>
+                          <td className="p-3">Auto-dismiss, optional action</td>
+                          <td className="p-3">Low</td>
+                          <td className="p-3">Save confirmation, info</td>
+                        </tr>
+                        <tr>
+                          <td className="p-3 font-medium">Banner</td>
+                          <td className="p-3">Global/section-wide info</td>
+                          <td className="p-3">Persistent, dismissible</td>
+                          <td className="p-3">High</td>
+                          <td className="p-3">Site maintenance, outages</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="p-3 bg-green-50 dark:bg-green-900/20 rounded border border-green-200 dark:border-green-800">
+                    <strong className="text-green-800 dark:text-green-200">Best for:</strong>
+                    <ul className="text-sm mt-1 text-green-700 dark:text-green-300 list-disc list-inside">
+                      <li>Important but non-blocking message</li>
+                      <li>Temporary information</li>
+                      <li>Context-specific feedback</li>
+                    </ul>
+                  </div>
+                  <div className="p-3 bg-red-50 dark:bg-red-900/20 rounded border border-red-200 dark:border-red-800">
+                    <strong className="text-red-800 dark:text-red-200">Avoid when:</strong>
+                    <ul className="text-sm mt-1 text-red-700 dark:text-red-300 list-disc list-inside">
+                      <li>Message is not actionable or relevant</li>
+                      <li>Information is not time-sensitive</li>
+                      <li>Use banners for global/system-wide issues</li>
+                    </ul>
                   </div>
                 </div>
               </CardContent>
             </Card>
+
+            {/* Example Scenarios (unchanged, but moved below) */}
+            <div className="space-y-4">
+              <h4 className="font-semibold text-lg">Alert Usage Scenarios</h4>
+              <div className="grid gap-4">
+                <div className="flex items-start gap-4 p-4 border rounded-lg">
+                  <div className="p-2 bg-red-100 dark:bg-red-900/30 rounded">
+                    <XCircle className="h-4 w-4 text-red-600 dark:text-red-400" />
+                  </div>
+                  <div className="flex-1">
+                    <strong>Error Alerts:</strong> Network failures, validation errors, system issues
+                    <Alert className="mt-2 border-red-500/20 bg-red-500/10">
+                      <XCircle className="h-4 w-4 text-red-600 dark:text-red-400" />
+                      <AlertDescription className="text-red-700 dark:text-red-300">
+                        Unable to save changes. Please check your connection and try again.
+                      </AlertDescription>
+                    </Alert>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4 p-4 border rounded-lg">
+                  <div className="p-2 bg-yellow-100 dark:bg-yellow-900/30 rounded">
+                    <AlertCircle className="h-4 w-4 text-yellow-600 dark:text-yellow-400" />
+                  </div>
+                  <div className="flex-1">
+                    <strong>Warning Alerts:</strong> Data loss warnings, irreversible actions
+                    <Alert className="mt-2 border-yellow-500/20 bg-yellow-500/10">
+                      <AlertCircle className="h-4 w-4 text-yellow-600 dark:text-yellow-400" />
+                      <AlertDescription className="text-yellow-700 dark:text-yellow-300">
+                        You have unsaved changes. They will be lost if you leave this page.
+                      </AlertDescription>
+                    </Alert>
+                  </div>
+                </div>
+              </div>
+            </div>
           </TabsContent>
 
           {/* Alert Types */}
           <TabsContent value="types" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Alert Types & Variants</CardTitle>
+                <CardTitle className="text-xl font-bold">Alert Types & Variants</CardTitle>
                 <CardDescription>
                   Different alert types for various contexts and message urgency levels.
                 </CardDescription>
@@ -296,7 +341,7 @@ export default function AlertsPage() {
           <TabsContent value="banners" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Banner vs Alert Components</CardTitle>
+                <CardTitle className="text-xl font-bold">Banner vs Alert Components</CardTitle>
                 <CardDescription>
                   Understanding the distinction between alerts and banners, and when to use each pattern.
                 </CardDescription>
@@ -444,7 +489,7 @@ export default function AlertsPage() {
           <TabsContent value="interaction" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle className="text-base md:text-lg">Alert Interactions</CardTitle>
+                <CardTitle className="text-xl font-bold">Alert Interactions</CardTitle>
                 <CardDescription>
                   How users can interact with alerts and when to make them actionable.
                 </CardDescription>
@@ -564,7 +609,7 @@ export default function AlertsPage() {
           <TabsContent value="placement" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Placement & UX Guidelines</CardTitle>
+                <CardTitle className="text-xl font-bold">Placement & UX Guidelines</CardTitle>
                 <CardDescription>
                   Best practices for alert positioning, timing, and responsive behavior.
                 </CardDescription>
@@ -706,7 +751,7 @@ export default function AlertsPage() {
           <TabsContent value="accessibility" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Alert Accessibility (A11y)</CardTitle>
+                <CardTitle className="text-xl font-bold">Alert Accessibility (A11y)</CardTitle>
                 <CardDescription>
                   Comprehensive accessibility guidelines for alerts following WCAG and WAI-ARIA standards.
                 </CardDescription>
@@ -879,7 +924,7 @@ export default function AlertsPage() {
             {/* Accessibility Implementation */}
             <Card>
               <CardHeader>
-                <CardTitle>Accessibility Implementation</CardTitle>
+                <CardTitle className="text-xl font-bold">Accessibility Implementation</CardTitle>
                 <CardDescription>Essential accessibility attributes and patterns for alerts.</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">

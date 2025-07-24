@@ -23,7 +23,7 @@ export const componentSections: ComponentSection[] = [
     name: "Alerts",
     href: "/playground/alerts",
     description: "Prominent messages that communicate important information",
-    status: "In Progress",
+    status: "Complete",
     preview: <AlertsPreview />,
   },
   {

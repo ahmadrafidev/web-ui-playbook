@@ -53,7 +53,7 @@ export default function TooltipsPage() {
           <TabsContent value="overview" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Primary Purpose of Tooltips</CardTitle>
+                <CardTitle className="text-xl font-bold">Primary Purpose of Tooltips</CardTitle>
                 <CardDescription>
                   Understanding when and why to use tooltips in your interface design.
                 </CardDescription>
@@ -186,7 +186,7 @@ export default function TooltipsPage() {
           <TabsContent value="types" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Tooltip Types & Variants</CardTitle>
+                <CardTitle className="text-xl font-bold">Tooltip Types & Variants</CardTitle>
                 <CardDescription>
                   Different tooltip styles and behaviors for various use cases and content types.
                 </CardDescription>
@@ -350,7 +350,7 @@ export default function TooltipsPage() {
           <TabsContent value="interaction" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Tooltip Interaction Patterns</CardTitle>
+                <CardTitle className="text-xl font-bold">Tooltip Interaction Patterns</CardTitle>
                 <CardDescription>
                   How tooltips should behave in response to user interactions across different devices and contexts.
                 </CardDescription>
@@ -513,7 +513,7 @@ export default function TooltipsPage() {
           <TabsContent value="placement" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Tooltip Placement & UX Considerations</CardTitle>
+                <CardTitle className="text-xl font-bold">Tooltip Placement & UX Considerations</CardTitle>
                 <CardDescription>
                   Strategic positioning, collision detection, and user experience guidelines for effective tooltip implementation.
                 </CardDescription>
@@ -883,10 +883,9 @@ export default function TooltipsPage() {
 
           {/* Accessibility */}
           <TabsContent value="accessibility" className="space-y-8">
-            {/* Core Accessibility Fundamentals */}
             <Card>
               <CardHeader>
-                <CardTitle>Tooltip Accessibility Fundamentals</CardTitle>
+                <CardTitle className="text-xl font-bold">Tooltip Accessibility Fundamentals</CardTitle>
                 <CardDescription>
                   Essential ARIA patterns, keyboard navigation, and assistive technology support for inclusive tooltip design.
                 </CardDescription>
