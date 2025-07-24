@@ -215,97 +215,141 @@ export default function BadgePage() {
       {MobileWarning}
       <div className="container max-w-4xl mx-auto px-4 py-8">
 
-        {/* Introduction */}
-        <div className="mb-10">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
-            <h2 className="text-4xl font-bold text-foreground">Badge</h2>
+        {/* Header */}
+        <div className="mb-6">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+            <div>
+              <h1 className="text-4xl font-bold text-foreground mb-2">Badge</h1>
+              <p className="text-lg text-muted-foreground">
+                Visual indicators that communicate status, category, or attribute of an object or element for quick recognition.
+              </p>
+            </div>
             <EditButton filePath="app/playground/badge/page.tsx" />
           </div>
-          <p className="text-base md:text-lg text-muted-foreground mb-6">
-            Badges are visual indicators that communicate the status, category, or attribute of an object or element. 
-            They provide quick recognition and help users understand the state or importance of information at a glance.
-          </p>
         </div>
 
-        <Tabs defaultValue="purpose" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-5">
-            <TabsTrigger value="purpose">Purpose</TabsTrigger>
+        {/* Tabs */}
+        <Tabs defaultValue="overview" className="space-y-8">
+          <TabsList className="grid w-full grid-cols-6">
+            <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="variants">Variants</TabsTrigger>
             <TabsTrigger value="interactions">Interactions</TabsTrigger>
             <TabsTrigger value="patterns">Patterns</TabsTrigger>
-            <TabsTrigger value="accessibility">Accessibility</TabsTrigger>
+            <TabsTrigger value="implementation">Code</TabsTrigger>
+            <TabsTrigger value="accessibility">A11y</TabsTrigger>
           </TabsList>
 
-          {/* Purpose */}
-          <TabsContent value="purpose" className="space-y-8">
+          {/* Overview Tab */}
+          <TabsContent value="overview" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Primary Purpose of Badges</CardTitle>
+                <CardTitle className="text-xl font-bold">Purpose of Badges</CardTitle>
                 <CardDescription>
-                  Understanding when and why to use badges in your interface design.
+                  Understanding the core purpose and benefits of badge components in user interfaces.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <h4 className="font-semibold mb-3 text-lg">Core Purpose</h4>
-                    <ul className="space-y-2 text-sm">
-                      <li>• <strong>Status Communication:</strong> Show completion, approval, or progress states</li>
-                      <li>• <strong>Categorization:</strong> Label content types, topics, or groups</li>
-                      <li>• <strong>Notification:</strong> Indicate count or presence of updates</li>
-                      <li>• <strong>Qualification:</strong> Show attributes like {'"New"'}, {'"Featured"'}, {'"Premium"'}</li>
-                    </ul>
+                <div className="grid md:grid-cols-3 gap-4">
+                  <div className="p-4 border rounded-lg text-center">
+                    <h4 className="font-semibold mb-2">Status Communication</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Show completion, approval, or progress states at a glance.
+                    </p>
                   </div>
-
-                  <div>
-                    <h4 className="font-semibold mb-3 text-lg">Badge vs Other Components</h4>
-                    <div className="space-y-3">
-                      <div className="p-3 bg-green-50 dark:bg-green-900/20 rounded">
-                        <strong className="text-green-800 dark:text-green-200">Use Badge When:</strong>
-                        <ul className="text-sm mt-1 text-green-700 dark:text-green-300">
-                          <li>• Showing status or state</li>
-                          <li>• Labeling categories</li>
-                          <li>• Indicating counts</li>
-                        </ul>
-                      </div>
-                      <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded">
-                        <strong className="text-blue-800 dark:text-blue-200">Use Chip/Tag When:</strong>
-                        <ul className="text-sm mt-1 text-blue-700 dark:text-blue-300">
-                          <li>• Filtering content</li>
-                          <li>• User input/selection</li>
-                          <li>• Interactive removal</li>
-                        </ul>
-                      </div>
-                    </div>
+                  <div className="p-4 border rounded-lg text-center">
+                    <h4 className="font-semibold mb-2">Categorization</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Label content types, topics, or groups for quick scanning.
+                    </p>
+                  </div>
+                  <div className="p-4 border rounded-lg text-center">
+                    <h4 className="font-semibold mb-2">Notification</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Indicate count or presence of updates, alerts, or new items.
+                    </p>
                   </div>
                 </div>
-
                 <div className="space-y-4">
-                  <h4 className="font-semibold text-lg">Badge Types by Function</h4>
-                  <div className="grid gap-4">
-                    <div className="flex items-center gap-4 p-4 border rounded-lg">
-                      <CustomBadge variant="success" icon={<Check className="h-3 w-3" />}>
-                        Completed
-                      </CustomBadge>
-                      <div>
-                        <strong>Status Badge:</strong> Shows completion or progress state
+                  <h4 className="text-lg font-semibold">Badge vs Alternatives</h4>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-sm">
+                      <thead>
+                        <tr className="border-b">
+                          <th className="text-left p-3 font-medium">Component</th>
+                          <th className="text-left p-3 font-medium">Primary Use</th>
+                          <th className="text-left p-3 font-medium">Interaction</th>
+                          <th className="text-left p-3 font-medium">Visual Weight</th>
+                          <th className="text-left p-3 font-medium">Example Context</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y">
+                        <tr>
+                          <td className="p-3 font-medium">Badge</td>
+                          <td className="p-3">Status, category, count</td>
+                          <td className="p-3">Minimal/none</td>
+                          <td className="p-3">Low/medium</td>
+                          <td className="p-3">Status, labels, notifications</td>
+                        </tr>
+                        <tr>
+                          <td className="p-3 font-medium">Chip/Tag</td>
+                          <td className="p-3">Filter, selection</td>
+                          <td className="p-3">Removable, selectable</td>
+                          <td className="p-3">Medium</td>
+                          <td className="p-3">Filters, user input, tags</td>
+                        </tr>
+                        <tr>
+                          <td className="p-3 font-medium">Button</td>
+                          <td className="p-3">Action</td>
+                          <td className="p-3">Clickable</td>
+                          <td className="p-3">High</td>
+                          <td className="p-3">Submit, save, delete</td>
+                        </tr>
+                        <tr>
+                          <td className="p-3 font-medium">Notification Dot</td>
+                          <td className="p-3">Presence indicator</td>
+                          <td className="p-3">None</td>
+                          <td className="p-3">Very low</td>
+                          <td className="p-3">Unread, online status</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  <h4 className="text-lg font-semibold">Design Principles</h4>
+                  <div className="grid md:grid-cols-3 gap-6">
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
+                          <Check className="h-4 w-4 text-blue-600 dark:text-blue-400" />
+                        </div>
+                        <h4 className="font-semibold">Clarity</h4>
                       </div>
+                      <p className="text-sm text-muted-foreground">
+                        Use concise, single-word labels and clear color coding for instant recognition.
+                      </p>
                     </div>
-                    <div className="flex items-center gap-4 p-4 border rounded-lg">
-                      <CustomBadge variant="info">
-                        Documentation
-                      </CustomBadge>
-                      <div>
-                        <strong>Category Badge:</strong> Labels content type or classification
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
+                          <Star className="h-4 w-4 text-green-600 dark:text-green-400" />
+                        </div>
+                        <h4 className="font-semibold">Consistency</h4>
                       </div>
+                      <p className="text-sm text-muted-foreground">
+                        Apply consistent placement, size, and style across the UI for predictability.
+                      </p>
                     </div>
-                    <div className="flex items-center gap-4 p-4 border rounded-lg">
-                      <NotificationBadge count={3}>
-                        <Bell className="h-6 w-6" />
-                      </NotificationBadge>
-                      <div>
-                        <strong>Notification Badge:</strong> Shows count of pending items
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center">
+                          <Shield className="h-4 w-4 text-purple-600 dark:text-purple-400" />
+                        </div>
+                        <h4 className="font-semibold">Accessibility</h4>
                       </div>
+                      <p className="text-sm text-muted-foreground">
+                        Ensure sufficient color contrast, add icons or text for colorblind users, and use ARIA labels.
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -317,7 +361,7 @@ export default function BadgePage() {
           <TabsContent value="variants" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Badge Variants & States</CardTitle>
+                <CardTitle className="text-xl font-bold">Badge Variants & States</CardTitle>
                 <CardDescription>
                   Different visual styles and semantic meanings for badges.
                 </CardDescription>
@@ -410,7 +454,7 @@ export default function BadgePage() {
           <TabsContent value="interactions" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Interactive Badges</CardTitle>
+                <CardTitle className="text-xl font-bold">Interactive Badges</CardTitle>
                 <CardDescription>
                   Badges can be interactive when they need to trigger actions or be removed.
                 </CardDescription>
@@ -517,7 +561,7 @@ export default function BadgePage() {
           <TabsContent value="patterns" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Usage Patterns</CardTitle>
+                <CardTitle className="text-xl font-bold">Usage Patterns</CardTitle>
                 <CardDescription>
                   Common patterns and best practices for using badges effectively.
                 </CardDescription>
@@ -614,11 +658,40 @@ export default function BadgePage() {
             </Card>
           </TabsContent>
 
+          {/* Implementation Tab */}
+          <TabsContent value="implementation" className="space-y-8">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-xl font-bold">Badge Implementation</CardTitle>
+                <CardDescription>
+                  Code examples and technical implementation details for badge components.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
+                  <pre className="text-sm whitespace-pre-wrap">{`// Basic badge
+<CustomBadge variant="success">Completed</CustomBadge>
+
+// Badge with icon
+<CustomBadge variant="info" icon={<Info className="h-3 w-3" />}>Info</CustomBadge>
+
+// Removable badge
+<CustomBadge removable onRemove={handleRemove}>React</CustomBadge>
+
+// Notification badge
+<NotificationBadge count={3}>
+  <Bell className="h-6 w-6" />
+</NotificationBadge>`}</pre>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
           {/* Accessibility */}
           <TabsContent value="accessibility" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Accessibility Guidelines</CardTitle>
+                <CardTitle className="text-xl font-bold">Accessibility Guidelines</CardTitle>
                 <CardDescription>
                   Ensuring badges are accessible to all users, including those using assistive technologies.
                 </CardDescription>
@@ -774,7 +847,7 @@ export default function BadgePage() {
         {/* References Section */}
         <div className="mt-6">
           <ComponentReferences
-            title="References & Further Reading"
+            title="References & Resources"
             description="Essential references for badge component implementation and best practices from leading design systems."
             urls={badgeComponentsUrlReference}
             getTitleFunction={(url: string) => {

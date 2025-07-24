@@ -37,7 +37,7 @@ export const componentSections: ComponentSection[] = [
     name: "Badge",
     href: "/playground/badge",
     description: "Small labels that indicate status, attributes, or category",
-    status: "In Progress",
+    status: "Complete",
     preview: <BadgePreview />,
   },
   {
