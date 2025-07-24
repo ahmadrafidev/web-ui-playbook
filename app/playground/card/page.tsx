@@ -1,6 +1,6 @@
 "use client"
 
-import { Heart, Star, Share2, Bookmark, MoreHorizontal, Calendar, User, MessageCircle, ArrowRight, CheckCircle, AlertCircle, FileImage, Video, ShoppingCart, Eye, Download, X } from "lucide-react"
+import { Heart, Star, Share2, Bookmark, MoreHorizontal, Calendar, User, MessageCircle, ArrowRight, CheckCircle, AlertCircle, FileImage, Video, ShoppingCart, Eye, Download, X, Settings, Filter, Users, Shield, Check, Code2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -11,6 +11,7 @@ import { EditButton } from "@/components/edit-button"
 import { useMobileWarning } from "@/hooks/use-mobile-warning"
 
 const cardComponentsUrlReference = [
+  "https://www.w3.org/WAI/ARIA/apg/patterns/landmarks/",
   "https://spectrum.adobe.com/page/cards/",
   "https://design.visa.com/components/content-card/accessibility/",
   "https://base.uber.com/6d2425e9f/p/02338d-card",
@@ -18,8 +19,7 @@ const cardComponentsUrlReference = [
   "https://polaris-react.shopify.com/components/layout-and-structure/media-card",
   "https://blueprintjs.com/docs/#core/components/card",
   "https://carbondesignsystem.com/components/tile/usage/",
-  "https://m3.material.io/components/cards/overview",
-  "https://www.w3.org/WAI/ARIA/apg/patterns/landmarks/"
+  "https://m3.material.io/components/cards/overview"
 ]
 
 export default function CardPage() {
@@ -31,169 +31,378 @@ export default function CardPage() {
       {MobileWarning}
       <div className="container max-w-4xl mx-auto px-4 py-8">
 
-        {/* Introduction */}
-        <div className="mb-10">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
-            <h2 className="text-4xl font-bold text-foreground">Cards</h2>
+        {/* Header */}
+        <div className="mb-6">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+            <div>
+              <h1 className="text-4xl font-bold text-foreground mb-2">Cards</h1>
+              <p className="text-lg text-muted-foreground">
+                Flexible containers that group related content and actions for scannable, organized interfaces.
+              </p>
+            </div>
             <EditButton filePath="app/playground/card/page.tsx" />
           </div>
-          <p className="text-base md:text-lg text-muted-foreground mb-6">
-            Cards are flexible containers that group related content and actions. They serve as entry points to more detailed information 
-            and provide a preview of content in a scannable format. Cards are one of the most versatile UI components.
-          </p>
         </div>
 
-        <Tabs defaultValue="purpose" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-5">
-            <TabsTrigger value="purpose">Purpose</TabsTrigger>
+        <Tabs defaultValue="overview" className="space-y-8">
+          <TabsList className="grid w-full grid-cols-6">
+            <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="anatomy">Anatomy</TabsTrigger>
             <TabsTrigger value="variants">Variants</TabsTrigger>
             <TabsTrigger value="patterns">Patterns</TabsTrigger>
-            <TabsTrigger value="accessibility">Accessibility</TabsTrigger>
+            <TabsTrigger value="implementation">Code</TabsTrigger>
+            <TabsTrigger value="accessibility">A11y</TabsTrigger>
           </TabsList>
 
-          {/* Purpose of Cards */}
-          <TabsContent value="purpose" className="space-y-8">
+          {/* Overview */}
+          <TabsContent value="overview" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Purpose & Usage of Cards</CardTitle>
+                <CardTitle className="text-xl font-bold">Purpose of Cards</CardTitle>
                 <CardDescription>
-                  Understanding when and why to use cards effectively in your interface design.
+                  Understanding the core purpose and benefits of card components in user interfaces.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="grid md:grid-cols-3 gap-4">
+                  <div className="p-4 border rounded-lg text-center">
+                    <h4 className="font-semibold mb-2">Content Grouping</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Organize related information and actions into cohesive, scannable units.
+                    </p>
+                  </div>
+                  
+                  <div className="p-4 border rounded-lg text-center">
+                    <h4 className="font-semibold mb-2">Preview Gateway</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Provide content previews that lead to detailed views without losing context.
+                    </p>
+                  </div>
+                  
+                  <div className="p-4 border rounded-lg text-center">
+                    <h4 className="font-semibold mb-2">Visual Hierarchy</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Create clear content boundaries and establish visual order in complex layouts.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <h4 className="text-lg font-semibold">Core Functions</h4>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="space-y-3">
+                      <div className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <strong className="text-sm">Information Display:</strong>
+                          <p className="text-xs text-muted-foreground">Present content in digestible, scannable chunks with clear visual hierarchy</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <strong className="text-sm">Action Containers:</strong>
+                          <p className="text-xs text-muted-foreground">Group related actions and controls with their associated content</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="space-y-3">
+                      <div className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <strong className="text-sm">Navigation Aids:</strong>
+                          <p className="text-xs text-muted-foreground">Facilitate content discovery and provide clear pathways to detailed information</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <strong className="text-sm">Layout Structure:</strong>
+                          <p className="text-xs text-muted-foreground">Enable flexible, responsive layouts that adapt to different screen sizes</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-xl font-bold">When to Use Cards</CardTitle>
+                <CardDescription>
+                  Understanding the appropriate contexts for card components.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <h4 className="font-semibold mb-3 text-lg">Core Purpose</h4>
-                    <ul className="space-y-2 text-sm">
-                      <li>• <strong>Content Grouping:</strong> Organize related information and actions</li>
-                      <li>• <strong>Preview Gateway:</strong> Provide content previews that lead to details</li>
-                      <li>• <strong>Scannable Format:</strong> Enable quick browsing and comparison</li>
-                      <li>• <strong>Action Container:</strong> House interactive elements and controls</li>
-                      <li>• <strong>Visual Hierarchy:</strong> Create clear content boundaries</li>
-                    </ul>
+                  <div className="space-y-4">
+                    <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
+                      <div className="flex items-center gap-2 mb-3">
+                        <CheckCircle className="h-5 w-5 text-green-600" />
+                        <strong className="text-green-800 dark:text-green-200">Use Cards When:</strong>
+                      </div>
+                      <ul className="text-sm text-green-700 dark:text-green-300 space-y-1">
+                        <li>• Displaying collections of content</li>
+                        <li>• Creating product/content previews</li>
+                        <li>• Grouping mixed content types</li>
+                        <li>• Building dashboard widgets</li>
+                        <li>• Showing user profiles or team members</li>
+                        <li>• Presenting feature comparisons</li>
+                      </ul>
+                    </div>
                   </div>
 
-                  <div>
-                    <h4 className="font-semibold mb-3 text-lg">When to Use Cards</h4>
-                    <div className="space-y-3">
-                      <div className="p-3 bg-green-50 dark:bg-green-900/20 rounded">
-                        <strong className="text-green-800 dark:text-green-200">Use Cards When:</strong>
-                        <ul className="text-sm mt-1 text-green-700 dark:text-green-300">
-                          <li>• Displaying collections of content</li>
-                          <li>• Creating product/content previews</li>
-                          <li>• Grouping mixed content types</li>
-                          <li>• Building dashboard widgets</li>
-                        </ul>
+                  <div className="space-y-4">
+                    <div className="p-4 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800">
+                      <div className="flex items-center gap-2 mb-3">
+                        <X className="h-5 w-5 text-red-600" />
+                        <strong className="text-red-800 dark:text-red-200">Avoid Cards When:</strong>
                       </div>
-                      <div className="p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded">
-                        <strong className="text-yellow-800 dark:text-yellow-200">Avoid Cards When:</strong>
-                        <ul className="text-sm mt-1 text-yellow-700 dark:text-yellow-300">
-                          <li>• Content is better in lists</li>
-                          <li>• Information is purely textual</li>
-                          <li>• Space is very limited</li>
-                        </ul>
-                      </div>
+                      <ul className="text-sm text-red-700 dark:text-red-300 space-y-1">
+                        <li>• Content is better in lists</li>
+                        <li>• Information is purely textual</li>
+                        <li>• Space is very limited</li>
+                        <li>• Simple data tables suffice</li>
+                        <li>• Linear reading flow is preferred</li>
+                        <li>• Single-purpose interfaces</li>
+                      </ul>
                     </div>
                   </div>
                 </div>
 
                 <div className="space-y-4">
-                  <h4 className="font-semibold text-lg">Card Examples by Use Case</h4>
+                  <h4 className="text-lg font-semibold">Card vs Alternatives</h4>
                   <div className="grid gap-4">
-                    {/* Content Preview Card */}
-                    <div className="p-4 border rounded-lg">
-                      <h5 className="font-medium mb-3">Content Preview Cards</h5>
-                      <div className="grid md:grid-cols-2 gap-4">
-                        <Card className="max-w-sm">
-                          <div className="aspect-video bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900 dark:to-purple-900 rounded-t-lg flex items-center justify-center">
-                            <FileImage className="h-8 w-8 text-blue-600" />
-                          </div>
-                          <CardHeader className="pb-3">
-                            <CardTitle className="text-base">Design System Fundamentals</CardTitle>
-                            <CardDescription className="text-sm">Learn the core principles of building scalable design systems.</CardDescription>
-                          </CardHeader>
-                          <CardContent className="pt-0">
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                                <Calendar className="h-3 w-3" />
-                                <span>Dec 15, 2024</span>
-                              </div>
-                              <Button size="sm" variant="outline">Read More</Button>
-                            </div>
-                          </CardContent>
-                        </Card>
-                        <div className="text-sm text-muted-foreground space-y-1">
-                          <p><strong>Use Case:</strong> Blog posts, articles, tutorials</p>
-                          <p><strong>Elements:</strong> Image, title, description, metadata, CTA</p>
-                          <p><strong>Purpose:</strong> Quick content preview with clear next action</p>
-                        </div>
+                    <div className="flex items-start gap-4 p-4 border rounded-lg">
+                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2"></div>
+                      <div>
+                        <strong>Card vs List Items:</strong>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          Use cards for rich, mixed content with actions. Use list items for 
+                          uniform, text-heavy content in linear sequences.
+                        </p>
                       </div>
                     </div>
+                    
+                    <div className="flex items-start gap-4 p-4 border rounded-lg">
+                      <div className="w-2 h-2 bg-purple-600 rounded-full mt-2"></div>
+                      <div>
+                        <strong>Card vs Modal/Dialog:</strong>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          Use cards for contextual information display. Use modals for 
+                          focused tasks that require user attention.
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start gap-4 p-4 border rounded-lg">
+                      <div className="w-2 h-2 bg-green-600 rounded-full mt-2"></div>
+                      <div>
+                        <strong>Card vs Sidebar/Panel:</strong>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          Use cards for content discovery and browsing. Use sidebars for 
+                          navigation, tools, or persistent secondary content.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
 
-                    {/* Product Card */}
-                    <div className="p-4 border rounded-lg">
-                      <h5 className="font-medium mb-3">Product/E-commerce Cards</h5>
-                      <div className="grid md:grid-cols-2 gap-4">
-                        <Card className="max-w-sm">
-                          <div className="aspect-square bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 to-gray-700 rounded-t-lg flex items-center justify-center relative">
-                            <ShoppingCart className="h-8 w-8 text-gray-600" />
-                            <Badge className="absolute top-2 right-2 bg-red-500">Sale</Badge>
+            <div className="grid lg:grid-cols-2 gap-8">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Badge variant="secondary">Content</Badge>
+                    Information Display
+                  </CardTitle>
+                  <CardDescription>
+                    Cards for presenting content, media, and information in an organized way
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div className="space-y-4">
+                    <Card className="max-w-sm">
+                      <div className="aspect-video bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900 dark:to-purple-900 rounded-t-lg flex items-center justify-center">
+                        <FileImage className="h-8 w-8 text-blue-600" />
+                      </div>
+                      <CardHeader className="pb-3">
+                        <CardTitle className="text-base">Design System Guide</CardTitle>
+                        <CardDescription className="text-sm">Learn the fundamentals of creating scalable design systems.</CardDescription>
+                      </CardHeader>
+                      <CardContent className="pt-0">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                            <Calendar className="h-3 w-3" />
+                            <span>Dec 15, 2024</span>
                           </div>
-                          <CardHeader className="pb-2">
-                            <CardTitle className="text-base">Wireless Headphones</CardTitle>
-                            <CardDescription className="text-sm">Premium noise-canceling headphones</CardDescription>
-                          </CardHeader>
-                          <CardContent className="space-y-3">
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-2">
-                                <span className="text-lg font-bold">$199</span>
-                                <span className="text-sm text-muted-foreground line-through">$249</span>
-                              </div>
-                              <div className="flex items-center gap-1">
-                                {Array.from({ length: 5 }).map((_, i) => (
-                                  <Star key={i} className={`h-3 w-3 ${i < 4 ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`} />
-                                ))}
-                                <span className="text-xs text-muted-foreground ml-1">(4.0)</span>
-                              </div>
-                            </div>
-                            <Button className="w-full" size="sm">Add to Cart</Button>
-                          </CardContent>
-                        </Card>
-                        <div className="text-sm text-muted-foreground space-y-1">
-                          <p><strong>Use Case:</strong> E-commerce, marketplace listings</p>
-                          <p><strong>Elements:</strong> Product image, name, price, ratings, CTA</p>
-                          <p><strong>Purpose:</strong> Product discovery and quick purchase path</p>
+                          <Button size="sm" variant="outline">Read More</Button>
                         </div>
-                      </div>
-                    </div>
+                      </CardContent>
+                    </Card>
+                  </div>
 
-                    {/* Dashboard Widget Card */}
-                    <div className="p-4 border rounded-lg">
-                      <h5 className="font-medium mb-3">Dashboard Widget Cards</h5>
-                      <div className="grid md:grid-cols-2 gap-4">
-                        <Card className="max-w-sm">
-                          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                            <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
-                            <Badge variant="outline" className="text-green-600 border-green-600">
-                              +12.5%
-                            </Badge>
-                          </CardHeader>
-                          <CardContent>
-                            <div className="text-2xl font-bold">$45,231.89</div>
-                            <p className="text-xs text-muted-foreground">
-                              +20.1% from last month
-                            </p>
-                            <div className="mt-4 h-20 bg-gradient-to-r from-green-400 to-blue-500 rounded opacity-20"></div>
-                          </CardContent>
-                        </Card>
-                        <div className="text-sm text-muted-foreground space-y-1">
-                          <p><strong>Use Case:</strong> Analytics, metrics, KPI display</p>
-                          <p><strong>Elements:</strong> Metric value, trend indicator, visualization</p>
-                          <p><strong>Purpose:</strong> Quick data insights and status monitoring</p>
-                        </div>
+                  <div className="pt-4 border-t">
+                    <h4 className="font-medium mb-3">Best for:</h4>
+                    <ul className="text-sm text-muted-foreground space-y-1">
+                      <li>• Blog posts and articles</li>
+                      <li>• Media galleries</li>
+                      <li>• Product showcases</li>
+                      <li>• Feature highlights</li>
+                    </ul>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Badge variant="outline">Action</Badge>
+                    Interactive Widgets
+                  </CardTitle>
+                  <CardDescription>
+                    Cards with controls, metrics, and interactive elements for user engagement
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div className="space-y-4">
+                    <Card className="max-w-sm">
+                      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                        <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
+                        <Badge variant="outline" className="text-green-600 border-green-600">
+                          +12.5%
+                        </Badge>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="text-2xl font-bold">$45,231.89</div>
+                        <p className="text-xs text-muted-foreground">
+                          +20.1% from last month
+                        </p>
+                        <div className="mt-4 h-20 bg-gradient-to-r from-green-400 to-blue-500 rounded opacity-20"></div>
+                      </CardContent>
+                    </Card>
+                  </div>
+
+                  <div className="pt-4 border-t">
+                    <h4 className="font-medium mb-3">Best for:</h4>
+                    <ul className="text-sm text-muted-foreground space-y-1">
+                      <li>• Dashboard metrics</li>
+                      <li>• Control panels</li>
+                      <li>• User actions</li>
+                      <li>• Status displays</li>
+                    </ul>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Card vs Alternatives Comparison</CardTitle>
+                <CardDescription>
+                  Understanding when to use cards over other layout components
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b">
+                        <th className="text-left p-3 font-medium">Component</th>
+                        <th className="text-left p-3 font-medium">Content Type</th>
+                        <th className="text-left p-3 font-medium">Layout</th>
+                        <th className="text-left p-3 font-medium">Interaction</th>
+                        <th className="text-left p-3 font-medium">Use Case</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y">
+                      <tr>
+                        <td className="p-3">
+                          <Badge variant="default">Card</Badge>
+                        </td>
+                        <td className="p-3">Mixed content</td>
+                        <td className="p-3">✅ Flexible grid</td>
+                        <td className="p-3">✅ Multiple actions</td>
+                        <td className="p-3">Content discovery, dashboards</td>
+                      </tr>
+                      <tr>
+                        <td className="p-3">
+                          <Badge variant="secondary">List Item</Badge>
+                        </td>
+                        <td className="p-3">Uniform data</td>
+                        <td className="p-3">📱 Linear stack</td>
+                        <td className="p-3">✅ Single action</td>
+                        <td className="p-3">Data tables, navigation</td>
+                      </tr>
+                      <tr>
+                        <td className="p-3">
+                          <Badge variant="outline">Tile</Badge>
+                        </td>
+                        <td className="p-3">Simple content</td>
+                        <td className="p-3">✅ Grid layout</td>
+                        <td className="p-3">🔘 Single action</td>
+                        <td className="p-3">App launchers, categories</td>
+                      </tr>
+                      <tr>
+                        <td className="p-3">
+                          <Badge variant="outline">Panel</Badge>
+                        </td>
+                        <td className="p-3">Complex content</td>
+                        <td className="p-3">📋 Fixed position</td>
+                        <td className="p-3">✅ Multiple actions</td>
+                        <td className="p-3">Sidebars, detailed views</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Design Principles</CardTitle>
+                <CardDescription>
+                  Core principles for effective card design and user experience
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
+                        <Eye className="h-4 w-4 text-blue-600 dark:text-blue-400" />
                       </div>
+                      <h4 className="font-semibold">Visual Hierarchy</h4>
                     </div>
+                    <p className="text-sm text-muted-foreground">
+                      Establish clear content priority with consistent typography, spacing, and visual emphasis.
+                    </p>
+                  </div>
+
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
+                        <Users className="h-4 w-4 text-green-600 dark:text-green-400" />
+                      </div>
+                      <h4 className="font-semibold">Scannable Content</h4>
+                    </div>
+                    <p className="text-sm text-muted-foreground">
+                      Structure content for quick scanning with clear headings, summaries, and action points.
+                    </p>
+                  </div>
+
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center">
+                        <Settings className="h-4 w-4 text-purple-600 dark:text-purple-400" />
+                      </div>
+                      <h4 className="font-semibold">Consistent Layout</h4>
+                    </div>
+                    <p className="text-sm text-muted-foreground">
+                      Maintain consistent patterns for similar content types and predictable action placement.
+                    </p>
                   </div>
                 </div>
               </CardContent>
@@ -204,7 +413,7 @@ export default function CardPage() {
           <TabsContent value="anatomy" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Card Anatomy & Structure</CardTitle>
+                <CardTitle className="text-xl font-bold">Card Anatomy & Structure</CardTitle>
                 <CardDescription>
                   Understanding the building blocks and components that make up effective cards.
                 </CardDescription>
@@ -372,7 +581,7 @@ export default function CardPage() {
           <TabsContent value="variants" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Card Variants & Types</CardTitle>
+                <CardTitle className="text-xl font-bold">Card Variants & Types</CardTitle>
                 <CardDescription>
                   Different card styles and configurations for various use cases and content types.
                 </CardDescription>
@@ -495,63 +704,40 @@ export default function CardPage() {
                         </div>
                       </div>
 
-                      {/* Notification Card */}
+                      {/* Product Card */}
                       <div className="p-4 border rounded-lg">
-                        <h5 className="font-medium mb-3">Notification Cards</h5>
-                        <div className="space-y-3">
-                          <Card className="border-l-4 border-l-blue-500">
-                            <CardContent className="p-4">
-                              <div className="flex items-start gap-3">
-                                <div className="p-1 bg-blue-100 dark:bg-blue-900/30 rounded-full">
-                                  <MessageCircle className="h-4 w-4 text-blue-600" />
+                        <h5 className="font-medium mb-3">Product/E-commerce Cards</h5>
+                        <div className="grid md:grid-cols-2 gap-4">
+                          <Card className="max-w-sm">
+                            <div className="aspect-square bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 to-gray-700 rounded-t-lg flex items-center justify-center relative">
+                              <ShoppingCart className="h-8 w-8 text-gray-600" />
+                              <Badge className="absolute top-2 right-2 bg-red-500">Sale</Badge>
+                            </div>
+                            <CardHeader className="pb-2">
+                              <CardTitle className="text-base">Wireless Headphones</CardTitle>
+                              <CardDescription className="text-sm">Premium noise-canceling headphones</CardDescription>
+                            </CardHeader>
+                            <CardContent className="space-y-3">
+                              <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-2">
+                                  <span className="text-lg font-bold">$199</span>
+                                  <span className="text-sm text-muted-foreground line-through">$249</span>
                                 </div>
-                                <div className="flex-1">
-                                  <p className="font-medium text-sm">New message received</p>
-                                  <p className="text-sm text-muted-foreground">John sent you a message about the project timeline.</p>
-                                  <p className="text-xs text-muted-foreground mt-1">2 minutes ago</p>
+                                <div className="flex items-center gap-1">
+                                  {Array.from({ length: 5 }).map((_, i) => (
+                                    <Star key={i} className={`h-3 w-3 ${i < 4 ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`} />
+                                  ))}
+                                  <span className="text-xs text-muted-foreground ml-1">(4.0)</span>
                                 </div>
-                                <Button size="sm" variant="ghost">
-                                  <X className="h-4 w-4" />
-                                </Button>
                               </div>
+                              <Button className="w-full" size="sm">Add to Cart</Button>
                             </CardContent>
                           </Card>
-                          
-                          <Card className="border-l-4 border-l-green-500">
-                            <CardContent className="p-4">
-                              <div className="flex items-start gap-3">
-                                <div className="p-1 bg-green-100 dark:bg-green-900/30 rounded-full">
-                                  <CheckCircle className="h-4 w-4 text-green-600" />
-                                </div>
-                                <div className="flex-1">
-                                  <p className="font-medium text-sm">Task completed</p>
-                                  <p className="text-sm text-muted-foreground">Design review has been successfully completed.</p>
-                                  <p className="text-xs text-muted-foreground mt-1">1 hour ago</p>
-                                </div>
-                                <Button size="sm" variant="ghost">
-                                  <X className="h-4 w-4" />
-                                </Button>
-                              </div>
-                            </CardContent>
-                          </Card>
-                          
-                          <Card className="border-l-4 border-l-red-500">
-                            <CardContent className="p-4">
-                              <div className="flex items-start gap-3">
-                                <div className="p-1 bg-red-100 dark:bg-red-900/30 rounded-full">
-                                  <AlertCircle className="h-4 w-4 text-red-600" />
-                                </div>
-                                <div className="flex-1">
-                                  <p className="font-medium text-sm">Action required</p>
-                                  <p className="text-sm text-muted-foreground">Your account verification is pending review.</p>
-                                  <p className="text-xs text-muted-foreground mt-1">3 hours ago</p>
-                                </div>
-                                <Button size="sm" variant="ghost">
-                                  <X className="h-4 w-4" />
-                                </Button>
-                              </div>
-                            </CardContent>
-                          </Card>
+                          <div className="text-sm text-muted-foreground space-y-1">
+                            <p><strong>Use Case:</strong> E-commerce, marketplace listings</p>
+                            <p><strong>Elements:</strong> Product image, name, price, ratings, CTA</p>
+                            <p><strong>Purpose:</strong> Product discovery and quick purchase path</p>
+                          </div>
                         </div>
                       </div>
 
@@ -652,7 +838,7 @@ export default function CardPage() {
           <TabsContent value="patterns" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Card Design Patterns & Layout</CardTitle>
+                <CardTitle className="text-xl font-bold">Card Design Patterns & Layout</CardTitle>
                 <CardDescription>
                   Common layout patterns, design principles, and best practices for organizing cards in your interface.
                 </CardDescription>
@@ -734,107 +920,6 @@ export default function CardPage() {
                         </p>
                       </div>
 
-                      {/* Stacked Cards */}
-                      <div className="p-4 border rounded-lg">
-                        <h5 className="font-medium mb-3">Stacked Cards (Deck Pattern)</h5>
-                        <div className="relative">
-                          <Card className="relative z-30">
-                            <CardHeader>
-                              <CardTitle className="text-base">Active Card</CardTitle>
-                              <CardDescription>Currently visible card in the stack</CardDescription>
-                            </CardHeader>
-                            <CardContent>
-                              <div className="flex gap-2">
-                                <Button size="sm" variant="outline">Previous</Button>
-                                <Button size="sm">Next</Button>
-                              </div>
-                            </CardContent>
-                          </Card>
-                          <div className="absolute top-2 left-2 right-2 z-20 bg-muted rounded-lg h-20"></div>
-                          <div className="absolute top-4 left-4 right-4 z-10 bg-muted/50 rounded-lg h-20"></div>
-                        </div>
-                        <p className="text-sm text-muted-foreground mt-2">
-                          Card stack pattern for guided flows, tutorials, or progressive disclosure.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Interactive Patterns */}
-                  <div>
-                    <h4 className="font-semibold mb-4 text-lg">Interactive Patterns</h4>
-                    <div className="space-y-4">
-                      
-                      {/* Expandable Cards */}
-                      <div className="p-4 border rounded-lg">
-                        <h5 className="font-medium mb-3">Expandable Cards</h5>
-                        <div className="space-y-3">
-                          <Card className="transition-all duration-200">
-                            <CardHeader className="cursor-pointer">
-                              <div className="flex items-center justify-between">
-                                <div>
-                                  <CardTitle className="text-base">Project Alpha</CardTitle>
-                                  <CardDescription>Click to expand details</CardDescription>
-                                </div>
-                                <ArrowRight className="h-4 w-4 transform transition-transform" />
-                              </div>
-                            </CardHeader>
-                          </Card>
-                          
-                          <Card>
-                            <CardHeader>
-                              <div className="flex items-center justify-between">
-                                <div>
-                                  <CardTitle className="text-base">Project Beta</CardTitle>
-                                  <CardDescription>Expanded view</CardDescription>
-                                </div>
-                                <ArrowRight className="h-4 w-4 transform rotate-90" />
-                              </div>
-                            </CardHeader>
-                            <CardContent className="border-t pt-4">
-                              <p className="text-sm text-muted-foreground mb-3">
-                                Detailed information that becomes visible when the card is expanded.
-                              </p>
-                              <div className="flex gap-2">
-                                <Badge variant="secondary">In Progress</Badge>
-                                <Badge variant="outline">High Priority</Badge>
-                              </div>
-                            </CardContent>
-                          </Card>
-                        </div>
-                        <p className="text-sm text-muted-foreground mt-2">
-                          Accordion-style cards for showing/hiding detailed information.
-                        </p>
-                      </div>
-
-                      {/* Flip Cards */}
-                      <div className="p-4 border rounded-lg">
-                        <h5 className="font-medium mb-3">Flip Cards</h5>
-                        <div className="grid md:grid-cols-2 gap-4">
-                          <div className="perspective-1000">
-                            <Card className="cursor-pointer transform transition-transform duration-500 hover:rotate-y-180 preserve-3d">
-                              <CardContent className="p-6 text-center backface-hidden">
-                                <User className="h-12 w-12 mx-auto mb-3 text-primary" />
-                                <h6 className="font-medium">Hover to flip</h6>
-                                <p className="text-sm text-muted-foreground">Front side content</p>
-                              </CardContent>
-                            </Card>
-                          </div>
-                          <div className="text-sm text-muted-foreground space-y-2">
-                            <p><strong>Use Case:</strong> Interactive product showcases, team member profiles</p>
-                            <p><strong>Implementation:</strong> CSS transforms with hover/click triggers</p>
-                            <p><strong>Accessibility:</strong> Ensure keyboard navigation and screen reader support</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Content Patterns */}
-                  <div>
-                    <h4 className="font-semibold mb-4 text-lg">Content Organization Patterns</h4>
-                    <div className="space-y-4">
-                      
                       {/* Feature Comparison */}
                       <div className="p-4 border rounded-lg">
                         <h5 className="font-medium mb-3">Feature Comparison Cards</h5>
@@ -960,13 +1045,198 @@ export default function CardPage() {
             </Card>
           </TabsContent>
 
+          {/* Implementation */}
+          <TabsContent value="implementation" className="space-y-8">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-xl font-bold flex items-center gap-2">
+                  <Code2 className="h-5 w-5" />
+                  Implementation Guide
+                </CardTitle>
+                <CardDescription>
+                  Code examples and technical implementation details for card components.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="space-y-4">
+                  <h4 className="font-semibold text-lg">Basic Card Implementation</h4>
+                  <div className="bg-muted rounded-lg p-4 text-sm font-mono overflow-x-auto">
+                    <pre>{`// Basic card with header, content, and actions
+<Card className="max-w-sm">
+  <CardHeader>
+    <CardTitle>Card Title</CardTitle>
+    <CardDescription>Supporting description text</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <p>Main content area with information and details.</p>
+  </CardContent>
+  <CardFooter className="justify-between">
+    <Button variant="outline">Cancel</Button>
+    <Button>Save</Button>
+  </CardFooter>
+</Card>
+
+// Media card with image
+<Card className="overflow-hidden">
+  <div className="aspect-video bg-muted">
+    <img src="/image.jpg" alt="Description" className="object-cover w-full h-full" />
+  </div>
+  <CardHeader>
+    <CardTitle>Media Card</CardTitle>
+    <CardDescription>Card with media content</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <p>Content description and details...</p>
+  </CardContent>
+</Card>`}</pre>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <h4 className="font-semibold text-lg">Interactive Card Patterns</h4>
+                  <div className="bg-muted rounded-lg p-4 text-sm font-mono overflow-x-auto">
+                    <pre>{`// Clickable card with hover effects
+<Card className="cursor-pointer hover:shadow-lg transition-all duration-200 hover:-translate-y-1">
+  <CardHeader>
+    <CardTitle className="flex items-center justify-between">
+      Interactive Card
+      <ArrowRight className="h-4 w-4" />
+    </CardTitle>
+  </CardHeader>
+  <CardContent>
+    <p>Click anywhere on this card to navigate</p>
+  </CardContent>
+</Card>
+
+// Card with action menu
+<Card>
+  <CardHeader className="flex flex-row items-center justify-between">
+    <div>
+      <CardTitle>Project Card</CardTitle>
+      <CardDescription>With action menu</CardDescription>
+    </div>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" size="sm">
+          <MoreHorizontal className="h-4 w-4" />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuItem>Edit</DropdownMenuItem>
+        <DropdownMenuItem>Share</DropdownMenuItem>
+        <DropdownMenuItem>Delete</DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  </CardHeader>
+</Card>`}</pre>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <h4 className="font-semibold text-lg">Essential Features</h4>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="p-4 border rounded-lg">
+                      <h5 className="font-medium mb-2">Semantic Structure</h5>
+                      <ul className="text-sm space-y-1">
+                        <li>• Use <code>article</code> for independent content</li>
+                        <li>• Proper heading hierarchy</li>
+                        <li>• Descriptive alt text for images</li>
+                        <li>• Accessible button labels</li>
+                      </ul>
+                    </div>
+
+                    <div className="p-4 border rounded-lg">
+                      <h5 className="font-medium mb-2">Responsive Design</h5>
+                      <ul className="text-sm space-y-1">
+                        <li>• Flexible grid layouts</li>
+                        <li>• Touch-friendly interactions</li>
+                        <li>• Proper spacing on mobile</li>
+                        <li>• Readable text sizes</li>
+                      </ul>
+                    </div>
+
+                    <div className="p-4 border rounded-lg">
+                      <h5 className="font-medium mb-2">Performance</h5>
+                      <ul className="text-sm space-y-1">
+                        <li>• Lazy load images</li>
+                        <li>• Optimize animations</li>
+                        <li>• Minimize re-renders</li>
+                        <li>• Efficient event handling</li>
+                      </ul>
+                    </div>
+
+                    <div className="p-4 border rounded-lg">
+                      <h5 className="font-medium mb-2">Visual Design</h5>
+                      <ul className="text-sm space-y-1">
+                        <li>• Consistent elevation/shadows</li>
+                        <li>• Proper color contrast</li>
+                        <li>• Clear visual hierarchy</li>
+                        <li>• Smooth transitions</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <h4 className="font-semibold text-lg">Advanced Examples</h4>
+                  <div className="bg-muted rounded-lg p-4 text-sm font-mono overflow-x-auto">
+                    <pre>{`// Dashboard metric card
+<Card>
+  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+    <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
+    <DollarSign className="h-4 w-4 text-muted-foreground" />
+  </CardHeader>
+  <CardContent>
+    <div className="text-2xl font-bold">$45,231.89</div>
+    <p className="text-xs text-muted-foreground">
+      +20.1% from last month
+    </p>
+  </CardContent>
+</Card>
+
+// Profile card with actions
+<Card className="max-w-sm">
+  <CardHeader className="text-center">
+    <Avatar className="h-20 w-20 mx-auto mb-4">
+      <AvatarImage src="/avatar.jpg" />
+      <AvatarFallback>JD</AvatarFallback>
+    </Avatar>
+    <CardTitle>John Doe</CardTitle>
+    <CardDescription>Senior Developer</CardDescription>
+  </CardHeader>
+  <CardContent className="text-center">
+    <div className="flex justify-center gap-4 text-sm mb-4">
+      <div>
+        <div className="font-semibold">123</div>
+        <div className="text-muted-foreground">Projects</div>
+      </div>
+      <div>
+        <div className="font-semibold">456</div>
+        <div className="text-muted-foreground">Followers</div>
+      </div>
+    </div>
+    <div className="flex gap-2">
+      <Button size="sm" className="flex-1">Follow</Button>
+      <Button size="sm" variant="outline" className="flex-1">Message</Button>
+    </div>
+  </CardContent>
+</Card>`}</pre>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
           {/* Card Accessibility */}
           <TabsContent value="accessibility" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Card Accessibility</CardTitle>
+                <CardTitle className="text-xl font-bold flex items-center gap-2">
+                  <Shield className="h-5 w-5" />
+                  Card Accessibility
+                </CardTitle>
                 <CardDescription>
-                  Essential accessibility considerations for creating inclusive card components that work for all users.
+                  Essential accessibility considerations for creating inclusive card components.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
@@ -1103,37 +1373,6 @@ export default function CardPage() {
                             </CardContent>
                           </Card>
                         </div>
-                      </div>
-
-                      <div className="p-4 border rounded-lg">
-                        <h5 className="font-medium mb-3">Announcing Dynamic Content</h5>
-                        <Card>
-                          <CardContent className="p-4">
-                            <div className="flex items-center gap-3">
-                              <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-full">
-                                <CheckCircle className="h-4 w-4 text-green-600" />
-                              </div>
-                              <div className="flex-1">
-                                <p className="font-medium text-sm">Task completed</p>
-                                <p className="text-sm text-muted-foreground">Your design review has been approved.</p>
-                              </div>
-                              <Button 
-                                size="sm" 
-                                variant="ghost"
-                                aria-label="Dismiss notification: Task completed"
-                              >
-                                <X className="h-4 w-4" />
-                              </Button>
-                            </div>
-                            <div 
-                              aria-live="polite" 
-                              aria-atomic="true" 
-                              className="sr-only"
-                            >
-                              Notification: Task completed. Your design review has been approved.
-                            </div>
-                          </CardContent>
-                        </Card>
                       </div>
                     </div>
                   </div>
@@ -1293,10 +1532,11 @@ export default function CardPage() {
         {/* References Section */}
         <div className="mt-6">
           <ComponentReferences
-            title="References & Further Reading"
-            description="Essential references for card component implementation and best practices from leading design systems."
+            title="References & Resources"
+            description="Essential references for card component implementation and accessibility guidelines from leading design systems."
             urls={cardComponentsUrlReference}
             getTitleFunction={(url: string) => {
+              if (url.includes('w3.org')) return 'WAI-ARIA Landmarks Pattern'
               if (url.includes('spectrum.adobe.com')) return 'Adobe Spectrum - Cards'
               if (url.includes('design.visa.com')) return 'Visa Design System - Content Card'
               if (url.includes('base.uber.com')) return 'Uber Base Design System - Card'
@@ -1305,7 +1545,6 @@ export default function CardPage() {
               if (url.includes('blueprintjs.com')) return 'Blueprint.js - Card Component'
               if (url.includes('carbondesignsystem.com')) return 'IBM Carbon - Tile Component'
               if (url.includes('m3.material.io')) return 'Material Design 3 - Cards'
-              if (url.includes('w3.org')) return 'WAI-ARIA Landmarks Pattern'
               return url
             }}
           />
