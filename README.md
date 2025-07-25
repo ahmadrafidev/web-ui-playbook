@@ -6,11 +6,9 @@
 
 *A comprehensive guide for creating consistent, accessible, and user-friendly UI components.*
 
- 🚧 **Work in Progress** 🚧 
-
 </div>
 
-## 🌟 Motivation
+## Motivation
 
 When I started coding UI components, I quickly realized I had no idea how to build them properly. Questions about scalability, best practices, and accessibility constantly plagued my development process. I knew my components worked functionally, but I had little confidence they were built well or would stand the test of time and real-world usage.
 
@@ -20,19 +18,11 @@ The Web UI Playbook emerged from this research as my attempt to synthesize these
 
 This is very much a learning exercise for me, and I'm certain there are gaps and oversights that more experienced practitioners would spot immediately. I'm hoping others will contribute their expertise to make this resource more complete and useful for anyone facing the same challenges I encountered when trying to build better UI components.
 
-## 🧩 Component Library Playbook
+## Component Library Overview
 
-Dive into our curated collection of documented UI components! Each component comes with interactive examples, implementation guides, accessibility best practices, and real-world usage patterns inspired by industry-leading design systems.
+A curated collection of documented UI components, each with implementation guides, accessibility best practices, and usage patterns inspired by industry-leading design systems.
 
-**[📚 Deep Dive into the Documentation →](https://www.webuiplaybook.com/)**
-
-### ✨ What You'll Find
-
-- **🎯 Interactive Examples** - Live component demonstrations you can interact with directly
-- **📚 Comprehensive Documentation** - Detailed explanations of purpose, usage, and best practices
-- **🔄 Component States** - Complete coverage of all interactive states and variations
-- **♿ Accessibility Guidelines** - WCAG-compliant patterns with detailed accessibility information
-- **🎨 Design System References** - Links to industry-leading design systems for each component
+## Experiment with Components
 
 ### 📊 Component Status Legend
 
@@ -55,22 +45,10 @@ Dive into our curated collection of documented UI components! Each component com
 | 🔘 **Radio Button** | Single-selection controls for mutually exclusive options in forms and settings | ✅ Complete | [View Radio Button Documentation](https://www.webuiplaybook.com/playground/radio-button) |
 | 🎚️ **Slider** | Range input controls for selecting numeric values within defined boundaries | ✅ Complete | [View Slider Documentation](https://www.webuiplaybook.com/playground/slider) |
 | 🔄 **Switch** | Binary toggle controls for immediate state changes and on/off settings | ✅ Complete | [View Switch Documentation](https://www.webuiplaybook.com/playground/switch) |
-| 📑 **Tabs** | Content organization with tabbed navigation for switching between related panels | ✅ Complete | [View Tabs Documentation](https://www.webuiplaybook.com/playground/tabs) |
+| 📑 **Tabs** | Content organization with tabbed navigation for switching between related panels | 🚧 In Progress | [View Tabs Documentation](https://www.webuiplaybook.com/playground/tabs) |
 | 📝 **Text Input** | Form input fields for text entry with validation, labels, and error states | ✅ Complete | [View Text Input Documentation](https://www.webuiplaybook.com/playground/text-input) |
 | 💭 **Tooltips** | Contextual help text that appears on hover to provide additional information | ✅ Complete | [View Tooltips Documentation](https://www.webuiplaybook.com/playground/tooltips) |
 
-## 🧪 Experiment with Components
+## Experiment with Components
 
-Want to experiment with these components? Check out this interactive component playground: **[Boop!](https://booopy.vercel.app/)**
-
-### 🎪 What is Boop?
-
-Boop is an experimental sandbox where you can:
-
-- **🎨 Prototype Components** - Drag, drop, and configure components visually
-- **⚡ Live Property Editing** - Tweak component props and see changes instantly  
-- **🧪 Test Variations** - Experiment with different styles, sizes, and states
-- **📝 Generate Code** - Export clean JSX code for your experiments
-- **📱 Responsive Testing** - See how components behave across screen sizes
-
-**[🎮 Try Boop →](https://booopy.vercel.app/)**
+Try out components in the interactive playground: [Boop](https://booopy.vercel.app/)
