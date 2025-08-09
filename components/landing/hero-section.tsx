@@ -1,14 +1,17 @@
 export function HeroSection() {
+  const heading = "The Documented Web Interface Patterns"
+  const subheading = "A curated, essential set of UI patterns for crafting scalable and accessible web interfaces"
+
   return (
-    <section className="mt-4 md:mt-8 mb-8 md:mb-10 px-4">
-      <div className="container mx-auto text-center">
-        <h2 className="text-xl sm:text-2xl md:text-4xl font-semibold text-foreground mb-2 animate-in fade-in slide-in-from-top-4 duration-800 ease-out delay-100">
-          The documented web interfaces patterns
+    <section className="mt-4 sm:mt-8 md:mt-12 mb-4 md:mb-6 px-4">
+      <div className="container mx-auto text-center relative overflow-hidden">
+        <h2 className="max-w-4xl text-2xl sm:text-3xl md:text-5xl tracking-tight text-balance font-semibold text-foreground mb-2 animate-in fade-in slide-in-from-top-24 duration-800 ease-[cubic-bezier(0.22,1,0.36,1)] transform-gpu motion-reduce:animate-none delay-150">
+          {heading}
         </h2>
-        <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-6 sm:mb-8 max-w-3xl mx-auto text-wrap px-4 sm:px-0 animate-in fade-in slide-in-from-top-4 duration-800 ease-out delay-150">
-          Essential patterns for crafting scalable and accessible web interfaces.
+        <p className="mx-auto max-w-3xl text-wrap text-sm sm:text-base md:text-lg text-foreground animate-in fade-in slide-in-from-top-24 duration-800 ease-[cubic-bezier(0.22,1,0.36,1)] transform-gpu motion-reduce:animate-none delay-150">
+          {subheading}
         </p>
       </div>
     </section>
   )
-} 
+}
