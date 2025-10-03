@@ -75,7 +75,7 @@ export const ThemeToggle = memo(function ThemeToggle() {
       ref={containerRef}
       className={`
         relative flex items-center bg-muted/50 rounded-lg p-1 border border-border
-        motion-safe:transform-gpu motion-safe:transition-all motion-safe:duration-500 
+        motion-safe:transform-gpu motion-safe:transition-all motion-safe:duration-700 
         motion-safe:ease-[cubic-bezier(0.34,1.56,0.64,1)]
         hover:bg-muted/70 hover:border-border/80
         ${isExpanded ? 'gap-1 shadow-lg shadow-primary/5' : ''}
@@ -86,7 +86,7 @@ export const ThemeToggle = memo(function ThemeToggle() {
       {isExpanded ? (
         <div 
           className="flex items-center gap-1 motion-safe:animate-in motion-safe:fade-in-0 
-            motion-safe:slide-in-from-left-2 motion-safe:duration-500 
+            motion-safe:slide-in-from-left-2 motion-safe:duration-700 
             motion-safe:ease-[cubic-bezier(0.34,1.56,0.64,1)]"
         >
           {THEME_OPTIONS.map(({ value, label, icon: Icon }, index) => {
@@ -98,7 +98,7 @@ export const ThemeToggle = memo(function ThemeToggle() {
                 onKeyDown={handleKeyDown}
                 className={`
                   group relative flex items-center justify-center p-2 rounded-md w-8 h-8 
-                  motion-safe:transform-gpu motion-safe:transition-all motion-safe:duration-500
+                  motion-safe:transform-gpu motion-safe:transition-all motion-safe:duration-700
                   motion-safe:ease-[cubic-bezier(0.34,1.56,0.64,1)]
                   focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1
                   ${isActive 
@@ -118,7 +118,7 @@ export const ThemeToggle = memo(function ThemeToggle() {
                 <Icon 
                   size={16} 
                   className={`
-                    motion-safe:transition-all motion-safe:duration-500
+                    motion-safe:transition-all motion-safe:duration-700
                     motion-safe:ease-[cubic-bezier(0.34,1.56,0.64,1)]
                     group-hover:scale-110 group-active:scale-90
                     ${isActive ? 'motion-safe:animate-spin-slow' : ''}
